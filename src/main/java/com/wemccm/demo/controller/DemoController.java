@@ -47,6 +47,7 @@ public class DemoController {
 	@RequestMapping("/send_my_name")
 	@ResponseBody
 	public ModelAndView sendMyName(HttpServletRequest request) {
+		//
 		System.out.println(request);
 		
 		String name = request.getParameter("name");
