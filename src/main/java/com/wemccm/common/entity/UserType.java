@@ -1,6 +1,6 @@
-package com.wemccm.demo.controller;
+package com.wemccm.common.entity;
 
-public class RequestPojo {
+public class UserType extends BaseEntity {
 
 	private String name;
 
