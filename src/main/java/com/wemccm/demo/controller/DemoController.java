@@ -43,5 +43,21 @@ public class DemoController {
 		return mode;
 
 	}
+	
+	@RequestMapping("/send_my_name")
+	@ResponseBody
+	public ModelAndView sendMyName(HttpServletRequest request) {
+		System.out.println(request);
+		
+		String name = request.getParameter("name");
+
+		System.out.println("Name is : " + name);
+
+		ModelAndView mode = new ModelAndView();
+		mode.addObject("username", "Jason");
+		mode.setViewName("Demo");
+		return mode;
+
+	}
 
 }
