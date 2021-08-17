@@ -3,6 +3,7 @@ package com.wemccm.demo.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,21 +44,20 @@ public class DemoController {
 		return mode;
 
 	}
-	
-	@RequestMapping("/send_my_name")
+
+	@RequestMapping(value = "/send_my_name", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ModelAndView sendMyName(HttpServletRequest request) {
+	public ResponsePojo sendMyName(@RequestBody RequestPojo requestPojo) {
 		//
-		System.out.println(request);
-		
-		String name = request.getParameter("name");
+		System.out.println("input name : " + requestPojo.getName());
 
-		System.out.println("Name is : " + name);
+		ResponsePojo responsePojo = new ResponsePojo();
+		responsePojo.setA("11");
 
-		ModelAndView mode = new ModelAndView();
-		mode.addObject("username", "Jason");
-		mode.setViewName("Demo");
-		return mode;
+		responsePojo.setB("22");
+
+		return responsePojo;
+//		String name = request.getParameter("name");
 
 	}
 
