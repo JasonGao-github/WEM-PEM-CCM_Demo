@@ -1,4 +1,4 @@
-package com.wemccm.common.entity.pojo;
+package com.wemccm.common.pojo;
 
 public class LoginRequestPojo extends BaseRequestPojo {
 

@@ -1,4 +1,4 @@
-package com.wemccm.common.entity.pojo;
+package com.wemccm.common.pojo;
 
 import com.wemccm.common.util.SR;
 
