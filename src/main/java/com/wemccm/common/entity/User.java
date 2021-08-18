@@ -7,6 +7,7 @@ public class User extends BaseEntity {
 	private String email;
 	private Integer userTypeId;
 	private Integer leaderId;
+	
 	public String getUsername() {
 		return username;
 	}

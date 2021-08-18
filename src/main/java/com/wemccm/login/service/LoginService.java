@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.User;
-import com.wemccm.login.dao.ILoginDao;
+import com.wemccm.login.dao.LoginDao;
 
 @Service
 public class LoginService {
 
 	@Autowired
-	private ILoginDao loginDao;
+	private LoginDao loginDao;
 
 	public String login(String email, String password) {
 
@@ -18,8 +18,8 @@ public class LoginService {
 		if (null == u) {
 			return "01";
 		}
-
-		if (password.equals(u.getPassword())) {
+System.out.println(u.getPassword()+"++++++++++++++++++++++++++"+u.getEmail());
+		if (!password.equals(u.getPassword())) {
 			return "02";
 		}
 
