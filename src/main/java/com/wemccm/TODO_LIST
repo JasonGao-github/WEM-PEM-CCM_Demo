@@ -1,0 +1,2 @@
+1.添加了很多新的entity，都是关于customer contribution模块，数据库的UML图也已经做了相应的调整。请熟悉结构以后，把新加的entity的建表语句添加到wemccm.sql
+2.之前的wemccm.sql我写了一些修改意见在脚本里，打开以后请进行优化。

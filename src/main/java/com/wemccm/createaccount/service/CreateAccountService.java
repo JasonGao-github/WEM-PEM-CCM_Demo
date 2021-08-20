@@ -6,17 +6,13 @@ import org.springframework.stereotype.Service;
 import com.wemccm.common.entity.User;
 import com.wemccm.createaccount.dao.CreateAccountDao;
 
+@Service
+public class CreateAccountService {
 
-	@Service
-	public class CreateAccountService {
+	@Autowired
+	private CreateAccountDao Dao;
 
-		@Autowired
-		private CreateAccountDao Dao;
-		
-
-
-
-		public String CreateAccount(String email, String password, String username, Integer userTypeId,
+	public String CreateAccount(String email, String password, String username, Integer userTypeId,
 				Integer leaderId) {
 			
 			
@@ -33,7 +29,4 @@ import com.wemccm.createaccount.dao.CreateAccountDao;
 			return "00";
 		}
 
-
-
-	}
-
+}
