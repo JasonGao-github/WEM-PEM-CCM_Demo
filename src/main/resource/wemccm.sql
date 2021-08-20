@@ -30,28 +30,153 @@ tips:
 ----------------------------
 
 -- ----------------------------
--- Table structures
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
-DROP TABLE IF EXISTS `usertype`;
-
-CREATE TABLE `user`  (
-  `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `userTypeId` int(11) NULL DEFAULT NULL,
-  `leaderId` int(11) NULL DEFAULT NULL,
-  `id` int(11) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
-
-CREATE TABLE `usertype`  (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `user` VALUES ('123', '123', 'asd', 1, 2, 1);
+SET NAMES utf8mb4;
+
+-- ----------------------------
+-- Table structure for customercontribution
+-- ----------------------------
+DROP TABLE IF EXISTS `customercontribution`;
+DROP TABLE IF EXISTS `customercontributionauthoris`;
+DROP TABLE IF EXISTS `customercontributionprice`;
+DROP TABLE IF EXISTS `customercontributionpricetype`;
+DROP TABLE IF EXISTS `project`;
+DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `projecttype`;
+DROP TABLE IF EXISTS `usertype`;
+
+
+CREATE TABLE `customercontribution`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `jemenaWBS` varchar(32)  NULL DEFAULT NULL,
+  `inquiryNumber` int(11) NULL DEFAULT NULL,
+  `jemenaSapPmOrder` varchar(32)  NULL DEFAULT NULL,
+  `zinfraWBS` varchar(32)  NULL DEFAULT NULL,
+  `projectTitle` varchar(32)  NULL DEFAULT NULL,
+  `projectTypeId` int(11) NULL DEFAULT NULL,
+  `supplyAddress` varchar(32)  NULL DEFAULT NULL,
+  `customerReasonForWorks` varchar(32)  NULL DEFAULT NULL,
+  `customerScopeOfWork` varchar(32)  NULL DEFAULT NULL,
+  `jemenaScopeOfWork` varchar(32)  NULL DEFAULT NULL,
+  `jemenaScopeExclusions` varchar(32)  NULL DEFAULT NULL,
+  `assumption` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of customercontribution
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for customercontributionauthoris
+-- ----------------------------
+
+CREATE TABLE `customercontributionauthoris`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customerContributionId` int(11) NULL DEFAULT NULL,
+  `details` varchar(32)  NULL DEFAULT NULL,
+  `dateOfRevision` datetime NULL DEFAULT NULL,
+  `isAuthorised` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
+
+-- ----------------------------
+-- Records of customercontributionauthoris
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for customercontributionprice
+-- ----------------------------
+
+CREATE TABLE `customercontributionprice`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customerContributionId` int(11) NULL DEFAULT NULL,
+  `customerContributionPriceTypeId` int(11) NULL DEFAULT NULL,
+  `originalPrice` double(10, 2) NULL DEFAULT NULL,
+  `revisedPrice` double(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of customercontributionprice
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for customercontributionpricetype
+-- ----------------------------
+
+CREATE TABLE `customercontributionpricetype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of customercontributionpricetype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for project
+-- ----------------------------
+
+CREATE TABLE `project`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `owner` varchar(32)  NULL DEFAULT NULL,
+  `statues` varchar(32)  NULL DEFAULT NULL,
+  `createDate` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of project
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for projecttype
+-- ----------------------------
+
+CREATE TABLE `projecttype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  `description` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of projecttype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+
+CREATE TABLE `user`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32)  NULL DEFAULT NULL,
+  `password` varchar(32)  NULL DEFAULT NULL,
+  `email` varchar(32)  NULL DEFAULT NULL,
+  `userTypeId` int(11) NULL DEFAULT NULL,
+  `leaderId` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for usertype
+-- ----------------------------
+
+CREATE TABLE `usertype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of usertype
+-- ----------------------------
+
