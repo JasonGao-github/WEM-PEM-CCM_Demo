@@ -35,7 +35,7 @@
             <p>Sign in your account</p>
           </div>
           <h2>Email</h2>
-          <input ng-model="usename" type="text" name="username" placeholder="Enter your email" />
+          <input ng-model="email" type="text" name="email" placeholder="Enter your email" />
           <h2>Password</h2>
           <input
             ng-model="password"

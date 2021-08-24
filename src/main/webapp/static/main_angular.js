@@ -24,7 +24,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         console.log('Clicked send_my_name function')
 		console.log($scope.name)
         var obj = JSON.stringify({
-            "name": $scope.name.toString(),
+            "email": $scope.email.toString(),
+			"password": $scope.password.toString(),
         });
         //console.log(obj);
         $http({
