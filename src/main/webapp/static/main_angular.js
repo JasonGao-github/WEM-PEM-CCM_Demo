@@ -1,4 +1,4 @@
-var workbench = angular.module("main_app", ['ngRoute']);
+var workbench = angular.module("main_app", ['ngRoute', 'login']);
 
 
 var htpp_tag = 'http';

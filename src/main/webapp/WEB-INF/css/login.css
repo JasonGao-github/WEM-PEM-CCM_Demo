@@ -1,0 +1,90 @@
+.container{
+  display:flex;
+  height: 100vh;
+  margin: -8px;
+}
+
+.banner {
+  display: flex;
+  width: 45vw;
+  background: rgba(125, 204, 224, 0.48);
+  justify-content: center;
+}
+ .logo {
+  margin: clamp(15vh, 20vh, 25vh) 0 0 0;
+  width: 40vw;
+
+  mix-blend-mode: normal;
+} 
+.login{
+  height: 100%;
+  flex-grow: 1;
+  justify-content: center;
+} 
+.text {
+  text-align: center;
+  
+  margin: clamp(5vh,15vh,25vh) 0 0 0;
+
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2vw;
+  line-height: 2vw;
+
+  color: #183481;
+}
+
+.title{
+  padding: 5vh 0 0;
+}
+.email h1 {
+  font-family: Abhaya Libre;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 5vh;
+  line-height: 3vh;
+  justify-content: center;
+  margin-bottom: 0px;
+  white-space:nowrap;
+  /* identical to box height */
+
+  color: #000000;
+}
+.email h2{
+  margin: 0;
+  padding: 2em 0 0;
+}
+.email {
+  text-align: left;
+  padding: 20vh clamp(3vw, 12vw, 15vw) 0;
+}
+.email input[type="text"],
+.email input[type="password"] {
+  width: 100%;
+  height: 6vh;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 2vh;
+  padding: 1vh;
+}
+
+.email input[type="submit"] {
+  font-size: 1.5rem;
+  background: #909EC3;
+  display: block;
+  margin: clamp(3vh, 10vh, 20vh) auto;
+  text-align: center;
+  border: 2px solid #8b8b8b;
+  box-sizing: border-box;
+  padding: 0.2rem;
+  width: 200px;
+  outline: none;
+  color: rgb(248, 244, 244);
+  border-radius: 1vh;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.email input[type="submit"]:hover {
+  color: #d8c413;
+} 
