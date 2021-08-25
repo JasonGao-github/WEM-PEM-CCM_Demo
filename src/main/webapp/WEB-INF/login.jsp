@@ -14,14 +14,14 @@
     <script src="<%=path%>static/angular/angular-route.js" /></script>
     <script src="<%=path%>static/angular/angular-touch.js" /></script>
     <script src="<%=path%>static/main_angular.js" /></script>
-    <link href="./css/login.css" rel="stylesheet" />
+    <link href="<%=path%>static/css/login.css" rel="stylesheet" />
     <title>Login Page</title>
 </head>
 <body ng-app="main_app" id="main" ng-controller="controller">
     <div class="container">
       <div class="banner">
         <div class="logo">
-          <img src="./images/jemena-logo.svg" alt="logo" />
+          <img src="<%=path%>static/images/jemena-logo.svg" alt="logo" />
 
           <div class="text">
             <p>Work Estimation Model</p>
