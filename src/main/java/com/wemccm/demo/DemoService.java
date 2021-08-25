@@ -30,8 +30,4 @@ public class DemoService {
 		return new PageInfo<User>(Users);
 	}
 
-//	public List<User> listUser(DemoPageRequestDto dto) {
-//		return demoMapper.selectPage(dto);
-//	}
-
 }
