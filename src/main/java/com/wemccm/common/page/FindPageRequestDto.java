@@ -1,20 +1,16 @@
-package com.wemccm.common.entity;
 
-import java.util.Date;
+package com.wemccm.common.page;
 
-public class Project extends BaseEntity {
-	private Integer owner;
-	private String statues;
-	private Date createDate;
-	
+public class FindPageRequestDto extends PageRequest {
+
+//	private String username;
 	private String JemenaWBS;
 	private String ProjectTitle;
 	private String ProjectType;
 	private String JemenaSAPPMOrder;
-//	private String SupplyAddress;
-	//need to comform  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	private String SupplyAddress;
 	private String ZimfraWBS;
-	private int InquiryNumber;
+	private String InquiryNumber;
 	
 	public String getJemenaWBS() {
 		return JemenaWBS;
@@ -48,6 +44,14 @@ public class Project extends BaseEntity {
 		JemenaSAPPMOrder = jemenaSAPPMOrder;
 	}
 
+	public String getSupplyAddress() {
+		return SupplyAddress;
+	}
+
+	public void setSupplyAddress(String supplyAddress) {
+		SupplyAddress = supplyAddress;
+	}
+
 	public String getZimfraWBS() {
 		return ZimfraWBS;
 	}
@@ -56,36 +60,12 @@ public class Project extends BaseEntity {
 		ZimfraWBS = zimfraWBS;
 	}
 
-	public int getInquiryNumber() {
+	public String getInquiryNumber() {
 		return InquiryNumber;
 	}
 
-	public void setInquiryNumber(int inquiryNumber) {
+	public void setInquiryNumber(String inquiryNumber) {
 		InquiryNumber = inquiryNumber;
-	}
-
-	public Integer getOwner() {
-		return owner;
-	}
-
-	public void setOwner(Integer owner) {
-		this.owner = owner;
-	}
-
-	public String getStatues() {
-		return statues;
-	}
-
-	public void setStatues(String statues) {
-		this.statues = statues;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
 	}
 
 }
