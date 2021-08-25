@@ -3,9 +3,10 @@ package com.wemccm.common.entity;
 import java.util.Date;
 
 public class Project extends BaseEntity {
-	private Integer owner;
+//	private Integer owner;
 	private String statues;
 	private Date createDate;
+	private String version;
 	
 	private String JemenaWBS;
 	private String ProjectTitle;
@@ -64,12 +65,14 @@ public class Project extends BaseEntity {
 		InquiryNumber = inquiryNumber;
 	}
 
-	public Integer getOwner() {
-		return owner;
+
+
+	public String getVersion() {
+		return version;
 	}
 
-	public void setOwner(Integer owner) {
-		this.owner = owner;
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	public String getStatues() {
