@@ -8,7 +8,7 @@ public interface projectTypeDao {
 	
 
 
-		public void projectType(int id, String des, String name);
+		public void projectType(int id, String description, String name);
 
 	
 
