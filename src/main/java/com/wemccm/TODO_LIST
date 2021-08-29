@@ -11,3 +11,16 @@
 3.暂时不考虑branch，等这一波功能都测试完成了再分。
 4.project中增加了一个version字段，请更新到数据库脚本和数据库中。
 5.添加了几个entity，更新到sql文件中。
+
+---------------------
+周四前后完成：
+1.又更新了一波entity，同样的更新到sql脚本和数据库。
+2.开发一个接口，往CurrentOccupy表里插入新数据。
+3.开发一个接口，根据projectId查询对应的CurrentOccupy
+4.开发一个接口，根据userId和projectId删除对应的CurrentOccupy数据。
+5.开发一个接口，往Notice里插入数据。
+6.开发Notice表的Dao，包括这2个方法：
+（1）插入数据
+（2）根据收件人查询所有的Notice
+
+

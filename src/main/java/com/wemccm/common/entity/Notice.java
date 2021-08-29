@@ -1,11 +1,31 @@
 package com.wemccm.common.entity;
 
+import java.util.Date;
+
 public class Notice extends BaseEntity {
 
 	private Integer from;
 	private Integer to;
 	private String content;
 	private String type;
+	private Date createTime;
+	private String status;
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Integer getFrom() {
 		return from;
