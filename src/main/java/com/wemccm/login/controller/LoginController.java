@@ -47,7 +47,8 @@ public class LoginController {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
-//		session.setAttribute("user", user);
+//		session.setAttribute("username", "12345");
+//		String s1 = (String) session.getAttribute("username");
 		return new ResponseResult();
 	}
 
