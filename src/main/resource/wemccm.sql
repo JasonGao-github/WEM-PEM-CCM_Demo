@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 25/08/2021 22:05:19
+ Date: 31/08/2021 11:37:21
 */
 
 /*
@@ -25,6 +25,8 @@ tips:
 7.drop语句，建表语句，添加数据的语句分开写。这样能缩短篇幅增加可读性。
 8.直接用工具导出sql语句没问题，但是要自己优化了过后再贴到脚本里来。
 */
+
+
 -- ----------------------------
 -- Table structure for currentoccupy
 -- ----------------------------
@@ -76,7 +78,7 @@ CREATE TABLE `customercontributionauthoris`  (
   `details` varchar(32)  NULL DEFAULT NULL,
   `dateOfRevision` datetime NULL DEFAULT NULL,
   `isAuthorised` varchar(32)  NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) 
+  PRIMARY KEY (`id`)
 ) 
 
 -- ----------------------------
@@ -112,6 +114,84 @@ CREATE TABLE `customercontributionpricetype`  (
 
 -- ----------------------------
 -- Records of customercontributionpricetype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for fiminputiterm
+-- ----------------------------
+DROP TABLE IF EXISTS `fiminputiterm`;
+CREATE TABLE `fiminputiterm`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fIMinputSubTypeID` int(11) NULL DEFAULT NULL,
+  `description` varchar(32)  NULL DEFAULT NULL,
+  `currency` varchar(32)  NULL DEFAULT NULL,
+  `unitCost` double(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of fiminputiterm
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for fiminputitermquantity
+-- ----------------------------
+DROP TABLE IF EXISTS `fiminputitermquantity`;
+CREATE TABLE `fiminputitermquantity`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `fIMinputItermId` int(11) NULL DEFAULT NULL,
+  `fIMinputItermTypeId` int(11) NULL DEFAULT NULL,
+  `quantity` int(11) NULL DEFAULT NULL,
+  `cost` double(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of fiminputitermquantity
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for fiminputitermquantitytype
+-- ----------------------------
+DROP TABLE IF EXISTS `fiminputitermquantitytype`;
+CREATE TABLE `fiminputitermquantitytype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of fiminputitermquantitytype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for fiminputsubtype
+-- ----------------------------
+DROP TABLE IF EXISTS `fiminputsubtype`;
+CREATE TABLE `fiminputsubtype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fIMinputTypeID` int(11) NULL DEFAULT NULL,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of fiminputsubtype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for fiminputtype
+-- ----------------------------
+DROP TABLE IF EXISTS `fiminputtype`;
+CREATE TABLE `fiminputtype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of fiminputtype
 -- ----------------------------
 
 -- ----------------------------
@@ -183,6 +263,104 @@ CREATE TABLE `projecttype`  (
 -- ----------------------------
 -- Records of projecttype
 -- ----------------------------
+INSERT INTO `projecttype` VALUES (1, '123', '123');
+INSERT INTO `projecttype` VALUES (2, '123', '123');
+
+-- ----------------------------
+-- Table structure for quantityinput
+-- ----------------------------
+DROP TABLE IF EXISTS `quantityinput`;
+CREATE TABLE `quantityinput`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `quantityInputItemId` int(11) NULL DEFAULT NULL,
+  `quantityInputTypeId` int(11) NULL DEFAULT NULL,
+  `quatity` int(11) NULL DEFAULT NULL,
+  `cost` double(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of quantityinput
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for quantityinputiterm
+-- ----------------------------
+DROP TABLE IF EXISTS `quantityinputiterm`;
+CREATE TABLE `quantityinputiterm`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `quantityInputItermTypeId` int(11) NULL DEFAULT NULL,
+  `code` varchar(32)  NULL DEFAULT NULL,
+  `description` varchar(32)  NULL DEFAULT NULL,
+  `unit` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of quantityinputiterm
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for quantityinputitermsubtypeprice
+-- ----------------------------
+DROP TABLE IF EXISTS `quantityinputitermsubtypeprice`;
+CREATE TABLE `quantityinputitermsubtypeprice`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantityInputItemId` int(11) NULL DEFAULT NULL,
+  `quantityInputSubTypeId` int(11) NULL DEFAULT NULL,
+  `price` decimal(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of quantityinputitermsubtypeprice
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for quantityinputitermtype
+-- ----------------------------
+DROP TABLE IF EXISTS `quantityinputitermtype`;
+CREATE TABLE `quantityinputitermtype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  `code` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of quantityinputitermtype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for quantityinputsubtype
+-- ----------------------------
+DROP TABLE IF EXISTS `quantityinputsubtype`;
+CREATE TABLE `quantityinputsubtype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantityInputTypeId` int(11) NULL DEFAULT NULL,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of quantityinputsubtype
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for quantityinputtype
+-- ----------------------------
+DROP TABLE IF EXISTS `quantityinputtype`;
+CREATE TABLE `quantityinputtype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32)  NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) 
+) 
+
+-- ----------------------------
+-- Records of quantityinputtype
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user
@@ -201,6 +379,9 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES (3, '123', '123', 'asdzxc', 123, 123);
+INSERT INTO `user` VALUES (4, '123', '123', 'asd', 123, 123);
+INSERT INTO `user` VALUES (5, '123', '123', 'asdqwe', 123, 123);
 
 -- ----------------------------
 -- Table structure for usertype
@@ -212,3 +393,8 @@ CREATE TABLE `usertype`  (
   PRIMARY KEY (`id`) 
 ) 
 
+-- ----------------------------
+-- Records of usertype
+-- ----------------------------
+
+SET FOREIGN_KEY_CHECKS = 1;
