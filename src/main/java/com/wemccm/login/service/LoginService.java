@@ -16,11 +16,10 @@ public class LoginService {
 
 		User u = loginDao.getUserByEmail(email);
 		if (null == u) {
-			return "01";
+			return "-1";
 		}
-System.out.println(u.getPassword()+"++++++++++++++++++++++++++"+u.getEmail());
 		if (!password.equals(u.getPassword())) {
-			return "02";
+			return "-2";
 		}
 
 		return "00";
