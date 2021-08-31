@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Notice extends BaseEntity {
 
-	private Integer from;
-	private Integer to;
+	private Integer sender;
+	private Integer recipient;
 	private String content;
 	private String type;
 	private Date createTime;
@@ -27,20 +27,20 @@ public class Notice extends BaseEntity {
 		this.status = status;
 	}
 
-	public Integer getFrom() {
-		return from;
+	public Integer getSender() {
+		return sender;
 	}
 
-	public void setFrom(Integer from) {
-		this.from = from;
+	public void setSender(Integer sender) {
+		this.sender = sender;
 	}
 
-	public Integer getTo() {
-		return to;
+	public Integer getRecipient() {
+		return recipient;
 	}
 
-	public void setTo(Integer to) {
-		this.to = to;
+	public void setRecipient(Integer recipient) {
+		this.recipient = recipient;
 	}
 
 	public String getContent() {
