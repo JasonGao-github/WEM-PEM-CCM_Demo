@@ -28,10 +28,11 @@
           </div>
         </div>
       </div>
+
       <div class="login">
         <form class="email" name="signin" action="" method="POST">
           <div class="title">
-            <h1>Welcome to Jemena WEM</h1>
+            <h1>{{welcome}}</h1>
             <p>Sign in your account</p>
           </div>
           <h2>Email</h2>
