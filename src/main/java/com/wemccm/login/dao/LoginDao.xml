@@ -14,4 +14,17 @@
 		resultType="com.wemccm.common.entity.User">
 		SELECT * FROM user WHERE email= #{email}
 	</select>
+	
+	
+	<select id="getWholeUser" parameterType="Integer"
+		resultType="com.wemccm.common.pojo.wholeUserPojo">
+		
+		SELECT user.*,usertype.`name`
+		FROM user
+		LEFT JOIN usertype
+		ON user.userTypeId=usertype.`id`
+		WHERE user.id=#{id}
+		
+	</select>
+	
 </mapper>

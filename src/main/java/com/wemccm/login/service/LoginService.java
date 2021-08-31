@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.User;
+import com.wemccm.common.pojo.wholeUserPojo;
 import com.wemccm.login.dao.LoginDao;
 
 @Service
@@ -23,9 +24,19 @@ public class LoginService {
 		if (!password.equals(u.getPassword())) {
 			return "-2";
 		}
+		
+		return u.getId().toString();
 
-		return "00";
+	}
 
+	public wholeUserPojo getWholeUser(int id) {
+		
+		return loginDao.getWholeUser(id);
+		
+		
 	};
 
+//	int type=u.getUserTypeId();
+//	String typename=loginDao.getTypeId(type);
+	
 }

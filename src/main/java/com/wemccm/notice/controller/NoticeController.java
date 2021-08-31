@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wemccm.common.Notice.NoticePojo;
 import com.wemccm.common.entity.Notice;
+import com.wemccm.common.pojo.NoticePojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.notice.service.NoticeService;
 

@@ -1,8 +1,6 @@
-package com.wemccm.common.Notice;
+package com.wemccm.common.pojo;
 
 import java.util.Date;
-
-import com.wemccm.common.pojo.BaseRequestPojo;
 
 public class NoticePojo extends BaseRequestPojo{
 	private Integer id;

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wemccm.common.Notice.NoticePojo;
 import com.wemccm.common.entity.Notice;
+import com.wemccm.common.pojo.NoticePojo;
 import com.wemccm.notice.dao.NoticeDao;
 
 @Service

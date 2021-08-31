@@ -3,8 +3,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.wemccm.common.Notice.NoticePojo;
 import com.wemccm.common.entity.Notice;
+import com.wemccm.common.pojo.NoticePojo;
 
 
 

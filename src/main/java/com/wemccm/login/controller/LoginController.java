@@ -13,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.pojo.LoginRequestPojo;
 import com.wemccm.common.pojo.ResponseResult;
+import com.wemccm.common.pojo.wholeUserPojo;
 import com.wemccm.common.util.SR;
 import com.wemccm.login.service.LoginService;
 
@@ -22,7 +23,7 @@ public class LoginController {
 	@Autowired
 	private LoginService serivce;
 
-	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/loginPage", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult sendMyName(@RequestBody LoginRequestPojo requestPojo) {
 
@@ -47,9 +48,32 @@ public class LoginController {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
-//		session.setAttribute("username", "12345");
+		
+		int id=Integer.valueOf(s);
+		wholeUserPojo wu=serivce.getWholeUser(id);
+		
+		
+	
+		
+		session.setAttribute("id", wu.getId());
+		session.setAttribute("username", wu.getUsername());
+		session.setAttribute("email", wu.getEmail());
+		session.setAttribute("userTypeId", wu.getUserTypeId());
+		session.setAttribute("leaderId", wu.getLeaderId());
+		session.setAttribute("name", wu.getName());
+		
+		System.out.println("name"+wu.getName());
+		
+		
 //		String s1 = (String) session.getAttribute("username");
 		return new ResponseResult();
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
