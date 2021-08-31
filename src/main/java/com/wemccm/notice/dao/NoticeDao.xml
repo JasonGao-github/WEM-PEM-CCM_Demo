@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.notice.dao.NoticeDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+	<!-- <resultMap id="BaseResultMap"
+		type="com.wemccm.common.entity.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="CHAR" />
+		<result column="password" property="password" jdbcType="CHAR" />
+	</resultMap> -->
+	<!-- 查询单条记录 -->
+
+		
+<select id="getNotice"
+		resultType="com.wemccm.common.entity.Notice"
+		parameterType="com.wemccm.common.Notice.NoticePojo">
+		SELECT * FROM notice
+		<where>
+			<if test="id!=null and id!=''">
+				id = #{id}
+			</if >
+			<if test="sender!=null and sender!=''">
+				and sender= #{sender}
+			</if>
+			<if test="recipient!=null and recipient!=''">
+				and recipient = #{recipient}
+			</if>
+			<if test="content!=null and content!=''">
+				and content = #{content}
+			</if>
+			<if test="type!=null and type!=''">
+				and type = #{type}
+			</if>
+			<if test="createTime!=null and createTime!=''">
+				and createTime = #{createTime}
+			</if>
+			<if test="status!=null and status!=''">
+				and status = #{status}
+			</if>
+		</where>
+	</select>
+	
+<!-- "2020-05-01T01:01:09+08:00" -->
+	
+	
+	<insert id="createNotice" parameterType="com.wemccm.common.Notice.NoticePojo">
+
+		INSERT INTO notice (id,sender,recipient,content,type,createTime,status) 
+		VALUES (#{id},#{sender},#{recipient},#{content},#{type},#{createTime},#{status})
+	</insert>
+	
+	
+	
+
+
+
+</mapper>
