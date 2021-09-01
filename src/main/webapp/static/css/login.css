@@ -1,7 +1,7 @@
-.container{
+.login-container{
   display:flex;
   height: 100vh;
-  margin: -8px;
+  padding: 0;
 }
 
 .banner {
@@ -69,11 +69,11 @@
   padding: 1vh;
 }
 
-.email input[type="submit"] {
+.email input[type="button"] {
   font-size: 1.5rem;
   background: #909EC3;
   display: block;
-  margin: clamp(3vh, 10vh, 20vh) auto;
+  margin: clamp(3vh, 7vh, 15vh) auto;
   text-align: center;
   border: 2px solid #8b8b8b;
   box-sizing: border-box;

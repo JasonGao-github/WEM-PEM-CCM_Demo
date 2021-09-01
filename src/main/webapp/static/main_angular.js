@@ -19,27 +19,33 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	
 	console.log('Hello harindu');
     $scope.welcome = 'Welcome to Jemena WEM';
+	$scope.failMsg = 
 
     $scope.send_my_name = function () {
         console.log('Clicked send_my_name function')
 		console.log($scope.email)
 		console.log($scope.password)
         var obj = JSON.stringify({
-            "email": $scope.email.toString(),
-			"password": $scope.password.toString(),
+            "email": $scope.email,
+			"password": $scope.password,
         });
         //console.log(obj);
-
+		
+		
         $http({
             method: 'POST',
             url: url + '/login',
             data: obj
         }).then(function mySuccess(response) {
-			console.log(response)
-            //var data = JSON.parse(response.data);
-
+            var data = response.data;
+			if(data.result == "fail"){
+				document.getElementById("failMsg").style.visibility = "visible";
+			}
+			else{
+				$window.location.href = '/addUser_page'
+			}
         })
-
+		
 
     };
 
