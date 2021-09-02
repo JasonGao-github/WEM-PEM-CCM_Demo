@@ -1,5 +1,5 @@
 
-package com.wemccm.findPage.dao;
+package com.wemccm.project.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 
 @Mapper
-public interface FindPageDao {
+public interface projectDao {
 
 	/**
 	 * 分页查询用户

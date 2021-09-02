@@ -1,6 +1,4 @@
-package com.wemccm.common.CurrentOccupy;
-
-import com.wemccm.common.pojo.BaseRequestPojo;
+package com.wemccm.common.pojo;
 
 public class CurrentOccupyPojo extends BaseRequestPojo{
 	private Integer userId;
