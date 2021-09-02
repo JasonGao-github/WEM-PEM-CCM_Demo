@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wemccm.common.CurrentOccupy.CurrentOccupyPojo;
 import com.wemccm.common.entity.CurrentOccupy;
+import com.wemccm.common.pojo.CurrentOccupyPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.currentoccupy.service.CurrentOccupyService;
 

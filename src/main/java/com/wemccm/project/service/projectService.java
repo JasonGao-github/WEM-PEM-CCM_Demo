@@ -1,5 +1,5 @@
 
-package com.wemccm.findPage.service;
+package com.wemccm.project.service;
 
 import java.util.List;
 
@@ -12,13 +12,13 @@ import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.page.PageUtils;
-import com.wemccm.findPage.dao.FindPageDao;
+import com.wemccm.project.dao.projectDao;
 
 @Service
-public class FindPageService {
+public class projectService {
 
 	@Autowired
-	private FindPageDao Dao;
+	private projectDao Dao;
 
 	// 封装分页查询结果返回对象，在分页查询中，前端需要知道当前分页的页码及其他参数以便计算下一页的参数。
 	public PageResult findPage(FindPageRequestDto dto) {
