@@ -17,25 +17,35 @@ angular.element(document).ready(function () {
 workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$window', '$timeout', '$sce', function ($scope, $http, $interval, $route, $window, $timeout, $sce) {
     var url = htpp_tag.toString() + '://' + String(location.host);
 	
-	console.log('Hello harindu')
-    $scope.jsp_test = 'Jemena Project';
+	console.log('Hello harindu');
+    $scope.welcome = 'Welcome to Jemena WEM';
+	$scope.failMsg = 
 
     $scope.send_my_name = function () {
         console.log('Clicked send_my_name function')
-		console.log($scope.name)
+		console.log($scope.email)
+		console.log($scope.password)
         var obj = JSON.stringify({
-            "name": $scope.name.toString(),
+            "email": $scope.email,
+			"password": $scope.password,
         });
         //console.log(obj);
+		
+		
         $http({
             method: 'POST',
-            url: url + '/send_my_name',
+            url: url + '/login',
             data: obj
         }).then(function mySuccess(response) {
-			console.log(response)
-            //var data = JSON.parse(response.data);
-
+            var data = response.data;
+			if(data.result == "fail"){
+				document.getElementById("failMsg").style.visibility = "visible";
+			}
+			else{
+				$window.location.href = '/addUser_page'
+			}
         })
+		
 
     };
 
