@@ -34,14 +34,16 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		
         $http({
             method: 'POST',
-            url: url + '/login',
+            url: url + '/loginPage',
             data: obj
         }).then(function mySuccess(response) {
             var data = response.data;
+			console.log(data)
 			if(data.result == "fail"){
 				document.getElementById("failMsg").style.visibility = "visible";
 			}
 			else{
+				//temerately hardcoded redirect to add user page
 				$window.location.href = '/addUser_page'
 			}
         })
