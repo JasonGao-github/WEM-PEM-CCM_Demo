@@ -1,4 +1,4 @@
-package com.wemccm.CICAuthorisation.dao;
+package com.wemccm.cicauthorisation.dao;
 
 
 import org.apache.ibatis.annotations.Mapper;

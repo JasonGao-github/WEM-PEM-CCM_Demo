@@ -1,4 +1,4 @@
-package com.wemccm.CustomerContribution.dao;
+package com.wemccm.customercontribution.dao;
 
 
 import org.apache.ibatis.annotations.Mapper;

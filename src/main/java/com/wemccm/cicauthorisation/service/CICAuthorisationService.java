@@ -1,10 +1,10 @@
-package com.wemccm.CICAuthorisation.service;
+package com.wemccm.cicauthorisation.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wemccm.CICAuthorisation.dao.CICAuthorisationDao;
+import com.wemccm.cicauthorisation.dao.CICAuthorisationDao;
 import com.wemccm.common.entity.CICAuthorisation;
 import com.wemccm.common.pojo.CICAuthorisationPojo;
 

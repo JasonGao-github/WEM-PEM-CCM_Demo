@@ -1,4 +1,4 @@
-package com.wemccm.CICAuthorisation.controller;
+package com.wemccm.cicauthorisation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.pojo.CICAuthorisationPojo;
-import com.wemccm.CICAuthorisation.service.CICAuthorisationService;
+import com.wemccm.cicauthorisation.service.CICAuthorisationService;
 import com.wemccm.common.entity.CICAuthorisation;
 
 @RestController

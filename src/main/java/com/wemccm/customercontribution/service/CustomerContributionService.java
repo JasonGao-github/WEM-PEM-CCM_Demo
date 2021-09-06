@@ -1,12 +1,12 @@
-package com.wemccm.CustomerContribution.service;
+package com.wemccm.customercontribution.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wemccm.CustomerContribution.dao.CustomerContributionDao;
 import com.wemccm.common.entity.CustomerContribution;
 import com.wemccm.common.pojo.CustomerContributionPojo;
+import com.wemccm.customercontribution.dao.CustomerContributionDao;
 
 @Service
 public class CustomerContributionService {
