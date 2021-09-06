@@ -11,7 +11,7 @@ spring:
     url: jdbc:mysql://localhost:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
 #    url: jdbc:mysql://127.0.0.1:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
     username: root
-    password: 
+    password: root1234
 #    password: jasongx89O228
     # 可省略驱动配置, sprin-boot 会由url检测出驱动类型
     driver-class-name: com.mysql.jdbc.Driver

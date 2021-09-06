@@ -5,9 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RoutingController {
+	
+	@RequestMapping(value = "/addUser_page")
+	public String addUserRouting() {
 
-	@RequestMapping(value = "/login")
-	public String routing() {
+		return "addUser";// test.jsp
+	}
+	
+	@RequestMapping(value = "/login_page")
+	public String loginRouting() {
 
 		return "login";// test.jsp
 	}
