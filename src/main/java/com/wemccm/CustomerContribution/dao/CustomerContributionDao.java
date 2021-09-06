@@ -1,4 +1,4 @@
-package com.wemccm.cc.dao;
+package com.wemccm.CustomerContribution.dao;
 
 
 import org.apache.ibatis.annotations.Mapper;
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.wemccm.common.pojo.CustomerContributionPojo;
 
 @Mapper
-public interface ccDao {
+public interface CustomerContributionDao {
 
 	
 

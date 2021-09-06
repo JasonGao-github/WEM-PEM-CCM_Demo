@@ -29,8 +29,7 @@ public class UserController {
 		String usertype = Pojo.getUsertype();
 		List<wholeUserPojo> u = serivce.usertype(usertype);
 
-		System.out.println(usertype+"!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println(u);
+
 
 		return u;
 
@@ -44,8 +43,6 @@ public class UserController {
 	public List<User> leaderid(@RequestBody leaderidPojo Pojo) {
 		int leaderid = Pojo.getLeaderid();
 		List<User> u = serivce.leaderid(leaderid);
-
-		System.out.println(u);
 
 		return u;
 

@@ -1,4 +1,4 @@
-package com.wemccm.cic.dao;
+package com.wemccm.CICAuthorisation.dao;
 
 
 import org.apache.ibatis.annotations.Mapper;
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.wemccm.common.pojo.CICAuthorisationPojo;
 
 @Mapper
-public interface cicDao {
+public interface CICAuthorisationDao {
 
 	
 

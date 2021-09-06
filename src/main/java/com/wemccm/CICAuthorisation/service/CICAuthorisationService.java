@@ -1,17 +1,17 @@
-package com.wemccm.cic.service;
+package com.wemccm.CICAuthorisation.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wemccm.cic.dao.cicDao;
+import com.wemccm.CICAuthorisation.dao.CICAuthorisationDao;
 import com.wemccm.common.entity.CICAuthorisation;
 import com.wemccm.common.pojo.CICAuthorisationPojo;
 
 @Service
-public class cicService {
+public class CICAuthorisationService {
 	@Autowired
-	private cicDao Dao;
+	private CICAuthorisationDao Dao;
 
 
 

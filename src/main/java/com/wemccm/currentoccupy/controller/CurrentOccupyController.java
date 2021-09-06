@@ -40,7 +40,7 @@ public class CurrentOccupyController {
 		
 		
 		CurrentOccupy oc = serivce.findCurrentOccupy(pid);
-		System.out.println(oc.getProjectId()+"   uid: "+oc.getUserId());
+//		System.out.println(oc.getProjectId()+"   uid: "+oc.getUserId());
 		return new ResponseResult();
 	}
 	

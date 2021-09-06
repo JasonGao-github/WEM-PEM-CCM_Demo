@@ -59,7 +59,7 @@ public class LoginController {
 		session.setAttribute("leaderId", wu.getLeaderId());
 		session.setAttribute("name", wu.getName());
 
-		System.out.println("name" + wu.getName());
+//		System.out.println("name" + wu.getName());
 
 		return new ResponseResult();
 
