@@ -539,6 +539,8 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32)  NULL DEFAULT NULL,
+  `firstName` varchar(32)  NULL DEFAULT NULL,
+  `lastName` varchar(32)  NULL DEFAULT NULL,
   `password` varchar(32)  NULL DEFAULT NULL,
   `email` varchar(32)  NULL DEFAULT NULL,
   `userTypeId` int(11) NULL DEFAULT NULL,
