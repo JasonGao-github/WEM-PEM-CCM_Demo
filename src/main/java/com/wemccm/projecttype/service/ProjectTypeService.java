@@ -1,4 +1,4 @@
-package com.wemccm.projectType.service;
+package com.wemccm.projecttype.service;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.ProjectType;
 import com.wemccm.common.pojo.projectTypePojo;
-import com.wemccm.projectType.dao.ProjectTypeDao;
+import com.wemccm.projecttype.dao.ProjectTypeDao;
 
 @Service
 public class ProjectTypeService {

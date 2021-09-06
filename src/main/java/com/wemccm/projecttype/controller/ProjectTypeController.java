@@ -1,4 +1,4 @@
-package com.wemccm.projectType.controller;
+package com.wemccm.projecttype.controller;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.ProjectType;
-import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectTypePojo;
-import com.wemccm.projectType.service.ProjectTypeService;
+import com.wemccm.projecttype.service.ProjectTypeService;
 
 @RestController
 public class ProjectTypeController {

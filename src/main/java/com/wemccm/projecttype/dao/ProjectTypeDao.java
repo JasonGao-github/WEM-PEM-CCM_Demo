@@ -1,4 +1,4 @@
-package com.wemccm.projectType.dao;
+package com.wemccm.projecttype.dao;
 
 import java.util.List;
 
