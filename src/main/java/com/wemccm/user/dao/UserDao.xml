@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.user.dao.UserDao">
+
+
+	
+	<select id="getWholeUser" parameterType="String"
+		resultType="com.wemccm.common.pojo.wholeUserPojo">
+		SELECT user.*,usertype.`name`
+		FROM user
+		LEFT JOIN usertype
+		ON user.userTypeId=usertype.`id`
+		WHERE usertype.`name`=#{usertype}
+		
+		
+	</select>
+	
+	
+		<select id="leaderid" parameterType="Integer"
+		resultType="com.wemccm.common.entity.User">
+		SELECT u1.*
+		FROM user as u1
+		LEFT JOIN user as u2
+		ON u1.leaderId=u2.id
+		WHERE u1.leaderId=#{leaderid}
+	</select>
+	
+	
+</mapper>

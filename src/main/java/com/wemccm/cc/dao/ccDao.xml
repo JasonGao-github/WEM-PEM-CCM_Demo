@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.cc.dao.ccDao">
+
+
+
+
+	
+	
+	
+	<select id="updateCustomerContribution" 
+		parameterType="com.wemccm.common.pojo.CustomerContributionPojo">
+	
+
+		UPDATE customercontribution
+		SET  
+			<if test="projectId!=null and projectId!=''">
+				projectId = #{projectId}
+			</if>
+			<if test="jemenaWBS!=null and jemenaWBS!=''">
+				,jemenaWBS = #{jemenaWBS}
+			</if>
+			<if test="inquiryNumber!=null and inquiryNumber!=''">
+				,inquiryNumber = #{inquiryNumber}
+			</if>
+			<if test="jemenaSapPmOrder!=null and jemenaSapPmOrder!=''">
+				,jemenaSapPmOrder = #{jemenaSapPmOrder}
+			</if>
+			
+			
+			
+			<if test="zinfraWBS!=null and zinfraWBS!=''">
+				zinfraWBS = #{zinfraWBS}
+			</if>
+			<if test="projectTitle!=null and projectTitle!=''">
+				,projectTitle = #{projectTitle}
+			</if>
+			<if test="projectTypeId!=null and projectTypeId!=''">
+				,projectTypeId = #{projectTypeId}
+			</if>
+			<if test="supplyAddress!=null and supplyAddress!=''">
+				,supplyAddress = #{supplyAddress}
+			</if>
+			
+			
+			
+			<if test="customerReasonForWorks!=null and customerReasonForWorks!=''">
+				customerReasonForWorks = #{customerReasonForWorks}
+			</if>
+			<if test="customerScopeOfWork!=null and customerScopeOfWork!=''">
+				,customerScopeOfWork = #{customerScopeOfWork}
+			</if>
+			<if test="jemenaScopeOfWork!=null and jemenaScopeOfWork!=''">
+				,jemenaScopeOfWork = #{jemenaScopeOfWork}
+			</if>
+			<if test="jemenaScopeExclusions!=null and jemenaScopeExclusions!=''">
+				,jemenaScopeExclusions = #{jemenaScopeExclusions}
+			</if>
+			
+			
+			
+			<if test="assumption!=null and assumption!=''">
+				,assumption = #{assumption}
+			</if>
+			
+		WHERE id=#{id} 
+	</select> 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

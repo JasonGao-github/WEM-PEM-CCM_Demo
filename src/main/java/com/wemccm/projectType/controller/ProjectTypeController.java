@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wemccm.common.entity.ProjectType;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectTypePojo;
-import com.wemccm.projectType.service.projectTypeService;
+import com.wemccm.projectType.service.ProjectTypeService;
 
 @RestController
-public class projectTypeController {
+public class ProjectTypeController {
 	@Autowired
-	private projectTypeService serivce;
+	private ProjectTypeService serivce;
 
 	@RequestMapping(value = "/projectType", produces = "application/json;charset=UTF-8")
 	@ResponseBody

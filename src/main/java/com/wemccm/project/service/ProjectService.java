@@ -12,13 +12,13 @@ import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.page.PageUtils;
-import com.wemccm.project.dao.projectDao;
+import com.wemccm.project.dao.ProjectDao;
 
 @Service
-public class projectService {
+public class ProjectService {
 
 	@Autowired
-	private projectDao Dao;
+	private ProjectDao Dao;
 
 	// 封装分页查询结果返回对象，在分页查询中，前端需要知道当前分页的页码及其他参数以便计算下一页的参数。
 	public PageResult findPage(FindPageRequestDto dto) {

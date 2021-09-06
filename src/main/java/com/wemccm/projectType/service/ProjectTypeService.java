@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.ProjectType;
 import com.wemccm.common.pojo.projectTypePojo;
-import com.wemccm.projectType.dao.projectTypeDao;
+import com.wemccm.projectType.dao.ProjectTypeDao;
 
 @Service
-public class projectTypeService {
+public class ProjectTypeService {
 	@Autowired
-	private projectTypeDao Dao;
+	private ProjectTypeDao Dao;
 
 	public List<ProjectType> projectType(projectTypePojo requestPojo) {
 

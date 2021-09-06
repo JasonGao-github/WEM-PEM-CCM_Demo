@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.PageResult;
-import com.wemccm.project.service.projectService;
+import com.wemccm.project.service.ProjectService;
 
 @RestController 
-public class projectController {
+public class ProjectController {
 
 	@Autowired
-	private projectService service;
+	private ProjectService service;
 
 	@RequestMapping(value = "/findPage", produces = "application/json;charset=UTF-8")
 	public PageResult findPage(@RequestBody FindPageRequestDto dto) {

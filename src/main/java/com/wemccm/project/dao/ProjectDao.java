@@ -9,7 +9,7 @@ import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 
 @Mapper
-public interface projectDao {
+public interface ProjectDao {
 
 	/**
 	 * 分页查询用户

@@ -48,32 +48,21 @@ public class LoginController {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
-		
-		int id=Integer.valueOf(s);
-		wholeUserPojo wu=serivce.getWholeUser(id);
-		
-		
-	
-		
+
+		int id = Integer.valueOf(s);
+		wholeUserPojo wu = serivce.getWholeUser(id);
+
 		session.setAttribute("id", wu.getId());
 		session.setAttribute("username", wu.getUsername());
 		session.setAttribute("email", wu.getEmail());
 		session.setAttribute("userTypeId", wu.getUserTypeId());
 		session.setAttribute("leaderId", wu.getLeaderId());
 		session.setAttribute("name", wu.getName());
-		
-		System.out.println("name"+wu.getName());
-		
-		
-//		String s1 = (String) session.getAttribute("username");
+
+		System.out.println("name" + wu.getName());
+
 		return new ResponseResult();
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 }

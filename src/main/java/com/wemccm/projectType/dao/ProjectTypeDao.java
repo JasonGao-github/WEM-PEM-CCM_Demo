@@ -8,7 +8,7 @@ import com.wemccm.common.entity.ProjectType;
 import com.wemccm.common.pojo.projectTypePojo;
 
 @Mapper
-public interface projectTypeDao {
+public interface ProjectTypeDao {
 
 	
 
