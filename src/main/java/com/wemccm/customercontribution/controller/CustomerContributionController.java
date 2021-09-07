@@ -15,15 +15,11 @@ public class CustomerContributionController {
 	@Autowired
 	private CustomerContributionService serivce;
 
-
-	
-
-	
 	@RequestMapping(value = "/updateCustomerContribution", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public CustomerContribution updateCustomerContribution(@RequestBody CustomerContributionPojo requestPojo) {
 
-		CustomerContribution cc=serivce.updateCustomerContribution(requestPojo);
+		CustomerContribution cc = serivce.updateCustomerContribution(requestPojo);
 
 		return cc;
 	}
