@@ -17,7 +17,7 @@
     <script src="<%=path%>static/main_angular.js" /></script>
 </head>
 <body ng-app="main_app" id="main" ng-controller="controller">
-<p>Jemena Home Page</p>
+<p>Jemena Home Page New</p>
 
 <div class="row">
 	<h1>{{jsp_test}}</h1>
