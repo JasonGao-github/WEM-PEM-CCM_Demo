@@ -15,7 +15,7 @@
 	<select id="selectPage"
 		
 		resultType="com.wemccm.common.page.FindPageRequestDto"
-		parameterType="com.wemccm.common.page.FindPageRequestDto">
+		parameterType="com.wemccm.common.page.FindPageRequestDtoPojo">
 		SELECT cc.*,co.userId,p.statues,p.createDate,p.version
 		FROM project as p
 		LEFT JOIN currentoccupy as co

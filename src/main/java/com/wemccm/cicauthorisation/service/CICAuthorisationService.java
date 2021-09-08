@@ -23,8 +23,7 @@ public class CICAuthorisationService {
 
 
 
-	public CICAuthorisation updateCICAuthorisation(CICAuthorisationPojo requestPojo) {
-		Dao.updateCICAuthorisation(requestPojo);
-		return null;
+	public void updateCICAuthorisation(CICAuthorisationPojo requestPojo) {
+		 Dao.updateCICAuthorisation(requestPojo);
 	}
 }

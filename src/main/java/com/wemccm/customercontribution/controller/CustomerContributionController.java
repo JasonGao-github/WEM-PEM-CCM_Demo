@@ -17,10 +17,10 @@ public class CustomerContributionController {
 
 	@RequestMapping(value = "/updateCustomerContribution", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public CustomerContribution updateCustomerContribution(@RequestBody CustomerContributionPojo requestPojo) {
+	public String updateCustomerContribution(@RequestBody CustomerContributionPojo requestPojo) {
 
 		CustomerContribution cc = serivce.updateCustomerContribution(requestPojo);
 
-		return cc;
+		return "Success";
 	}
 }

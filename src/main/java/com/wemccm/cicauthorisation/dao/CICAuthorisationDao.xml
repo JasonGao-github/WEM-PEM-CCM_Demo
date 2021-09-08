@@ -31,6 +31,7 @@
 	
 	
 	<select id="createCICAuthorisation" 
+	
 		parameterType="com.wemccm.common.pojo.CICAuthorisationPojo">
 
 		INSERT INTO cicauthorisation (id, cicProjectDetailsID,useId,title,authorDate) 
