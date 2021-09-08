@@ -26,12 +26,13 @@ public class ProjectService {
 	}
 
 	// 利用分页参数及PageHelper从数据库中取值
-	private PageInfo<User> getPageInfo(FindPageRequestDto dto) {
+	private PageInfo<FindPageRequestDto> getPageInfo(FindPageRequestDto dto) {
 		int pageNum = dto.getPageNum();
 		int pageSize = dto.getPageSize();
 		PageHelper.startPage(pageNum, pageSize);
-		List<User> Users = Dao.selectPage(dto);
+		List<FindPageRequestDto> dprdto = Dao.selectPage(dto);
 		
+		System.out.println(dprdto.get(0).getId());
 //		pageResult.setPageNum(pageInfo.getPageNum());
 //		pageResult.setPageSize(pageInfo.getPageSize());
 //		pageResult.setTotalSize(pageInfo.getTotal());
@@ -39,7 +40,7 @@ public class ProjectService {
 //		pageResult.setContent(pageInfo.getList());
 		
 
-		return new PageInfo<User>(Users);
+		return new PageInfo<FindPageRequestDto>(dprdto);
 	}
 
 //	public List<User> listUser(DemoPageRequestDto dto) {

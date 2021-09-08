@@ -1,71 +1,105 @@
 
 package com.wemccm.common.page;
 
+import java.util.Date;
+
 public class FindPageRequestDto extends PageRequest {
 
-//	private String username;
-	private String JemenaWBS;
-	private String ProjectTitle;
-	private String ProjectType;
-	private String JemenaSAPPMOrder;
-	private String SupplyAddress;
-	private String ZimfraWBS;
-	private String InquiryNumber;
+	//project
+	private Integer id;
+	private String statues;
+	private Date createDate;
+	private String version;
 	
-	public String getJemenaWBS() {
-		return JemenaWBS;
+	//CO
+	private Integer userId;
+//	private Integer projectId;
+	
+	//CC
+//	private Integer projectId;
+	private String projectTitle;
+	private String jemenaWBS;
+	private String inquiryNumber;
+	private String jemenaSapPmOrder;
+	private String zinfraWBS;
+	private Integer projectTypeId;
+	private String supplyAddress;
+	public Integer getId() {
+		return id;
 	}
-
-	public void setJemenaWBS(String jemenaWBS) {
-		JemenaWBS = jemenaWBS;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
+	public String getStatues() {
+		return statues;
+	}
+	public void setStatues(String statues) {
+		this.statues = statues;
+	}
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	public String getProjectTitle() {
-		return ProjectTitle;
+		return projectTitle;
 	}
-
 	public void setProjectTitle(String projectTitle) {
-		ProjectTitle = projectTitle;
+		this.projectTitle = projectTitle;
 	}
-
-	public String getProjectType() {
-		return ProjectType;
+	public String getJemenaWBS() {
+		return jemenaWBS;
 	}
-
-	public void setProjectType(String projectType) {
-		ProjectType = projectType;
+	public void setJemenaWBS(String jemenaWBS) {
+		this.jemenaWBS = jemenaWBS;
 	}
-
-	public String getJemenaSAPPMOrder() {
-		return JemenaSAPPMOrder;
-	}
-
-	public void setJemenaSAPPMOrder(String jemenaSAPPMOrder) {
-		JemenaSAPPMOrder = jemenaSAPPMOrder;
-	}
-
-	public String getSupplyAddress() {
-		return SupplyAddress;
-	}
-
-	public void setSupplyAddress(String supplyAddress) {
-		SupplyAddress = supplyAddress;
-	}
-
-	public String getZimfraWBS() {
-		return ZimfraWBS;
-	}
-
-	public void setZimfraWBS(String zimfraWBS) {
-		ZimfraWBS = zimfraWBS;
-	}
-
 	public String getInquiryNumber() {
-		return InquiryNumber;
+		return inquiryNumber;
+	}
+	public void setInquiryNumber(String inquiryNumber) {
+		this.inquiryNumber = inquiryNumber;
+	}
+	public String getJemenaSapPmOrder() {
+		return jemenaSapPmOrder;
+	}
+	public void setJemenaSapPmOrder(String jemenaSapPmOrder) {
+		this.jemenaSapPmOrder = jemenaSapPmOrder;
+	}
+	public String getZinfraWBS() {
+		return zinfraWBS;
+	}
+	public void setZinfraWBS(String zinfraWBS) {
+		this.zinfraWBS = zinfraWBS;
+	}
+	public Integer getProjectTypeId() {
+		return projectTypeId;
+	}
+	public void setProjectTypeId(Integer projectTypeId) {
+		this.projectTypeId = projectTypeId;
+	}
+	public String getSupplyAddress() {
+		return supplyAddress;
+	}
+	public void setSupplyAddress(String supplyAddress) {
+		this.supplyAddress = supplyAddress;
 	}
 
-	public void setInquiryNumber(String inquiryNumber) {
-		InquiryNumber = inquiryNumber;
-	}
+	
+	
+	
+	
 
 }

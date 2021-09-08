@@ -377,19 +377,9 @@ CREATE TABLE `project`  (
   `version` varchar(32)  NULL DEFAULT NULL,
   `statues` varchar(32)  NULL DEFAULT NULL,
   `createDate` datetime NULL DEFAULT NULL,
-  `JemenaWBS` varchar(32)  NULL DEFAULT NULL,
-  `ProjectTitle` varchar(32)  NULL DEFAULT NULL,
-  `ProjectType` varchar(32)  NULL DEFAULT NULL,
-  `JemenaSAPPMOrder` varchar(32)  NULL DEFAULT NULL,
-  `ZimfraWBS` varchar(32)  NULL DEFAULT NULL,
-  `InquiryNumber` int(32) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) 
 
--- ----------------------------
--- Records of project
--- ----------------------------
-INSERT INTO `project` VALUES (123, '123', '123', '2021-08-23 23:32:27', '123', '123', '123', '123', '123', 123);
 
 -- ----------------------------
 -- Table structure for projectattachment
