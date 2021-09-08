@@ -13,55 +13,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!DOCTYPE html>
 
 <head>
-<meta charset="UTF-8" />
-
+<%@ include file="common/meta.jspf"%>
 <link rel="stylesheet" href="<%=path%>static/css/addUser.css" />
-<link rel="stylesheet" href="<%=path%>static/css/sideBar.css" />
-<!-- Boxicons CDN Link -->
-<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-	rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<meta charset="UTF-8">
-<!--<title> Responsive Sidebar Menu  </title>-->
-<!-- Boxicons CDN Link -->
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Add User Page</title>
-<link href='https://fonts.googleapis.com/css?family=Abhaya Libre'
-	rel='stylesheet'>
-
-<script src="<%=path%>static/angular/angular.js" /></script>
-<script src="<%=path%>static/angular/angular-route.js" /></script>
-<script src="<%=path%>static/angular/angular-touch.js" /></script>
-<script src="<%=path%>static/main_angular.js" /></script>
-
-<!-- bootstrap-->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller">
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
-		<div class="container-fluid newUserFormWrapper">
-			<div class="container newUserForm">
+		<div class="container-fluid contentWrapper">
+			<div class="container content">
 				<h1 style="margin: 5vh;">Add new user</h1>
 				<form class="newUser container" name="newUser" action=""
 					method="POST" style="justify-content: center">
