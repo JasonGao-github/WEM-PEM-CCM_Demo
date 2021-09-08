@@ -10,7 +10,7 @@
       </div>
       <ul class="nav_list">
         <li>
-          <a href="#">
+          <a href="dashboard_page">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -18,49 +18,49 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="addUser_page">
             <i class="bx bx-user"></i>
             <span class="links_name">Add New User</span>
           </a>
           <span class="subtitle">Add New User</span>
         </li>
         <li>
-          <a href="#">
+          <a href="project_list_page">
             <i class="bx bx-search"></i>
             <span class="links_name">Project List</span>
           </a>
           <span class="subtitle">Project List</span>
         </li>
         <li>
-          <a href="#">
+          <a href="create_project_page">
             <i class="bx bx-folder"></i>
             <span class="links_name">Create Project</span>
           </a>
           <span class="subtitle">Create Project</span>
         </li>
         <li>
-          <a href="#">
+          <a href="ccf_page">
             <i class="bx bx-folder"></i>
             <span class="links_name">CCF</span>
           </a>
           <span class="subtitle">Customer Contribution Form</span>
         </li>
         <li>
-          <a href="#">
+          <a href="fim_page">
             <i class="bx bx-folder"></i>
             <span class="links_name">FIM Input</span>
           </a>
           <span class="subtitle">FIM Input</span>
         </li>
         <li>
-          <a href="#">
+          <a href="lcta_page">
             <i class="bx bx-folder"></i>
             <span class="links_name">LCTA</span>
           </a>
           <span class="subtitle">LCTA</span>
         </li>
         <li>
-          <a href="#">
+          <a href="financial_page">
             <i class="bx bx-folder"></i>
             <span class="links_name">Financial</span>
           </a>

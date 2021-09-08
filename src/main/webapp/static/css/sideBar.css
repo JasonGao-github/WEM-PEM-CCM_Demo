@@ -224,3 +224,30 @@
     display: none;
   }
 }
+
+.contentWrapper {
+  float: left;
+  padding: 1rem;
+  min-height: 100vh;
+  margin: 0;
+  flex: 1 1 auto;
+  background-color: #909ec3;
+  justify-content: center;
+  display: flex;
+}
+
+.content {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  height: calc(100vh - 2rem);
+  border-radius: 2rem;
+  border-style: solid;
+  border-color: #909ec3;
+  border-width: 1rem;
+  justify-content: center;
+  flex: 1;
+  min-width: 100%;
+}
+
