@@ -49,7 +49,29 @@
 	</select>
 	
 	
+	<select id="addProject" 
+	
+		parameterType="com.wemccm.common.pojo.projectPojo">
 
+		INSERT INTO customercontribution (projectId, projectTitle,jemenaWBS,inquiryNumber,jemenaSapPmOrder,zinfraWBS,projectTypeId,supplyAddress) 
+		VALUES (#{id},#{projectTitle},#{jemenaWBS},#{inquiryNumber},#{jemenaSapPmOrder},#{zinfraWBS},#{projectTypeId},#{supplyAddress})
+		
+<!-- 		INSERT INTO project (id, statues,createDate,version) 
+		VALUES (#{id},#{statues},#{createDate},#{version}) -->
+		
+		
+		
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

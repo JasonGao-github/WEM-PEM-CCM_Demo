@@ -4,10 +4,15 @@ package com.wemccm.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wemccm.common.entity.CICAuthorisation;
+import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
+import com.wemccm.common.pojo.CICAuthorisationPojo;
+import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.project.service.ProjectService;
 
 @RestController 
@@ -23,5 +28,21 @@ public class ProjectController {
 		// PageRequest可直接作为列表查询参数对象的基类。
 		return service.findPage(dto);
 	}
+	
 
+	@RequestMapping(value = "/addProject", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String addProject(@RequestBody projectPojo pojo) {
+
+		service.addProject(pojo);
+
+		return "Success";
+	}
+	
+	
+	
+	
+	
+	
+	
 }

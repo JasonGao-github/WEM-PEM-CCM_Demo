@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.page.PageUtils;
+import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.project.dao.ProjectDao;
 
 @Service
@@ -43,7 +43,16 @@ public class ProjectService {
 
 		return new PageInfo<FindPageRequestDto>(dprdto);
 	}
+	
 
+	
+	
+	public void addProject(projectPojo pojo) {
+		Dao.addProject(pojo);
+		
+	}
+
+	
 //	public List<User> listUser(DemoPageRequestDto dto) {
 //		return demoMapper.selectPage(dto);
 //	}

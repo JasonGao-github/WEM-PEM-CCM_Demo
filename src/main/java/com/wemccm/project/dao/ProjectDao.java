@@ -7,11 +7,14 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
+import com.wemccm.common.pojo.projectPojo;
 
 @Mapper
 public interface ProjectDao {
 
-	List<FindPageRequestDto> selectPage(FindPageRequestDtoPojo dto);
+	public List<FindPageRequestDto> selectPage(FindPageRequestDtoPojo dto);
+
+	public void addProject(projectPojo pojo);
 
 //	List<FindPageRequestDto> selectPage(List<FindPageRequestDto> dto);
 
