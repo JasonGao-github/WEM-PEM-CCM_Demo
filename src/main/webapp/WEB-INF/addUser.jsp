@@ -4,11 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
-<%
-//String s = (String) request.getSession().getAttribute("username");
-// String s1 = (String) session.getAttribute("username");
-%>
+<%@ include file="common/checkSessionExist.jspf"%>
 
 <!DOCTYPE html>
 

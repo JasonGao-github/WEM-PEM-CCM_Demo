@@ -44,7 +44,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 				}
 				else {
 					//temerately hardcoded redirect to add user page
-					$window.location.href = '/addUser_page'
+					$window.location.href = '/dashboard_page'
 				}
 			})
 

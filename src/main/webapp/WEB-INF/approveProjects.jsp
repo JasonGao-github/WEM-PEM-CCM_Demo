@@ -10,7 +10,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <head>
 <%@ include file="common/meta.jspf"%>
-<link rel="stylesheet" href="<%=path%>static/css/addUser.css" />
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller">
@@ -18,7 +17,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h1>Dashboard Page</h1>
+				<h1>Approve Project Page</h1>
 			</div>
 		</div>
 	</section>

@@ -24,10 +24,16 @@ public class RoutingController {
 		return "addUser";// test.jsp
 	}
 
-	@RequestMapping(value = "/project_list_page")
+	@RequestMapping(value = "/projects_page")
 	public String projectListRouting() {
 
 		return "projectList";// test.jsp
+	}
+
+	@RequestMapping(value = "/approve_page")
+	public String approveRouting() {
+
+		return "approveProjects";// test.jsp
 	}
 
 	@RequestMapping(value = "/create_project_page")
@@ -58,6 +64,12 @@ public class RoutingController {
 	public String financialRouting() {
 
 		return "projectList";// test.jsp
+	}
+
+	@RequestMapping(value = "/ncc_page")
+	public String nccRouting() {
+
+		return "ncc";// test.jsp
 	}
 
 }

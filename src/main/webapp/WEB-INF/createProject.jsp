@@ -14,6 +14,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <head>
 <%@ include file="common/meta.jspf"%>
+<link href="<%=path%>static/css/createProject.css" rel="stylesheet" />
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller">
@@ -21,7 +22,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 				<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h1>Create Project Page</h1>
+				<div class="row" style="text-align: center; padding: 30vh 0 0;">
+            <div class="col-6">
+              <button class="Rectangle-107">PP</button>
+            </div>
+            <div class="col-6">
+              <button class="Rectangle-108">New or Existing Connection</button>
+            </div>
+          </div>
+
+          <div class="row" style="text-align: center; padding: 3vh 0 0;">
+            <div class="col-6">
+              <span class="Pole-to-Pit">
+                Pole to Pit
+              </span>
+            </div>
+            <div class="col-6">
+              <span class="New-or-Existing-Connection">
+                New or Existing
+                Connection
+              </span>
+            </div>
+          </div>
 			</div>
 		</div>
 	</section>
