@@ -16,6 +16,10 @@ public interface ProjectDao {
 
 	public void addProject(projectPojo pojo);
 
+	public void addcustomercontribution(projectPojo pojo);
+
+	public int getId(projectPojo pojo);
+
 //	List<FindPageRequestDto> selectPage(List<FindPageRequestDto> dto);
 
 }

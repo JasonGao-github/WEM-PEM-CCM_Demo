@@ -3,9 +3,7 @@ package com.wemccm.common.entity;
 public class QuantityInputItermSubTypePrice extends BaseEntity {
 
 	private Integer quantityInputItemId;
-
 	private Integer quantityInputSubTypeId;
-
 	private double price;
 
 	public Integer getQuantityInputItemId() {

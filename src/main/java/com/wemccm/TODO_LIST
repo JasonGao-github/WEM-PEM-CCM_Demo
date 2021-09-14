@@ -54,7 +54,10 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 ---------------------
 1.添加project的逻辑中，Id是数据库的自增主键，前端是传不进来值的。请改正相关逻辑。
 2.写一个接口，读取QuantityInputItermType中所有数据，不需要分页。
-3.写一个接口，查询所有的QuantityInputItermType以及下面所属的QuantityInputIterm以及每个QuantityInputIterm所对应的各种QuantityInputSubType的价格
+3.写一个接口，查询所有的QuantityInputItermType
+4.根据QuantityInputIterm的projectItemTypeId查QuantityInputIterm
+									和QuantityInputItermSubTypePrice(list)
+									和QuantityInputSubType
 
 
 
