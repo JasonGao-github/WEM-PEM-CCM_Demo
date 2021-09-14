@@ -51,6 +51,11 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 简单叙述一下逻辑：project和CustomerContribution是一对一的关系，之所以不做成一张表是因为这样分开更贴合客户给的Excel上的逻辑模块，从而更容易理解。
 注意开发的过程中，一定要参照前端画的原型图以及我画的数据库ER模型。
 2.开发添加项目的接口，注意牵扯到两张表，project和customercontribution。
+---------------------
+1.添加project的逻辑中，Id是数据库的自增主键，前端是传不进来值的。请改正相关逻辑。
+2.写一个接口，读取QuantityInputItermType中所有数据，不需要分页。
+3.写一个接口，查询所有的QuantityInputItermType以及下面所属的QuantityInputIterm以及每个QuantityInputIterm所对应的各种QuantityInputSubType的价格
+
 
 
 
