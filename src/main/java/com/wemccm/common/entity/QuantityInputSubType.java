@@ -6,4 +6,20 @@ public class QuantityInputSubType extends BaseEntity {
 
 	private String name;// Labour Meteral Plant Subcontract
 
+	public Integer getQuantityInputTypeId() {
+		return quantityInputTypeId;
+	}
+
+	public void setQuantityInputTypeId(Integer quantityInputTypeId) {
+		this.quantityInputTypeId = quantityInputTypeId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }
