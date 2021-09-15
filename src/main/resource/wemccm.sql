@@ -20,7 +20,9 @@ DROP TABLE IF EXISTS `fiminputitermquantitytype`;
 DROP TABLE IF EXISTS `fiminputsubtype`;
 DROP TABLE IF EXISTS `fiminputtype`;
 DROP TABLE IF EXISTS `noncontestableothercosts`;
+DROP TABLE IF EXISTS `noncontestableothercostsiterm`;
 DROP TABLE IF EXISTS `noncontestableprojectcomponent`;
+DROP TABLE IF EXISTS `projectnoncontestableprojectcomponent`;
 DROP TABLE IF EXISTS `noncontestabletype`;
 DROP TABLE IF EXISTS `notice`;
 DROP TABLE IF EXISTS `project`;
@@ -166,9 +168,16 @@ CREATE TABLE `fiminputtype`  (
 CREATE TABLE `noncontestableothercosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
+  `nonContestableOtherCostsItemId` int(11) NULL DEFAULT NULL,
+  `quantity` int(11) NULL DEFAULT NULL,
+  `total` double(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+);
+CREATE TABLE `noncontestableothercostsiterm`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableTypeId` int(11) NULL DEFAULT NULL,
   `unit` varchar(32)  NULL DEFAULT NULL,
-  `quantity` int(11) NULL DEFAULT NULL,
   `rate` double(10, 2) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(32)  NULL DEFAULT NULL,
@@ -176,17 +185,24 @@ CREATE TABLE `noncontestableothercosts`  (
 );
 CREATE TABLE `noncontestableprojectcomponent`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `projectId` int(11) NULL DEFAULT NULL,
-  `unit` varchar(32)  NULL DEFAULT NULL,
-  `quantity` int(11) NULL DEFAULT NULL,
-  `rate` double(10, 2) NULL DEFAULT NULL,
-  `total` double(10, 2) NULL DEFAULT NULL,
-  `description` varchar(32)  NULL DEFAULT NULL,
+  `projecTypeId` int(11) NULL DEFAULT NULL,
+  `cost` double(10, 2) NULL DEFAULT NULL,
+  `description` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
+
+CREATE TABLE `projectnoncontestableprojectcomponent`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projecId` int(11) NULL DEFAULT NULL,
+  `nonContestableProjectComponentId` int(11) NULL DEFAULT NULL,
+  `hours` int(11) NULL DEFAULT NULL,
+  `total` double(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+);
+
 CREATE TABLE `noncontestabletype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `notice`  (
@@ -215,7 +231,9 @@ CREATE TABLE `projectattachment`  (
 CREATE TABLE `projecttype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
-  `description` varchar(32)  NULL DEFAULT NULL,
+  `description` varchar(256)  NULL DEFAULT NULL,
+  `projectManagement` varchar(256)  NULL DEFAULT NULL,
+  `design` varchar(256)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ;
 CREATE TABLE `quantityinput`  (
@@ -284,8 +302,6 @@ INSERT INTO `notice` VALUES (123, 123, '123', '123', 123, '2021-08-31 17:43:18',
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 456, '2020-04-30 17:01:09', '123');
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 457, '2020-04-30 17:01:09', '123');
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 458, '2020-04-30 17:01:09', '123');
-INSERT INTO `projecttype` VALUES (1, '123', '123');
-INSERT INTO `projecttype` VALUES (2, '123', '123');
 INSERT INTO `usertype` VALUES (123, 'uio');
 INSERT INTO `currentoccupy` VALUES (7, 999, 456);
 
@@ -370,4 +386,37 @@ INSERT INTO `quantityinputsubtype` VALUES (27, 5, 'Material');
 INSERT INTO `quantityinputsubtype` VALUES (28, 5, 'Plant');
 INSERT INTO `quantityinputsubtype` VALUES (29, 5, 'Subcontract');
 INSERT INTO `quantityinputsubtype` VALUES (30, 5, 'Subtotal');
+
+INSERT INTO `projecttype` VALUES (1, 'Minor', '', '', '');
+INSERT INTO `projecttype` VALUES (2, 'Type A', '', '', '');
+INSERT INTO `projecttype` VALUES (3, 'Type B', '', '', '');
+INSERT INTO `projecttype` VALUES (4, 'Type C', '', '', '');
+INSERT INTO `projecttype` VALUES (5, 'Type D', '', '', '');
+INSERT INTO `projecttype` VALUES (6, 'Major', '', '', '');
+
+INSERT INTO `noncontestableprojectcomponent` VALUES (1, '1','526.46','Minor Project Management & Design - 5 Hours');
+INSERT INTO `noncontestableprojectcomponent` VALUES (2, '2','1310.01','Type A - Project Management (Delivery)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (3, '2','1105.58','Type A - Design');
+INSERT INTO `noncontestableprojectcomponent` VALUES (4, '2','1116.80','Type A - Project Management (Offer)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (5, '3','2093.55','Type B - Project Management (Delivery)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (6, '3','1947.92','Type B - Design');
+INSERT INTO `noncontestableprojectcomponent` VALUES (7, '3','2017.23','Type B - Project Management (Offer)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (8, '4','2678.10','Type C - Project Management (Delivery)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (9, '4','2211.15','Type C - Design');
+INSERT INTO `noncontestableprojectcomponent` VALUES (10, '4','3449.91','Type C - Project Management (Offer)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (11, '5','3578.52','Type D - Project Management (Delivery)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (12, '5','4159.07','Type D - Design');
+INSERT INTO `noncontestableprojectcomponent` VALUES (13, '5','4455.62','Type D - Project Management (Offer)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (14, '6','132.16','Major - Project Management (Delivery)');
+INSERT INTO `noncontestableprojectcomponent` VALUES (15, '6','118.15','Major - Design');
+INSERT INTO `noncontestableprojectcomponent` VALUES (16, '6','133.32','Major - Project Management (Offer)');
+
+INSERT INTO `noncontestabletype` VALUES (1, 'Other Design Services');
+INSERT INTO `noncontestabletype` VALUES (2, 'Retirements');
+INSERT INTO `noncontestabletype` VALUES (3, 'Operating');
+INSERT INTO `noncontestabletype` VALUES (4, 'Additional Labour - Excludes plant');
+INSERT INTO `noncontestabletype` VALUES (5, 'Extra Overtime cost (for itemised activities)');
+
+
+
 
