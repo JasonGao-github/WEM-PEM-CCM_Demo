@@ -61,6 +61,15 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 									
 ---------------------
 1.重构上一次的4号任务。数据格式请看QuantityInputBasicDataListPojo。需要返回给前端的是这个pojo的List,“Three...”这个名字太离谱了，删掉。
+---------------------
 
+注意：数据库表结构和SQL脚本都做了更新，请熟悉。
+1.开发接口：往QuantityInput表中插入数据。
+2.开发接口：查询所有的projectType，不需要分页。
+3.开发接口：根据projectTypeId，查询所有的NonContestableProjectComponent；
+4.开发接口：往ProjectNonContestableProjectComponent插入数据，要求一次性能同时插入多条。
+5.开发接口：查询所有的NonContestableType，不需要分页
+6.开发接口：根据NonContestableTypeId查询所有的NonContestableOtherCostsIterm
+7.开发接口：往NonContestableOtherCosts插入数据，要求一次性能同时插入多条。。
 
 
