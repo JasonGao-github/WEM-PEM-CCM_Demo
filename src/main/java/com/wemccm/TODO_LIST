@@ -58,7 +58,9 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 4.根据QuantityInputIterm的projectItemTypeId查QuantityInputIterm
 									和QuantityInputItermSubTypePrice(list)
 									和QuantityInputSubType
-
+									
+---------------------
+1.重构上一次的4号任务。数据格式请看QuantityInputBasicDataListPojo。需要返回给前端的是这个pojo的List,“Three...”这个名字太离谱了，删掉。
 
 
 
