@@ -43,26 +43,39 @@
 		</where>
 	</select>
 	
-	 
-	 <select id="threeQuantityInputItermTable" 
+	 <select id="findTableI" 
  	parameterType="com.wemccm.common.pojo.QuantityInputItermPojo"
-		resultType="com.wemccm.common.pojo.ThreeQuantityInputItermTable">
+		resultType="com.wemccm.common.pojo.QuantityInputBasicDataListPojo">
 		
-		SELECT stp.*,
-		i.projectId,i.quantityInputItermTypeId,i.code,i.description,i.unit,
-		st.quantityInputTypeId,st.name
+		SELECT i.*
 		
-		FROM quantityinputitermsubtypeprice as stp
-		
-		LEFT JOIN quantityinputiterm as i
-		ON stp.quantityInputItemId=i.id
-
-		LEFT JOIN quantityinputsubtype as st
-		ON stp.quantityInputSubTypeId=st.id
+		FROM quantityinputiterm as i
 		
 		WHERE i.quantityInputItermTypeId=#{quantityInputItermTypeId}
 		
 	</select>
+	
+	
+	
+		 <select id="findTableSTPAndST" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.QuantityInputItermDetailPojo">
+		
+		SELECT stp.quantityInputItemId,stp.quantityInputSubTypeId,stp.price,
+		
+		st.quantityInputTypeId,st.name
+		
+		FROM quantityinputitermsubtypeprice as stp
+		
+		LEFT JOIN quantityinputsubtype as st
+		ON stp.quantityInputSubTypeId=st.id
+		
+		WHERE stp.quantityInputItemId=#{id}
+		
+	</select>
+	
+	
+	
 	
 
 

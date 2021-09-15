@@ -8,6 +8,7 @@ public class ThreeQuantityInputItermTable {
 	private double price;
 	
 	//QuantityInputIterm
+	//id
 	private Integer projectId;
 	private Integer quantityInputItermTypeId;   //key
 	private String code;
@@ -15,6 +16,7 @@ public class ThreeQuantityInputItermTable {
 	private String unit;
 	
 	//QuantityInputSubType
+	//id
 	private Integer quantityInputTypeId;
 	private String name;
 	

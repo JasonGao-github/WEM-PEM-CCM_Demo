@@ -3,9 +3,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import com.wemccm.common.entity.QuantityInputItermType;
+import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
+import com.wemccm.common.pojo.QuantityInputItermDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
-import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
 
 
 
@@ -20,7 +21,10 @@ import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
 
 		public List<QuantityInputItermType> findQuantityInputItermType(QuantityInputItermTypePojo requestPojo);
 
-		public List<ThreeQuantityInputItermTable> threeQuantityInputItermTable(QuantityInputItermPojo requestPojo);
+
+		public List<QuantityInputBasicDataListPojo> findTableI(QuantityInputItermPojo requestPojo);
+
+		public List<QuantityInputItermDetailPojo> findTableSTPAndST(Integer id);
 
 		
 		

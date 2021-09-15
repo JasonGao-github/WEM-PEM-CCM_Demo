@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.wemccm.common.entity.QuantityInputItermType;
+import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
+import com.wemccm.common.pojo.QuantityInputItermDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
 import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
@@ -32,8 +34,13 @@ public class QuantityInputService {
 		return l;
 	}
 
-	public List<ThreeQuantityInputItermTable> threeQuantityInputItermTable(QuantityInputItermPojo requestPojo) {
-		List<ThreeQuantityInputItermTable> l=Dao.threeQuantityInputItermTable(requestPojo);
+	public List<QuantityInputBasicDataListPojo> threeQuantityInputItermTable(QuantityInputItermPojo requestPojo) {
+		List<QuantityInputBasicDataListPojo> l=Dao.findTableI(requestPojo);
+		for(int i=0;i<l.size();i++) {
+			List<QuantityInputItermDetailPojo> details=Dao.findTableSTPAndST(l.get(i).getId());
+			l.get(i).setDetails(details); 
+		}
+		
 
 		
 		return l;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.QuantityInputItermType;
+import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
 import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
@@ -42,10 +43,10 @@ public class QuantityInputController {
 	
 	@RequestMapping(value = "/threeQuantityInputItermTable", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<ThreeQuantityInputItermTable> threeQuantityInputItermTable(@RequestBody QuantityInputItermPojo requestPojo) {
+	public List<QuantityInputBasicDataListPojo> threeQuantityInputItermTable(@RequestBody QuantityInputItermPojo requestPojo) {
 
 		
-		List<ThreeQuantityInputItermTable> l= serivce.threeQuantityInputItermTable(requestPojo);
+		List<QuantityInputBasicDataListPojo> l= serivce.threeQuantityInputItermTable(requestPojo);
 		return l;
 	}
 	

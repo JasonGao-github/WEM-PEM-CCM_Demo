@@ -4,7 +4,8 @@ import java.util.List;
 
 public class QuantityInputBasicDataListPojo {
 
-	// from QuantityInputIterm
+	// //QuantityInputIterm
+	private Integer id;
 	private Integer projectId;
 	private Integer quantityInputItermTypeId;
 	private String code;
@@ -12,6 +13,14 @@ public class QuantityInputBasicDataListPojo {
 	private String unit;
 
 	private List<QuantityInputItermDetailPojo> details;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getProjectId() {
 		return projectId;
