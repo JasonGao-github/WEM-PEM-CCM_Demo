@@ -417,6 +417,17 @@ INSERT INTO `noncontestabletype` VALUES (3, 'Operating');
 INSERT INTO `noncontestabletype` VALUES (4, 'Additional Labour - Excludes plant');
 INSERT INTO `noncontestabletype` VALUES (5, 'Extra Overtime cost (for itemised activities)');
 
+INSERT INTO `fiminputitermquantitytype` VALUES (1, 'Actural');
+INSERT INTO `fiminputitermquantitytype` VALUES (2, 'JENfounded');
+INSERT INTO `fiminputitermquantitytype` VALUES (3, 'LCTA');
 
+INSERT INTO `fiminputtype` VALUES (1, 'Pole TX Estimates');
+INSERT INTO `fiminputtype` VALUES (2, 'Kiosk TX');
 
-
+INSERT INTO `fiminputsubtype` VALUES (1, 1, 'Transformer 22kV');
+INSERT INTO `fiminputsubtype` VALUES (2, 1, 'Transformer 11kV');
+INSERT INTO `fiminputsubtype` VALUES (3, 1, 'Transformer 11-6.6kV');
+INSERT INTO `fiminputsubtype` VALUES (4, 1, 'Other Transformers');
+INSERT INTO `fiminputsubtype` VALUES (5, 2, 'PAD 11kV');
+INSERT INTO `fiminputsubtype` VALUES (6, 2, 'Kiosk 22kV');
+INSERT INTO `fiminputsubtype` VALUES (7, 2, 'PAD 22kV');
