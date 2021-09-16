@@ -71,5 +71,9 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 5.开发接口：查询所有的NonContestableType，不需要分页
 6.开发接口：根据NonContestableTypeId查询所有的NonContestableOtherCostsIterm
 7.开发接口：往NonContestableOtherCosts插入数据，要求一次性能同时插入多条。。
-
-
+------------------------
+1.开发接口：查询所有的FIMinputType
+2.开发接口：根据FIMinputTypeID查询FIMinputSubType
+3.开发接口：根据FIMinputSubTypeID查询FIMinputIterm
+4.开发接口：查询所有的FIMinputItermQuantityType
+5.开发接口：往FIMinputItermQuantity里插入数据。
