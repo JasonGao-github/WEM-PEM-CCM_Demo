@@ -18,8 +18,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
-			<div class="container content overflow-hidden">
-				<h1 style="margin: 5vh;">CUSTOMER INTIATED CAPTICAL(Statement
+			<div class="container content d-flex flex-column">
+				<h1 style="margin: 2vh;">CUSTOMER INTIATED CAPTICAL(Statement
 					of Work)</h1>
 				<form class="form container" name="newUser" action="" method="POST"
 					style="justify-content: center">
@@ -146,29 +146,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 						</div>
 					</div>
-
 				</form>
+				
+				<% int curr_page = 1; %>
+				<%@ include file="common/pagesBar.jspf"%>
 			</div>
 		</div>
 	</section>
-	<script>
-      let sidebar = document.querySelector(".sidebar");
-      let closeBtn = document.querySelector("#btn");
-
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-        menuBtnChange();
-      });
-
-      function menuBtnChange() {
-        if (sidebar.classList.contains("open")) {
-          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          document.getElementById("Jem-logo").style.visibility = "visible";
-        } else {
-          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-          document.getElementById("Jem-logo").style.visibility = "hidden";
-        }
-      }
-    </script>
 </body>
 </html>

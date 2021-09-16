@@ -17,7 +17,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
-			<div class="container content overflow-hidden">
+			<div class="container content d-flex flex-column">
 				<h2>FIM Input</h2>
 				<form class="form container" name="newUser" action="" method="POST"
 					style="justify-content: center">
@@ -266,27 +266,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						</div>
 					</div>
 				</form>
+				<% int curr_page = 4; %>
+				<%@ include file="common/pagesBar.jspf"%>
 			</div>
 		</div>
 	</section>
-	<script>
-      let sidebar = document.querySelector(".sidebar");
-      let closeBtn = document.querySelector("#btn");
-
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-        menuBtnChange();
-      });
-
-      function menuBtnChange() {
-        if (sidebar.classList.contains("open")) {
-          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          document.getElementById("Jem-logo").style.visibility = "visible";
-        } else {
-          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-          document.getElementById("Jem-logo").style.visibility = "hidden";
-        }
-      }
-    </script>
 </body>
 </html>
