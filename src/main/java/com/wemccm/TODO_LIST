@@ -74,6 +74,22 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 ------------------------
 1.开发接口：查询所有的FIMinputType
 2.开发接口：根据FIMinputTypeID查询FIMinputSubType
+
 3.开发接口：根据FIMinputSubTypeID查询FIMinputIterm
+
 4.开发接口：查询所有的FIMinputItermQuantityType
 5.开发接口：往FIMinputItermQuantity里插入数据。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
