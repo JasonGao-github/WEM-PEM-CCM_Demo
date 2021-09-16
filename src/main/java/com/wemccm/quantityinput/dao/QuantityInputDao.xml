@@ -15,8 +15,7 @@
 	
 	
  	<select id="selectAllQuantityInputItermType" 
- 	parameterType="com.wemccm.common.entity.QuantityInputItermType"
-		resultType="com.wemccm.common.pojo.QuantityInputItermTypePojo">
+		resultType="com.wemccm.common.entity.QuantityInputItermType">
 		SELECT * FROM quantityinputitermtype
 	</select>
 	
@@ -25,8 +24,8 @@
 	
 	<select id="findQuantityInputItermType" 
 	
- 	parameterType="com.wemccm.common.entity.QuantityInputItermType"
-		resultType="com.wemccm.common.pojo.QuantityInputItermTypePojo">
+ 	parameterType="com.wemccm.common.pojo.QuantityInputItermTypePojo"
+		resultType="com.wemccm.common.entity.QuantityInputItermType">
 
 		SELECT * FROM quantityinputitermtype 
 	<where>
@@ -52,6 +51,16 @@
 		FROM quantityinputiterm as i
 		
 		WHERE i.quantityInputItermTypeId=#{quantityInputItermTypeId}
+		
+	</select>
+	
+
+	
+	<select id="insertQuantityInput" 
+ 	parameterType="com.wemccm.common.pojo.QuantityInputPojo">
+		
+		INSERT INTO quantityinput (projectId, quantityInputItemId,quantityInputTypeId,quatity,cost) 
+		VALUES (#{projectId},#{quantityInputItemId},#{quantityInputTypeId},#{quatity},#{cost})
 		
 	</select>
 	

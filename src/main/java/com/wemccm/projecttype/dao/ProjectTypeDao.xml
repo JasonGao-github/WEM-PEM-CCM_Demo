@@ -11,6 +11,14 @@
 	<!-- 查询单条记录 -->
 
 
+			
+	<select id="selectAllProjectType"
+		resultType="com.wemccm.common.entity.ProjectType">
+		SELECT * FROM projecttype
+
+	</select>
+	
+	
 	
 <select id="getProjectType"
 		resultType="com.wemccm.common.entity.ProjectType"
@@ -26,6 +34,7 @@
 			<if test="name!=null and name!=''">
 				and name = #{name}
 			</if>
+
 		</where>
 	</select>
 	

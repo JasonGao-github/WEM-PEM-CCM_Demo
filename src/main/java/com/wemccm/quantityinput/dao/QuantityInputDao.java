@@ -7,6 +7,7 @@ import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
 import com.wemccm.common.pojo.QuantityInputItermDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
+import com.wemccm.common.pojo.QuantityInputPojo;
 
 
 
@@ -25,6 +26,8 @@ import com.wemccm.common.pojo.QuantityInputItermTypePojo;
 		public List<QuantityInputBasicDataListPojo> findTableI(QuantityInputItermPojo requestPojo);
 
 		public List<QuantityInputItermDetailPojo> findTableSTPAndST(Integer id);
+
+		public void insertQuantityInput(QuantityInputPojo requestPojo);
 
 		
 		

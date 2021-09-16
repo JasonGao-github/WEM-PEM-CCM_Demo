@@ -9,6 +9,7 @@ import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
 import com.wemccm.common.pojo.QuantityInputItermDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
+import com.wemccm.common.pojo.QuantityInputPojo;
 import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
 import com.wemccm.quantityinput.dao.QuantityInputDao;
 
@@ -44,6 +45,11 @@ public class QuantityInputService {
 
 		
 		return l;
+	}
+
+	public void insertQuantityInput(QuantityInputPojo requestPojo) {
+		Dao.insertQuantityInput(requestPojo);
+		
 	}
 
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.noncontestable.dao.NonContestableDao">
+
+	
+	<select id="findNonContestableProjectComponent" 
+	
+ 	parameterType="com.wemccm.common.pojo.NonContestableProjectComponentPojo"
+		resultType="com.wemccm.common.entity.NonContestableProjectComponent">
+
+		SELECT * FROM noncontestableprojectcomponent 
+	
+		WHERE projectTypeId = #{projectTypeId}
+
+	</select>
+	
+
+	<select id="selectAllNonContestableType" 
+	
+		resultType="com.wemccm.common.entity.NonContestableType">
+
+		SELECT * FROM noncontestabletype 
+
+	</select>
+
+
+	<select id="findNonContestableOtherCostsItem" 
+	
+ 	parameterType="com.wemccm.common.pojo.NonContestableOtherCostsItemPojo"
+		resultType="com.wemccm.common.entity.NonContestableOtherCostsItem">
+
+		SELECT * FROM noncontestableothercostsiterm 
+	
+		WHERE nonContestableTypeId = #{nonContestableTypeId}
+
+	</select>
+
+	
+	<select id="insertProjectNonContestableProjectComponent" 
+ 	parameterType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
+		
+		INSERT INTO projectnoncontestableprojectcomponent (projectId, nonContestableProjectComponentId,hours,total) 
+		VALUES (#{projectId},#{nonContestableProjectComponentId},#{hours},#{total})
+		
+	</select>
+	
+	
+		<select id="insertNonContestableOtherCosts" 
+ 	parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
+		
+		INSERT INTO noncontestableothercosts (projectId, nonContestableOtherCostsItemId,quantity,total) 
+		VALUES (#{projectId},#{nonContestableOtherCostsItemId},#{quantity},#{total})
+		
+	</select>
+
+	
+	
+	
+
+
+
+
+</mapper>

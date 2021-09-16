@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.ProjectType;
+import com.wemccm.common.entity.QuantityInputItermType;
 import com.wemccm.common.pojo.projectTypePojo;
 import com.wemccm.projecttype.service.ProjectTypeService;
 
@@ -20,13 +21,18 @@ public class ProjectTypeController {
 	@RequestMapping(value = "/projectType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<ProjectType> sendMyName(@RequestBody projectTypePojo requestPojo) {
-//
-//		int id = requestPojo.getId();
-//		String description = requestPojo.getDescription();
-//		String name = requestPojo.getName();
+
 
 		List<ProjectType> list=serivce.projectType(requestPojo);
 
 		return list;
+	}
+	
+	@RequestMapping(value = "/selectAllProjectType", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<ProjectType> selectAllProjectType() {
+
+		List<ProjectType> l=serivce.selectAllProjectType();
+		return l;
 	}
 }

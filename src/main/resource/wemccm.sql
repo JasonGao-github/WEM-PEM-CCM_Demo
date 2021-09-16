@@ -185,7 +185,7 @@ CREATE TABLE `noncontestableothercostsiterm`  (
 );
 CREATE TABLE `noncontestableprojectcomponent`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `projecTypeId` int(11) NULL DEFAULT NULL,
+  `projectTypeId` int(11) NULL DEFAULT NULL,
   `cost` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -193,7 +193,7 @@ CREATE TABLE `noncontestableprojectcomponent`  (
 
 CREATE TABLE `projectnoncontestableprojectcomponent`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `projecId` int(11) NULL DEFAULT NULL,
+  `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableProjectComponentId` int(11) NULL DEFAULT NULL,
   `hours` int(11) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,

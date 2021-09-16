@@ -12,6 +12,7 @@ import com.wemccm.common.entity.QuantityInputItermType;
 import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
+import com.wemccm.common.pojo.QuantityInputPojo;
 import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
 import com.wemccm.quantityinput.service.QuantityInputService;
 
@@ -23,6 +24,15 @@ public class QuantityInputController {
 	@Autowired
 	private QuantityInputService serivce;
 
+	@RequestMapping(value = "/insertQuantityInput", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String insertQuantityInput(@RequestBody QuantityInputPojo requestPojo) {
+
+		serivce.insertQuantityInput(requestPojo);
+		return "success";
+	}
+	
+	
 	@RequestMapping(value = "/selectAllQuantityInputItermType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<QuantityInputItermType> selectAllQuantityInputItermType() {
