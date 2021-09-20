@@ -15,11 +15,9 @@
 ---------------------
 周四前后完成：
 1.又更新了一波entity，同样的更新到sql脚本和数据库。
-
 2.开发一个接口，往CurrentOccupy表里插入新数据。
 3.开发一个接口，根据projectId查询对应的CurrentOccupy
 4.开发一个接口，根据userId和projectId删除对应的CurrentOccupy数据。
-
 5.开发一个接口，往Notice里插入数据。
 6.开发Notice表的Dao，包括这2个方法：
 （1）插入数据
@@ -36,10 +34,8 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 周六至周一完成：
 1.开发一个接口，根据usertype 查询user
 2.开发一个接口，查询这个用户下属的所有用户（leaderid）
-
 3.开发一个接口，往CICauthorisation表中插入数据。要求动态添加（前端如果只传一个人的签名就添加一条数据，传两个人就添加两条数据，三个人就插入三条。以此类推。。）
 4.开发一个接口，实现对CICauthorisation的更新操作，同样要求实现动态更新。
-
 5.开发一个接口，更新CustomerContribution表中的信息。前端传什么字段，就更新什么字段，不传的就不更新。
 --------------------
 修改：
@@ -74,9 +70,7 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 ------------------------
 1.开发接口：查询所有的FIMinputType
 2.开发接口：根据FIMinputTypeID查询FIMinputSubType
-
 3.开发接口：根据FIMinputSubTypeID查询FIMinputIterm
-
 4.开发接口：查询所有的FIMinputItermQuantityType
 5.开发接口：往FIMinputItermQuantity里插入数据。
 ---------------------------

@@ -1,7 +1,7 @@
-package com.wemccm.common.entity;
+package com.wemccm.common.pojo;
 
-public class AvoidedCostMaintenanceCosts extends BaseEntity {
-
+public class AvoidedCostMaintenanceCostsTypeJojo {
+	private Integer id;
 	private Integer projectId;
 	private String name;
 	private String source;
@@ -12,6 +12,16 @@ public class AvoidedCostMaintenanceCosts extends BaseEntity {
 	private Double costPa;
 	private Double ameExist;
 	private Integer avoidedCostInputTypeId;
+	
+	private String InputTypeName; //type table
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getProjectId() {
 		return projectId;
@@ -85,6 +95,8 @@ public class AvoidedCostMaintenanceCosts extends BaseEntity {
 		this.ameExist = ameExist;
 	}
 
+
+
 	public Integer getAvoidedCostInputTypeId() {
 		return avoidedCostInputTypeId;
 	}
@@ -93,5 +105,13 @@ public class AvoidedCostMaintenanceCosts extends BaseEntity {
 		this.avoidedCostInputTypeId = avoidedCostInputTypeId;
 	}
 
+	public String getInputTypeName() {
+		return InputTypeName;
+	}
 
+	public void setInputTypeName(String inputTypeName) {
+		InputTypeName = inputTypeName;
+	}
+	
+	
 }

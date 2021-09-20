@@ -36,10 +36,59 @@ DROP TABLE IF EXISTS `quantityinputsubtype`;
 DROP TABLE IF EXISTS `quantityinputtype`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `usertype`;
-
+DROP TABLE IF EXISTS `avoidedcostassetreplacementcosts`;
+DROP TABLE IF EXISTS `avoidedcostescguideline`;
+DROP TABLE IF EXISTS `avoidedcostmaintenancecosts`;
+DROP TABLE IF EXISTS `avoidedcosttype`;
 -- -----------------
 -- create tables 
 -- -----------------
+CREATE TABLE `avoidedcosttype`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) ,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+
+CREATE TABLE `avoidedcostmaintenancecosts`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `unit` int(11) NULL DEFAULT NULL,
+  `quantity` int(11) NULL DEFAULT NULL,
+  `costPa` double(10, 2) NULL DEFAULT NULL,
+  `ameExist` double(10, 2) NULL DEFAULT NULL,
+  `avoidedCostInputTypeId` int(11) NULL DEFAULT NULL,
+  `name` varchar(32) ,
+  `source` varchar(32) ,
+  `maint` varchar(32) ,
+  `vegMgt` varchar(32) ,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+CREATE TABLE `avoidedcostescguideline`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `jemAvoidedCostModelId` int(11) NULL DEFAULT NULL,
+  `assumptions` varchar(32) ,
+  `source` varchar(32) ,
+  `constant` varchar(32) ,
+  `notes` varchar(32) ,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+CREATE TABLE `avoidedcostassetreplacementcosts`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `name` varchar(32) ,
+  `source` varchar(32) ,
+  `unitCost` double(10, 2) NULL DEFAULT NULL,
+  `unit` varchar(32) ,
+  `quantity` int(11) NULL DEFAULT NULL,
+  `totalCost` double(10, 2) NULL DEFAULT NULL,
+  `assetAge` int(11) NULL DEFAULT NULL,
+  `stdLife` double(10, 2) NULL DEFAULT NULL,
+  `remLife` double(10, 2) NULL DEFAULT NULL,
+  `presentValueRC` double(10, 2) NULL DEFAULT NULL,
+  `avoidedCostInputTypeId` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) 
 CREATE TABLE `cicauthorisation`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cicProjectDetailsID` int(11) NULL DEFAULT NULL,
@@ -298,6 +347,9 @@ CREATE TABLE `usertype` (
 -- -----------------
 -- insert data 
 -- -----------------
+INSERT INTO `avoidedcosttype` VALUES (123, '123');
+INSERT INTO `avoidedcosttype` VALUES (456, '456');
+
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 123, '2021-08-31 17:43:18', '123');
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 456, '2020-04-30 17:01:09', '123');
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 457, '2020-04-30 17:01:09', '123');
