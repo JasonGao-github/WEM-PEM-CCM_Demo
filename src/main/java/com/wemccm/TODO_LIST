@@ -79,7 +79,11 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 
 4.开发接口：查询所有的FIMinputItermQuantityType
 5.开发接口：往FIMinputItermQuantity里插入数据。
-
+---------------------------
+1.新加的Avoid开头那四个entity，加到sql脚本里面去。
+2.开发接口，读取AvoidedCostType中的所有数据，不要分页。
+3.AvoidedCostAssetReplacementCosts，AvoidedCostESCGuideline，AvoidedCostMaintenanceCosts开发三个接口分别往这三张表里插入数据，均要求同时插入多条。
+4.开发一个接口，根据projectId查询这三张表里的所有信息，要与AvoidedCostType关联。结构不清楚的话，请参照UML图，我已经画好了。
 
 
 
