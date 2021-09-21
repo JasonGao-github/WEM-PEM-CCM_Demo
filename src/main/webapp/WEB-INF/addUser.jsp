@@ -4,11 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
-<%
-//String s = (String) request.getSession().getAttribute("username");
-// String s1 = (String) session.getAttribute("username");
-%>
+<%@ include file="common/checkSessionExist.jspf"%>
 
 <!DOCTYPE html>
 
@@ -22,7 +18,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h1 style="margin: 5vh;">Add new user</h1>
+				<h1 style="margin: 2vh;">Add new user</h1>
+				<br>
 				<form class="newUser container" name="newUser" action=""
 					method="POST" style="justify-content: center">
 
