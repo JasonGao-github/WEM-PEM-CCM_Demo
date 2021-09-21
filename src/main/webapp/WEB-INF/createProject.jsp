@@ -23,7 +23,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<button class="Rectangle-107">PP</button>
 					</div>
 					<div class="col-6">
-						<a href="project_page">
+						<a data-toggle="modal" data-target="#exampleModalCenter">
 							<button class="Rectangle-108">New or Existing Connection</button>
 						</a>
 					</div>
@@ -38,8 +38,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							Connection </span>
 					</div>
 				</div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalCenterTitle"
+					aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">New Project</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="item">
+									Project Name
+								</div>
+								<input type="text">
+								<div class="item">
+									Project Details
+								</div>
+								<input type="text">
+							</div>
+							<div class="modal-footer">
+							<a href="/project_page">
+								<button type="button" class="btn btn-primary">Create Project</button>
+							</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
+
 	</section>
 </body>
 </html>

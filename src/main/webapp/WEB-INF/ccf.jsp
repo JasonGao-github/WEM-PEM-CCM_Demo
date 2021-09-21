@@ -30,13 +30,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Jemena WBS</h3>
 							</div>
 							<div class="col-lg-3">
-								<input ng-model="fname" type="text" name="fname" />
+								<input ng-model="WBS" type="text" name="WBS" />
 							</div>
 							<div class="col-lg-2">
 								<h3>Inquiry Number</h3>
 							</div>
 							<div class="col-lg-5">
-								<input ng-model="lname" type="text" name="lname" />
+								<input ng-model="inqNumber" type="text" name="inqNumber" />
 							</div>
 						</div>
 
@@ -45,13 +45,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Jeemena SAPPM Order</h3>
 							</div>
 							<div class="col-lg-3">
-								<input ng-model="fname" type="text" name="fname" />
+								<input ng-model="SAPPM" type="text" name="SAPPM" />
 							</div>
 							<div class="col-lg-2">
 								<h3>Project Title</h3>
 							</div>
 							<div class="col-lg-5">
-								<input ng-model="lname" type="text" name="lname" />
+								<input ng-model="title" type="text" name="title" />
 							</div>
 						</div>
 
@@ -60,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Zinfra WBS</h3>
 							</div>
 							<div class="col-lg-10">
-								<input ng-model="fname" type="text" name="fname" />
+								<input ng-model="zinfraWBS" type="text" name="zinfraWBS" />
 							</div>
 						</div>
 
@@ -83,7 +83,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Supply Address</h3>
 							</div>
 							<div class="col-lg-10">
-								<input ng-model="fname" type="text" name="fname" />
+								<input ng-model="address" type="text" name="address" />
 							</div>
 						</div>
 
@@ -111,7 +111,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 							</h3>
 							<div class="col-lg-10">
-								<input ng-model="fname" type="text" name="fname" />
+								<input ng-model="reason" type="text" name="reason" />
 							</div>
 						</div>
 						<div class="row">
