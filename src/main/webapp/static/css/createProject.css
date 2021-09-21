@@ -1,0 +1,64 @@
+.Pole-to-Pit {
+	opacity: 0.6;
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #909ec3;
+}
+
+.New-or-Existing-Connection {
+	opacity: 0.6;
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #909ec3;
+}
+
+.Rectangle-107 {
+	width: 222px;
+	height: 222px;
+	border-radius: 20px;
+	background-color: #c1e7f0;
+}
+
+.Rectangle-108 {
+	width: 223px;
+	height: 222px;
+	border-radius: 20px;
+	background-color: #c1e7f0;
+}
+
+.modal-backdrop {
+	z-index: -1 !important;
+}
+
+.content input {
+	background: rgba(231, 231, 231, 0.37);
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 10px;
+	min-width: 100%;
+	height: 3rem;
+}
+
+.modal-body {
+	margin: 1rem 3rem;
+}
+
+.content item {
+	font-family: Abel;
+	font-style: normal;
+	font-weight: normal;
+	align-items: center;
+	text-align: center;
+}

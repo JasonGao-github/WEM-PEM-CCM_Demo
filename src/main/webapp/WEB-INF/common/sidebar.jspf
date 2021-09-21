@@ -1,86 +1,60 @@
+
+<%
+	String userType = new String("");
+if ((String) session.getAttribute("username") != null) {
+	userType = (String) session.getAttribute("userTypeId").toString();
+}
+%>
+
+
 <div class="sidebar">
-      <div class="logo_details">
-        <img
-          src="<%=path%>static/images/jemena.svg"
-          alt="logo"
-          id="Jem-logo"
-          style="visibility: hidden"
-        />
-        <i class="bx bx-menu" id="btn"></i>
-      </div>
-      <ul class="nav_list">
-        <li>
-          <a href="dashboard_page">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-          <span class="subtitle">Dashboard</span>
-        </li>
+	<div class="logo_details">
+		<img src="<%=path%>static/images/jemena.svg" alt="logo" id="Jem-logo"
+			style="visibility: hidden" /> <i class="bx bx-menu" id="btn"></i>
+	</div>
+	<ul class="nav_list">
+		<li><a href="dashboard_page"> <i class="bx bx-grid-alt"></i>
+				<span class="links_name">Dashboard</span>
+		</a> <span class="subtitle">Dashboard</span></li>
+		<li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
+				class="links_name">View Projects</span>
+		</a> <span class="subtitle">View Projects</span></li>
+		<li><a href="create_project_page"> <i class="bx bx-user"></i>
+				<span class="links_name">Create New Projects</span>
+		</a> <span class="subtitle">Create New Projects</span></li>
+		<li><a href="approve_page"> <i class="bx bx-search"></i> <span
+				class="links_name">Approve Projects</span>
+		</a> <span class="subtitle">Approve Projects</span></li>
 
-        <li>
-          <a href="addUser_page">
-            <i class="bx bx-user"></i>
-            <span class="links_name">Add New User</span>
-          </a>
-          <span class="subtitle">Add New User</span>
-        </li>
-        <li>
-          <a href="project_list_page">
-            <i class="bx bx-search"></i>
-            <span class="links_name">Project List</span>
-          </a>
-          <span class="subtitle">Project List</span>
-        </li>
-        <li>
-          <a href="create_project_page">
-            <i class="bx bx-folder"></i>
-            <span class="links_name">Create Project</span>
-          </a>
-          <span class="subtitle">Create Project</span>
-        </li>
-        <li>
-          <a href="ccf_page">
-            <i class="bx bx-folder"></i>
-            <span class="links_name">CCF</span>
-          </a>
-          <span class="subtitle">Customer Contribution Form</span>
-        </li>
-        <li>
-          <a href="fim_page">
-            <i class="bx bx-folder"></i>
-            <span class="links_name">FIM Input</span>
-          </a>
-          <span class="subtitle">FIM Input</span>
-        </li>
-        <li>
-          <a href="lcta_page">
-            <i class="bx bx-folder"></i>
-            <span class="links_name">LCTA</span>
-          </a>
-          <span class="subtitle">LCTA</span>
-        </li>
-        <li>
-          <a href="financial_page">
-            <i class="bx bx-folder"></i>
-            <span class="links_name">Financial</span>
-          </a>
-          <span class="subtitle">Financial</span>
-        </li>
 
-        <li class="profile">
-          <div class="profile_details">
-            <img src="https://img.icons8.com/bubbles/50/000000/user.png" /
+		<%
+			if (userType.equals("123")) {
+		%>
+		<li><a href="addUser_page"> <i class="bx bx-folder"></i> <span
+				class="links_name">Add New User</span>
+		</a> <span class="subtitle">Add New User</span></li>
+		<li><a href="basic_data"> <i class="bx bx-folder"></i> <span
+				class="links_name">Basic Data</span>
+		</a> <span class="subtitle">Basic Data</span></li>
+		<%
+			}
+		%>
+
+
+		<li class="profile">
+			<div class="profile_details">
+				<img src="https://img.icons8.com/bubbles/50/000000/user.png"
+					/
             alt="profileImg">
-            <div class="name_job">
-              <div class="name">Yun-Tung Shih</div>
-              <div class="job">Web designer</div>
-            </div>
-          </div>
-          <i class="bx bx-log-out" id="log_out"></i>
-        </li>
-      </ul>
-    </div>
-    <script>
+				<div class="name_job">
+					<div class="name">Yun-Tung Shih</div>
+					<div class="job">Web designer</div>
+				</div>
+			</div> <i class="bx bx-log-out" id="log_out"></i>
+		</li>
+	</ul>
+</div>
+<script>
       let sidebar = document.querySelector(".sidebar");
       let closeBtn = document.querySelector("#btn");
 
@@ -98,4 +72,4 @@
           document.getElementById("Jem-logo").style.visibility = "hidden";
         }
       }
-    </script>
+  </script>

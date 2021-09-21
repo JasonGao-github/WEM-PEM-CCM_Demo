@@ -24,10 +24,16 @@ public class RoutingController {
 		return "addUser";// test.jsp
 	}
 
-	@RequestMapping(value = "/project_list_page")
+	@RequestMapping(value = "/projects_page")
 	public String projectListRouting() {
 
 		return "projectList";// test.jsp
+	}
+
+	@RequestMapping(value = "/approve_page")
+	public String approveRouting() {
+
+		return "approveProjects";// test.jsp
 	}
 
 	@RequestMapping(value = "/create_project_page")
@@ -36,10 +42,28 @@ public class RoutingController {
 		return "createProject";// test.jsp
 	}
 
+	@RequestMapping(value = "/project_page")
+	public String projectRouting() {
+
+		return "project";// test.jsp
+	}
+
 	@RequestMapping(value = "/ccf_page")
 	public String ccfRouting() {
 
 		return "ccf";// test.jsp
+	}
+
+	@RequestMapping(value = "/quantity_input_page")
+	public String quantityInputRouting() {
+
+		return "quantityInput";// test.jsp
+	}
+
+	@RequestMapping(value = "/ncc_page")
+	public String nccRouting() {
+
+		return "ncc";// test.jsp
 	}
 
 	@RequestMapping(value = "/fim_page")
@@ -48,16 +72,40 @@ public class RoutingController {
 		return "fim";// test.jsp
 	}
 
+	@RequestMapping(value = "/avoided_cost_page")
+	public String acRouting() {
+
+		return "avoidedCost";// test.jsp
+	}
+
+	@RequestMapping(value = "/financials_page")
+	public String finRouting() {
+
+		return "financials";// test.jsp
+	}
+
+	@RequestMapping(value = "/design_page")
+	public String designRouting() {
+
+		return "design";// test.jsp
+	}
+
+	@RequestMapping(value = "/conHandover_page")
+	public String handoverRouting() {
+
+		return "handover";// test.jsp
+	}
+
 	@RequestMapping(value = "/lcta_page")
 	public String lctaRouting() {
 
 		return "lcta";// test.jsp
 	}
 
-	@RequestMapping(value = "/financial_page")
-	public String financialRouting() {
+	@RequestMapping(value = "/contract_schedule_page")
+	public String contScheRouting() {
 
-		return "projectList";// test.jsp
+		return "contractSchedule";// test.jsp
 	}
 
 }

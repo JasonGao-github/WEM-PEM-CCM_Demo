@@ -19,7 +19,16 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	console.log('Hello harindu');
 	$scope.welcome = 'Welcome to Jemena WEM';
-	$scope.failMsg =
+	
+		$scope.get_ncc = function(){
+			console.log("run get ncc")
+			$http.get('ncc.json').then(function(response) {
+				console.log(response.data);
+				self.ncc_itms = response.data;
+			});
+			
+			
+		}
 
 		$scope.send_my_name = function() {
 			console.log('Clicked send_my_name function')
@@ -44,7 +53,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 				}
 				else {
 					//temerately hardcoded redirect to add user page
-					$window.location.href = '/addUser_page'
+					$window.location.href = '/dashboard_page'
 				}
 			})
 

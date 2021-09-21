@@ -1,0 +1,29 @@
+
+<%
+String[] pages = new String[]{"project_page"," ccf_page", "quantity_input_page",
+					"ncc_page", "fim_page", "avoided_cost_page", 
+                  "financials_page", "design_page", "conHandover_page", "contract_schedule_page"};
+String prevUrl = pages[curr_page - 1];
+String nextUrl = new String();
+if(curr_page != pages.length - 1){
+	nextUrl = pages[curr_page + 1];
+}
+%>
+
+
+<div class = "mt-auto" style="text-align: center;">
+	<ul class="pagination">
+		<li><a href="<%= prevUrl %>">«</a></li>
+		<% for(int i = 1; i < pages.length; i++) {
+			String url = pages[i];
+			if(curr_page == i){%>
+		<li><a class="active" href="<%= url %>"><%= i %></a></li>
+		<% } else {%>
+		<li><a href="<%= url %>"><%= i %></a></li>
+		<% } } 
+		if(curr_page != pages.length - 1){
+		%>
+		<li><a href="<%= nextUrl %>">»</a></li>
+		<% } %>
+	</ul>
+</div>

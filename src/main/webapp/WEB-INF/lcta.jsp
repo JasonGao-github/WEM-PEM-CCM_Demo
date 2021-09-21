@@ -4,11 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
-<%
-//String s = (String) request.getSession().getAttribute("username");
-// String s1 = (String) session.getAttribute("username");
-%>
+<%@ include file="common/checkSessionExist.jspf"%>
 
 <!DOCTYPE html>
 
@@ -39,10 +35,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
           document.getElementById("Jem-logo").style.visibility = "visible";
         } else {
-          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+          closeBtn.cla
+          ssList.replace("bx-menu-alt-right", "bx-menu");
           document.getElementById("Jem-logo").style.visibility = "hidden";
         }
       }
+
+
     </script>
 </body>
 </html>

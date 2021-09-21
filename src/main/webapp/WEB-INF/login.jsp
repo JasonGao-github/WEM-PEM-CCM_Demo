@@ -5,11 +5,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
-<%
-String s = (String) request.getSession().getAttribute("username");
-// String s1 = (String) session.getAttribute("username");
-%>
-
 
 <!DOCTYPE html>
 <html>
@@ -48,7 +43,7 @@ String s = (String) request.getSession().getAttribute("username");
 	<div class="login-container container-fluid">
 		<div class="banner">
 			<div class="logo">
-				<img src="<%=path%>static/images/jemena-logo.svg" alt="logo" />
+				<img src="<%=path%>static/images/jemena-logo.svg" alt="logo" style="width: 100%;"/>
 
 				<div class="text">
 					<p>Work Estimation Model</p>

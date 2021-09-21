@@ -17,7 +17,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h1>Project List Page</h1>
+				<h1>Approve Project Page</h1>
 			</div>
 		</div>
 	</section>
