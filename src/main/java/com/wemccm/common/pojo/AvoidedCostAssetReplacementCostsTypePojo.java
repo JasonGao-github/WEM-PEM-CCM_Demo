@@ -13,9 +13,31 @@ public class AvoidedCostAssetReplacementCostsTypePojo {
 	private Double stdLife;
 	private Double remLife;
 	private Double presentValueRC;
-	private Integer avoidedCostInputTypeId;
 	
-	private String InputTypeName; //type table
+	private Integer avoidedCostInputTypeId;
+	private Integer avoidedCostassetReplacementItermId;
+	
+	private String InputTypeName; //table avoidedcosttype
+	
+	private String ReplacementItermName;  //avoidedcostassetreplacementiterm
+	
+	
+
+	public Integer getAvoidedCostassetReplacementItermId() {
+		return avoidedCostassetReplacementItermId;
+	}
+
+	public void setAvoidedCostassetReplacementItermId(Integer avoidedCostassetReplacementItermId) {
+		this.avoidedCostassetReplacementItermId = avoidedCostassetReplacementItermId;
+	}
+
+	public String getReplacementItermName() {
+		return ReplacementItermName;
+	}
+
+	public void setReplacementItermName(String replacementItermName) {
+		ReplacementItermName = replacementItermName;
+	}
 
 	public Integer getId() {
 		return id;

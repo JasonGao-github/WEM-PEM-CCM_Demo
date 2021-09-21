@@ -7,6 +7,7 @@ import com.wemccm.common.entity.AvoidedCostAssetReplacementCosts;
 import com.wemccm.common.entity.AvoidedCostESCGuideline;
 import com.wemccm.common.entity.AvoidedCostMaintenanceCosts;
 import com.wemccm.common.entity.AvoidedCostType;
+import com.wemccm.common.entity.AvoidedCostassetReplacementIterm;
 import com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo;
 import com.wemccm.common.pojo.AvoidedCostMaintenanceCostsTypeJojo;
 import com.wemccm.common.pojo.projectIdPojo;
@@ -19,6 +20,8 @@ import com.wemccm.common.pojo.projectIdPojo;
 
 		public List<AvoidedCostType> selectAllAvoidedCostType();
 
+		public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm();
+		
 		public void insertAvoidedCostAssetReplacementCosts(
 				AvoidedCostAssetReplacementCosts avoidedCostAssetReplacementCosts);
 
@@ -36,6 +39,8 @@ import com.wemccm.common.pojo.projectIdPojo;
 		public List<AvoidedCostMaintenanceCostsTypeJojo> findAvoidedCostMaintenanceCosts(projectIdPojo requestPojo);
 
 		public List<AvoidedCostESCGuideline> findAvoidedCostESCGuideline(projectIdPojo requestPojo);
+
+	
 
 
 
