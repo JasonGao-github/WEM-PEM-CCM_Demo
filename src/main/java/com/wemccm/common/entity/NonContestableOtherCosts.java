@@ -3,12 +3,17 @@ package com.wemccm.common.entity;
 public class NonContestableOtherCosts extends BaseEntity {
 
 	private Integer projectId;
-	private Integer nonContestableTypeId;
-	private String unit;
+	private Integer nonContestableOtherCostsItemId;
 	private Integer quantity;
-	private Double rate;
-	private Double total;
-	private String description;
+	private double total;
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
 
 	public Integer getProjectId() {
 		return projectId;
@@ -18,20 +23,12 @@ public class NonContestableOtherCosts extends BaseEntity {
 		this.projectId = projectId;
 	}
 
-	public Integer getNonContestableTypeId() {
-		return nonContestableTypeId;
+	public Integer getNonContestableOtherCostsItemId() {
+		return nonContestableOtherCostsItemId;
 	}
 
-	public void setNonContestableTypeId(Integer nonContestableTypeId) {
-		this.nonContestableTypeId = nonContestableTypeId;
-	}
-
-	public String getUnit() {
-		return unit;
-	}
-
-	public void setUnit(String unit) {
-		this.unit = unit;
+	public void setNonContestableOtherCostsItemId(Integer nonContestableOtherCostsItemId) {
+		this.nonContestableOtherCostsItemId = nonContestableOtherCostsItemId;
 	}
 
 	public Integer getQuantity() {
@@ -40,30 +37,6 @@ public class NonContestableOtherCosts extends BaseEntity {
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
-	}
-
-	public Double getRate() {
-		return rate;
-	}
-
-	public void setRate(Double rate) {
-		this.rate = rate;
-	}
-
-	public Double getTotal() {
-		return total;
-	}
-
-	public void setTotal(Double total) {
-		this.total = total;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 }

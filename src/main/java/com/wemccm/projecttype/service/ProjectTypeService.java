@@ -23,4 +23,11 @@ public class ProjectTypeService {
 		
 
 	}
+
+	public List<ProjectType> selectAllProjectType() {
+		List<ProjectType> pt = Dao.selectAllProjectType();
+		
+
+		return pt;
+	}
 }

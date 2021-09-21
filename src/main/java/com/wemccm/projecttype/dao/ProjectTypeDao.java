@@ -15,6 +15,8 @@ public interface ProjectTypeDao {
 
 		public List<ProjectType> getProjectType(projectTypePojo pojo);
 
+		public List<ProjectType> selectAllProjectType( );
+
 	
 
 }

@@ -4,6 +4,24 @@ public class ProjectType extends BaseEntity {
 
 	private String name;
 	private String description;
+	private String projectManagement;
+	private String design;
+
+	public String getProjectManagement() {
+		return projectManagement;
+	}
+
+	public void setProjectManagement(String projectManagement) {
+		this.projectManagement = projectManagement;
+	}
+
+	public String getDesign() {
+		return design;
+	}
+
+	public void setDesign(String design) {
+		this.design = design;
+	}
 
 	public String getName() {
 		return name;

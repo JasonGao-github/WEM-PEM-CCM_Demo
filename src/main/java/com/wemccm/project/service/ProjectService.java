@@ -49,6 +49,10 @@ public class ProjectService {
 	
 	public void addProject(projectPojo pojo) {
 		Dao.addProject(pojo);
+		int id=Dao.getId(pojo);
+		pojo.setId(id);
+		Dao.addcustomercontribution(pojo);
+		
 		
 	}
 
