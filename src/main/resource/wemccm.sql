@@ -47,7 +47,7 @@ CREATE TABLE `avoidedcosttype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) ,
   PRIMARY KEY (`id`) USING BTREE
-) 
+);
 
 CREATE TABLE `avoidedcostmaintenancecosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -62,7 +62,7 @@ CREATE TABLE `avoidedcostmaintenancecosts`  (
   `maint` varchar(32) ,
   `vegMgt` varchar(32) ,
   PRIMARY KEY (`id`) USING BTREE
-) 
+); 
 CREATE TABLE `avoidedcostescguideline`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE `avoidedcostescguideline`  (
   `constant` varchar(32) ,
   `notes` varchar(32) ,
   PRIMARY KEY (`id`) USING BTREE
-) 
+); 
 CREATE TABLE `avoidedcostassetreplacementcosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE `avoidedcostassetreplacementcosts`  (
   `presentValueRC` double(10, 2) NULL DEFAULT NULL,
   `avoidedCostInputTypeId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+); 
 CREATE TABLE `cicauthorisation`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cicProjectDetailsID` int(11) NULL DEFAULT NULL,
