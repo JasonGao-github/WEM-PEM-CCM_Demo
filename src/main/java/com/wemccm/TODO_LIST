@@ -78,6 +78,11 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 2.开发接口，读取AvoidedCostType中的所有数据，不要分页。
 3.AvoidedCostAssetReplacementCosts，AvoidedCostESCGuideline，AvoidedCostMaintenanceCosts开发三个接口分别往这三张表里插入数据，均要求同时插入多条。
 4.开发一个接口，根据projectId查询这三张表里的所有信息，要与AvoidedCostType关联。结构不清楚的话，请参照UML图，我已经画好了。
+---------------------------
+1.增加了一个表，AvoidedCostassetReplacementIterm，脚本已经都加上了。
+		但是之前开发的有关AvoidedCostassetReplacementCosts的功能需要修改，
+		要通过外键left join到这个新表里面去取数据。所以请做出调整。
+2.开发一个接口，取出这个新表里的所有数据。
 
 
 

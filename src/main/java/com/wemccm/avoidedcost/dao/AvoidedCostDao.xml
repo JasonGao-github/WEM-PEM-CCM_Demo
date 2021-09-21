@@ -14,6 +14,14 @@
 
 	</select>
 
+	<select id="selectAllAvoidedCostassetReplacementIterm"
+
+		resultType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
+
+		SELECT * FROM avoidedcostassetreplacementiterm
+
+	</select>
+	
 
 
 	<select id="insertAvoidedCostAssetReplacementCosts"
@@ -63,14 +71,19 @@
 	<select id="findAvoidedCostAssetReplacementCosts"
 		parameterType="com.wemccm.common.pojo.projectIdPojo"
 		resultType="com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo">
-		SELECT arc.*,t.`name` as InputTypeName
+		SELECT arc.*,t.`name` as InputTypeName,ari.`name` as ReplacementItermName
 
-		FROM avoidedcosttype as t
+		FROM avoidedcostassetreplacementcosts as arc
 
-		LEFT JOIN avoidedcostassetreplacementcosts as arc
+		LEFT JOIN  avoidedcosttype as t
 		ON
 		arc.avoidedCostInputTypeId=t.id
-
+		
+		LEFT JOIN avoidedcostassetreplacementiterm as ari
+		ON
+		arc.avoidedCostassetReplacementItermId=ari.id
+		
+		
 		WHERE arc.projectId=#{projectId}
 	</select>
 
