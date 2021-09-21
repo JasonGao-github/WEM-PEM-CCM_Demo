@@ -1,0 +1,15 @@
+[
+    {
+		"title" : "Survey - Small (1 to 3 poles)",
+		"unit" : "project",
+		"quantity" : 10,
+		"rate" : 1234		
+    }, 
+
+	{
+		"title" : "Survey - Medium (4 to 7 poles)",
+		"unit" : "project",
+		"quantity" : 10,
+		"rate" : 5678	
+    }
+]

@@ -24,7 +24,7 @@ CREATE TABLE `cicauthorisation`  (
   `title` varchar(32)  NULL DEFAULT NULL,
   `authorDate` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicauthorisation
@@ -40,7 +40,7 @@ CREATE TABLE `cicfinanicaldistribution`  (
   `finanicalDistributionItermID` int(11) NULL DEFAULT NULL,
   `price` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicfinanicaldistribution
@@ -55,7 +55,7 @@ CREATE TABLE `cicfinanicaldistributioniterm`  (
   `finanicalDistributionTypeId` int(11) NULL DEFAULT NULL,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicfinanicaldistributioniterm
@@ -69,7 +69,7 @@ CREATE TABLE `cicfinanicaldistributiontype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicfinanicaldistributiontype
@@ -84,7 +84,7 @@ CREATE TABLE `cicprojectdetails`  (
   `projectId` int(11) NULL DEFAULT NULL,
   `wbsElements` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicprojectdetails
@@ -104,7 +104,7 @@ CREATE TABLE `cicprojectestimate`  (
   `contracts` double(10, 2) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicprojectestimate
@@ -118,7 +118,7 @@ CREATE TABLE `cicprojecttask`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of cicprojecttask
@@ -133,7 +133,7 @@ CREATE TABLE `currentoccupy`  (
   `userId` int(11) NULL DEFAULT NULL,
   `projectId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 -- ----------------------------
 -- Records of currentoccupy
@@ -160,7 +160,7 @@ CREATE TABLE `customercontribution`  (
   `jemenaScopeExclusions` varchar(32)  NULL DEFAULT NULL,
   `assumption` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of customercontribution
@@ -177,7 +177,7 @@ CREATE TABLE `customercontributionauthoris`  (
   `dateOfRevision` datetime NULL DEFAULT NULL,
   `isAuthorised` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of customercontributionauthoris
@@ -194,7 +194,7 @@ CREATE TABLE `customercontributionprice`  (
   `originalPrice` double(10, 2) NULL DEFAULT NULL,
   `revisedPrice` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of customercontributionprice
@@ -208,7 +208,7 @@ CREATE TABLE `customercontributionpricetype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of customercontributionpricetype
@@ -225,7 +225,7 @@ CREATE TABLE `fiminputiterm`  (
   `currency` varchar(32)  NULL DEFAULT NULL,
   `unitCost` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of fiminputiterm
@@ -243,7 +243,7 @@ CREATE TABLE `fiminputitermquantity`  (
   `quantity` int(11) NULL DEFAULT NULL,
   `cost` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of fiminputitermquantity
@@ -257,7 +257,7 @@ CREATE TABLE `fiminputitermquantitytype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of fiminputitermquantitytype
@@ -272,7 +272,7 @@ CREATE TABLE `fiminputsubtype`  (
   `fIMinputTypeID` int(11) NULL DEFAULT NULL,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of fiminputsubtype
@@ -286,7 +286,7 @@ CREATE TABLE `fiminputtype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of fiminputtype
@@ -306,7 +306,7 @@ CREATE TABLE `noncontestableothercosts`  (
   `total` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of noncontestableothercosts
@@ -325,7 +325,7 @@ CREATE TABLE `noncontestableprojectcomponent`  (
   `total` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of noncontestableprojectcomponent
@@ -339,7 +339,7 @@ CREATE TABLE `noncontestabletype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of noncontestabletype
@@ -358,7 +358,7 @@ CREATE TABLE `notice`  (
   `createTime` datetime NULL DEFAULT NULL,
   `status` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 -- ----------------------------
 -- Records of notice
@@ -378,7 +378,7 @@ CREATE TABLE `project`  (
   `statues` varchar(32)  NULL DEFAULT NULL,
   `createDate` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 
 -- ----------------------------
@@ -390,7 +390,7 @@ CREATE TABLE `projectattachment`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of projectattachment
@@ -405,7 +405,7 @@ CREATE TABLE `projecttype`  (
   `name` varchar(32)  NULL DEFAULT NULL,
   `description` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 -- ----------------------------
 -- Records of projecttype
@@ -425,7 +425,7 @@ CREATE TABLE `quantityinput`  (
   `quatity` int(11) NULL DEFAULT NULL,
   `cost` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of quantityinput
@@ -443,7 +443,7 @@ CREATE TABLE `quantityinputiterm`  (
   `description` varchar(32)  NULL DEFAULT NULL,
   `unit` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of quantityinputiterm
@@ -459,7 +459,7 @@ CREATE TABLE `quantityinputitermsubtypeprice`  (
   `quantityInputSubTypeId` int(11) NULL DEFAULT NULL,
   `price` decimal(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of quantityinputitermsubtypeprice
@@ -474,7 +474,7 @@ CREATE TABLE `quantityinputitermtype`  (
   `name` varchar(32)  NULL DEFAULT NULL,
   `code` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of quantityinputitermtype
@@ -489,7 +489,7 @@ CREATE TABLE `quantityinputsubtype`  (
   `quantityInputTypeId` int(11) NULL DEFAULT NULL,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of quantityinputsubtype
@@ -503,7 +503,7 @@ CREATE TABLE `quantityinputtype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-)
+);
 
 -- ----------------------------
 -- Records of quantityinputtype
@@ -523,12 +523,13 @@ CREATE TABLE `user`  (
   `userTypeId` int(11) NULL DEFAULT NULL,
   `leaderId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (3, '123', '123', 'asdzxc', 123, 123);
+INSERT INTO `user` VALUES (1, 'admin', 'fname', 'lname', '1234', 'admin@jemena.com', 123, 123);
+INSERT INTO `user` VALUES (2, 'user', 'fname', 'lname', '1234', 'user@jemena.com', 01, 01);
 
 -- ----------------------------
 -- Table structure for usertype
@@ -538,7 +539,7 @@ CREATE TABLE `usertype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 -- ----------------------------
 -- Records of usertype
