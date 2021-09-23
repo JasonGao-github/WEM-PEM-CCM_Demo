@@ -1,5 +1,3 @@
-
-
 -- -----------------
 -- drop tables 
 -- -----------------
@@ -46,7 +44,7 @@ DROP TABLE IF EXISTS `avoidedcosttype`;
 -- -----------------
 CREATE TABLE `avoidedcosttype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) ,
+  `name` varchar(256) ,
   PRIMARY KEY (`id`) USING BTREE
 );
 
@@ -58,8 +56,8 @@ CREATE TABLE `avoidedcostmaintenancecosts`  (
   `costPa` double(10, 2) NULL DEFAULT NULL,
   `ameExist` double(10, 2) NULL DEFAULT NULL,
   `avoidedCostInputTypeId` int(11) NULL DEFAULT NULL,
-  `name` varchar(32) ,
-  `source` varchar(32) ,
+  `name` varchar(256) ,
+  `source` varchar(128) ,
   `maint` varchar(32) ,
   `vegMgt` varchar(32) ,
   PRIMARY KEY (`id`) USING BTREE
@@ -68,7 +66,7 @@ CREATE TABLE `avoidedcostescguideline`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `jemAvoidedCostModelId` int(11) NULL DEFAULT NULL,
-  `assumptions` varchar(32) ,
+  `assumptions` varchar(256) ,
   `source` varchar(32) ,
   `constant` varchar(32) ,
   `notes` varchar(32) ,
@@ -113,18 +111,18 @@ CREATE TABLE `cicfinanicaldistribution`  (
 CREATE TABLE `cicfinanicaldistributioniterm`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `finanicalDistributionTypeId` int(11) NULL DEFAULT NULL,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(256)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `cicfinanicaldistributiontype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `cicprojectdetails`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
-  `wbsElements` varchar(32)  NULL DEFAULT NULL,
+  `wbsElements` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `cicprojectestimate`  (
@@ -140,7 +138,7 @@ CREATE TABLE `cicprojectestimate`  (
 );
 CREATE TABLE `cicprojecttask`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `currentoccupy`  (
@@ -184,7 +182,7 @@ CREATE TABLE `customercontributionprice`  (
 );
 CREATE TABLE `customercontributionpricetype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `fiminputiterm`  (
@@ -206,7 +204,7 @@ CREATE TABLE `fiminputitermquantity`  (
 );
 CREATE TABLE `fiminputitermquantitytype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `fiminputsubtype`  (
@@ -217,7 +215,7 @@ CREATE TABLE `fiminputsubtype`  (
 );
 CREATE TABLE `fiminputtype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `noncontestableothercosts`  (
@@ -263,7 +261,7 @@ CREATE TABLE `noncontestabletype`  (
 CREATE TABLE `notice`  (
   `sender` int(11) NULL DEFAULT NULL,
   `recipient` int(11) NULL DEFAULT NULL,
-  `content` varchar(32)  NULL DEFAULT NULL,
+  `content` varchar(256)  NULL DEFAULT NULL,
   `type` varchar(32)  NULL DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `createTime` datetime NULL DEFAULT NULL,
@@ -285,7 +283,7 @@ CREATE TABLE `projectattachment`  (
 );
 CREATE TABLE `projecttype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   `description` varchar(256)  NULL DEFAULT NULL,
   `projectManagement` varchar(256)  NULL DEFAULT NULL,
   `design` varchar(256)  NULL DEFAULT NULL,
@@ -325,12 +323,12 @@ CREATE TABLE `quantityinputitermtype`  (
 CREATE TABLE `quantityinputsubtype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantityInputTypeId` int(11) NULL DEFAULT NULL,
-  `name` varchar(64)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `quantityinputtype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32)  NULL DEFAULT NULL,
+  `name` varchar(128)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `user`  (
@@ -346,7 +344,7 @@ CREATE TABLE `user`  (
 ) ;
 CREATE TABLE `usertype` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(32) NULL DEFAULT NULL,
+    `name` VARCHAR(64) NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE
 );
 
@@ -360,7 +358,17 @@ INSERT INTO `notice` VALUES (123, 123, '123', '123', 123, '2021-08-31 17:43:18',
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 456, '2020-04-30 17:01:09', '123');
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 457, '2020-04-30 17:01:09', '123');
 INSERT INTO `notice` VALUES (123, 123, '123', '123', 458, '2020-04-30 17:01:09', '123');
-INSERT INTO `usertype` VALUES (123, 'uio');
+
+INSERT INTO `usertype` VALUES (1, 'Super Administrator');
+INSERT INTO `usertype` VALUES (2, 'Financial Administrator');
+INSERT INTO `usertype` VALUES (3, 'Tariff Administrator');
+INSERT INTO `usertype` VALUES (4, 'Pricing Administrator');
+INSERT INTO `usertype` VALUES (5, 'Commercial & Operational Administrator');
+INSERT INTO `usertype` VALUES (6, 'Final Approvers');
+INSERT INTO `usertype` VALUES (7, 'Senior Project Mnager');
+INSERT INTO `usertype` VALUES (8, 'Project Manager');
+INSERT INTO `usertype` VALUES (9, 'Estimator');
+
 INSERT INTO `currentoccupy` VALUES (7, 999, 456);
 
 INSERT INTO `quantityinputitermtype` VALUES (1, '66kV Construction', '1.01');
@@ -489,3 +497,12 @@ INSERT INTO `fiminputsubtype` VALUES (4, 1, 'Other Transformers');
 INSERT INTO `fiminputsubtype` VALUES (5, 2, 'PAD 11kV');
 INSERT INTO `fiminputsubtype` VALUES (6, 2, 'Kiosk 22kV');
 INSERT INTO `fiminputsubtype` VALUES (7, 2, 'PAD 22kV');
+
+INSERT INTO `customercontributionpricetype` VALUES (1, 'Zinfra Fixed Price ');
+INSERT INTO `customercontributionpricetype` VALUES (2, 'Other Costs (O/Hs, FIM) ');
+INSERT INTO `customercontributionpricetype` VALUES (3, 'Total Assset Value (JEN Project Budget) ');
+INSERT INTO `customercontributionpricetype` VALUES (4, 'ZRO ∆ ');
+INSERT INTO `customercontributionpricetype` VALUES (5, 'TOTAL CUSTOMER CONTRIBUTION ');
+INSERT INTO `customercontributionpricetype` VALUES (6, 'BALANCE OF CONTRIBUTION AFTER PROJECT FEE ');
+INSERT INTO `customercontributionpricetype` VALUES (7, 'JEN Contribution to Project ');
+INSERT INTO `customercontributionpricetype` VALUES (8, 'Customer Supply Requested Target Date ');
