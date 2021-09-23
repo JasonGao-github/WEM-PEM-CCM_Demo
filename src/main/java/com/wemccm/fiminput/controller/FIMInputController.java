@@ -46,7 +46,7 @@ public class FIMInputController {
 	@RequestMapping(value = "/findFIMinputSubType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<FIMinputSubType> findFIMinputSubType(@RequestBody FIMinputSubTypePojo requestPojo) {
-
+		//find by fIMinputTypeID
 		
 		List<FIMinputSubType> l= serivce.findFIMinputSubType(requestPojo);
 		return l;
@@ -73,7 +73,7 @@ public class FIMInputController {
 	@RequestMapping(value = "/findFIMinputIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<FIMinputIterm> findFIMinputIterm(@RequestBody FIMinputItermPojo requestPojo) {
-
+		//find by fIMinputSubTypeID
 		
 		List<FIMinputIterm> l= serivce.findFIMinputIterm(requestPojo);
 		return l;

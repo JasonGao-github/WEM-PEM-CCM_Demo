@@ -46,7 +46,7 @@ public class NonContestableController {
 	@RequestMapping(value = "/findNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<NonContestableProjectComponent> findNonContestableProjectComponent(@RequestBody NonContestableProjectComponentPojo requestPojo) {
-
+		//find by projectTypeId
 		
 		List<NonContestableProjectComponent> l= serivce.findNonContestableProjectComponent(requestPojo);
 		return l;
@@ -56,7 +56,7 @@ public class NonContestableController {
 	@RequestMapping(value = "/findNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<NonContestableOtherCostsItem> findNonContestableOtherCostsItem(@RequestBody NonContestableOtherCostsItemPojo requestPojo) {
-
+		//find by nonContestableTypeId
 		
 		List<NonContestableOtherCostsItem> l= serivce.findNonContestableOtherCostsItem(requestPojo);
 		return l;

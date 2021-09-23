@@ -45,7 +45,7 @@ public class QuantityInputController {
 	@RequestMapping(value = "/findQuantityInputItermType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<QuantityInputItermType> findQuantityInputItermType(@RequestBody QuantityInputItermTypePojo requestPojo) {
-
+		//get by any attribute input (one or many)
 		
 		List<QuantityInputItermType> l= serivce.findQuantityInputItermType(requestPojo);
 		return l;
@@ -54,7 +54,8 @@ public class QuantityInputController {
 	@RequestMapping(value = "/threeQuantityInputItermTable", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<QuantityInputBasicDataListPojo> threeQuantityInputItermTable(@RequestBody QuantityInputItermPojo requestPojo) {
-
+		//find by quantityInputItermTypeId
+		//form table quantityinputiterm,quantityinputitermsubtypeprice,quantityinputsubtype
 		
 		List<QuantityInputBasicDataListPojo> l= serivce.threeQuantityInputItermTable(requestPojo);
 		return l;

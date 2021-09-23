@@ -34,11 +34,10 @@ public class NoticeController {
 	@RequestMapping(value = "/findNotice", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult findNotice(@RequestBody NoticePojo requestPojo) {
-
+		//get by any attribute input (one or many)
 		
 		
 		List<Notice> n = serivce.findNotice(requestPojo);
-//		System.out.println(n.get(0).getCreateTime()+"   uid: ");
 		return new ResponseResult();
 	}
 	

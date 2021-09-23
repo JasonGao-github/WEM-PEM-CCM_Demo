@@ -26,6 +26,8 @@ public class UserController {
 	@RequestMapping(value = "/searchUsertype", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<wholeUserPojo> searchUsertype(@RequestBody UsertypePojo Pojo) {
+		//find by usertype.`name` from table user, usertype
+		
 		String usertype = Pojo.getUsertype();
 		List<wholeUserPojo> u = serivce.usertype(usertype);
 
@@ -41,6 +43,8 @@ public class UserController {
 	@RequestMapping(value = "/leaderid", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<User> leaderid(@RequestBody leaderidPojo Pojo) {
+		//find by leaderId from table user
+		
 		int leaderid = Pojo.getLeaderid();
 		List<User> u = serivce.leaderid(leaderid);
 
