@@ -87,12 +87,29 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 ************************************************************************
 1.addproject需要插入project和CustomerContribution两张表每个字段的数据。
 2.在创建project的时候，需要往customerContributionPrice初始化一部分数据。并在所有的数据都填完之后，更新这一部分数据。
+			customerContributionPricetypeid:1-8
 3.需要开发一个接口，往customerContributionAuthoris插入数据，同时插入多条。
 4.threeQuantityInputItermTable名字改掉！！要直接看懂接口是用来干什么的！
 5.开发一个接口，根据quantityInputItermTypeId查询所有的QuantityInputIterm
 6.insertQuantityInput需要能同时插入多条数据。
-7.开发一个接口，根据projectId查询ProjectNonContestableProjectComponent，NonContestableProjectComponent，ProjecTypet三张表里的信息。开发完以后，给出json格式。
-8.开发一个接口，根据projectId查询NonContestableOtherCosts，NonContestableOtherCostsIterm，NonContestableType三张表里的信息，开发完之后给出json格式。
+7.开发一个接口，根据projectId查询ProjectNonContestableProjectComponent，
+							NonContestableProjectComponent，
+							ProjecTypet三张表里的信息。开发完以后，给出json格式。
+
+8.开发一个接口，根据projectId查询NonContestableOtherCosts，
+						NonContestableOtherCostsIterm，
+						NonContestableType三张表里的信息，开发完之后给出json格式。
+
+
+
+
+
+
+
+
+
+
+
 
 
 

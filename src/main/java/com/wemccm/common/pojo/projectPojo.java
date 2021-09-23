@@ -12,6 +12,7 @@ public class projectPojo {
 	
 	//CC
 //	private Integer projectId;
+	private Integer CCid;
 	private String projectTitle;
 	private String jemenaWBS;
 	private String inquiryNumber;
@@ -21,9 +22,58 @@ public class projectPojo {
 	private String supplyAddress;
 	
 	
+	private String customerReasonForWorks;
+	private String customerScopeOfWork;
+	private String jemenaScopeOfWork;
+	private String jemenaScopeExclusions;
+	private String assumption;
+	
+	private Integer customerContributionPriceTypeId;
 	
 	
 
+	public Integer getCustomerContributionPriceTypeId() {
+		return customerContributionPriceTypeId;
+	}
+	public void setCustomerContributionPriceTypeId(Integer customerContributionPriceTypeId) {
+		this.customerContributionPriceTypeId = customerContributionPriceTypeId;
+	}
+	public Integer getCCid() {
+		return CCid;
+	}
+	public void setCCid(Integer cCid) {
+		CCid = cCid;
+	}
+	public String getCustomerReasonForWorks() {
+		return customerReasonForWorks;
+	}
+	public void setCustomerReasonForWorks(String customerReasonForWorks) {
+		this.customerReasonForWorks = customerReasonForWorks;
+	}
+	public String getCustomerScopeOfWork() {
+		return customerScopeOfWork;
+	}
+	public void setCustomerScopeOfWork(String customerScopeOfWork) {
+		this.customerScopeOfWork = customerScopeOfWork;
+	}
+	public String getJemenaScopeOfWork() {
+		return jemenaScopeOfWork;
+	}
+	public void setJemenaScopeOfWork(String jemenaScopeOfWork) {
+		this.jemenaScopeOfWork = jemenaScopeOfWork;
+	}
+	public String getJemenaScopeExclusions() {
+		return jemenaScopeExclusions;
+	}
+	public void setJemenaScopeExclusions(String jemenaScopeExclusions) {
+		this.jemenaScopeExclusions = jemenaScopeExclusions;
+	}
+	public String getAssumption() {
+		return assumption;
+	}
+	public void setAssumption(String assumption) {
+		this.assumption = assumption;
+	}
 	public Integer getId() {
 		return id;
 	}

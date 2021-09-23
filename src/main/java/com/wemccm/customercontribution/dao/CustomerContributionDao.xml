@@ -66,11 +66,17 @@
 		WHERE id=#{id} 
 	</select> 
 	
+
 	
-	
-	
-	
-	
+		<select id="insertCustomerContributionAuthoris"
+		parameterType="com.wemccm.common.entity.CustomerContributionAuthoris">
+
+		INSERT INTO customercontributionauthoris (customerContributionId,
+		details,dateOfRevision,isAuthorised)
+		VALUES
+		(#{customerContributionId},#{details},#{dateOfRevision},#{isAuthorised})
+
+	</select>
 	
 	
 	

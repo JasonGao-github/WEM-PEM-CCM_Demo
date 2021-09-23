@@ -1,6 +1,7 @@
 
 package com.wemccm.project.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,12 +50,24 @@ public class ProjectService {
 	
 	public void addProject(projectPojo pojo) {
 		Dao.addProject(pojo);
-		int id=Dao.getId(pojo);
+		List<Integer> ids=Dao.getId(pojo);
+		int id=Collections.max(ids);
 		pojo.setId(id);
+		System.out.println(id);
 		Dao.addcustomercontribution(pojo);
+		List<Integer> CCids=Dao.getCCId(pojo);
+		int CCid=Collections.max(CCids);
+		System.out.println(CCid);
+		pojo.setCCid(CCid);
 		
-		
-	}
+		for(int i=1;i<9;i++) {
+			pojo.setCustomerContributionPriceTypeId(i);
+			Dao.addcustomercontributionprice(pojo);
+			}
+		}
+	
+	
+	
 
 	
 //	public List<User> listUser(DemoPageRequestDto dto) {
