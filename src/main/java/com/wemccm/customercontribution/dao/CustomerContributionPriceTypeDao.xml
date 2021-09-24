@@ -4,7 +4,8 @@
 	namespace="com.wemccm.customercontribution.dao.CustomerContributionPriceTypeDao">
 
 
-	<select id="listAll" resultType="List">
+	<select id="listAll"
+		resultType="com.wemccm.common.entity.CustomerContributionPriceType">
 
 		Select * from customerContributionPriceType
 

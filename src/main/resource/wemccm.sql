@@ -39,6 +39,8 @@ DROP TABLE IF EXISTS `avoidedcostassetreplacementcosts`;
 DROP TABLE IF EXISTS `avoidedcostescguideline`;
 DROP TABLE IF EXISTS `avoidedcostmaintenancecosts`;
 DROP TABLE IF EXISTS `avoidedcosttype`;
+DROP TABLE IF EXISTS `avoidedcostassetreplacementiterm`;
+
 -- -----------------
 -- create tables 
 -- -----------------

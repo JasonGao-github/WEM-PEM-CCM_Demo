@@ -22,10 +22,6 @@ public interface CustomerContributionDao {
 
 	public void addcustomercontribution(projectPojo pojo);
 
-	
-	
-	
-	
 	public CustomerContributionDetailPojo findDetailPojo(projectIdPojo requestPojo);
 
 	public List<CustomerContributionAuthoris> findCustomerContributionAuthoris(Integer customerContributionId);

@@ -64,7 +64,7 @@ public class ProjectService {
 		project.setCreateDate(new Date());
 		project.setStatues(SR.PROJECT_STATUS_NEW);
 		project.setVersion("0");
-		projectDao.addProject(pojo);
+		projectDao.addProject(project);
 		int projectId = projectDao.getNewestId();
 
 		// save to cc;
