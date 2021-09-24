@@ -155,7 +155,7 @@ CREATE TABLE `customercontribution`  (
   `jemenaSapPmOrder` varchar(32)  NULL DEFAULT NULL,
   `zinfraWBS` varchar(32)  NULL DEFAULT NULL,
   `projectTitle` varchar(32)  NULL DEFAULT NULL,
-  `projectTypeId` int(11) NULL DEFAULT NULL,
+  `projectType` varchar(128) NULL DEFAULT NULL,
   `supplyAddress` varchar(32)  NULL DEFAULT NULL,
   `customerReasonForWorks` varchar(32)  NULL DEFAULT NULL,
   `customerScopeOfWork` varchar(32)  NULL DEFAULT NULL,

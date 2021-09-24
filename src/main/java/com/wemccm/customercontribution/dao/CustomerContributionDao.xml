@@ -93,10 +93,10 @@
 		parameterType="com.wemccm.common.pojo.projectPojo">
 
 		INSERT INTO customercontribution (projectId,
-		projectTitle,jemenaWBS,inquiryNumber,jemenaSapPmOrder,zinfraWBS,projectTypeId,supplyAddress,
+		projectTitle,jemenaWBS,inquiryNumber,jemenaSapPmOrder,zinfraWBS,projectType,supplyAddress,
 		customerReasonForWorks,customerScopeOfWork,jemenaScopeOfWork,jemenaScopeExclusions,assumption)
 		VALUES
-		(#{projectId},#{projectTitle},#{jemenaWBS},#{inquiryNumber},#{jemenaSapPmOrder},#{zinfraWBS},#{projectTypeId},#{supplyAddress},
+		(#{projectId},#{projectTitle},#{jemenaWBS},#{inquiryNumber},#{jemenaSapPmOrder},#{zinfraWBS},#{projectType},#{supplyAddress},
 		#{customerReasonForWorks},#{customerScopeOfWork},#{jemenaScopeOfWork},#{jemenaScopeExclusions},#{assumption})
 
 
