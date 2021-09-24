@@ -7,23 +7,28 @@ import com.wemccm.common.entity.CustomerContributionAuthoris;
 
 public class CustomerContributionDetailPojo {
 
-	private Integer projectId;
-	private Integer customerContributionId;
+
+	
 	// from project
 	private String statues;
 	private Date createDate;
 	private String version;
+	
 	// from cc
+	private Integer id;   //customerContributionId
+	private Integer projectId;
 	private String jemenaWBS;
 	private String inquiryNumber;
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
 	private String projectTitle;
+	
 	private String projectType;
 	private String supplyAddress;
 	private String customerReasonForWorks;
 	private String customerScopeOfWork;
 	private String jemenaScopeOfWork;
+	
 	private String jemenaScopeExclusions;
 	private String assumption;
 
@@ -31,6 +36,27 @@ public class CustomerContributionDetailPojo {
 
 	List<CustomerContributionAuthoris> authorList;
 
+	public List<CustomerContributionPricePojo> getPriceList() {
+		return priceList;
+	}
+
+	public void setPriceList(List<CustomerContributionPricePojo> priceList) {
+		this.priceList = priceList;
+	}
+
+	public List<CustomerContributionAuthoris> getAuthorList() {
+		return authorList;
+	}
+
+	public void setAuthorList(List<CustomerContributionAuthoris> authorList) {
+		this.authorList = authorList;
+	}
+	
+	
+	
+	
+	
+	
 	public Integer getProjectId() {
 		return projectId;
 	}
@@ -40,11 +66,11 @@ public class CustomerContributionDetailPojo {
 	}
 
 	public Integer getCustomerContributionId() {
-		return customerContributionId;
+		return id;
 	}
 
 	public void setCustomerContributionId(Integer customerContributionId) {
-		this.customerContributionId = customerContributionId;
+		this.id = customerContributionId;
 	}
 
 	public String getStatues() {
@@ -167,20 +193,6 @@ public class CustomerContributionDetailPojo {
 		this.assumption = assumption;
 	}
 
-	public List<CustomerContributionPricePojo> getPriceList() {
-		return priceList;
-	}
 
-	public void setPriceList(List<CustomerContributionPricePojo> priceList) {
-		this.priceList = priceList;
-	}
-
-	public List<CustomerContributionAuthoris> getAuthorList() {
-		return authorList;
-	}
-
-	public void setAuthorList(List<CustomerContributionAuthoris> authorList) {
-		this.authorList = authorList;
-	}
 
 }

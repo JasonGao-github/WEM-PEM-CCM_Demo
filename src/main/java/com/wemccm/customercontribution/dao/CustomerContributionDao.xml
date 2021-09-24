@@ -104,11 +104,44 @@
 
 
 
+	<select id="findDetailPojo" 
+	parameterType="com.wemccm.common.pojo.projectIdPojo"
+	resultType="com.wemccm.common.pojo.CustomerContributionDetailPojo">
+		SELECT p.createDate,p.version,p.statues,cc.*
+		
+		FROM project as p,customercontribution as cc
+		
+		WHERE p.id=#{projectId}
+		and cc.projectId=#{projectId}
+
+	</select>
 
 
 
+	<select id="findCustomerContributionAuthoris" 
+	parameterType="Integer"
+	resultType="com.wemccm.common.entity.CustomerContributionAuthoris">
+		SELECT *
+		
+		FROM customercontributionauthoris
+		WHERE customerContributionId=#{id}
 
+	</select>
+	
+	
+		<select id="findCustomerContributionPricePojo" 
+	parameterType="Integer"
+	resultType="com.wemccm.common.pojo.CustomerContributionPricePojo">
+select pt.`name` as customerContributionPriceTypeName
+from customercontributionprice as p
+left join customercontributionpricetype as pt
+on p.customerContributionPriceTypeId=pt.id
+where customerContributionId=#{id}
 
+	</select>
+	
+	
+	
 
 
 

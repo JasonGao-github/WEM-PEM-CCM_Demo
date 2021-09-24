@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.CustomerContribution;
 import com.wemccm.common.entity.CustomerContributionAuthoris;
+import com.wemccm.common.pojo.CustomerContributionDetailPojo;
 import com.wemccm.common.pojo.CustomerContributionPojo;
+import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.customercontribution.service.CustomerContributionService;
 
 @RestController
@@ -37,10 +39,10 @@ public class CustomerContributionController {
 
 	@RequestMapping(value = "/CustomerContributionDetail", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String insertCustomerContributionAuthoris(int projectId) {
+	public CustomerContributionDetailPojo CustomerContributionDetail(@RequestBody projectIdPojo requestPojo) {
 
-		// TODO
+		CustomerContributionDetailPojo result=serivce.CustomerContributionDetail(requestPojo);
 
-		return null;
+		return result;
 	}
 }
