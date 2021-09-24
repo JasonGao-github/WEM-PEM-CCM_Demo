@@ -17,4 +17,6 @@ public class SR {
 
 	public static final String NOTICE_TYPE_1 = "occupy_update";
 
+	public static final String PROJECT_STATUS_NEW = "new";
+
 }

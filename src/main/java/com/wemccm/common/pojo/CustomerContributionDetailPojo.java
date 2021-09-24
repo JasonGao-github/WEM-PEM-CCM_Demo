@@ -1,14 +1,24 @@
-package com.wemccm.common.entity;
+package com.wemccm.common.pojo;
 
-public class CustomerContribution extends BaseEntity {
+import java.util.Date;
+import java.util.List;
+
+import com.wemccm.common.entity.CustomerContributionAuthoris;
+
+public class CustomerContributionDetailPojo {
 
 	private Integer projectId;
+	private Integer customerContributionId;
+	// from project
+	private String statues;
+	private Date createDate;
+	private String version;
+	// from cc
 	private String jemenaWBS;
 	private String inquiryNumber;
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
 	private String projectTitle;
-//	private Integer projectTypeId;
 	private String projectType;
 	private String supplyAddress;
 	private String customerReasonForWorks;
@@ -17,12 +27,48 @@ public class CustomerContribution extends BaseEntity {
 	private String jemenaScopeExclusions;
 	private String assumption;
 
+	List<CustomerContributionPricePojo> priceList;
+
+	List<CustomerContributionAuthoris> authorList;
+
 	public Integer getProjectId() {
 		return projectId;
 	}
 
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
+	}
+
+	public Integer getCustomerContributionId() {
+		return customerContributionId;
+	}
+
+	public void setCustomerContributionId(Integer customerContributionId) {
+		this.customerContributionId = customerContributionId;
+	}
+
+	public String getStatues() {
+		return statues;
+	}
+
+	public void setStatues(String statues) {
+		this.statues = statues;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	public String getJemenaWBS() {
@@ -119,6 +165,22 @@ public class CustomerContribution extends BaseEntity {
 
 	public void setAssumption(String assumption) {
 		this.assumption = assumption;
+	}
+
+	public List<CustomerContributionPricePojo> getPriceList() {
+		return priceList;
+	}
+
+	public void setPriceList(List<CustomerContributionPricePojo> priceList) {
+		this.priceList = priceList;
+	}
+
+	public List<CustomerContributionAuthoris> getAuthorList() {
+		return authorList;
+	}
+
+	public void setAuthorList(List<CustomerContributionAuthoris> authorList) {
+		this.authorList = authorList;
 	}
 
 }

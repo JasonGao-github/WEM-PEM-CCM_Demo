@@ -101,7 +101,12 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 						NonContestableType三张表里的信息，开发完之后给出json格式。
 
 
-
+--------------------------------------
+1.用postman测试ProjectController中的addProject接口，之前逻辑不对，我给重构了。参数取消了一部分，可以看pojo对象。
+2.开发一个接口，通过projectId取出所有cc有关的信息。
+接口已经声明在了CustomerContributionController里，
+返回的pojo对象也已经写好了（CustomerContributionDetailPojo）
+3.写完给我json格式。
 
 
 

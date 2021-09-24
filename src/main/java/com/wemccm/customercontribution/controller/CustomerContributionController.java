@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wemccm.common.pojo.CustomerContributionPojo;
-import com.wemccm.customercontribution.service.CustomerContributionService;
-import com.wemccm.common.entity.AvoidedCostAssetReplacementCosts;
 import com.wemccm.common.entity.CustomerContribution;
 import com.wemccm.common.entity.CustomerContributionAuthoris;
+import com.wemccm.common.pojo.CustomerContributionPojo;
+import com.wemccm.customercontribution.service.CustomerContributionService;
 
 @RestController
 public class CustomerContributionController {
@@ -27,12 +26,21 @@ public class CustomerContributionController {
 
 		return "Success";
 	}
-	
+
 	@RequestMapping(value = "/insertCustomerContributionAuthoris", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String insertCustomerContributionAuthoris(@RequestBody List<CustomerContributionAuthoris> list) {
-		//insert table avoidedcostassetreplacementcosts
-		 serivce.insertCustomerContributionAuthoris(list);
+		// insert table avoidedcostassetreplacementcosts
+		serivce.insertCustomerContributionAuthoris(list);
 		return "success";
+	}
+
+	@RequestMapping(value = "/CustomerContributionDetail", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String insertCustomerContributionAuthoris(int projectId) {
+
+		// TODO
+
+		return null;
 	}
 }
