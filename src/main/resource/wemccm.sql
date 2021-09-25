@@ -1,5 +1,5 @@
 -- -----------------
--- drop tables 
+-- drop tables  
 -- -----------------
 DROP TABLE IF EXISTS `cicauthorisation`;
 DROP TABLE IF EXISTS `cicfinanicaldistribution`;
@@ -302,7 +302,6 @@ CREATE TABLE `quantityinput`  (
 );
 CREATE TABLE `quantityinputiterm`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `projectId` int(11) NULL DEFAULT NULL,
   `quantityInputItermTypeId` int(11) NULL DEFAULT NULL,
   `code` varchar(32)  NULL DEFAULT NULL,
   `description` varchar(32)  NULL DEFAULT NULL,
@@ -417,6 +416,9 @@ INSERT INTO `quantityinputitermtype` VALUES (41, 'Additional Plant', '7.02');
 INSERT INTO `quantityinputitermtype` VALUES (42, 'Extra Overtime cost (for itemised activities)', '8.01');
 INSERT INTO `quantityinputitermtype` VALUES (43, 'Plant & Equipment', '9.01');
 INSERT INTO `quantityinputitermtype` VALUES (44, 'Subcontracts', '10.01');
+
+INSERT INTO `quantityinputiterm` VALUES (1, 1, '10.01-01','66kV SC Intermediate, AT1A SL24','pole');
+INSERT INTO `quantityinputiterm` VALUES (2, 2, '10.02-01','22kV SC Intermediate, AT1A Wood','pole');
 
 INSERT INTO `QuantityInputType` VALUES (1, 'General');
 INSERT INTO `QuantityInputType` VALUES (2, 'Estimated Actuals');

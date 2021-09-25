@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.ProjectType;
-import com.wemccm.common.entity.QuantityInputItermType;
 import com.wemccm.common.pojo.projectTypePojo;
 import com.wemccm.projecttype.service.ProjectTypeService;
 
@@ -17,6 +16,7 @@ import com.wemccm.projecttype.service.ProjectTypeService;
 public class ProjectTypeController {
 	@Autowired
 	private ProjectTypeService serivce;
+	//
 
 	@RequestMapping(value = "/getProjectType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
