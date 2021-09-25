@@ -2,13 +2,11 @@ package com.wemccm.common.entity;
 
 public class User extends BaseEntity {
 
-	private String username;
 	private String firstName;
 	private String lastName;
 	private String password;
 	private String email;
 	private Integer userTypeId;
-	private Integer leaderId;
 
 	public String getFirstName() {
 		return firstName;
@@ -24,14 +22,6 @@ public class User extends BaseEntity {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
@@ -56,14 +46,6 @@ public class User extends BaseEntity {
 
 	public void setUserTypeId(Integer userTypeId) {
 		this.userTypeId = userTypeId;
-	}
-
-	public Integer getLeaderId() {
-		return leaderId;
-	}
-
-	public void setLeaderId(Integer leaderId) {
-		this.leaderId = leaderId;
 	}
 
 }
