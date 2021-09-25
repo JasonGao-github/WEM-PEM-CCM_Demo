@@ -7,7 +7,6 @@
 		as cc ON p.id=cc.projectId WHERE p.id=#{id} -->
 
 	<select id="selectPage"
-
 		resultType="com.wemccm.common.page.FindPageRequestDto"
 		parameterType="com.wemccm.common.page.FindPageRequestDtoPojo">
 		SELECT cc.*,co.userId,p.statues,p.createDate,p.version
@@ -16,7 +15,8 @@
 		LEFT JOIN currentoccupy as co
 		ON p.id=co.projectId
 
-		LEFT JOIN customercontribution as cc
+		LEFT JOIN
+		customercontribution as cc
 		ON p.id=cc.projectId
 		<where>
 			<if test="jemenaWBS!=null and jemenaWBS!=''">
@@ -45,20 +45,16 @@
 
 
 	<select id="addProject"
-		parameterType="com.wemccm.common.pojo.projectPojo">
-
+		parameterType="com.wemccm.common.entity.Project">
 
 		INSERT INTO project (statues,createDate,version)
-		VALUES (#{statues},#{createDate},#{version})
-
-
-
+		VALUES
+		(#{statues},#{createDate},#{version})
 
 	</select>
 
 
-	<select id="getId" 
-	resultType="Integer"
+	<select id="getId" resultType="Integer"
 		parameterType="com.wemccm.common.pojo.projectPojo">
 
 		SELECT id FROM project
@@ -78,23 +74,90 @@
 	</select>
 
 
+	<select id="getNewestId" resultType="Integer">
+
+		SELECT id FROM project ORDER
+		BY id DESC LIMIt 1
+
+	</select>
 
 
-
-	<select id="addcustomercontribution"
-
+	<select id="getCCId" resultType="Integer"
 		parameterType="com.wemccm.common.pojo.projectPojo">
 
-		INSERT INTO customercontribution (projectId,
-		projectTitle,jemenaWBS,inquiryNumber,jemenaSapPmOrder,zinfraWBS,projectTypeId,supplyAddress)
-		VALUES
-		(#{id},#{projectTitle},#{jemenaWBS},#{inquiryNumber},#{jemenaSapPmOrder},#{zinfraWBS},#{projectTypeId},#{supplyAddress})
+		SELECT id FROM customercontribution
+		<where>
+			<if test="id!=null and id!=''">
+				projectId = #{id}
+			</if>
+			<if test="projectTitle!=null and projectTitle!=''">
+				and projectTitle = #{projectTitle}
+			</if>
+			<if test="jemenaWBS!=null and jemenaWBS!=''">
+				and jemenaWBS = #{jemenaWBS}
+			</if>
+			<if test="inquiryNumber!=null and inquiryNumber!=''">
+				and inquiryNumber = #{inquiryNumber}
+			</if>
+
+
+			<if test="jemenaSapPmOrder!=null and jemenaSapPmOrder!=''">
+				and jemenaSapPmOrder = #{jemenaSapPmOrder}
+			</if>
+			<if test="zinfraWBS!=null and zinfraWBS!=''">
+				and zinfraWBS = #{zinfraWBS}
+			</if>
+			<if test="projectTypeId!=null and projectTypeId!=''">
+				and projectTypeId = #{projectTypeId}
+			</if>
+			<if test="supplyAddress!=null and supplyAddress!=''">
+				and supplyAddress = #{supplyAddress}
+			</if>
+
+
+
+
+
+			<if
+				test="customerReasonForWorks!=null and customerReasonForWorks!=''">
+				and customerReasonForWorks = #{customerReasonForWorks}
+			</if>
+			<if test="customerScopeOfWork!=null and customerScopeOfWork!=''">
+				and customerScopeOfWork = #{customerScopeOfWork}
+			</if>
+			<if test="jemenaScopeOfWork!=null and jemenaScopeOfWork!=''">
+				and jemenaScopeOfWork = #{jemenaScopeOfWork}
+			</if>
+			<if
+				test="jemenaScopeExclusions!=null and jemenaScopeExclusions!=''">
+				and jemenaScopeExclusions = #{jemenaScopeExclusions}
+			</if>
+			<if test="assumption!=null and assumption!=''">
+				and assumption = #{assumption}
+			</if>
+
+
+
+		</where>
+	</select>
+
+
+	<select id="addcustomercontributionprice"
+		parameterType="com.wemccm.common.pojo.projectPojo">
+
+
+		INSERT INTO customercontributionprice
+		(customerContributionId,customerContributionPriceTypeId,originalPrice,revisedPrice)
+		VALUES (#{CCid},#{customerContributionPriceTypeId},0.0,0.0)
 
 
 
 
 
 	</select>
+
+
+
 
 
 

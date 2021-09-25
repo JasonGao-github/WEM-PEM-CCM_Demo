@@ -32,9 +32,6 @@ public class CreateAccountController {
 		Integer userTypeId = requestPojo.getUserTypeId();
 		Integer leaderId = requestPojo.getLeaderId();
 		
-		
-		
-		
 		String s = serivce.CreateAccount(email, password,username,userTypeId,leaderId);
 		if ("01".equals(s)) {
 			return new ResponseResult(SR.REQUEST_RESULT_FAIL, SR.CreateAccount_ERROR1);

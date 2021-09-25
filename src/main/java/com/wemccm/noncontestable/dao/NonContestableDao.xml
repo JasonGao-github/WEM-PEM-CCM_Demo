@@ -53,9 +53,70 @@
 		
 	</select>
 
+		<select id="findTablePPC" 
 	
+ 	parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.MultiNonContestableProjectComponentPojo">
+
+		SELECT * FROM projectnoncontestableprojectcomponent 
 	
+		WHERE projectId = #{projectId}
+
+	</select>
 	
+			 <select id="findTablePTAndPC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.nonContestableProjectComponentIdDetailPojo">
+		
+		SELECT pc.cost,pc.projectTypeId,pc.description as NonContestableProjectComponentDescription,
+				pt.name,pt.projectManagement,pt.design,pt.description as ProjectTypeDescription
+		FROM noncontestableprojectcomponent as pc
+		
+		LEFT JOIN projecttype as pt
+		ON pc.projectTypeId=pt.id
+		
+		WHERE pc.id=#{id}
+		
+	</select>
+
+
+
+
+
+
+
+
+
+		<select id="findTableOC" 
+	
+ 	parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.MultiNonContestableOtherCostsPojo">
+
+		SELECT * FROM noncontestableothercosts 
+	
+		WHERE projectId = #{projectId}
+
+	</select>
+	
+			 <select id="findTableTAndOCI" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.NonContestableOtherCostsDetailPojo">
+		
+		SELECT oci.*,t.name
+		FROM noncontestableothercostsiterm as oci
+		
+		LEFT JOIN noncontestabletype as t
+		ON oci.nonContestableTypeId=t.id
+		
+		WHERE oci.id=#{id}
+		
+	</select>
+
+
+
+
+
+
 
 
 

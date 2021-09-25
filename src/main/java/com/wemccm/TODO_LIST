@@ -83,6 +83,37 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 		但是之前开发的有关AvoidedCostassetReplacementCosts的功能需要修改，
 		要通过外键left join到这个新表里面去取数据。所以请做出调整。
 2.开发一个接口，取出这个新表里的所有数据。
+---------------------------
+************************************************************************
+1.addproject需要插入project和CustomerContribution两张表每个字段的数据。
+2.在创建project的时候，需要往customerContributionPrice初始化一部分数据。并在所有的数据都填完之后，更新这一部分数据。
+			customerContributionPricetypeid:1-8
+3.需要开发一个接口，往customerContributionAuthoris插入数据，同时插入多条。
+4.threeQuantityInputItermTable名字改掉！！要直接看懂接口是用来干什么的！
+5.开发一个接口，根据quantityInputItermTypeId查询所有的QuantityInputIterm
+6.insertQuantityInput需要能同时插入多条数据。
+7.开发一个接口，根据projectId查询ProjectNonContestableProjectComponent，
+							NonContestableProjectComponent，
+							ProjecTypet三张表里的信息。开发完以后，给出json格式。
+
+8.开发一个接口，根据projectId查询NonContestableOtherCosts，
+						NonContestableOtherCostsIterm，
+						NonContestableType三张表里的信息，开发完之后给出json格式。
+
+
+--------------------------------------
+1.用postman测试ProjectController中的addProject接口，之前逻辑不对，我给重构了。
+				参数取消了一部分，可以看pojo对象。
+2.开发一个接口，通过projectId取出所有cc有关的信息。
+		接口已经声明在了CustomerContributionController里，
+		返回的pojo对象也已经写好了（CustomerContributionDetailPojo）
+3.写完给我json格式。
+
+
+
+
+
+
 
 
 

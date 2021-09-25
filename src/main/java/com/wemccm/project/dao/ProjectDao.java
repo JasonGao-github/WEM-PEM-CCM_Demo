@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.wemccm.common.entity.Project;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.pojo.projectPojo;
@@ -14,11 +15,15 @@ public interface ProjectDao {
 
 	public List<FindPageRequestDto> selectPage(FindPageRequestDtoPojo dto);
 
-	public void addProject(projectPojo pojo);
+	public void addProject(Project p);
 
-	public void addcustomercontribution(projectPojo pojo);
+	public List<Integer> getId(projectPojo pojo);
 
-	public int getId(projectPojo pojo);
+	public List<Integer> getCCId(projectPojo pojo);
+
+	public void addcustomercontributionprice(projectPojo pojo);
+
+	public int getNewestId();
 
 //	List<FindPageRequestDto> selectPage(List<FindPageRequestDto> dto);
 

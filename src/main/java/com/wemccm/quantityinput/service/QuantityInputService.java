@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.wemccm.common.entity.CustomerContributionAuthoris;
+import com.wemccm.common.entity.QuantityInputIterm;
 import com.wemccm.common.entity.QuantityInputItermType;
 import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
 import com.wemccm.common.pojo.QuantityInputItermDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermPojo;
+import com.wemccm.common.pojo.QuantityInputItermTypeIdPojo;
 import com.wemccm.common.pojo.QuantityInputItermTypePojo;
 import com.wemccm.common.pojo.QuantityInputPojo;
 import com.wemccm.common.pojo.ThreeQuantityInputItermTable;
@@ -35,7 +39,7 @@ public class QuantityInputService {
 		return l;
 	}
 
-	public List<QuantityInputBasicDataListPojo> threeQuantityInputItermTable(QuantityInputItermPojo requestPojo) {
+	public List<QuantityInputBasicDataListPojo> findMuliQuantityInputTable(QuantityInputItermPojo requestPojo) {
 		List<QuantityInputBasicDataListPojo> l=Dao.findTableI(requestPojo);
 		for(int i=0;i<l.size();i++) {
 			List<QuantityInputItermDetailPojo> details=Dao.findTableSTPAndST(l.get(i).getId());
@@ -47,9 +51,19 @@ public class QuantityInputService {
 		return l;
 	}
 
-	public void insertQuantityInput(QuantityInputPojo requestPojo) {
-		Dao.insertQuantityInput(requestPojo);
+
+	public void insertQuantityInput(List<QuantityInputPojo> list) {
+		for (int i = 0; i < list.size(); i++) {
+			Dao.insertQuantityInput(list.get(i));
+
+		}
+	}
+
+	public List<QuantityInputIterm> findQuantityInputIterm(QuantityInputItermTypeIdPojo requestPojo) {
+			List<QuantityInputIterm> l=Dao.findQuantityInputIterm(requestPojo);
+
 		
+		return l;
 	}
 
 

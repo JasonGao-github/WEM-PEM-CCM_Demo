@@ -19,7 +19,7 @@ public class CICAuthorisationController {
 	@RequestMapping(value = "/addCICAuthorisation", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String addCICAuthorisation(@RequestBody CICAuthorisationPojo requestPojo) {
-
+		//INSERT INTO table cicauthorisation
 		CICAuthorisation cica=serivce.createCICAuthorisation(requestPojo);
 
 		return "Success";
@@ -28,7 +28,7 @@ public class CICAuthorisationController {
 	@RequestMapping(value = "/updateCICAuthorisation", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String updateCICAuthorisation(@RequestBody CICAuthorisationPojo requestPojo) {
-
+		//update cicauthorisation
 		serivce.updateCICAuthorisation(requestPojo);
 			return "Success";
 		

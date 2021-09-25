@@ -35,12 +35,11 @@ public class CurrentOccupyController {
 	@RequestMapping(value = "/findCurrentOccupy", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult findCurrentOccupy(@RequestBody CurrentOccupyPojo requestPojo) {
-
+		//find by projectId or  userId or both
 		Integer pid = requestPojo.getProjectId();
 		
 		
 		CurrentOccupy oc = serivce.findCurrentOccupy(pid);
-//		System.out.println(oc.getProjectId()+"   uid: "+oc.getUserId());
 		return new ResponseResult();
 	}
 	

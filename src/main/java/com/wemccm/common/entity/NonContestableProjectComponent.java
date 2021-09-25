@@ -2,16 +2,16 @@ package com.wemccm.common.entity;
 
 public class NonContestableProjectComponent extends BaseEntity {
 
-	private Integer projecTypeId;
+	private Integer projectTypeId;
 	private double cost;
 	private String description;
 
 	public Integer getProjecTypeId() {
-		return projecTypeId;
+		return projectTypeId;
 	}
 
 	public void setProjecTypeId(Integer projecTypeId) {
-		this.projecTypeId = projecTypeId;
+		this.projectTypeId = projecTypeId;
 	}
 
 	public double getCost() {

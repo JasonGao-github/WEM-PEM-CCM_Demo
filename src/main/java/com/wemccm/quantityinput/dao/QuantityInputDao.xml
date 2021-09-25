@@ -85,6 +85,18 @@
 	
 	
 	
+		 <select id="findQuantityInputIterm" 
+ 	parameterType="com.wemccm.common.pojo.QuantityInputItermTypeIdPojo"
+		resultType="com.wemccm.common.entity.QuantityInputIterm">
+		
+		SELECT *
+		
+		FROM quantityinputiterm
+		
+		WHERE quantityInputItermTypeId=#{quantityInputItermTypeId}
+		
+	</select>
+	
 	
 
 

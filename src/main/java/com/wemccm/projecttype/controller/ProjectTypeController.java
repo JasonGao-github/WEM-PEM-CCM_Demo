@@ -18,10 +18,10 @@ public class ProjectTypeController {
 	@Autowired
 	private ProjectTypeService serivce;
 
-	@RequestMapping(value = "/projectType", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/getProjectType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<ProjectType> sendMyName(@RequestBody projectTypePojo requestPojo) {
-
+	public List<ProjectType> getProjectType(@RequestBody projectTypePojo requestPojo) {
+		//get by any attribute input (one or many)
 
 		List<ProjectType> list=serivce.projectType(requestPojo);
 
