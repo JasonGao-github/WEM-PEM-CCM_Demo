@@ -15,6 +15,7 @@ import com.wemccm.common.pojo.QuantityInputPojo;
 
 @Mapper
 public interface QuantityInputDao {
+	//
 
 	public List<QuantityInputItermType> selectAllQuantityInputItermType();
 

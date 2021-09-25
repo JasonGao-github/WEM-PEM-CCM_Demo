@@ -1,5 +1,5 @@
 -- -----------------
--- drop tables 
+-- drop tables  
 -- -----------------
 DROP TABLE IF EXISTS `cicauthorisation`;
 DROP TABLE IF EXISTS `cicfinanicaldistribution`;

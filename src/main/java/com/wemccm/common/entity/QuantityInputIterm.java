@@ -2,6 +2,7 @@ package com.wemccm.common.entity;
 
 public class QuantityInputIterm extends BaseEntity {
 
+	//
 	private Integer quantityInputItermTypeId;
 	private String code;
 	private String description;

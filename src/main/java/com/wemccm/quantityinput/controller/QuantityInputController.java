@@ -20,6 +20,7 @@ import com.wemccm.quantityinput.service.QuantityInputService;
 @RestController
 public class QuantityInputController {
 
+	//
 	@Autowired
 	private QuantityInputService serivce;
 

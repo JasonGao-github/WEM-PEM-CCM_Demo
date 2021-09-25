@@ -16,6 +16,7 @@ import com.wemccm.projecttype.service.ProjectTypeService;
 public class ProjectTypeController {
 	@Autowired
 	private ProjectTypeService serivce;
+	//
 
 	@RequestMapping(value = "/getProjectType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
