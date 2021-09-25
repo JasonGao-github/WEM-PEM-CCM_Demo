@@ -18,7 +18,7 @@
 <%@ include file="common/sidebar.jspf" %>
 <section class="home_section">
     <div class="container-fluid contentWrapper">
-        <div class="container content d-flex flex-column" style="padding-top: 290px">
+        <div class="container content d-flex flex-column" style="padding-top: 450px">
             <h1 style="margin: 2vh;">CUSTOMER INTIATED CAPTICAL(Statement
                 of Work)</h1>
             <form class="form container" name="newUser" action="" method="POST"
