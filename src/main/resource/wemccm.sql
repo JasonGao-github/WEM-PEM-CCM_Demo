@@ -335,13 +335,11 @@ CREATE TABLE `quantityinputtype`  (
 );
 CREATE TABLE `user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(32)  NULL DEFAULT NULL,
   `firstName` varchar(32)  NULL DEFAULT NULL,
   `lastName` varchar(32)  NULL DEFAULT NULL,
   `password` varchar(32)  NULL DEFAULT NULL,
   `email` varchar(32)  NULL DEFAULT NULL,
   `userTypeId` int(11) NULL DEFAULT NULL,
-  `leaderId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ;
 CREATE TABLE `usertype` (
@@ -370,6 +368,8 @@ INSERT INTO `usertype` VALUES (6, 'Final Approvers');
 INSERT INTO `usertype` VALUES (7, 'Senior Project Mnager');
 INSERT INTO `usertype` VALUES (8, 'Project Manager');
 INSERT INTO `usertype` VALUES (9, 'Estimator');
+
+INSERT INTO `user` VALUES (1, 'admin', 'admin', 'admin','admin@wemccm.com',1);
 
 INSERT INTO `currentoccupy` VALUES (7, 999, 456);
 

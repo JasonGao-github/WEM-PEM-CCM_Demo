@@ -23,7 +23,7 @@ public class LoginController {
 	@Autowired
 	private LoginService serivce;
 
-	@RequestMapping(value = "/loginPage", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult sendMyName(@RequestBody LoginRequestPojo requestPojo) {
 		//find by email
