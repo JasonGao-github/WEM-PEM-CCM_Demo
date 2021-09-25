@@ -75,7 +75,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $http({
             method: 'POST',
-            url: url + '/loginPage',
+            url: url + '/login',
             data: obj
         }).then(function mySuccess(response) {
             var data = response.data;
