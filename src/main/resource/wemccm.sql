@@ -28,6 +28,8 @@ DROP TABLE IF EXISTS `project`;
 DROP TABLE IF EXISTS `projectattachment`;
 DROP TABLE IF EXISTS `projecttype`;
 DROP TABLE IF EXISTS `quantityinput`;
+DROP TABLE IF EXISTS `quantityinputbasicdata`;
+DROP TABLE IF EXISTS `quantityinputitermgroup`;
 --DROP TABLE IF EXISTS `quantityinputiterm`;
 --DROP TABLE IF EXISTS `quantityinputitermsubtypeprice`;
 --DROP TABLE IF EXISTS `quantityinputitermtype`;
@@ -295,7 +297,6 @@ CREATE TABLE `quantityinput`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `quantityInputBasicDataId` int(11) NULL DEFAULT NULL,
-  `quantityInputGroupId` int(11) NULL DEFAULT NULL,
   `actuals` int(11) NULL DEFAULT NULL,
   `recouverable` int(11) NULL DEFAULT NULL,
   `jemena` int(11) NULL DEFAULT NULL,
@@ -306,6 +307,26 @@ CREATE TABLE `quantityinput`  (
   `lcatSubTotal` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
+CREATE TABLE `quantityinputbasicdata`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantityInputItermGroupId` int(11) ,
+  `code` varchar(32) ,
+  `description` varchar(32) ,
+  `unit` varchar(32) ,
+  `labour` double(10, 2) ,
+  `material` double(10, 2) ,
+  `plant` double(10, 2) ,
+  `subcontract` double(10, 2) ,
+  `unitRate` double(10, 2) ,
+  `manhours` double(10, 2) ,
+  PRIMARY KEY (`id`) USING BTREE
+) ;
+CREATE TABLE `quantityinputitermgroup`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) ,
+  `code` varchar(32) ,
+  PRIMARY KEY (`id`) USING BTREE
+) ;
 --CREATE TABLE `quantityinputiterm`  (
 --  `id` int(11) NOT NULL AUTO_INCREMENT,
 --  `quantityInputItermTypeId` int(11) NULL DEFAULT NULL,
@@ -352,6 +373,7 @@ CREATE TABLE `usertype` (
     `name` VARCHAR(64) NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE
 );
+
 
 -- -----------------
 -- insert data 
