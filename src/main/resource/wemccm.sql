@@ -236,7 +236,6 @@ CREATE TABLE `noncontestableothercostsiterm`  (
   `nonContestableTypeId` int(11) NULL DEFAULT NULL,
   `unit` varchar(32)  NULL DEFAULT NULL,
   `rate` double(10, 2) NULL DEFAULT NULL,
-  `total` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );

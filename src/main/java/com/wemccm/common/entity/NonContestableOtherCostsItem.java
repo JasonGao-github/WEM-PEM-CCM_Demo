@@ -6,7 +6,6 @@ public class NonContestableOtherCostsItem extends BaseEntity {
 	private Integer nonContestableTypeId;
 	private String unit;
 	private Double rate;
-	private Double total;
 	private String description;
 
 	public Integer getProjectId() {
@@ -39,14 +38,6 @@ public class NonContestableOtherCostsItem extends BaseEntity {
 
 	public void setRate(Double rate) {
 		this.rate = rate;
-	}
-
-	public Double getTotal() {
-		return total;
-	}
-
-	public void setTotal(Double total) {
-		this.total = total;
 	}
 
 	public String getDescription() {
