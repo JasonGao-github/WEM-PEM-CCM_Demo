@@ -1,6 +1,6 @@
--- -----------------
--- drop tables  
--- -----------------
+--  -- -- -- -- -- -- -- -- -
+--  drop tables  
+--  -- -- -- -- -- -- -- -- -
 DROP TABLE IF EXISTS `cicauthorisation`;
 DROP TABLE IF EXISTS `cicfinanicaldistribution`;
 DROP TABLE IF EXISTS `cicfinanicaldistributioniterm`;
@@ -30,11 +30,11 @@ DROP TABLE IF EXISTS `projecttype`;
 DROP TABLE IF EXISTS `quantityinput`;
 DROP TABLE IF EXISTS `quantityinputbasicdata`;
 DROP TABLE IF EXISTS `quantityinputitermgroup`;
---DROP TABLE IF EXISTS `quantityinputiterm`;
---DROP TABLE IF EXISTS `quantityinputitermsubtypeprice`;
---DROP TABLE IF EXISTS `quantityinputitermtype`;
---DROP TABLE IF EXISTS `quantityinputsubtype`;
---DROP TABLE IF EXISTS `quantityinputtype`;
+-- DROP TABLE IF EXISTS `quantityinputiterm`;
+-- DROP TABLE IF EXISTS `quantityinputitermsubtypeprice`;
+-- DROP TABLE IF EXISTS `quantityinputitermtype`;
+-- DROP TABLE IF EXISTS `quantityinputsubtype`;
+-- DROP TABLE IF EXISTS `quantityinputtype`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `usertype`;
 DROP TABLE IF EXISTS `avoidedcostassetreplacementcosts`;
@@ -43,9 +43,9 @@ DROP TABLE IF EXISTS `avoidedcostmaintenancecosts`;
 DROP TABLE IF EXISTS `avoidedcosttype`;
 DROP TABLE IF EXISTS `avoidedcostassetreplacementiterm`;
 
--- -----------------
--- create tables 
--- -----------------
+--  -- -- -- -- -- -- -- -- -
+--  create tables 
+--  -- -- -- -- -- -- -- -- -
 CREATE TABLE `avoidedcosttype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) ,
@@ -323,42 +323,42 @@ CREATE TABLE `quantityinputbasicdata`  (
 ) ;
 CREATE TABLE `quantityinputitermgroup`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) ,
+  `name` varchar(256) ,
   `code` varchar(32) ,
   PRIMARY KEY (`id`) USING BTREE
 ) ;
---CREATE TABLE `quantityinputiterm`  (
---  `id` int(11) NOT NULL AUTO_INCREMENT,
---  `quantityInputItermTypeId` int(11) NULL DEFAULT NULL,
---  `code` varchar(32)  NULL DEFAULT NULL,
---  `description` varchar(32)  NULL DEFAULT NULL,
---  `unit` varchar(32)  NULL DEFAULT NULL,
---  PRIMARY KEY (`id`) USING BTREE
---);
---CREATE TABLE `quantityinputitermsubtypeprice`  (
---  `id` int(11) NOT NULL AUTO_INCREMENT,
---  `quantityInputItemId` int(11) NULL DEFAULT NULL,
---  `quantityInputSubTypeId` int(11) NULL DEFAULT NULL,
---  `price` decimal(10, 2) NULL DEFAULT NULL,
---  PRIMARY KEY (`id`) USING BTREE
---);
---CREATE TABLE `quantityinputitermtype`  (
---  `id` int(11) NOT NULL AUTO_INCREMENT,
---  `name` varchar(256)  NULL DEFAULT NULL,
---  `code` varchar(64)  NULL DEFAULT NULL,
---  PRIMARY KEY (`id`) USING BTREE
---);
---CREATE TABLE `quantityinputsubtype`  (
---  `id` int(11) NOT NULL AUTO_INCREMENT,
---  `quantityInputTypeId` int(11) NULL DEFAULT NULL,
---  `name` varchar(128)  NULL DEFAULT NULL,
---  PRIMARY KEY (`id`) USING BTREE
---);
---CREATE TABLE `quantityinputtype`  (
---  `id` int(11) NOT NULL AUTO_INCREMENT,
---  `name` varchar(128)  NULL DEFAULT NULL,
---  PRIMARY KEY (`id`) USING BTREE
---);
+-- CREATE TABLE `quantityinputiterm`  (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `quantityInputItermTypeId` int(11) NULL DEFAULT NULL,
+--   `code` varchar(32)  NULL DEFAULT NULL,
+--   `description` varchar(32)  NULL DEFAULT NULL,
+--   `unit` varchar(32)  NULL DEFAULT NULL,
+--   PRIMARY KEY (`id`) USING BTREE
+-- );
+-- CREATE TABLE `quantityinputitermsubtypeprice`  (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `quantityInputItemId` int(11) NULL DEFAULT NULL,
+--   `quantityInputSubTypeId` int(11) NULL DEFAULT NULL,
+--   `price` decimal(10, 2) NULL DEFAULT NULL,
+--   PRIMARY KEY (`id`) USING BTREE
+-- );
+-- CREATE TABLE `quantityinputitermtype`  (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(256)  NULL DEFAULT NULL,
+--   `code` varchar(64)  NULL DEFAULT NULL,
+--   PRIMARY KEY (`id`) USING BTREE
+-- );
+-- CREATE TABLE `quantityinputsubtype`  (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `quantityInputTypeId` int(11) NULL DEFAULT NULL,
+--   `name` varchar(128)  NULL DEFAULT NULL,
+--   PRIMARY KEY (`id`) USING BTREE
+-- );
+-- CREATE TABLE `quantityinputtype`  (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(128)  NULL DEFAULT NULL,
+--   PRIMARY KEY (`id`) USING BTREE
+-- );
 CREATE TABLE `user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(32)  NULL DEFAULT NULL,
@@ -375,9 +375,9 @@ CREATE TABLE `usertype` (
 );
 
 
--- -----------------
--- insert data 
--- -----------------
+--  -- -- -- -- -- -- -- -- -
+--  insert data 
+--  -- -- -- -- -- -- -- -- -
 INSERT INTO `avoidedcosttype` VALUES (123, '123');
 INSERT INTO `avoidedcosttype` VALUES (456, '456');
 
@@ -445,45 +445,45 @@ INSERT INTO `quantityInputItermgroup` VALUES (42, 'Extra Overtime cost (for item
 INSERT INTO `quantityInputItermgroup` VALUES (43, 'Plant & Equipment', '9.01');
 INSERT INTO `quantityInputItermgroup` VALUES (44, 'Subcontracts', '10.01');
 
---INSERT INTO `quantityinputiterm` VALUES (1, 1, '10.01-01','66kV SC Intermediate, AT1A SL24','pole');
---INSERT INTO `quantityinputiterm` VALUES (2, 2, '10.02-01','22kV SC Intermediate, AT1A Wood','pole');
---
---INSERT INTO `QuantityInputType` VALUES (1, 'General');
---INSERT INTO `QuantityInputType` VALUES (2, 'Estimated Actuals');
---INSERT INTO `QuantityInputType` VALUES (3, 'Recoverable Works');
---INSERT INTO `QuantityInputType` VALUES (4, 'JEN Funded');
---INSERT INTO `QuantityInputType` VALUES (5, 'LCTA');
---
---INSERT INTO `quantityinputsubtype` VALUES (1, 1, 'Labour');
---INSERT INTO `quantityinputsubtype` VALUES (2, 1, 'Material');
---INSERT INTO `quantityinputsubtype` VALUES (3, 1, 'Plant');
---INSERT INTO `quantityinputsubtype` VALUES (4, 1, 'Subcontract');
---INSERT INTO `quantityinputsubtype` VALUES (5, 1, 'Unit Rate');
---INSERT INTO `quantityinputsubtype` VALUES (6, 1, 'Manhours');
---INSERT INTO `quantityinputsubtype` VALUES (7, 1, 'Total Manhours Actual');
---INSERT INTO `quantityinputsubtype` VALUES (8, 0, 'Total Manhours Recoverable');
---INSERT INTO `quantityinputsubtype` VALUES (9, 0, 'Total Manhours JEN');
---INSERT INTO `quantityinputsubtype` VALUES (10, 0, 'Total Manhours LCTA');
---INSERT INTO `quantityinputsubtype` VALUES (11, 2, 'Labour');
---INSERT INTO `quantityinputsubtype` VALUES (12, 2, 'Material');
---INSERT INTO `quantityinputsubtype` VALUES (13, 2, 'Plant');
---INSERT INTO `quantityinputsubtype` VALUES (14, 2, 'Subcontract');
---INSERT INTO `quantityinputsubtype` VALUES (15, 2, 'Subtotal');
---INSERT INTO `quantityinputsubtype` VALUES (16, 3, 'Labour');
---INSERT INTO `quantityinputsubtype` VALUES (17, 3, 'Material');
---INSERT INTO `quantityinputsubtype` VALUES (18, 3, 'Plant');
---INSERT INTO `quantityinputsubtype` VALUES (19, 3, 'Subcontract');
---INSERT INTO `quantityinputsubtype` VALUES (20, 3, 'Subtotal');
---INSERT INTO `quantityinputsubtype` VALUES (21, 4, 'Labour');
---INSERT INTO `quantityinputsubtype` VALUES (22, 4, 'Material');
---INSERT INTO `quantityinputsubtype` VALUES (23, 4, 'Plant');
---INSERT INTO `quantityinputsubtype` VALUES (24, 4, 'Subcontract');
---INSERT INTO `quantityinputsubtype` VALUES (25, 4, 'Subtotal');
---INSERT INTO `quantityinputsubtype` VALUES (26, 5, 'Labour');
---INSERT INTO `quantityinputsubtype` VALUES (27, 5, 'Material');
---INSERT INTO `quantityinputsubtype` VALUES (28, 5, 'Plant');
---INSERT INTO `quantityinputsubtype` VALUES (29, 5, 'Subcontract');
---INSERT INTO `quantityinputsubtype` VALUES (30, 5, 'Subtotal');
+-- INSERT INTO `quantityinputiterm` VALUES (1, 1, '10.01-01','66kV SC Intermediate, AT1A SL24','pole');
+-- INSERT INTO `quantityinputiterm` VALUES (2, 2, '10.02-01','22kV SC Intermediate, AT1A Wood','pole');
+-- 
+-- INSERT INTO `QuantityInputType` VALUES (1, 'General');
+-- INSERT INTO `QuantityInputType` VALUES (2, 'Estimated Actuals');
+-- INSERT INTO `QuantityInputType` VALUES (3, 'Recoverable Works');
+-- INSERT INTO `QuantityInputType` VALUES (4, 'JEN Funded');
+-- INSERT INTO `QuantityInputType` VALUES (5, 'LCTA');
+-- 
+-- INSERT INTO `quantityinputsubtype` VALUES (1, 1, 'Labour');
+-- INSERT INTO `quantityinputsubtype` VALUES (2, 1, 'Material');
+-- INSERT INTO `quantityinputsubtype` VALUES (3, 1, 'Plant');
+-- INSERT INTO `quantityinputsubtype` VALUES (4, 1, 'Subcontract');
+-- INSERT INTO `quantityinputsubtype` VALUES (5, 1, 'Unit Rate');
+-- INSERT INTO `quantityinputsubtype` VALUES (6, 1, 'Manhours');
+-- INSERT INTO `quantityinputsubtype` VALUES (7, 1, 'Total Manhours Actual');
+-- INSERT INTO `quantityinputsubtype` VALUES (8, 0, 'Total Manhours Recoverable');
+-- INSERT INTO `quantityinputsubtype` VALUES (9, 0, 'Total Manhours JEN');
+-- INSERT INTO `quantityinputsubtype` VALUES (10, 0, 'Total Manhours LCTA');
+-- INSERT INTO `quantityinputsubtype` VALUES (11, 2, 'Labour');
+-- INSERT INTO `quantityinputsubtype` VALUES (12, 2, 'Material');
+-- INSERT INTO `quantityinputsubtype` VALUES (13, 2, 'Plant');
+-- INSERT INTO `quantityinputsubtype` VALUES (14, 2, 'Subcontract');
+-- INSERT INTO `quantityinputsubtype` VALUES (15, 2, 'Subtotal');
+-- INSERT INTO `quantityinputsubtype` VALUES (16, 3, 'Labour');
+-- INSERT INTO `quantityinputsubtype` VALUES (17, 3, 'Material');
+-- INSERT INTO `quantityinputsubtype` VALUES (18, 3, 'Plant');
+-- INSERT INTO `quantityinputsubtype` VALUES (19, 3, 'Subcontract');
+-- INSERT INTO `quantityinputsubtype` VALUES (20, 3, 'Subtotal');
+-- INSERT INTO `quantityinputsubtype` VALUES (21, 4, 'Labour');
+-- INSERT INTO `quantityinputsubtype` VALUES (22, 4, 'Material');
+-- INSERT INTO `quantityinputsubtype` VALUES (23, 4, 'Plant');
+-- INSERT INTO `quantityinputsubtype` VALUES (24, 4, 'Subcontract');
+-- INSERT INTO `quantityinputsubtype` VALUES (25, 4, 'Subtotal');
+-- INSERT INTO `quantityinputsubtype` VALUES (26, 5, 'Labour');
+-- INSERT INTO `quantityinputsubtype` VALUES (27, 5, 'Material');
+-- INSERT INTO `quantityinputsubtype` VALUES (28, 5, 'Plant');
+-- INSERT INTO `quantityinputsubtype` VALUES (29, 5, 'Subcontract');
+-- INSERT INTO `quantityinputsubtype` VALUES (30, 5, 'Subtotal');
 
 INSERT INTO `projecttype` VALUES (1, 'Minor', '', '', '');
 INSERT INTO `projecttype` VALUES (2, 'Type A', '', '', '');

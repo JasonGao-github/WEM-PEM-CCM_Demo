@@ -119,7 +119,8 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 7。开发接口往更新后的QuantityInput中插入数据，要求要批量操作。
 8.用projectId读取QuantityInput的所有数据，三张表联查。
 9.如果其他功能有涉及到此次改动的，做出对应的调整。
-
+--------------------------------------
+1.findQuantityInputDetail这个接口被我注释了，和真实逻辑完全对不上，请自己发现问题并改正。
 
 
 
