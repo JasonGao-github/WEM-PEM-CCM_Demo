@@ -15,8 +15,6 @@ import com.wemccm.common.pojo.MultiNonContestableProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsDetailPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
-import com.wemccm.common.pojo.QuantityInputBasicDataListPojo;
-import com.wemccm.common.pojo.QuantityInputItermDetailPojo;
 import com.wemccm.common.pojo.nonContestableProjectComponentIdDetailPojo;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.noncontestable.dao.NonContestableDao;
@@ -27,74 +25,62 @@ public class NonContestableService {
 	@Autowired
 	private NonContestableDao Dao;
 
-
 	public List<NonContestableProjectComponent> findNonContestableProjectComponent(
 			NonContestableProjectComponentPojo requestPojo) {
-		
-			List<NonContestableProjectComponent> l=Dao.findNonContestableProjectComponent(requestPojo);
 
-		
+		List<NonContestableProjectComponent> l = Dao.findNonContestableProjectComponent(requestPojo);
+
 		return l;
 	}
-
 
 	public List<NonContestableType> selectAllNonContestableType() {
-		List<NonContestableType> l=Dao.selectAllNonContestableType();
+		List<NonContestableType> l = Dao.selectAllNonContestableType();
 
-		
 		return l;
 	}
-
 
 	public List<NonContestableOtherCostsItem> findNonContestableOtherCostsItem(
 			NonContestableOtherCostsItemPojo requestPojo) {
-List<NonContestableOtherCostsItem> l=Dao.findNonContestableOtherCostsItem(requestPojo);
+		List<NonContestableOtherCostsItem> l = Dao.findNonContestableOtherCostsItem(requestPojo);
 
-		
 		return l;
 	}
 
-
 	public void insertProjectNonContestableProjectComponent(List<ProjectNonContestableProjectComponent> list) {
-		for(int i=0;i<list.size();i++) {
+		for (int i = 0; i < list.size(); i++) {
 			Dao.insertProjectNonContestableProjectComponent(list.get(i));
 		}
-		
+
 	}
 
-
 	public void insertNonContestableOtherCosts(List<NonContestableOtherCosts> list) {
-		for(int i=0;i<list.size();i++) {
+		for (int i = 0; i < list.size(); i++) {
 			Dao.insertNonContestableOtherCosts(list.get(i));
 		}
 	}
 
-
 	public List<MultiNonContestableProjectComponentPojo> findMultiNonContestableProjectComponent(
 			projectIdPojo requestPojo) {
-		
-		List<MultiNonContestableProjectComponentPojo> l=Dao.findTablePPC(requestPojo);
-		for(int i=0;i<l.size();i++) {
-			List<nonContestableProjectComponentIdDetailPojo> details=Dao.findTablePTAndPC(l.get(i).getNonContestableProjectComponentId());
-			l.get(i).setDetails(details); 
+
+		List<MultiNonContestableProjectComponentPojo> l = Dao.findTablePPC(requestPojo);
+		for (int i = 0; i < l.size(); i++) {
+			List<nonContestableProjectComponentIdDetailPojo> details = Dao
+					.findTablePTAndPC(l.get(i).getNonContestableProjectComponentId());
+			l.get(i).setDetails(details);
 		}
 
 		return l;
 	}
-
 
 	public List<MultiNonContestableOtherCostsPojo> findMultiNonContestableOtherCosts(projectIdPojo requestPojo) {
-		List<MultiNonContestableOtherCostsPojo> l=Dao.findTableOC(requestPojo);
-		for(int i=0;i<l.size();i++) {
-			List<NonContestableOtherCostsDetailPojo> details=Dao.findTableTAndOCI(l.get(i).getNonContestableOtherCostsItemId());
-			l.get(i).setDetails(details); 
+		List<MultiNonContestableOtherCostsPojo> l = Dao.findTableOC(requestPojo);
+		for (int i = 0; i < l.size(); i++) {
+			List<NonContestableOtherCostsDetailPojo> details = Dao
+					.findTableTAndOCI(l.get(i).getNonContestableOtherCostsItemId());
+			l.get(i).setDetails(details);
 		}
 
 		return l;
 	}
 
-
-
-
-	
 }
