@@ -32,5 +32,8 @@ public interface QuantityInputDao {
 	void insertQuantityInput(QuantityInputPojo quantityInputPojo);
 
 
+	List<QuantityInputDetailPojo> findQuantityInputDetail(projectIdPojo requestPojo);
+
+
 
 }

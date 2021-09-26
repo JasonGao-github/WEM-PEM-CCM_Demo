@@ -55,32 +55,25 @@ INSERT INTO quantityinput (projectId, quantityInputBasicDataId,actuals,recouvera
 	</select>
 	
 	
-		 <select id="findTableI" 
+
+	
+	
+			 <select id="findQuantityInputDetail" 
  	parameterType="com.wemccm.common.pojo.projectIdPojo"
 		resultType="com.wemccm.common.pojo.QuantityInputDetailPojo">
 		
-		SELECT *
 		
-		FROM quantityinput
-		
-		WHERE projectId=#{projectId}
-		
-	</select>
-	
-	
-			 <select id="findTableBDAndIG" 
- 	parameterType="Integer"
-		resultType="com.wemccm.common.pojo.QIDataPojo">
-		
-		
-		SELECT ibd.*,iig.`name`,iig.`code` as QuantityInputItermGroupCode
+		SELECT qi.*,ibd.*,iig.`name`,iig.`code` as QuantityInputItermGroupCode
 		
 		FROM quantityinputbasicdata as ibd
 		
 		LEFT JOIN quantityinputitermgroup as iig
 		ON ibd.quantityInputItermGroupId=iig.id
 		
-		WHERE ibd.id=#{id}
+		LEFT JOIN quantityinput as qi
+		ON qi.quantityInputBasicDataId=ibd.id
+		
+		WHERE projectId=#{projectId}
 		
 	</select>
 	

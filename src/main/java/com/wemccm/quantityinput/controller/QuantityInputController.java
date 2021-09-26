@@ -70,15 +70,13 @@ public class QuantityInputController {
 //		return l;
 //	}
 
-//	@RequestMapping(value = "/findQuantityInputDetail", produces = "application/json;charset=UTF-8")
-//	@ResponseBody
-//	public List<QuantityInputDetailPojo> findQuantityInputDetail(@RequestBody projectIdPojo requestPojo) {
-//		// find by quantityInputItermTypeId
-//		// form table
-//		// quantityinputiterm,quantityinputitermsubtypeprice,quantityinputsubtype
-//
-//		List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
-//		return l;
-//	}
+	@RequestMapping(value = "/findQuantityInputDetail", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<QuantityInputDetailPojo> findQuantityInputDetail(@RequestBody projectIdPojo requestPojo) {
+
+
+		List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
+		return l;
+	}
 
 }

@@ -50,16 +50,8 @@ public class QuantityInputService {
 //	}
 //List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
 	
-	public List<QuantityInputDetailPojo> findQuantityInputDetail(projectIdPojo requestPojo) {
-		List<QuantityInputDetailPojo> l = Dao.findTableI(requestPojo);
-		for (int i = 0; i < l.size(); i++) {
-			List<QIDataPojo> details = Dao.findTableBDAndIG(l.get(i).getQuantityInputBasicDataId());
-			l.get(i).setQIData(details);
-		}
 
-		return l;
-	}
-//
+
 //	public void insertQuantityInput(List<QuantityInputPojo> list) {
 //		for (int i = 0; i < list.size(); i++) {
 //			Dao.insertQuantityInput(list.get(i));
@@ -79,4 +71,29 @@ public class QuantityInputService {
 
 	}
 	}
+	
+	
+	
+	
+	public List<QuantityInputDetailPojo> findQuantityInputDetail(projectIdPojo requestPojo) {
+		List<QuantityInputDetailPojo> l = Dao.findQuantityInputDetail(requestPojo);
+
+
+		return l;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
