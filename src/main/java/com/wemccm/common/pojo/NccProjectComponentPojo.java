@@ -3,7 +3,6 @@ package com.wemccm.common.pojo;
 import com.wemccm.common.entity.ProjectNonContestableProjectComponent;
 
 public class NccProjectComponentPojo extends ProjectNonContestableProjectComponent {
-	//
 
 	private double cost;
 	private String description;

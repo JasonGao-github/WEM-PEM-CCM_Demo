@@ -20,7 +20,7 @@ import com.wemccm.noncontestable.service.NonContestableService;
 @RestController
 public class NonContestableController {
 
-	//
+	
 	@Autowired
 	private NonContestableService serivce;
 
