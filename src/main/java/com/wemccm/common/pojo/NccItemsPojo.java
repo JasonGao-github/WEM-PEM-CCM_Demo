@@ -6,7 +6,8 @@ public class NccItemsPojo extends NonContestableOtherCosts {
 
 	private String unit;
 	private Double rate;
-	private Double total;
+	
+	private Double itermTotal;
 	private String description;
 
 	public String getUnit() {
@@ -26,11 +27,11 @@ public class NccItemsPojo extends NonContestableOtherCosts {
 	}
 
 	public double getTotal() {
-		return total;
+		return itermTotal;
 	}
 
-	public void setTotal(Double total) {
-		this.total = total;
+	public void setTotal(Double itermTotal) {
+		this.itermTotal = itermTotal;
 	}
 
 	public String getDescription() {

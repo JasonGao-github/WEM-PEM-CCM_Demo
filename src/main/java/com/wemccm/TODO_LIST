@@ -122,6 +122,7 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 --------------------------------------
 1.findMultiNonContestableProjectComponent返回数据格式不对，我写了NccProjectComponentPojo，返回List<NccProjectComponentPojo>。
 2.findMultiNonContestableOtherCosts也不对，我写了NccItemsPojo，返回List<NccItemsPojo>,并且入参需要有一个nonContestableOtherCostsItemId，没传这个参数就返回所数据，传了就筛选。
+
 3.开发接口，插入数据到NonContestableProjectComponent。单条数据。
 4.开发接口，插入数据到NonContestableOtherCostsIterm。单条数据。
 

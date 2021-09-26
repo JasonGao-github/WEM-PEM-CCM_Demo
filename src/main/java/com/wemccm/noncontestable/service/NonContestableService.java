@@ -10,12 +10,11 @@ import com.wemccm.common.entity.NonContestableOtherCostsItem;
 import com.wemccm.common.entity.NonContestableProjectComponent;
 import com.wemccm.common.entity.NonContestableType;
 import com.wemccm.common.entity.ProjectNonContestableProjectComponent;
-import com.wemccm.common.pojo.MultiNonContestableOtherCostsPojo;
-import com.wemccm.common.pojo.MultiNonContestableProjectComponentPojo;
-import com.wemccm.common.pojo.NonContestableOtherCostsDetailPojo;
+import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
+import com.wemccm.common.pojo.NccItemsPojo;
+import com.wemccm.common.pojo.NccProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
-import com.wemccm.common.pojo.nonContestableProjectComponentIdDetailPojo;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.noncontestable.dao.NonContestableDao;
 
@@ -59,28 +58,29 @@ public class NonContestableService {
 		}
 	}
 
-	public List<MultiNonContestableProjectComponentPojo> findMultiNonContestableProjectComponent(
+	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(
 			projectIdPojo requestPojo) {
 
-		List<MultiNonContestableProjectComponentPojo> l = Dao.findTablePPC(requestPojo);
-		for (int i = 0; i < l.size(); i++) {
-			List<nonContestableProjectComponentIdDetailPojo> details = Dao
-					.findTablePTAndPC(l.get(i).getNonContestableProjectComponentId());
-			l.get(i).setDetails(details);
-		}
+		List<NccProjectComponentPojo> l = Dao.findMultiNonContestableProjectComponent(requestPojo);
+
 
 		return l;
 	}
 
-	public List<MultiNonContestableOtherCostsPojo> findMultiNonContestableOtherCosts(projectIdPojo requestPojo) {
-		List<MultiNonContestableOtherCostsPojo> l = Dao.findTableOC(requestPojo);
-		for (int i = 0; i < l.size(); i++) {
-			List<NonContestableOtherCostsDetailPojo> details = Dao
-					.findTableTAndOCI(l.get(i).getNonContestableOtherCostsItemId());
-			l.get(i).setDetails(details);
-		}
+	public List<NccItemsPojo> findMultiNonContestableOtherCosts(NccItemsAndProjectIdPojo requestPojo) {
+		List<NccItemsPojo> l = Dao.findMultiNonContestableOtherCosts(requestPojo);
 
 		return l;
+	}
+
+	public void insertNonContestableProjectComponent(NonContestableProjectComponent ncpc) {
+		Dao.insertNonContestableProjectComponent(ncpc);
+		
+	}
+
+	public void insertNonContestableOtherCostsItem(NonContestableOtherCostsItem ncoci) {
+		Dao.insertNonContestableOtherCostsItem(ncoci);
+		
 	}
 
 }

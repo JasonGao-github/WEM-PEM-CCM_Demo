@@ -45,6 +45,17 @@
 	</select>
 	
 	
+	
+	<select id="insertNonContestableProjectComponent" 
+ 	parameterType="com.wemccm.common.entity.NonContestableProjectComponent">
+		
+		INSERT INTO noncontestableprojectcomponent (projectTypeId, cost,description) 
+		VALUES (#{projectTypeId},#{cost},#{description})
+		
+	</select>
+	
+	
+	
 		<select id="insertNonContestableOtherCosts" 
  	parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
 		
@@ -53,63 +64,61 @@
 		
 	</select>
 
-		<select id="findTablePPC" 
-	
- 	parameterType="com.wemccm.common.pojo.projectIdPojo"
-		resultType="com.wemccm.common.pojo.MultiNonContestableProjectComponentPojo">
 
-		SELECT * FROM projectnoncontestableprojectcomponent 
-	
-		WHERE projectId = #{projectId}
-
+		<select id="insertNonContestableOtherCostsItem" 
+ 	parameterType="com.wemccm.common.entity.NonContestableOtherCostsItem">
+		
+		INSERT INTO noncontestableothercostsiterm (projectId, nonContestableTypeId,unit,total,rate,description) 
+		VALUES (#{projectId},#{nonContestableTypeId},#{unit},#{total},#{rate},#{description})
+		
 	</select>
 	
-			 <select id="findTablePTAndPC" 
- 	parameterType="Integer"
-		resultType="com.wemccm.common.pojo.nonContestableProjectComponentIdDetailPojo">
+	
+	
+	
+		<select id="findMultiNonContestableProjectComponent" 
+ 	parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.NccProjectComponentPojo">
+
+		SELECT  pc.cost,pc.description,ppc.*
 		
-		SELECT pc.cost,pc.projectTypeId,pc.description as NonContestableProjectComponentDescription,
-				pt.name,pt.projectManagement,pt.design,pt.description as ProjectTypeDescription
 		FROM noncontestableprojectcomponent as pc
 		
-		LEFT JOIN projecttype as pt
-		ON pc.projectTypeId=pt.id
+		LEFT JOIN projectnoncontestableprojectcomponent as ppc
+		ON ppc.nonContestableProjectComponentId=pc.id
 		
-		WHERE pc.id=#{id}
-		
-	</select>
-
-
-
-
-
-
-
-
-
-		<select id="findTableOC" 
-	
- 	parameterType="com.wemccm.common.pojo.projectIdPojo"
-		resultType="com.wemccm.common.pojo.MultiNonContestableOtherCostsPojo">
-
-		SELECT * FROM noncontestableothercosts 
-	
-		WHERE projectId = #{projectId}
+		WHERE ppc.projectId= #{projectId}
 
 	</select>
 	
-			 <select id="findTableTAndOCI" 
- 	parameterType="Integer"
-		resultType="com.wemccm.common.pojo.NonContestableOtherCostsDetailPojo">
-		
-		SELECT oci.*,t.name
+
+
+
+
+
+
+
+
+
+
+		<select id="findMultiNonContestableOtherCosts" 
+ 	parameterType="com.wemccm.common.pojo.NccItemsAndProjectIdPojo"
+		resultType="com.wemccm.common.pojo.NccItemsPojo">
+		SELECT ncoc.*,oci.description,oci.unit,oci.rate,oci.total as 'itermTotal'
 		FROM noncontestableothercostsiterm as oci
 		
-		LEFT JOIN noncontestabletype as t
-		ON oci.nonContestableTypeId=t.id
+		LEFT JOIN noncontestableothercosts as ncoc
+		ON ncoc.nonContestableOtherCostsItemId=oci.id
 		
-		WHERE oci.id=#{id}
-		
+	
+			<where>
+			<if test="projectId!=null and projectId!=''">
+				ncoc.projectId =#{projectId}
+			</if>
+			<if test="nonContestableOtherCostsItemId!=null and nonContestableOtherCostsItemId!=''">
+				and ncoc.nonContestableOtherCostsItemId = #{nonContestableOtherCostsItemId}
+			</if>
+		</where>
 	</select>
 
 
