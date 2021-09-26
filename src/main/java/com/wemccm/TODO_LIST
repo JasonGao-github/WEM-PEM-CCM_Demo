@@ -114,7 +114,7 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 2.entity做了大幅度调整。变得更简单了，可以参考UML图。
 3.把两张新表以及Quantityinput表的建表语句添加或者更新到sql中。旧的语句我已经注释。
 4.开发接口读取QuantityInputItermGroup中的所有数据
-5.开发接口根据quantityInputItermGroupId读取QuantityInputBasicData
+5.开发接口读取QuantityInputBasicData根据quantityInputItermGroupId
 6.开发接口往QuantityInputBasicData中添加新的数据。
 7。开发接口往更新后的QuantityInput中插入数据，要求要批量操作。
 8.用projectId读取QuantityInput的所有数据，三张表联查。

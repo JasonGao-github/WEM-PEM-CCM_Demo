@@ -14,88 +14,81 @@
 
 	
 	
- 	<select id="selectAllQuantityInputItermType" 
-		resultType="com.wemccm.common.entity.QuantityInputItermType">
-		SELECT * FROM quantityinputitermtype
+ 	<select id="selectAllQuantityInputItermGroup" 
+		resultType="com.wemccm.common.entity.QuantityInputItermGroup">
+		SELECT * FROM quantityinputitermgroup
 	</select>
 	
-	
-	
-	
-	<select id="findQuantityInputItermType" 
-	
- 	parameterType="com.wemccm.common.pojo.QuantityInputItermTypePojo"
-		resultType="com.wemccm.common.entity.QuantityInputItermType">
-
-		SELECT * FROM quantityinputitermtype 
-	<where>
-			<if test="name!=null and name!=''">
-				name = #{name}
-			</if>
-			<if test="code!=null and code!=''">
-				and code = #{code}
-			</if>
-			<if test="id!=null and id!=''">
-				and id = #{id}
-			</if>
-
-		</where>
-	</select>
-	
-	 <select id="findTableI" 
- 	parameterType="com.wemccm.common.pojo.QuantityInputItermPojo"
-		resultType="com.wemccm.common.pojo.QuantityInputBasicDataListPojo">
-		
-		SELECT i.*
-		
-		FROM quantityinputiterm as i
-		
-		WHERE i.quantityInputItermTypeId=#{quantityInputItermTypeId}
-		
-	</select>
-	
-
-	
-	<select id="insertQuantityInput" 
- 	parameterType="com.wemccm.common.pojo.QuantityInputPojo">
-		
-		INSERT INTO quantityinput (projectId, quantityInputItemId,quantityInputTypeId,quatity,cost) 
-		VALUES (#{projectId},#{quantityInputItemId},#{quantityInputTypeId},#{quatity},#{cost})
-		
-	</select>
-	
-	
-	
-		 <select id="findTableSTPAndST" 
- 	parameterType="Integer"
-		resultType="com.wemccm.common.pojo.QuantityInputItermDetailPojo">
-		
-		SELECT stp.quantityInputItemId,stp.quantityInputSubTypeId,stp.price,
-		
-		st.quantityInputTypeId,st.name
-		
-		FROM quantityinputitermsubtypeprice as stp
-		
-		LEFT JOIN quantityinputsubtype as st
-		ON stp.quantityInputSubTypeId=st.id
-		
-		WHERE stp.quantityInputItemId=#{id}
-		
-	</select>
-	
-	
-	
-		 <select id="findQuantityInputIterm" 
- 	parameterType="com.wemccm.common.pojo.QuantityInputItermTypeIdPojo"
-		resultType="com.wemccm.common.entity.QuantityInputIterm">
+	<select id="findQuantityInputBasicData"
+ 	parameterType="com.wemccm.common.pojo.QuantityInputItermGroupIdPojo"
+		resultType="com.wemccm.common.entity.QuantityInputBasicData">
 		
 		SELECT *
 		
-		FROM quantityinputiterm
+		FROM quantityinputbasicdata
 		
-		WHERE quantityInputItermTypeId=#{quantityInputItermTypeId}
+		WHERE quantityInputItermGroupId=#{quantityInputItermGroupId}
 		
 	</select>
+	
+		<select id="insertQuantityInputBasicData"
+ 	parameterType="com.wemccm.common.entity.QuantityInputBasicData">
+		
+		INSERT INTO quantityinputbasicdata (quantityInputItermGroupId, code,description,unit,labour,material,
+		plant,subcontract,unitRate,manhours) 
+		VALUES (#{quantityInputItermGroupId},#{code},#{description},#{unit},#{labour},#{material},
+		#{plant},#{subcontract},#{unitRate},#{manhours})
+		
+	</select>
+	
+	
+	
+	
+			<select id="insertQuantityInput" 
+ 	parameterType="com.wemccm.common.pojo.QuantityInputPojo">
+		
+INSERT INTO quantityinput (projectId, quantityInputBasicDataId,actuals,recouverable,jemena,lcat,
+						actualsSubTotal,recouverableSubTotal,jemenaSubTotal,lcatSubTotal) 
+		VALUES (#{projectId},#{quantityInputBasicDataId},#{actuals},#{recouverable},#{jemena},#{lcat},
+		#{actualsSubTotal},#{recouverableSubTotal},#{jemenaSubTotal},#{lcatSubTotal})
+		
+	</select>
+	
+	
+		 <select id="findTableI" 
+ 	parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.QuantityInputDetailPojo">
+		
+		SELECT *
+		
+		FROM quantityinput
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+			 <select id="findTableBDAndIG" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.QIDataPojo">
+		
+		
+		SELECT ibd.*,iig.`name`,iig.`code` as QuantityInputItermGroupCode
+		
+		FROM quantityinputbasicdata as ibd
+		
+		LEFT JOIN quantityinputitermgroup as iig
+		ON ibd.quantityInputItermGroupId=iig.id
+		
+		WHERE ibd.id=#{id}
+		
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	
 

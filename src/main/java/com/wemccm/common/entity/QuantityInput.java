@@ -3,23 +3,14 @@ package com.wemccm.common.entity;
 public class QuantityInput extends BaseEntity {
 
 	private Integer projectId;
-
 	private Integer quantityInputBasicDataId;
-
 	private Integer actuals;
-
 	private Integer recouverable;
-
 	private Integer jemena;
-
 	private Integer lcat;
-
 	private Double actualsSubTotal;
-
 	private Double recouverableSubTotal;
-
 	private Double jemenaSubTotal;
-
 	private Double lcatSubTotal;
 
 	public Double getActualsSubTotal() {
