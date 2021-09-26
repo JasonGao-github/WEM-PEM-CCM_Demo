@@ -5,7 +5,7 @@
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
-<%-- @  include file="common/checkSessionExist.jspf"--%>
+<%@  include file="common/checkSessionExist.jspf"%>
 
 <!DOCTYPE html>
 
@@ -40,7 +40,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						</div>
 						<div class="row light" ng-repeat="comp in proj_comps">
 							<h4 class="col-4">{{comp.description}}</h4>
-							<h4 class="col-2">unit</h4>
+							<h4 class="col-2">Hour</h4>
 							<input class="col-2" type="number" ng-model="comp.quantity" value="0">
 							<h4 class="col-2">{{comp.cost}}</h4>
 							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
@@ -51,7 +51,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 					<div class="other">
 						<div class="row">
-							<h4 class="col-4">Other Design Services</h4>
+							<h4 class="col-4"></h4>
 							<h4 class="col-2">Unit</h4>
 							<h4 class="col-2">Quantity</h4>
 							<h4 class="col-2">Rate</h4>
