@@ -1,4 +1,5 @@
 package com.wemccm.noncontestable.dao;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -15,48 +16,28 @@ import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
 import com.wemccm.common.pojo.projectIdPojo;
 
+@Mapper
+public interface NonContestableDao {
 
+	public List<NonContestableProjectComponent> findNonContestableProjectComponent(
+			NonContestableProjectComponentPojo requestPojo);
 
+	public List<NonContestableType> selectAllNonContestableType();
 
-	@Mapper
-	public interface NonContestableDao {
+	public List<NonContestableOtherCostsItem> findNonContestableOtherCostsItem(
+			NonContestableOtherCostsItemPojo requestPojo);
 
-		public List<NonContestableProjectComponent> findNonContestableProjectComponent(
-				NonContestableProjectComponentPojo requestPojo);
+	public void insertProjectNonContestableProjectComponent(
+			ProjectNonContestableProjectComponent projectNonContestableProjectComponent);
 
-		public List<NonContestableType> selectAllNonContestableType();
+	public void insertNonContestableOtherCosts(NonContestableOtherCosts nonContestableOtherCosts);
 
-		public List<NonContestableOtherCostsItem> findNonContestableOtherCostsItem(
-				NonContestableOtherCostsItemPojo requestPojo);
+	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(projectIdPojo requestPojo);
 
-		public void insertProjectNonContestableProjectComponent(
-				ProjectNonContestableProjectComponent projectNonContestableProjectComponent);
+	public List<NccItemsPojo> findMultiNonContestableOtherCosts(NccItemsAndProjectIdPojo requestPojo);
 
-		public void insertNonContestableOtherCosts(NonContestableOtherCosts nonContestableOtherCosts);
+	public void insertNonContestableProjectComponent(NonContestableProjectComponent ncpc);
 
+	public void insertNonContestableOtherCostsItem(NonContestableOtherCostsItem ncoci);
 
-
-		
-		
-		
-		
-		public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(projectIdPojo requestPojo);
-
-		public List<NccItemsPojo> findMultiNonContestableOtherCosts(NccItemsAndProjectIdPojo requestPojo);
-
-		public void insertNonContestableProjectComponent(NonContestableProjectComponent ncpc);
-
-		public void insertNonContestableOtherCostsItem(NonContestableOtherCostsItem ncoci);
-
-
-
-		
-		
-		
-		
-
-		
-		
-	}
-
-
+}
