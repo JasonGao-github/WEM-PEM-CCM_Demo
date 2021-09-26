@@ -40,5 +40,6 @@ public class NccItemsPojo extends NonContestableOtherCosts {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	//
 
 }
