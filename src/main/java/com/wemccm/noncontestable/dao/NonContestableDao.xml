@@ -78,10 +78,10 @@
 	<select id="insertNonContestableOtherCostsItem"
 		parameterType="com.wemccm.common.entity.NonContestableOtherCostsItem">
 
-		INSERT INTO noncontestableothercostsiterm (projectId,
+		INSERT INTO noncontestableothercostsiterm (
 		nonContestableTypeId,unit,total,rate,description)
 		VALUES
-		(#{projectId},#{nonContestableTypeId},#{unit},#{total},#{rate},#{description})
+		(#{nonContestableTypeId},#{unit},#{total},#{rate},#{description})
 
 	</select>
 
