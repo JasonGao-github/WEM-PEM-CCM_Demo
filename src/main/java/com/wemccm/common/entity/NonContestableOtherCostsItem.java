@@ -2,19 +2,11 @@ package com.wemccm.common.entity;
 
 public class NonContestableOtherCostsItem extends BaseEntity {
 
-	private Integer projectId;
 	private Integer nonContestableTypeId;
 	private String unit;
 	private Double rate;
 	private String description;
 
-	public Integer getProjectId() {
-		return projectId;
-	}
-
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
-	}
 
 	public Integer getNonContestableTypeId() {
 		return nonContestableTypeId;

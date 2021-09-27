@@ -232,7 +232,6 @@ CREATE TABLE `noncontestableothercosts`  (
 );
 CREATE TABLE `noncontestableothercostsiterm`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableTypeId` int(11) NULL DEFAULT NULL,
   `unit` varchar(32)  NULL DEFAULT NULL,
   `rate` double(10, 2) NULL DEFAULT NULL,

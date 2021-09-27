@@ -18,17 +18,17 @@ import com.wemccm.common.pojo.NccItemsPojo;
 import com.wemccm.common.pojo.NccProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
+import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.noncontestable.service.NonContestableService;
 
 @RestController
 public class NonContestableController {
 
-	
 	@Autowired
 	private NonContestableService serivce;
 
-	// list all the blue lines
+	// list all the blue lines(group)
 	@RequestMapping(value = "/selectAllNonContestableType", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<NonContestableType> selectAllNonContestableType() {
@@ -62,40 +62,36 @@ public class NonContestableController {
 	// save the data of Project Component part of ncc.
 	@RequestMapping(value = "/insertProjectNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String insertProjectNonContestableProjectComponent(
+	public ResponseResult insertProjectNonContestableProjectComponent(
 			@RequestBody List<ProjectNonContestableProjectComponent> list) {
 
 		serivce.insertProjectNonContestableProjectComponent(list);
-		return "success";
+		return new ResponseResult();
 	}
 
-	
-	@RequestMapping(value = "/insertNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String insertNonContestableProjectComponent(
-			@RequestBody NonContestableProjectComponent ncpc) {
-
-		serivce.insertNonContestableProjectComponent(ncpc);
-		return "success";
-	}
-	
-	@RequestMapping(value = "/insertNonContestableOtherCostsItem", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String insertNonContestableOtherCostsItem(
-			@RequestBody NonContestableOtherCostsItem ncoci) {
-
-		serivce.insertNonContestableOtherCostsItem(ncoci);
-		return "success";
-	}
-	
-	
 	// save the data of other part of ncc.
 	@RequestMapping(value = "/insertNonContestableOtherCosts", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String insertNonContestableOtherCosts(@RequestBody List<NonContestableOtherCosts> list) {
+	public ResponseResult insertNonContestableOtherCosts(@RequestBody List<NonContestableOtherCosts> list) {
 
 		serivce.insertNonContestableOtherCosts(list);
-		return "success";
+		return new ResponseResult();
+	}
+
+	@RequestMapping(value = "/insertNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult insertNonContestableProjectComponent(@RequestBody NonContestableProjectComponent ncpc) {
+
+		serivce.insertNonContestableProjectComponent(ncpc);
+		return new ResponseResult();
+	}
+
+	@RequestMapping(value = "/insertNonContestableOtherCostsItem", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult insertNonContestableOtherCostsItem(@RequestBody NonContestableOtherCostsItem ncoci) {
+
+		serivce.insertNonContestableOtherCostsItem(ncoci);
+		return new ResponseResult();
 	}
 
 	@RequestMapping(value = "/findMultiNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
@@ -110,24 +106,11 @@ public class NonContestableController {
 
 	@RequestMapping(value = "/findMultiNonContestableOtherCosts", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<NccItemsPojo> findMultiNonContestableOtherCosts(
-			@RequestBody NccItemsAndProjectIdPojo requestPojo) {
+	public List<NccItemsPojo> findMultiNonContestableOtherCosts(@RequestBody NccItemsAndProjectIdPojo requestPojo) {
 		// find by projectTypeId and nonContestableOtherCostsItemId
 
 		List<NccItemsPojo> l = serivce.findMultiNonContestableOtherCosts(requestPojo);
 		return l;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
