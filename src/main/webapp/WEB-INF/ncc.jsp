@@ -25,7 +25,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					style="justify-content: center">
 					<div class="row">
 						<h3>Project Type</h3>
-						<select id="position" ng-change="typeChanged()"
+						<select id="position" ng-change="ncc_typeChanged()"
 							ng-model="selected_type">
 							<option ng-repeat="type in project_types" value="{{type.id}}">{{type.name}}</option>
 						</select>
@@ -41,7 +41,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<div class="row light" ng-repeat="comp in proj_comps">
 							<h4 class="col-4">{{comp.description}}</h4>
 							<h4 class="col-2">Hour</h4>
-							<input class="col-2" type="number" ng-model="comp.quantity" value="0">
+							<input class="col-2" type="number" ng-model="comp.quantity"
+								value="0">
 							<h4 class="col-2">{{comp.cost}}</h4>
 							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
 						</div>
@@ -58,18 +59,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<h4 class="col-2">Total</h4>
 						</div>
 
-						<div ng-repeat="itm in ncc_items">
-							<div class="row light">
-								<h4 class="col-4">{{itm.name}}</h4>
-								<h4 class="col-2">{{itm.unit}}</h4>
+						<div ng-repeat="type in ncc_otherTypes">
+							<div class="row">
+								<h4 class="col-4">{{type.name}}</h4>
+								<h4 class="col-2"></h4>
+								<h4 class="col-2"></h4>
+								<h4 class="col-2"></h4>
+								<h4 class="col-2"></h4>
+							</div>
+
+
+							<div class="row light" ng-repeat="item in type.items">
+								<h4 class="col-4">{{item.description}}</h4>
+								<h4 class="col-2">{{item.unit}}</h4>
 								<input class="currency col-2" type="number"
-									value="{{itm.quantity}}">
-								<h4 class="col-2">{{itm.rate}}</h4>
-								<h4 class="col-2">{{itm.rate * itm.quantity}}</h4>
+									ng-model="item.quantity">
+								<h4 class="col-2">{{item.rate}}</h4>
+								<h4 class="col-2">{{item.rate * item.quantity}}</h4>
 							</div>
 						</div>
 
 					</div>
+
 
 				</form>
 				<%

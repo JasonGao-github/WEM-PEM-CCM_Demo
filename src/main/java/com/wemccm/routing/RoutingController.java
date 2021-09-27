@@ -108,4 +108,10 @@ public class RoutingController {
 		return "contractSchedule";// test.jsp
 	}
 
+	@RequestMapping(value = "/ncc_basic_page")
+	public String nccBasicRouting() {
+
+		return "ncc_basic";// test.jsp
+	}
+
 }
