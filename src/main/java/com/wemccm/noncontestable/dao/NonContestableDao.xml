@@ -79,7 +79,7 @@
 		parameterType="com.wemccm.common.entity.NonContestableOtherCostsItem">
 
 		INSERT INTO noncontestableothercostsiterm (
-		nonContestableTypeId,unit,total,rate,description)
+		nonContestableTypeId,unit,rate,description)
 		VALUES
 		(#{nonContestableTypeId},#{unit},#{rate},#{description})
 
