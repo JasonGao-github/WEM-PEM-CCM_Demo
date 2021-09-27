@@ -81,7 +81,7 @@
 		INSERT INTO noncontestableothercostsiterm (
 		nonContestableTypeId,unit,total,rate,description)
 		VALUES
-		(#{nonContestableTypeId},#{unit},#{total},#{rate},#{description})
+		(#{nonContestableTypeId},#{unit},#{rate},#{description})
 
 	</select>
 
