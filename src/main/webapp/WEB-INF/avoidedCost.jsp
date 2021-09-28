@@ -83,6 +83,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									<option>Concrete Pole - LV</option>
 									<option>Steel Pole -LV</option>
 							</select></td>
+							<td>Jemena</td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
 
 						</tr>
 					</tbody>

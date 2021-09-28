@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<h4 class="col-4">{{comp.description}}</h4>
 							<h4 class="col-2">Hour</h4>
 							<input class="col-2" type="number" ng-model="comp.quantity"
-								value="0">
+								ng-change="ncc_projCompChanged(comp.id, comp.quantity, comp.quantity * comp.cost)">
 							<h4 class="col-2">{{comp.cost}}</h4>
 							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
 						</div>
@@ -73,7 +73,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h4 class="col-4">{{item.description}}</h4>
 								<h4 class="col-2">{{item.unit}}</h4>
 								<input class="currency col-2" type="number"
-									ng-model="item.quantity">
+									ng-model="item.quantity"
+									ng-change="ncc_otherChanged(item.id, item.quantity, item.rate * item.quantity)">
 								<h4 class="col-2">{{item.rate}}</h4>
 								<h4 class="col-2">{{item.rate * item.quantity}}</h4>
 							</div>
@@ -81,7 +82,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 					</div>
 
-
+					<button type="button" class="btn btn-primary"
+						ng-click="ncc_submit_input()">submit</button>
 				</form>
 				<%
 					int curr_page = 3;

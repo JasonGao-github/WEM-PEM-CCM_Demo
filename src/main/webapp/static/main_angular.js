@@ -17,7 +17,7 @@ angular.element(document).ready(function() {
 workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$window', '$timeout', '$sce', function($scope, $http, $interval, $route, $window, $timeout, $sce) {
 	var url = htpp_tag.toString() + '://' + String(location.host);
 
-	//for login page
+
 	// console.log('Hello harindu');
 	$scope.welcome = 'Welcome to Jemena WEM';
 
@@ -63,10 +63,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		})
 	};
 
+	//for login page	
 	$scope.send_my_name = function() {
-		console.log('Clicked send_my_name function')
-		console.log($scope.email)
-		console.log($scope.password)
 		var obj = JSON.stringify({
 			"email": $scope.email,
 			"password": $scope.password,
@@ -79,7 +77,6 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			data: obj
 		}).then(function mySuccess(response) {
 			var data = response.data;
-			console.log(data)
 			if (data.result == "fail") {
 				document.getElementById("failMsg").style.visibility = "visible";
 			} else {
@@ -90,10 +87,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	};
 
 	//for ncc page
+	$scope.ncc_data = { "proj_comp": {}, "other": {} }
 	$scope.get_ncc = function() {
 		$http.get('/selectAllProjectType').then(function(response) {
 			$scope.project_types = response.data;
-			console.log($scope.project_types);
 			$scope.selected_type = $scope.project_types[1].projectTypeId;
 		});
 
@@ -114,7 +111,6 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 					url: url + '/findNonContestableOtherCostsIterm',
 					data: obj,
 				}).then(function mySuccess(response) {
-					console.log(response.data)
 					$scope.ncc_otherTypes[i].items = response.data;
 				})
 			}
@@ -131,8 +127,50 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			url: url + '/findNonContestableProjectComponent',
 			data: obj
 		}).then(function mySuccess(response) {
-			console.log(response.data)
 			$scope.proj_comps = response.data;
+		})
+
+		$scope.ncc_data.proj_comp = {}
+	}
+
+	$scope.ncc_projCompChanged = function(compId, quantity, total) {
+
+		if (quantity == null) {
+			delete $scope.ncc_data.proj_comp[compId]
+		} else {
+
+			$scope.ncc_data.proj_comp[compId] =
+			{
+				"nonContestableProjectComponentId": compId,
+				"hours": quantity,
+				"total": total
+			}
+		}
+		console.log($scope.ncc_data)
+	}
+
+	$scope.ncc_otherChanged = function(itemId, quantity, total) {
+
+		if (quantity == null) {
+			delete $scope.ncc_data.other[itemId]
+		} else {
+
+			$scope.ncc_data.other[itemId] =
+			{
+				"nonContestableOtherCostsItemId": itemId,
+				"quantity": quantity,
+				"total": total
+			}
+		}
+		console.log($scope.ncc_data)
+	}
+
+	$scope.ncc_submit_input = function() {
+		Object.keys($scope.ncc_data.proj_comp).forEach(function(k){
+			console.log($scope.ncc_data.proj_comp[k])
+		})
+		Object.keys($scope.ncc_data.other).forEach(function(k){
+			console.log($scope.ncc_data.other[k])
 		})
 	}
 
@@ -197,6 +235,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 					$scope.fim_types[i].sub_types = data;
 					//console.log($scope.fim_types)
 
+					//get item for each sub type
 					for (let j = 0; j < $scope.fim_types[i].sub_types.length; j++) {
 						subTypeId = $scope.fim_types[i].sub_types[j].id
 						//console.log("type id: " + typeId)
@@ -211,6 +250,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 						}).then(function mySuccess(response) {
 							var data = response.data;
 							$scope.fim_types[i].sub_types[j].items = data;
+							console.log($scope.fim_types)
 						})
 					}
 				})
