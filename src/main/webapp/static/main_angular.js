@@ -87,7 +87,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	};
 
 	//for ncc page
-	$scope.ncc_data = { "proj_comp": {}, "other": {} }
+	$scope.ncc_data = { "proj_comp": [], "other": [] }
 	$scope.get_ncc = function() {
 		$http.get('/selectAllProjectType').then(function(response) {
 			$scope.project_types = response.data;
@@ -130,21 +130,26 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			$scope.proj_comps = response.data;
 		})
 
-		$scope.ncc_data.proj_comp = {}
+		//when type changed, reset the content
+		$scope.ncc_data.proj_comp = []
 	}
 
 	$scope.ncc_projCompChanged = function(compId, quantity, total) {
 
 		if (quantity == null) {
-			delete $scope.ncc_data.proj_comp[compId]
+			for (let i = 0; i < $scope.ncc_data.proj_comp.length; i++) {
+				if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
+					$scope.ncc_data.proj_comp.splice(i, 1);
+				}
+			}
 		} else {
 
-			$scope.ncc_data.proj_comp[compId] =
-			{
+			$scope.ncc_data.proj_comp.push({
+				"projectId": $scope.projectId,
 				"nonContestableProjectComponentId": compId,
 				"hours": quantity,
 				"total": total
-			}
+			})
 		}
 		console.log($scope.ncc_data)
 	}
@@ -152,25 +157,48 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.ncc_otherChanged = function(itemId, quantity, total) {
 
 		if (quantity == null) {
-			delete $scope.ncc_data.other[itemId]
+			for (let i = 0; i < $scope.ncc_data.other.length; i++) {
+				if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
+					$scope.ncc_data.other.splice(i, 1);
+				}
+			}
 		} else {
-
-			$scope.ncc_data.other[itemId] =
-			{
+			$scope.ncc_data.other.push({
+				"projectId": $scope.projectId,
 				"nonContestableOtherCostsItemId": itemId,
 				"quantity": quantity,
 				"total": total
-			}
+			})
 		}
 		console.log($scope.ncc_data)
+		console.log($scope.projectId)
 	}
 
 	$scope.ncc_submit_input = function() {
-		Object.keys($scope.ncc_data.proj_comp).forEach(function(k){
-			console.log($scope.ncc_data.proj_comp[k])
+		var proj_comp = JSON.stringify(
+			$scope.ncc_data.proj_comp
+		);
+		console.log(proj_comp);
+
+		var other = JSON.stringify(
+			$scope.ncc_data.other
+		);
+		console.log(other);
+
+		$http({
+			method: 'POST',
+			url: url + '/insertProjectNonContestableProjectComponent',
+			data: proj_comp
+		}).then(function mySuccess(response) {
+			console.log(response.data)
 		})
-		Object.keys($scope.ncc_data.other).forEach(function(k){
-			console.log($scope.ncc_data.other[k])
+
+		$http({
+			method: 'POST',
+			url: url + '/insertNonContestableOtherCosts',
+			data: other
+		}).then(function mySuccess(response) {
+			console.log(response.data)
 		})
 	}
 
