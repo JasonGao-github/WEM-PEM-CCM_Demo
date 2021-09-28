@@ -34,7 +34,7 @@ public class QuantityInputService {
 
 	public void insertQuantityInputBasicData(QuantityInputBasicData data) {
 		Dao.insertQuantityInputBasicData(data);
-		
+
 	}
 
 //	public List<QuantityInputItermType> selectAllQuantityInputItermType() {
@@ -49,8 +49,6 @@ public class QuantityInputService {
 //		return l;
 //	}
 //List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
-	
-
 
 //	public void insertQuantityInput(List<QuantityInputPojo> list) {
 //		for (int i = 0; i < list.size(); i++) {
@@ -67,33 +65,14 @@ public class QuantityInputService {
 
 	public void insertQuantityInput(List<QuantityInputPojo> list) {
 		for (int i = 0; i < list.size(); i++) {
-		Dao.insertQuantityInput(list.get(i));
+			Dao.insertQuantityInput(list.get(i));
+		}
+	}
 
-	}
-	}
-	
-	
-	
-	
 	public List<QuantityInputDetailPojo> findQuantityInputDetail(projectIdPojo requestPojo) {
 		List<QuantityInputDetailPojo> l = Dao.findQuantityInputDetail(requestPojo);
 
-
 		return l;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

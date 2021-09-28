@@ -45,6 +45,18 @@
 	</select>
 	
 	
+	
+	
+		<select id="insertFIMinputIterm" 
+ 	parameterType="com.wemccm.common.entity.FIMinputIterm">
+		
+		INSERT INTO fiminputiterm (fIMinputSubTypeID, description,currency,unitCost) 
+		VALUES (#{fIMinputSubTypeID},#{description},#{currency},#{unitCost})
+		
+	</select>
+	
+	
+	
 		 <select id="findFIMinputIterm" 
  	parameterType="com.wemccm.common.pojo.FIMinputItermPojo"
 		resultType="com.wemccm.common.entity.FIMinputIterm">
