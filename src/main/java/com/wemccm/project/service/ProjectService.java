@@ -57,7 +57,7 @@ public class ProjectService {
 		return new PageInfo<FindPageRequestDto>(dprdto);
 	}
 
-	public void addProject(projectPojo pojo) {
+	public int addProject(projectPojo pojo) {
 
 		// save to project table;
 		Project project = new Project();
@@ -83,6 +83,8 @@ public class ProjectService {
 			ccPriceDao.save(ccPrice);
 
 		}
+
+		return projectId;
 
 	}
 

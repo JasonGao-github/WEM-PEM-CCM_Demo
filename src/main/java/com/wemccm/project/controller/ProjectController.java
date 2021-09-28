@@ -1,15 +1,21 @@
 package com.wemccm.project.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectPojo;
+import com.wemccm.common.pojo.wholeUserPojo;
 import com.wemccm.project.service.ProjectService;
 
 @RestController
@@ -32,7 +38,12 @@ public class ProjectController {
 	@ResponseBody
 	public ResponseResult addProject(@RequestBody projectPojo pojo) {
 		// insert to table project and customercontribution
-		service.addProject(pojo);
+		int projectId = service.addProject(pojo);
+
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId", projectId);
 
 		return new ResponseResult();
 	}
