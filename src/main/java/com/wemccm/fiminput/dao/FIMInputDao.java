@@ -24,4 +24,6 @@ public interface FIMInputDao {
 
 	public List<FIMinputIterm> findFIMinputIterm(FIMinputItermPojo requestPojo);
 
+	public void insertFIMinputIterm(FIMinputIterm pojo);
+
 }
