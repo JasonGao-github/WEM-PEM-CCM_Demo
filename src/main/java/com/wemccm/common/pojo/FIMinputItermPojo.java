@@ -1,14 +1,14 @@
 package com.wemccm.common.pojo;
 
 public class FIMinputItermPojo {
-private Integer fIMinputSubTypeID;
+	private Integer fIMinputSubTypeID;
 
-public Integer getfIMinputSubTypeID() {
-	return fIMinputSubTypeID;
-}
+	public Integer getfIMinputSubTypeID() {
+		return fIMinputSubTypeID;
+	}
 
-public void setfIMinputSubTypeID(Integer fIMinputSubTypeID) {
-	this.fIMinputSubTypeID = fIMinputSubTypeID;
-}
+	public void setfIMinputSubTypeID(Integer fIMinputSubTypeID) {
+		this.fIMinputSubTypeID = fIMinputSubTypeID;
+	}
 
 }

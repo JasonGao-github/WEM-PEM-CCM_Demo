@@ -4,9 +4,60 @@ public class FIMinputItermQuantity extends BaseEntity {
 
 	private Integer projectId;
 	private Integer fIMinputItermId;
-	private Integer fIMinputItermTypeId;
-	private Integer quantity;
-	private double cost;
+	private Integer acturalQuantity;
+	private Integer jenFoundedQuantity;
+	private Integer lctaQuantity;
+	private double acturalSubTotal;
+	private double jenFoundedTotal;
+	private double lctaTotal;
+
+	public Integer getActuralQuantity() {
+		return acturalQuantity;
+	}
+
+	public void setActuralQuantity(Integer acturalQuantity) {
+		this.acturalQuantity = acturalQuantity;
+	}
+
+	public Integer getJenFoundedQuantity() {
+		return jenFoundedQuantity;
+	}
+
+	public void setJenFoundedQuantity(Integer jenFoundedQuantity) {
+		this.jenFoundedQuantity = jenFoundedQuantity;
+	}
+
+	public Integer getLctaQuantity() {
+		return lctaQuantity;
+	}
+
+	public void setLctaQuantity(Integer lctaQuantity) {
+		this.lctaQuantity = lctaQuantity;
+	}
+
+	public double getActuralSubTotal() {
+		return acturalSubTotal;
+	}
+
+	public void setActuralSubTotal(double acturalSubTotal) {
+		this.acturalSubTotal = acturalSubTotal;
+	}
+
+	public double getJenFoundedTotal() {
+		return jenFoundedTotal;
+	}
+
+	public void setJenFoundedTotal(double jenFoundedTotal) {
+		this.jenFoundedTotal = jenFoundedTotal;
+	}
+
+	public double getLctaTotal() {
+		return lctaTotal;
+	}
+
+	public void setLctaTotal(double lctaTotal) {
+		this.lctaTotal = lctaTotal;
+	}
 
 	public Integer getProjectId() {
 		return projectId;
@@ -22,30 +73,6 @@ public class FIMinputItermQuantity extends BaseEntity {
 
 	public void setfIMinputItermId(Integer fIMinputItermId) {
 		this.fIMinputItermId = fIMinputItermId;
-	}
-
-	public Integer getfIMinputItermTypeId() {
-		return fIMinputItermTypeId;
-	}
-
-	public void setfIMinputItermTypeId(Integer fIMinputItermTypeId) {
-		this.fIMinputItermTypeId = fIMinputItermTypeId;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-	public double getCost() {
-		return cost;
-	}
-
-	public void setCost(double cost) {
-		this.cost = cost;
 	}
 
 }

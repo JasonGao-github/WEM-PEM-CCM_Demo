@@ -126,7 +126,8 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 3.开发接口，插入数据到NonContestableProjectComponent。单条数据。
 4.开发接口，插入数据到NonContestableOtherCostsIterm。单条数据。
 
-
+---------------------------------------
+1.开发一个接口，往FIMinputIterm中插入数据。
 
 
 

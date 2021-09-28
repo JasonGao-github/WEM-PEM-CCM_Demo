@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS `customercontributionprice`;
 DROP TABLE IF EXISTS `customercontributionpricetype`;
 DROP TABLE IF EXISTS `fiminputiterm`;
 DROP TABLE IF EXISTS `fiminputitermquantity`;
-DROP TABLE IF EXISTS `fiminputitermquantitytype`;
+-- DROP TABLE IF EXISTS `fiminputitermquantitytype`;
 DROP TABLE IF EXISTS `fiminputsubtype`;
 DROP TABLE IF EXISTS `fiminputtype`;
 DROP TABLE IF EXISTS `noncontestableothercosts`;
@@ -201,16 +201,19 @@ CREATE TABLE `fiminputitermquantity`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `fIMinputItermId` int(11) NULL DEFAULT NULL,
-  `fIMinputItermTypeId` int(11) NULL DEFAULT NULL,
-  `quantity` int(11) NULL DEFAULT NULL,
-  `cost` double(10, 2) NULL DEFAULT NULL,
+  `acturalQuantity` int(11) NULL DEFAULT NULL,
+  `jenFoundedQuantity` int(11) NULL DEFAULT NULL,
+  `lctaQuantity` int(11) NULL DEFAULT NULL,
+  `acturalSubTotal` double(10, 2) NULL DEFAULT NULL,
+  `jenFoundedTotal` double(10, 2) NULL DEFAULT NULL,
+  `lctaTotal` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
-CREATE TABLE `fiminputitermquantitytype`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128)  NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-);
+-- CREATE TABLE `fiminputitermquantitytype`  (
+--  `id` int(11) NOT NULL AUTO_INCREMENT,
+--  `name` varchar(128)  NULL DEFAULT NULL,
+--  PRIMARY KEY (`id`) USING BTREE
+-- );
 CREATE TABLE `fiminputsubtype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fIMinputTypeID` int(11) NULL DEFAULT NULL,
@@ -513,9 +516,9 @@ INSERT INTO `noncontestabletype` VALUES (3, 'Operating');
 INSERT INTO `noncontestabletype` VALUES (4, 'Additional Labour - Excludes plant');
 INSERT INTO `noncontestabletype` VALUES (5, 'Extra Overtime cost (for itemised activities)');
 
-INSERT INTO `fiminputitermquantitytype` VALUES (1, 'Actural');
-INSERT INTO `fiminputitermquantitytype` VALUES (2, 'JENfounded');
-INSERT INTO `fiminputitermquantitytype` VALUES (3, 'LCTA');
+-- INSERT INTO `fiminputitermquantitytype` VALUES (1, 'Actural');
+-- INSERT INTO `fiminputitermquantitytype` VALUES (2, 'JENfounded');
+-- INSERT INTO `fiminputitermquantitytype` VALUES (3, 'LCTA');
 
 INSERT INTO `fiminputtype` VALUES (1, 'Pole TX Estimates');
 INSERT INTO `fiminputtype` VALUES (2, 'Kiosk TX');

@@ -15,13 +15,13 @@
 	</select>
 	
 	
-	<select id="selectAllFIMinputItermQuantityType" 
+	<!-- <select id="selectAllFIMinputItermQuantityType" 
 	
 		resultType="com.wemccm.common.entity.FIMinputItermQuantityType">
 
 		SELECT * FROM fiminputitermquantitytype 
 
-	</select>
+	</select> -->
 	
 	
 	 <select id="findFIMinputSubType" 
@@ -39,8 +39,8 @@
 	<select id="insertFIMinputItermQuantity" 
  	parameterType="com.wemccm.common.pojo.FIMinputItermQuantityPojo">
 		
-		INSERT INTO fiminputitermquantity (projectId, fIMinputItermId,fIMinputItermTypeId,quantity,cost) 
-		VALUES (#{projectId},#{fIMinputItermId},#{fIMinputItermTypeId},#{quantity},#{cost})
+		INSERT INTO fiminputitermquantity (projectId, fIMinputItermId,acturalQuantity,jenFoundedQuantity,lctaQuantity,acturalSubTotal,jenFoundedTotal,lctaTotal) 
+		VALUES (#{projectId},#{fIMinputItermId},#{acturalQuantity},#{jenFoundedQuantity},#{lctaQuantity},#{acturalSubTotal},#{jenFoundedTotal},#{lctaTotal})
 		
 	</select>
 	
