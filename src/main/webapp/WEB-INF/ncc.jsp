@@ -2,7 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
+	+ "/";
+	int projectId;
+	if(session.getAttribute("projectId") != null){
+		projectId = (int) session.getAttribute("projectId");
+	} 
+	else{
+		projectId = -1;
+	}
+	System.out.println(projectId);
 %>
 
 <%@  include file="common/checkSessionExist.jspf"%>
@@ -23,6 +32,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<h2>Non-Contestable Costs</h2>
 				<form class="form container" name="newUser" action="" method="POST"
 					style="justify-content: center">
+					<Input type="hidden" value=<%= projectId %> ng-model="projectId">
 					<div class="row">
 						<h3>Project Type</h3>
 						<select id="position" ng-change="ncc_typeChanged()"
