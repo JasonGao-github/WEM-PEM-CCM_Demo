@@ -2,8 +2,7 @@ package com.wemccm.common.entity;
 
 import java.util.Date;
 
-public class ConnectionHandover {
-	private Integer id;
+public class ConnectionHandover extends BaseEntity{
 	
 	private String projectRef;
 	private Integer portalNo;
@@ -12,7 +11,7 @@ public class ConnectionHandover {
 	private String coustomerBusinesName;
 	private String projectAddress;
 	private String customerContactName;
-	private Integer customerContactNumber;
+	private String customerContactNumber;
 	private String customerContactEmail;
 	
 	private String maximumAllocatedCapacityPhases;
@@ -21,29 +20,23 @@ public class ConnectionHandover {
 
 	private String existingConnection;
 	private String embeddedNetwork;
-	private String RECadvisedofCTarrangement;
+	private String reCadvisedofCTarrangement;
 	private String propertyRequirement;
 	
 	private String projectManagerName;
-	private Integer projectManagerPhone ;
+	private String projectManagerPhone ;
 	
-	private String UGCrewRequired;
+	private String ugCrewRequired;
 	private String networkOperatorRequired;
 	private String complianceReviewedDesign;
 	
 	private String supplyPointDetails;
 	private String supplyPointComments;
 	
-	private String SILVonissue;
-	private String SILVonissueComments;
+	private String silVonissue;
+	private String silVonissueComments;
 	
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getProjectRef() {
 		return projectRef;
 	}
@@ -80,10 +73,10 @@ public class ConnectionHandover {
 	public void setCustomerContactName(String customerContactName) {
 		this.customerContactName = customerContactName;
 	}
-	public Integer getCustomerContactNumber() {
+	public String getCustomerContactNumber() {
 		return customerContactNumber;
 	}
-	public void setCustomerContactNumber(Integer customerContactNumber) {
+	public void setCustomerContactNumber(String customerContactNumber) {
 		this.customerContactNumber = customerContactNumber;
 	}
 	public String getCustomerContactEmail() {
@@ -122,11 +115,11 @@ public class ConnectionHandover {
 	public void setEmbeddedNetwork(String embeddedNetwork) {
 		this.embeddedNetwork = embeddedNetwork;
 	}
-	public String getRECadvisedofCTarrangement() {
-		return RECadvisedofCTarrangement;
+	public String getReCadvisedofCTarrangement() {
+		return reCadvisedofCTarrangement;
 	}
-	public void setRECadvisedofCTarrangement(String rECadvisedofCTarrangement) {
-		RECadvisedofCTarrangement = rECadvisedofCTarrangement;
+	public void setReCadvisedofCTarrangement(String reCadvisedofCTarrangement) {
+		this.reCadvisedofCTarrangement = reCadvisedofCTarrangement;
 	}
 	public String getPropertyRequirement() {
 		return propertyRequirement;
@@ -140,17 +133,17 @@ public class ConnectionHandover {
 	public void setProjectManagerName(String projectManagerName) {
 		this.projectManagerName = projectManagerName;
 	}
-	public Integer getProjectManagerPhone() {
+	public String getProjectManagerPhone() {
 		return projectManagerPhone;
 	}
-	public void setProjectManagerPhone(Integer projectManagerPhone) {
+	public void setProjectManagerPhone(String projectManagerPhone) {
 		this.projectManagerPhone = projectManagerPhone;
 	}
-	public String getUGCrewRequired() {
-		return UGCrewRequired;
+	public String getUgCrewRequired() {
+		return ugCrewRequired;
 	}
-	public void setUGCrewRequired(String uGCrewRequired) {
-		UGCrewRequired = uGCrewRequired;
+	public void setUgCrewRequired(String ugCrewRequired) {
+		this.ugCrewRequired = ugCrewRequired;
 	}
 	public String getNetworkOperatorRequired() {
 		return networkOperatorRequired;
@@ -176,18 +169,22 @@ public class ConnectionHandover {
 	public void setSupplyPointComments(String supplyPointComments) {
 		this.supplyPointComments = supplyPointComments;
 	}
-	public String getSILVonissue() {
-		return SILVonissue;
+	public String getSilVonissue() {
+		return silVonissue;
 	}
-	public void setSILVonissue(String sILVonissue) {
-		SILVonissue = sILVonissue;
+	public void setSilVonissue(String silVonissue) {
+		this.silVonissue = silVonissue;
 	}
-	public String getSILVonissueComments() {
-		return SILVonissueComments;
+	public String getSilVonissueComments() {
+		return silVonissueComments;
 	}
-	public void setSILVonissueComments(String sILVonissueComments) {
-		SILVonissueComments = sILVonissueComments;
+	public void setSilVonissueComments(String silVonissueComments) {
+		this.silVonissueComments = silVonissueComments;
 	}
+	
+	
+
+	
 	
 	
 	

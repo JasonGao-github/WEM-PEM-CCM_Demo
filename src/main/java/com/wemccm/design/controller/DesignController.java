@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wemccm.common.entity.design;
+import com.wemccm.common.entity.Design;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.design.service.DesignService;
@@ -43,7 +43,7 @@ public class DesignController {
 
 	@RequestMapping(value = "/insertDesign", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseResult insertDesign(@RequestBody design Pojo) {
+	public ResponseResult insertDesign(@RequestBody Design Pojo) {
 
 		serivce.insertDesign(Pojo);
 		return new ResponseResult();

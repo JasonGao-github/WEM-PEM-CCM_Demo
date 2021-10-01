@@ -42,10 +42,47 @@ DROP TABLE IF EXISTS `avoidedcostescguideline`;
 DROP TABLE IF EXISTS `avoidedcostmaintenancecosts`;
 DROP TABLE IF EXISTS `avoidedcosttype`;
 DROP TABLE IF EXISTS `avoidedcostassetreplacementiterm`;
+DROP TABLE IF EXISTS `design`;
+DROP TABLE IF EXISTS `connectionhandover`;
 
 --  -- -- -- -- -- -- -- -- -
 --  create tables 
 --  -- -- -- -- -- -- -- -- -
+CREATE TABLE `connectionhandover`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectRef` varchar(255) ,
+  `portalNo` int(11) NULL DEFAULT NULL,
+  `date` datetime NULL DEFAULT NULL,
+  `coustomerBusinesName` varchar(255) ,
+  `projectAddress` varchar(255) ,
+  `customerContactName` varchar(255) ,
+  `customerContactNumber` varchar(255) ,
+  `customerContactEmail` varchar(255) ,
+  `maximumAllocatedCapacityPhases` varchar(255) ,
+  `maximumAllocatedCapacityAmps` varchar(255) ,
+  `maximumAllocatedCapacitykVA` varchar(255) ,
+  `existingConnection` varchar(255) ,
+  `embeddedNetwork` varchar(255) ,
+  `reCadvisedofCTarrangement` varchar(255) ,
+  `propertyRequirement` varchar(255) ,
+  `projectManagerName` varchar(255) ,
+  `projectManagerPhone` varchar(255) ,
+  `ugCrewRequired` varchar(255) ,
+  `networkOperatorRequired` varchar(255) ,
+  `complianceReviewedDesign` varchar(255) ,
+  `supplyPointDetails` varchar(255) ,
+  `supplyPointComments` varchar(255) ,
+  `silVonissue` varchar(255) ,
+  `silVonissueComments` varchar(255) ,
+  PRIMARY KEY (`id`) USING BTREE
+) ;
+CREATE TABLE `design`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `WBSElement` varchar(32) ,
+  `worksDescription` varchar(255) ,
+  `retirements` varchar(255) ,
+  PRIMARY KEY (`id`) USING BTREE
+) ;
 CREATE TABLE `avoidedcosttype`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) ,

@@ -1,17 +1,11 @@
 package com.wemccm.common.entity;
 
-public class design {
-	private Integer id;
+public class Design extends BaseEntity{
 private String WBSElement;
 private String worksDescription;
 private String retirements;
 
-public Integer getId() {
-	return id;
-}
-public void setId(Integer id) {
-	this.id = id;
-}
+
 public String getWBSElement() {
 	return WBSElement;
 }

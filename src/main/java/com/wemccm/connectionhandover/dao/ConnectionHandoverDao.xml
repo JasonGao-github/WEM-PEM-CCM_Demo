@@ -24,17 +24,20 @@
 		
 		INSERT INTO connectionhandover (	
 		projectRef,portalNo,date,coustomerBusinesName,projectAddress,customerContactName,
-		customerContactNumber,customerContactEmail,maximumAllocatedCapacityPhases,maximumAllocatedCapacityAmps,
-		maximumAllocatedCapacitykVA,existingConnection,embeddedNetwork,RECadvisedofCTarrangement,
-		propertyRequirement,projectManagerName,projectManagerPhone ,UGCrewRequired,networkOperatorRequired,
-		complianceReviewedDesign,supplyPointDetails,supplyPointComments,SILVonissue,SILVonissueComments) 
+		customerContactNumber,customerContactEmail,maximumAllocatedCapacityPhases,
+		maximumAllocatedCapacityAmps,maximumAllocatedCapacitykVA,existingConnection,
+		embeddedNetwork,reCadvisedofCTarrangement,propertyRequirement,projectManagerName,
+		projectManagerPhone ,ugCrewRequired,networkOperatorRequired,complianceReviewedDesign,
+		supplyPointDetails,supplyPointComments,silVonissue,silVonissueComments) 
 		VALUES (	
-			#{projectRef},#{portalNo},#{date},#{coustomerBusinesName},#{projectAddress},#{customerContactName},
-			#{customerContactNumber},#{customerContactEmail},#{maximumAllocatedCapacityPhases},
-			#{maximumAllocatedCapacityAmps},#{maximumAllocatedCapacitykVA},#{existingConnection},
-			#{embeddedNetwork},#{RECadvisedofCTarrangement},#{propertyRequirement},#{projectManagerName},
-			#{projectManagerPhone },#{UGCrewRequired},#{networkOperatorRequired},#{complianceReviewedDesign},
-			#{supplyPointDetails},#{supplyPointComments},#{SILVonissue},#{SILVonissueComments})
+			#{projectRef},#{portalNo},#{date},#{coustomerBusinesName},#{projectAddress},
+			#{customerContactName},#{customerContactNumber},#{customerContactEmail},
+			#{maximumAllocatedCapacityPhases},#{maximumAllocatedCapacityAmps},
+			#{maximumAllocatedCapacitykVA},#{existingConnection},#{embeddedNetwork},
+			#{reCadvisedofCTarrangement},#{propertyRequirement},#{projectManagerName},
+			#{projectManagerPhone },#{ugCrewRequired},#{networkOperatorRequired},
+			#{complianceReviewedDesign},#{supplyPointDetails},#{supplyPointComments},
+			#{silVonissue},#{silVonissueComments})
 		
 	</select>
 	

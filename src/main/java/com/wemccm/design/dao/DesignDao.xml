@@ -44,7 +44,7 @@
 	
 	
 		<select id="insertDesign" 
- 	parameterType="com.wemccm.common.entity.design">
+ 	parameterType="com.wemccm.common.entity.Design">
 		
 		INSERT INTO design (worksDescription, retirements,WBSElement) 
 		VALUES (#{worksDescription},#{retirements},#{WBSElement})

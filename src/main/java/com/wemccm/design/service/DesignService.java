@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wemccm.common.entity.design;
+import com.wemccm.common.entity.Design;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.design.dao.DesignDao;
 
@@ -32,7 +32,7 @@ public class DesignService {
 
 
 
-	public void insertDesign(design Pojo) {
+	public void insertDesign(Design Pojo) {
 		
 		
 		Dao.insertDesign(Pojo);
