@@ -69,7 +69,6 @@ CREATE TABLE `avoidedcostmaintenancecosts`  (
 CREATE TABLE `avoidedcostescguideline`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
-  `jemAvoidedCostModelId` int(11) NULL DEFAULT NULL,
   `assumptions` varchar(256) ,
   `source` varchar(32) ,
   `constant` varchar(32) ,
