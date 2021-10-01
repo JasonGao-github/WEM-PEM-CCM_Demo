@@ -99,7 +99,6 @@ public class NonContestableController {
 	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(
 			@RequestBody projectIdPojo requestPojo) {
 		// find by projectTypeId
-
 		List<NccProjectComponentPojo> l = serivce.findMultiNonContestableProjectComponent(requestPojo);
 		return l;
 	}
