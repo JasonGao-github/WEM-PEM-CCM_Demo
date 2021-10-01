@@ -68,21 +68,13 @@ public class FIMInputController {
 		serivce.insertFIMinputItermQuantity(pojoList);
 		return new ResponseResult();
 	}
-	
-	
+
 	@RequestMapping(value = "/insertFIMinputIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseResult insertFIMinputIterm(@RequestBody List<FIMinputIterm> pojoList) {
+	public ResponseResult insertFIMinputIterm(@RequestBody FIMinputIterm pojo) {
 
-		serivce.insertFIMinputIterm(pojoList);
+		serivce.insertFIMinputIterm(pojo);
 		return new ResponseResult();
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

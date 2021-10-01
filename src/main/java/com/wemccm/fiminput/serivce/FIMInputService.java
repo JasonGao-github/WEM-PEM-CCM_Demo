@@ -58,10 +58,14 @@ public class FIMInputService {
 		return l;
 	}
 
-	public void insertFIMinputIterm(List<FIMinputIterm> pojoList) {
-		for (FIMinputIterm pojo : pojoList) {
-			Dao.insertFIMinputIterm(pojo);
-		}
+	public void insertFIMinputIterm(FIMinputIterm pojo) {
+		Dao.insertFIMinputIterm(pojo);
 	}
+
+//	public void insertFIMinputIterm(List<FIMinputIterm> pojoList) {
+//		for (FIMinputIterm pojo : pojoList) {
+//			Dao.insertFIMinputIterm(pojo);
+//		}
+//	}
 
 }

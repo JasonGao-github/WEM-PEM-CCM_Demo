@@ -128,6 +128,8 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 
 ---------------------------------------
 1.开发一个接口，往FIMinputIterm中插入数据。
+---------------------------------------
+开发Connection Handover、Contract Schedule、CCM-WEM Section三个页面的所有功能。并与前端相关人员联调。
 
 
 

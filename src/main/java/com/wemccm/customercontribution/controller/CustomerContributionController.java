@@ -12,6 +12,7 @@ import com.wemccm.common.entity.CustomerContribution;
 import com.wemccm.common.entity.CustomerContributionAuthoris;
 import com.wemccm.common.pojo.CustomerContributionDetailPojo;
 import com.wemccm.common.pojo.CustomerContributionPojo;
+import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.customercontribution.service.CustomerContributionService;
 
@@ -22,26 +23,26 @@ public class CustomerContributionController {
 
 	@RequestMapping(value = "/updateCustomerContribution", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String updateCustomerContribution(@RequestBody CustomerContributionPojo requestPojo) {
+	public ResponseResult updateCustomerContribution(@RequestBody CustomerContributionPojo requestPojo) {
 
 		CustomerContribution cc = serivce.updateCustomerContribution(requestPojo);
 
-		return "Success";
+		return new ResponseResult();
 	}
 
 	@RequestMapping(value = "/insertCustomerContributionAuthoris", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String insertCustomerContributionAuthoris(@RequestBody List<CustomerContributionAuthoris> list) {
+	public ResponseResult insertCustomerContributionAuthoris(@RequestBody List<CustomerContributionAuthoris> list) {
 		// insert table avoidedcostassetreplacementcosts
 		serivce.insertCustomerContributionAuthoris(list);
-		return "success";
+		return new ResponseResult();
 	}
 
 	@RequestMapping(value = "/CustomerContributionDetail", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public CustomerContributionDetailPojo CustomerContributionDetail(@RequestBody projectIdPojo requestPojo) {
 
-		CustomerContributionDetailPojo result=serivce.CustomerContributionDetail(requestPojo);
+		CustomerContributionDetailPojo result = serivce.CustomerContributionDetail(requestPojo);
 
 		return result;
 	}

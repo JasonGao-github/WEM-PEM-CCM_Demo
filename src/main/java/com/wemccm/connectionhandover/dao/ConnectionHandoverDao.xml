@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.connectionhandover.dao.ConnectionHandoverDao">
+
+
+	<!-- <select id="selectAllFIMinputItermQuantityType" 
+	
+		resultType="com.wemccm.common.entity.FIMinputItermQuantityType">
+
+		SELECT * FROM fiminputitermquantitytype 
+
+	</select> -->
+	
+	
+
+	
+
+	
+	
+	
+	
+		<select id="insertConnectionHandover" 
+ 	parameterType="com.wemccm.common.entity.ConnectionHandover">
+		
+		INSERT INTO connectionhandover (	
+		projectRef,portalNo,date,coustomerBusinesName,projectAddress,customerContactName,
+		customerContactNumber,customerContactEmail,maximumAllocatedCapacityPhases,
+		maximumAllocatedCapacityAmps,maximumAllocatedCapacitykVA,existingConnection,
+		embeddedNetwork,reCadvisedofCTarrangement,propertyRequirement,projectManagerName,
+		projectManagerPhone ,ugCrewRequired,networkOperatorRequired,complianceReviewedDesign,
+		supplyPointDetails,supplyPointComments,silVonissue,silVonissueComments) 
+		VALUES (	
+			#{projectRef},#{portalNo},#{date},#{coustomerBusinesName},#{projectAddress},
+			#{customerContactName},#{customerContactNumber},#{customerContactEmail},
+			#{maximumAllocatedCapacityPhases},#{maximumAllocatedCapacityAmps},
+			#{maximumAllocatedCapacitykVA},#{existingConnection},#{embeddedNetwork},
+			#{reCadvisedofCTarrangement},#{propertyRequirement},#{projectManagerName},
+			#{projectManagerPhone },#{ugCrewRequired},#{networkOperatorRequired},
+			#{complianceReviewedDesign},#{supplyPointDetails},#{supplyPointComments},
+			#{silVonissue},#{silVonissueComments})
+		
+	</select>
+	
+	
+	
+
+	
+
+
+
+
+</mapper>
