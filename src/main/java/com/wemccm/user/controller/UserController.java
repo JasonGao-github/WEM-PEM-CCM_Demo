@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.User;
+import com.wemccm.common.pojo.ChangePasswordPojo;
 import com.wemccm.common.pojo.DeleteUserPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.UserListPojo;
@@ -68,4 +69,17 @@ public class UserController {
 
 	}
 	// change password
+
+	// delete user
+	@RequestMapping(value = "/changePassword", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult changePassword(@RequestBody ChangePasswordPojo pojo) {
+
+		String result = serivce.changePassword(pojo);
+		if (result.equals("01")) {
+			return new ResponseResult("false", "the original password is not correct!");
+		}
+		return new ResponseResult();
+
+	}
 }
