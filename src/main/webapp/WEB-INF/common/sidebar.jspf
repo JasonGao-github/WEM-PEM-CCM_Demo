@@ -1,75 +1,74 @@
-
 <%
-	String userType = new String("");
-if ((String) session.getAttribute("username") != null) {
-	userType = (String) session.getAttribute("userTypeId").toString();
-}
+    String userType = new String("");
+    if ((String) session.getAttribute("username") != null) {
+        userType = (String) session.getAttribute("userTypeId").toString();
+    }
 %>
 
 
 <div class="sidebar">
-	<div class="logo_details">
-		<img src="<%=path%>static/images/jemena.svg" alt="logo" id="Jem-logo"
-			style="visibility: hidden" /> <i class="bx bx-menu" id="btn"></i>
-	</div>
-	<ul class="nav_list">
-		<li><a href="dashboard_page"> <i class="bx bx-grid-alt"></i>
-				<span class="links_name">Dashboard</span>
-		</a> <span class="subtitle">Dashboard</span></li>
-		<li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
-				class="links_name">View Projects</span>
-		</a> <span class="subtitle">View Projects</span></li>
-		<li><a href="create_project_page"> <i class="bx bx-user"></i>
-				<span class="links_name">Create New Projects</span>
-		</a> <span class="subtitle">Create New Projects</span></li>
-		<li><a href="approve_page"> <i class="bx bx-search"></i> <span
-				class="links_name">Approve Projects</span>
-		</a> <span class="subtitle">Approve Projects</span></li>
+    <div class="logo_details">
+        <img src="<%=path%>static/images/jemena.svg" alt="logo" id="Jem-logo"
+             style="visibility: hidden"/> <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li><a href="dashboard_page"> <i class="bx bx-grid-alt"></i>
+            <span class="links_name">All Projects</span>
+        </a> <span class="subtitle">All Projects</span></li>
+        <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
+                class="links_name">View Projects</span>
+        </a> <span class="subtitle">View Projects</span></li>
+        <li><a href="create_project_page"> <i class="bx bx-user"></i>
+            <span class="links_name">Create New Projects</span>
+        </a> <span class="subtitle">Create New Projects</span></li>
+        <li><a href="approve_page"> <i class="bx bx-search"></i> <span
+                class="links_name">Approve Projects</span>
+        </a> <span class="subtitle">Approve Projects</span></li>
 
 
-		<%
-			if (userType.equals("123")) {
-		%>
-		<li><a href="addUser_page"> <i class="bx bx-folder"></i> <span
-				class="links_name">Add New User</span>
-		</a> <span class="subtitle">Add New User</span></li>
-		<li><a href="basic_data"> <i class="bx bx-folder"></i> <span
-				class="links_name">Basic Data</span>
-		</a> <span class="subtitle">Basic Data</span></li>
-		<%
-			}
-		%>
+        <%--		<%--%>
+        <%--			if (userType.equals("1")) {--%>
+        <%--		%>--%>
+        <li><a href="addUser_page"> <i class="bx bx-folder"></i> <span
+                class="links_name">Add New User</span>
+        </a> <span class="subtitle">Add New User</span></li>
+        <li><a href="basic_data"> <i class="bx bx-folder"></i> <span
+                class="links_name">Basic Data</span>
+        </a> <span class="subtitle">Basic Data</span></li>
+        <%--		<%--%>
+        <%--			}--%>
+        <%--		%>--%>
 
 
-		<li class="profile">
-			<div class="profile_details">
-				<img src="https://img.icons8.com/bubbles/50/000000/user.png"
-					/
-            alt="profileImg">
-				<div class="name_job">
-					<div class="name">Yun-Tung Shih</div>
-					<div class="job">Web designer</div>
-				</div>
-			</div> <i class="bx bx-log-out" id="log_out"></i>
-		</li>
-	</ul>
+        <li class="profile">
+            <div class="profile_details">
+                <img src="https://img.icons8.com/bubbles/50/000000/user.png"
+                     alt="profileImg">
+                <div class="name_job">
+                    <div class="name">Yun-Tung Shih</div>
+                    <div class="job">Web designer</div>
+                </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+    </ul>
 </div>
 <script>
-      let sidebar = document.querySelector(".sidebar");
-      let closeBtn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
 
-      closeBtn.addEventListener("click", () => {
+    closeBtn.addEventListener("click", () => {
         sidebar.classList.toggle("open");
         menuBtnChange();
-      });
+    });
 
-      function menuBtnChange() {
+    function menuBtnChange() {
         if (sidebar.classList.contains("open")) {
-          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          document.getElementById("Jem-logo").style.visibility = "visible";
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            document.getElementById("Jem-logo").style.visibility = "visible";
         } else {
-          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-          document.getElementById("Jem-logo").style.visibility = "hidden";
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            document.getElementById("Jem-logo").style.visibility = "hidden";
         }
-      }
-  </script>
+    }
+</script>
