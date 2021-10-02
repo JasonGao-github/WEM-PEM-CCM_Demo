@@ -20,7 +20,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<div class="container-fluid contentWrapper">
 			<div class="container content d-flex flex-column">
 				<h1 style="margin: 2vh;">Quantity Input Page</h1>
-				
+
 				<% int curr_page = 2; %>
 				<%@ include file="common/pagesBar.jspf"%>
 			</div>
