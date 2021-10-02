@@ -264,6 +264,20 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.new_user_password_mismatch = true
         }
     }
+
+    $scope.get_all_users = function () {
+        console.log("clicked get_all_users function")
+        $http({
+            method: 'GET',
+            url: url + '/listAllUsers',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            //var data = JSON.parse(response.data);
+
+        })
+    }
+
+    $scope.get_all_users()
 }])
 
 

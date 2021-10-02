@@ -27,15 +27,47 @@
                     </button>
                 </div>
             </div>
-            <form class="newUser container" name="newUser" action=""
-                  method="POST" style="justify-content: center">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mt-5 mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">View all users</h6>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-dark table-bordered table-hover dom-jQuery-events"
+                                               style="text-align: center;">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Email</th>
+                                                <th>Role</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
 
-
-                <div class="row">
-                    <input ng-click="save" type="btn" name="save" value="save"/><input
-                        ng-click="cancel" type="btn" name="cancel" value="cancel"/>
+                                            </tbody>
+                                        </table>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </section>
