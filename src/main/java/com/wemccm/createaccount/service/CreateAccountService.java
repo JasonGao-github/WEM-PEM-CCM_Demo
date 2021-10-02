@@ -12,21 +12,19 @@ public class CreateAccountService {
 	@Autowired
 	private CreateAccountDao Dao;
 
-	public String CreateAccount(String email, String password, String username, Integer userTypeId,
-				Integer leaderId) {
-			
-			
-			User u = Dao.getUserByEmail(email);
-			if (null != u) {
 
-				System.out.println(u.getPassword()+"++++++++++++++++++++++++++"+u.getEmail());
-				return "01";
-			}
-			
-			Dao.createUserByEmail(email,password,username,userTypeId,leaderId);
+	public String CreateAccount(String email, String password, String firstname, 
+								Integer userTypeId, String lastname) {
+		User u = Dao.getUserByEmail(email);
+		if (null != u) {
 
-
-			return "00";
+			System.out.println(u.getPassword()+"++++++++++++++++++++++++++"+u.getEmail());
+			return "01";
 		}
+		
+		Dao.createUserByEmail(email,password,firstname,userTypeId,lastname);
+		
+		return "00";
+	}
 
 }
