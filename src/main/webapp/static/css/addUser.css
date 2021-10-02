@@ -28,17 +28,17 @@
   margin: 3vh;
 }
 
-.newUser input[type="text"],
-input[type="email"],
-input[type="number"],
-select[id="position"] {
-  width: 100%;
-  height: 6vh;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 2vh;
-  padding: 1vh;
-}
+/*.newUser input[type="text"],*/
+/*input[type="email"],*/
+/*input[type="number"],*/
+/*select[id="position"] {*/
+/*  width: 100%;*/
+/*  height: 6vh;*/
+/*  border: 1px solid #000000;*/
+/*  box-sizing: border-box;*/
+/*  border-radius: 2vh;*/
+/*  padding: 1vh;*/
+/*}*/
 
 .newUser h2 {
   margin: 0;
