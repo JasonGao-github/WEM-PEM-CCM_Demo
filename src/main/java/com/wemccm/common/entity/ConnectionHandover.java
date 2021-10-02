@@ -3,6 +3,8 @@ package com.wemccm.common.entity;
 import java.util.Date;
 
 public class ConnectionHandover extends BaseEntity{
+	private Integer projectId;
+	
 	
 	private String projectRef;
 	private Integer portalNo;
@@ -180,6 +182,12 @@ public class ConnectionHandover extends BaseEntity{
 	}
 	public void setSilVonissueComments(String silVonissueComments) {
 		this.silVonissueComments = silVonissueComments;
+	}
+	public Integer getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 	
 	

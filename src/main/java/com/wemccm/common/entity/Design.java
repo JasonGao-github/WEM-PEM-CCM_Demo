@@ -1,16 +1,25 @@
 package com.wemccm.common.entity;
 
 public class Design extends BaseEntity{
-private String WBSElement;
+	
+private Integer projectId;
+private String wBSElement;
 private String worksDescription;
 private String retirements;
 
 
-public String getWBSElement() {
-	return WBSElement;
+public Integer getProjectId() {
+	return projectId;
 }
-public void setWBSElement(String wBSElement) {
-	WBSElement = wBSElement;
+public void setProjectId(Integer projectId) {
+	this.projectId = projectId;
+}
+
+public String getwBSElement() {
+	return wBSElement;
+}
+public void setwBSElement(String wBSElement) {
+	this.wBSElement = wBSElement;
 }
 public String getWorksDescription() {
 	return worksDescription;

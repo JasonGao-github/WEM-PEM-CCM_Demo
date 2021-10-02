@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wemccm.connectionhandover.dao.ConnectionHandoverDao">
+<mapper namespace="com.wemccm.inputproject.dao.InputProjectDao">
 
 
-<select id="findConnectionHandover" 
-	parameterType="Integer"
-		resultType="com.wemccm.common.pojo.ConnectionHandoverPojo">
+	<!-- <select id="selectAllFIMinputItermQuantityType" 
+	
+		resultType="com.wemccm.common.entity.FIMinputItermQuantityType">
 
-select cc.inquiryNumber as projectRef,
-cc.supplyAddress as projectAddress,
-nc.companyTradingName as coustomerBusinesName,
-nc.customerResponsibleOfficer as customerContactName,
-nc.date as date
-from customercontribution as cc
-LEFT JOIN negotiatedconnection as nc
-on cc.projectId=nc.projectId
-where nc.projectId=#{projectId}
+		SELECT * FROM fiminputitermquantitytype 
 
-
-	</select> 
+	</select> -->
 	
 	
 
@@ -32,14 +23,14 @@ where nc.projectId=#{projectId}
  	parameterType="com.wemccm.common.entity.ConnectionHandover">
 		
 		INSERT INTO connectionhandover (	
-		projectId,projectRef,portalNo,date,coustomerBusinesName,projectAddress,customerContactName,
+		projectRef,portalNo,date,coustomerBusinesName,projectAddress,customerContactName,
 		customerContactNumber,customerContactEmail,maximumAllocatedCapacityPhases,
 		maximumAllocatedCapacityAmps,maximumAllocatedCapacitykVA,existingConnection,
 		embeddedNetwork,reCadvisedofCTarrangement,propertyRequirement,projectManagerName,
 		projectManagerPhone ,ugCrewRequired,networkOperatorRequired,complianceReviewedDesign,
 		supplyPointDetails,supplyPointComments,silVonissue,silVonissueComments) 
 		VALUES (	
-			#{projectId},#{projectRef},#{portalNo},#{date},#{coustomerBusinesName},#{projectAddress},
+			#{projectRef},#{portalNo},#{date},#{coustomerBusinesName},#{projectAddress},
 			#{customerContactName},#{customerContactNumber},#{customerContactEmail},
 			#{maximumAllocatedCapacityPhases},#{maximumAllocatedCapacityAmps},
 			#{maximumAllocatedCapacitykVA},#{existingConnection},#{embeddedNetwork},

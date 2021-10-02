@@ -3,7 +3,7 @@ package com.wemccm.common.entity;
 import java.util.Date;
 
 public class NegotiatedConnection extends BaseEntity  {
-
+	private Integer projectId;
 	private String inquiryNumber; 
 	private String maximumAllocatedCapacity; 
 	private String minimumContractDemandPrimary; 
@@ -36,6 +36,12 @@ public class NegotiatedConnection extends BaseEntity  {
 	private String networkExtensionorAugmentation;
 	
 	
+	public Integer getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
 	public String getInquiryNumber() {
 		return inquiryNumber;
 	}

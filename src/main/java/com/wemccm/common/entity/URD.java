@@ -1,6 +1,8 @@
 package com.wemccm.common.entity;
 
 public class URD  extends BaseEntity {
+	private Integer projectId;
+	
 	private String subdivision; //
 	private String inquiryNumber; //
 	private String supplyAddress; //
@@ -30,7 +32,12 @@ public class URD  extends BaseEntity {
 	private String ABN; 
 	private String otherJobSpecificRequirements;
 	
-	
+	public Integer getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
 	public String getSubdivision() {
 		return subdivision;
 	}

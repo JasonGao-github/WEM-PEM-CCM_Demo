@@ -46,8 +46,8 @@
 		<select id="insertDesign" 
  	parameterType="com.wemccm.common.entity.Design">
 		
-		INSERT INTO design (worksDescription, retirements,WBSElement) 
-		VALUES (#{worksDescription},#{retirements},#{WBSElement})
+		INSERT INTO design (projectId,worksDescription,retirements,WBSElement) 
+		VALUES (#{projectId},#{worksDescription},#{retirements},#{wBSElement})
 		
 	</select>
 	

@@ -42,7 +42,12 @@ public class ContractScheduleController {
 	@RequestMapping(value = "/insertNegotiatedConnection", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult insertNegotiatedConnection(@RequestBody NegotiatedConnection pojo) {
-
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+		pojo.setProjectId(projectId);
 		serivce.insertNegotiatedConnection(pojo);
 		return new ResponseResult();
 	}
@@ -68,7 +73,12 @@ public class ContractScheduleController {
 	@RequestMapping(value = "/insertURD", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult insertURD(@RequestBody URD pojo) {
-
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+		pojo.setProjectId(projectId);
 		serivce.insertURD(pojo);
 		return new ResponseResult();
 	}

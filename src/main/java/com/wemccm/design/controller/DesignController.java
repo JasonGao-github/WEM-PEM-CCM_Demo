@@ -44,7 +44,13 @@ public class DesignController {
 	@RequestMapping(value = "/insertDesign", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult insertDesign(@RequestBody Design Pojo) {
-
+		System.out.println(Pojo.getwBSElement());
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+		Pojo.setProjectId(projectId);
 		serivce.insertDesign(Pojo);
 		return new ResponseResult();
 	}
