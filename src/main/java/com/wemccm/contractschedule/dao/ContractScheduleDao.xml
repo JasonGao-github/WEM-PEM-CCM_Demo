@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.contractschedule.dao.ContractScheduleDao">
+
+	
+
+	
+
+	
+	
+	 <select id="findNCinCC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.NegotiatedConnectionPojo">
+		
+		SELECT inquiryNumber,
+		customerScopeOfWork as scopeofWorksCustomerFunded,
+		jemenaScopeOfWork as scopeofWorksJemenaFunded,
+		jemenaScopeExclusions as exclusions,
+		assumption as assumptions,
+		supplyAddress,
+		jemenaWBS as projectReference
+		
+		
+		FROM customercontribution
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	<select id="insertNegotiatedConnection" 
+ 	parameterType="com.wemccm.common.entity.NegotiatedConnection">
+		
+		INSERT INTO negotiatedconnection (
+		inquiryNumber,maximumAllocatedCapacity,minimumContractDemandPrimary,scopeofWorksCustomerFunded,scopeofWorksJemenaFunded,exclusions,assumptions,supplyAddress,projectReference,jemenaResponsibleOfficer,date,minimumContractDemandReserveFeeder,validityPeriod,plannedConstructionPeriod,nominalSupplyVoltage,supplyPhasing,embeddedNetwork,interestrateforoverduepayment,Security,connectionAssetandConnectionPointLocation,premisesConnectionAssetsandPartiesResponsibleforInstallation,statutoryorOtherApprovalstobeobtainedbyJemena,leaseorEasementRequired,customerResponsibleOfficer,companyTradingName,ABN,networkExtensionorAugmentation)
+	VALUES (
+#{inquiryNumber},#{maximumAllocatedCapacity},#{minimumContractDemandPrimary},#{scopeofWorksCustomerFunded},#{scopeofWorksJemenaFunded},#{exclusions},#{assumptions},#{supplyAddress},#{projectReference},#{jemenaResponsibleOfficer},#{date},#{minimumContractDemandReserveFeeder},#{validityPeriod},#{plannedConstructionPeriod},#{nominalSupplyVoltage},#{supplyPhasing},#{embeddedNetwork},#{interestrateforoverduepayment},#{Security},#{connectionAssetandConnectionPointLocation},#{premisesConnectionAssetsandPartiesResponsibleforInstallation},#{statutoryorOtherApprovalstobeobtainedbyJemena},#{leaseorEasementRequired},#{customerResponsibleOfficer},#{companyTradingName},#{ABN},#{networkExtensionorAugmentation})
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		 <select id="findURDinCC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.URDPojo">
+		
+		SELECT projectTitle as subdivision,
+		inquiryNumber,
+		supplyAddress,
+		customerScopeOfWork as descriptionofConnectionWorkstobeundertakenbyJemena,
+		jemenaScopeExclusions as descriptionofConnectionWorkstobeundertakenbyDeveloper
+		
+		
+		FROM customercontribution
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+	
+	<select id="insertURD" 
+ 	parameterType="com.wemccm.common.entity.URD">
+		
+		INSERT INTO urd (
+		subdivision,inquiryNumber,supplyAddress,jemenaResponsibleOfficer,descriptionofConnectionWorkstobeundertakenbyJemena,descriptionofConnectionWorkstobeundertakenbyDeveloper,statutoryandOtherApprovals,supplyCapacityperLot,date,numberoflots,lotnumbers,leaseorEasement,validityPeriod,security,plannedConstructionPeriod,connectionAssetsandConnectionPoint,premisesConnectionAssetsandPartiesResponsibleforInstallation,networkExtensionorAugmentationifrequired,costofNetworkExtensionofAugmentation,meterInformation,tenderFeeifapplicable,applicableInterestRate,developerResponsibleOfficer,companyTradingName,ABN,otherJobSpecificRequirements)VALUES (
+		#{subdivision},#{inquiryNumber},#{supplyAddress},#{jemenaResponsibleOfficer},#{descriptionofConnectionWorkstobeundertakenbyJemena},#{descriptionofConnectionWorkstobeundertakenbyDeveloper},#{statutoryandOtherApprovals},#{supplyCapacityperLot},#{date},#{numberoflots},#{lotnumbers},#{leaseorEasement},#{validityPeriod},#{security},#{plannedConstructionPeriod},#{connectionAssetsandConnectionPoint},#{premisesConnectionAssetsandPartiesResponsibleforInstallation},#{networkExtensionorAugmentationifrequired},#{costofNetworkExtensionofAugmentation},#{meterInformation},#{tenderFeeifapplicable},#{applicableInterestRate},#{developerResponsibleOfficer},#{companyTradingName},#{ABN},#{otherJobSpecificRequirements})
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+
+
+
+
+</mapper>
