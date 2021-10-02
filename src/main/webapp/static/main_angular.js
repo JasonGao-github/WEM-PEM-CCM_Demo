@@ -230,7 +230,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.new_user_lname = ''
     $scope.new_user_email = ''
     $scope.new_user_job_role = ''
-
+    $scope.new_user_password_mismatch = false
     //add new user
     $scope.add_new_user = function () {
         console.log("clicked add_new_user function")
@@ -242,23 +242,27 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         console.log($scope.new_user_email)
         console.log($scope.new_user_job_role)
 
-        var obj = JSON.stringify({
-            "email": $scope.email,
-            "password": $scope.password,
-            "firstname": "fname",
-            "lastname": "lname",
-            "userTypeId": "1",
-        })
+        if ($scope.new_user_password.toString() === $scope.new_user_password_repeat.toString()) {
+            $scope.new_user_password_mismatch = false
+            var obj = JSON.stringify({
+                "email": $scope.new_user_email,
+                "password": $scope.new_user_password,
+                "firstname": $scope.new_user_fname,
+                "lastname": $scope.new_user_lname,
+                "userTypeId": $scope.new_user_job_role,
+            })
+            $http({
+                method: 'POST',
+                url: url + '/create',
+                data: obj
+            }).then(function mySuccess(response) {
+                console.log(response)
+                //var data = JSON.parse(response.data);
 
-        // $http({
-        //     method: 'POST',
-        //     url: url + '/create',
-        //     data: obj
-        // }).then(function mySuccess(response) {
-        //     console.log(response)
-        //     //var data = JSON.parse(response.data);
-        //
-        // })
+            })
+        } else {
+            $scope.new_user_password_mismatch = true
+        }
     }
 }])
 

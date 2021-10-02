@@ -114,6 +114,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" ng-show="new_user_password_mismatch">
+                        <div class="col">
+                            <h6 style="color: red">Password does not match!</h6>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
