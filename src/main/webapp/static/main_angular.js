@@ -272,12 +272,31 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             url: url + '/listAllUsers',
         }).then(function mySuccess(response) {
             console.log(response)
-            //var data = JSON.parse(response.data);
+            // var data = JSON.parse(response.data);
+            console.log(response.data)
+            $scope.all_user_data = response.data
+        })
+    }
+    $scope.get_all_users()
 
+    $scope.delete_user = function (id) {
+        console.log("clicked delete_user function")
+
+        var userId = $scope.all_user_data[id]['id']
+        console.log(userId)
+        var obj = JSON.stringify({
+            "userId": userId,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/deleteUser',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            $scope.get_all_users()
         })
     }
 
-    $scope.get_all_users()
 }])
 
 

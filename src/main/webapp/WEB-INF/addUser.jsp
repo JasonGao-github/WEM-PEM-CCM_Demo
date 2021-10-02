@@ -42,28 +42,41 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-dark table-bordered table-hover dom-jQuery-events"
-                                               style="text-align: center;">
-                                            <thead class="thead-light">
-                                            <tr>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Role</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                       style="text-align: center; margin: 0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="data in all_user_data track by $index">
+                                        <td>
+                                            {{data['firstName']}}
+                                        </td>
+                                        <td>
+                                            {{data['lastName']}}
+                                        </td>
+                                        <td>
+                                            {{data['email']}}
+                                        </td>
+                                        <td>
+                                            {{data['userType']}}
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" ng-click="delete_user($index)">Delete User</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </table>
                             </div>
+
                         </div>
                     </div>
                 </div>
