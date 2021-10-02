@@ -327,6 +327,55 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }
     }
 
+    $scope.quantity_input_basic_data_error = false
+    $scope.quantityInputItemGroupIdBasicData = ''
+    $scope.quantity_input_item_code_basic_data = ''
+    $scope.quantity_input_item_description_basic_data = ''
+    $scope.quantity_input_item_unit_basic_data = ''
+    $scope.quantity_input_item_labour_basic_data = ''
+    $scope.quantity_input_item_material_basic_data = ''
+    $scope.quantity_input_item_plant_basic_data = ''
+    $scope.quantity_input_item_subcontract_basic_data = ''
+    $scope.quantity_input_item_unit_rate_basic_data = ''
+    $scope.quantity_input_item_man_hour_basic_data = ''
+    $scope.quantityInputSuccess = false
+    $scope.quantityInputError = false
+
+    $scope.submit_quantity_input_basic_data_item = function () {
+        console.log("clicked submit_quantity_input_basic_data_item function")
+
+        var obj = JSON.stringify({
+            "quantityInputItermGroupId": $scope.quantityInputItemGroupIdBasicData,
+            "code": $scope.quantity_input_item_code_basic_data,
+            "description": $scope.quantity_input_item_description_basic_data,
+            "unit": $scope.quantity_input_item_unit_basic_data,
+            "labour": $scope.quantity_input_item_labour_basic_data,
+            "material": $scope.quantity_input_item_material_basic_data,
+            "plant": $scope.quantity_input_item_plant_basic_data,
+            "subcontract": $scope.quantity_input_item_subcontract_basic_data,
+            "unitRate": $scope.quantity_input_item_unit_rate_basic_data,
+            "manhours": $scope.quantity_input_item_man_hour_basic_data,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/insertQuantityInputBasicData',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#quantityInputBasicDataModal').modal('show');
+                $scope.quantityInputSuccess = true
+                $scope.quantityInputError = false
+            } else {
+                $('#quantityInputBasicDataModal').modal('show');
+                $scope.quantityInputSuccess = false
+                $scope.quantityInputError = true
+            }
+        })
+    }
+
 
 }])
 
