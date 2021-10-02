@@ -30,11 +30,42 @@
         <%--			if (userType.equals("1")) {--%>
         <%--		%>--%>
         <li><a href="addUser_page"> <i class="bx bx-folder"></i> <span
-                class="links_name">Add New User</span>
-        </a> <span class="subtitle">Add New User</span></li>
-        <li><a href="basic_data"> <i class="bx bx-folder"></i> <span
-                class="links_name">Basic Data</span>
-        </a> <span class="subtitle">Basic Data</span></li>
+                class="links_name">Manage Users</span>
+        </a> <span class="subtitle">Manage Users</span></li>
+
+        <%--        <li><a href="basic_data"> <i class="bx bx-folder"></i> <span--%>
+        <%--                class="links_name">Basic Data</span>--%>
+        <%--        </a> <span class="subtitle">Basic Data</span></li>--%>
+        <li class="dropdown">
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <i class="bx bx-folder"></i>
+                    <span class="links_name menu-collapsed">Add basic data<i class='bx bx-chevron-down'></i></span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu1' class="collapse sidebar-submenu">
+                <a href="quantity_input_basic_data" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Quantity | Input</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">FIM | Input</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Avoided Cost | Input</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Non-contestable | Input</span>
+                </a>
+            </div>
+            <span class="subtitle">Add basic data</span>
+        </li>
+
         <li><a href="settings_page"> <i class="bx bx-folder"></i> <span
                 class="links_name">Settings</span>
         </a> <span class="subtitle">Settings</span></li>

@@ -120,5 +120,11 @@ public class RoutingController {
         return "user_settings";
     }
 
+    @RequestMapping(value = "/quantity_input_basic_data")
+    public String quantityInputBasicDataRouting() {
+
+        return "quantity_input_basic_data";
+    }
+
 
 }
