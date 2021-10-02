@@ -4,19 +4,13 @@ public class CreateAccountRequestPojo extends BaseRequestPojo {
 
 
 
-	private String username;
+	private String firstname;
 	private String password;
 	private String email;
 	private Integer userTypeId;
-	private Integer leaderId;
+	private String lastname;
 	
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 
 	public Integer getUserTypeId() {
 		return userTypeId;
@@ -26,12 +20,22 @@ public class CreateAccountRequestPojo extends BaseRequestPojo {
 		this.userTypeId = userTypeId;
 	}
 
-	public Integer getLeaderId() {
-		return leaderId;
+
+
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setLeaderId(Integer leaderId) {
-		this.leaderId = leaderId;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getPassword() {
