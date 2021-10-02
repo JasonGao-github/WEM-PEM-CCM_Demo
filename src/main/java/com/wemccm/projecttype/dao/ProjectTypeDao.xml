@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.projecttype.dao.ProjectTypeDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+	<!-- <resultMap id="BaseResultMap"
+		type="com.wemccm.common.entity.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="CHAR" />
+		<result column="password" property="password" jdbcType="CHAR" />
+	</resultMap> -->
+	<!-- 查询单条记录 -->
+
+
+			
+	<select id="selectAllProjectType"
+		resultType="com.wemccm.common.entity.ProjectType">
+		SELECT * FROM projecttype
+
+	</select>
+	
+	
+	
+<select id="getProjectType"
+		resultType="com.wemccm.common.entity.ProjectType"
+		parameterType="com.wemccm.common.pojo.projectTypePojo">
+		SELECT * FROM projecttype
+		<where>
+			<if test="id!=null and id!=''">
+				id = #{id}
+			</if>
+			<if test="description!=null and description!=''">
+				and description = #{description}
+			</if>
+			<if test="name!=null and name!=''">
+				and name = #{name}
+			</if>
+
+		</where>
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.wemccm.noncontestable.dao.NonContestableDao">
+
+
+	<select id="findNonContestableProjectComponent"
+
+		parameterType="com.wemccm.common.pojo.NonContestableProjectComponentPojo"
+		resultType="com.wemccm.common.entity.NonContestableProjectComponent">
+
+		SELECT * FROM noncontestableprojectcomponent
+
+		WHERE
+		projectTypeId = #{projectTypeId}
+
+	</select>
+
+
+	<select id="selectAllNonContestableType"
+
+		resultType="com.wemccm.common.entity.NonContestableType">
+
+		SELECT * FROM noncontestabletype
+
+	</select>
+
+
+	<select id="findNonContestableOtherCostsItem"
+
+		parameterType="com.wemccm.common.pojo.NonContestableOtherCostsItemPojo"
+		resultType="com.wemccm.common.entity.NonContestableOtherCostsItem">
+
+		SELECT * FROM noncontestableothercostsiterm
+
+		WHERE
+		nonContestableTypeId = #{nonContestableTypeId}
+
+	</select>
+
+
+	<select id="insertProjectNonContestableProjectComponent"
+		parameterType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
+
+		INSERT INTO projectnoncontestableprojectcomponent
+		(projectId,
+		nonContestableProjectComponentId,hours,total)
+		VALUES
+		(#{projectId},#{nonContestableProjectComponentId},#{hours},#{total})
+
+	</select>
+
+
+
+	<select id="insertNonContestableProjectComponent"
+		parameterType="com.wemccm.common.entity.NonContestableProjectComponent">
+
+		INSERT INTO noncontestableprojectcomponent
+		(projectTypeId, cost,description)
+		VALUES
+		(#{projectTypeId},#{cost},#{description})
+
+	</select>
+
+
+
+	<select id="insertNonContestableOtherCosts"
+		parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
+
+		INSERT INTO noncontestableothercosts (projectId,
+		nonContestableOtherCostsItemId,quantity,total)
+		VALUES
+		(#{projectId},#{nonContestableOtherCostsItemId},#{quantity},#{total})
+
+	</select>
+
+
+	<select id="insertNonContestableOtherCostsItem"
+		parameterType="com.wemccm.common.entity.NonContestableOtherCostsItem">
+
+		INSERT INTO noncontestableothercostsiterm (
+		nonContestableTypeId,unit,rate,description)
+		VALUES
+		(#{nonContestableTypeId},#{unit},#{rate},#{description})
+
+	</select>
+
+
+
+
+	<select id="findMultiNonContestableProjectComponent"
+		parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.NccProjectComponentPojo">
+
+		SELECT pc.cost,pc.description,ppc.*
+
+		FROM
+		noncontestableprojectcomponent as pc
+
+		LEFT JOIN
+		projectnoncontestableprojectcomponent as ppc
+		ON
+		ppc.nonContestableProjectComponentId=pc.id
+
+		WHERE ppc.projectId=
+		#{projectId}
+
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+	<select id="findMultiNonContestableOtherCosts"
+		parameterType="com.wemccm.common.pojo.NccItemsAndProjectIdPojo"
+		resultType="com.wemccm.common.pojo.NccItemsPojo">
+		SELECT
+		ncoc.*,
+		oci.description,
+		oci.unit,
+		oci.rate,
+		FROM noncontestableothercostsiterm as oci
+		LEFT JOIN
+		noncontestableothercosts as ncoc
+		ON
+		ncoc.nonContestableOtherCostsItemId=oci.id
+
+		<where>
+			<if test="projectId!=null and projectId!=''">
+				ncoc.projectId =#{projectId}
+			</if>
+			<if
+				test="nonContestableOtherCostsItemId!=null and nonContestableOtherCostsItemId!=''">
+				and ncoc.nonContestableOtherCostsItemId =
+				#{nonContestableOtherCostsItemId}
+			</if>
+		</where>
+	</select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.cicauthorisation.dao.CICAuthorisationDao">
+
+
+
+	
+<!-- <select id="getCICAuthorisation"
+		resultType="com.wemccm.common.entity.CICAuthorisation"
+		parameterType="com.wemccm.common.pojo.CICAuthorisationPojo">
+		SELECT * FROM cicauthorisation
+		<where>
+			<if test="id!=null and id!=''">
+				id = #{id}
+			</if>
+			<if test="cicProjectDetailsID!=null and cicProjectDetailsID!=''">
+				and cicProjectDetailsID = #{cicProjectDetailsID}
+			</if>
+			<if test="useId!=null and useId!=''">
+				and useId = #{useId}
+			</if>
+			<if test="title!=null and title!=''">
+				and title = #{title}
+			</if>
+			<if test="authorDate!=null and authorDate!=''">
+				and authorDate = #{authorDate}
+			</if>
+		</where>
+	</select> -->
+	
+	
+	
+	<select id="createCICAuthorisation" 
+	
+		parameterType="com.wemccm.common.pojo.CICAuthorisationPojo">
+
+		INSERT INTO cicauthorisation (id, cicProjectDetailsID,useId,title,authorDate) 
+		VALUES (#{id},#{cicProjectDetailsID},#{useId},#{title},#{authorDate})
+	</select>
+	
+	
+	
+	<select id="updateCICAuthorisation" 
+		parameterType="com.wemccm.common.pojo.CICAuthorisationPojo">
+	
+
+		UPDATE cicauthorisation 
+		SET  
+			<if test="cicProjectDetailsID!=null and cicProjectDetailsID!=''">
+				cicProjectDetailsID = #{cicProjectDetailsID}
+			</if>
+			<if test="useId!=null and useId!=''">
+				,useId = #{useId}
+			</if>
+			<if test="title!=null and title!=''">
+				,title = #{title}
+			</if>
+			<if test="authorDate!=null and authorDate!=''">
+				,authorDate = #{authorDate}
+			</if>
+		WHERE id=#{id} 
+	</select> 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,84 @@
+.row{
+  padding:0.1rem!important;
+}
+
+.content input[type="text"],
+input[type="email"],
+input[type="number"],
+select[id="projectType"] {
+  width: 100%;
+  background: #f4f4f4;
+  border-radius: 10px;
+  border-style: hidden;
+  margin: 0 0 8px;
+}
+
+.content h4 {
+  font-size: 1rem;
+  background-color: #cccccc;
+  border-block: initial;
+  border-radius: 10px;
+  border-style: hidden;
+  text-align: center;
+}
+
+.light h4 {
+  font-size: 0.75rem;
+  background-color: #E7E7E7;
+  border-block: initial;
+  border-radius: 10px;
+  border-style: hidden;
+  text-align: center;
+}
+
+.content input[type="btn"] {
+  font-size: 1.5rem;
+  background: #909ec3;
+  display: block;
+  margin: clamp(3vh, 10vh, 20vh) auto;
+  text-align: center;
+  border: 2px solid #8b8b8b;
+  box-sizing: border-box;
+  padding: 0.2rem;
+  width: 200px;
+  outline: none;
+  color: rgb(248, 244, 244);
+  border-radius: 1vh;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.content form {
+  max-width: 100%;
+}
+.content h1 {
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 45px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.content h3 {
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 25px;
+  white-space: nowrap;
+  color: #000000;
+  padding: 0 1vw;
+}
+
+.row {
+  padding: 0.5rem;
+}
+
+.currencyinput {
+  border: 1px inset #ccc;
+}
+.currencyinput input {
+  border: 0;
+}

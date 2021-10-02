@@ -1,0 +1,82 @@
+package com.wemccm.quantityinput.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.wemccm.common.entity.QuantityInputBasicData;
+import com.wemccm.common.entity.QuantityInputItermGroup;
+import com.wemccm.common.pojo.QuantityInputDetailPojo;
+import com.wemccm.common.pojo.QuantityInputItermGroupIdPojo;
+import com.wemccm.common.pojo.QuantityInputPojo;
+import com.wemccm.common.pojo.ResponseResult;
+import com.wemccm.common.pojo.projectIdPojo;
+import com.wemccm.quantityinput.service.QuantityInputService;
+
+@RestController
+public class QuantityInputController {
+
+	//
+	@Autowired
+	private QuantityInputService serivce;
+
+	// list all groups
+	@RequestMapping(value = "/selectAllQuantityInputItermGroup", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<QuantityInputItermGroup> selectAllQuantityInputItermGroup() {
+
+		List<QuantityInputItermGroup> l = serivce.selectAllQuantityInputItermGroup();
+		return l;
+	}
+
+	@RequestMapping(value = "/insertQuantityInputBasicData", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult insertQuantityInputBasicData(@RequestBody QuantityInputBasicData data) {
+		// insert table avoidedcostassetreplacementcosts
+		serivce.insertQuantityInputBasicData(data);
+		return new ResponseResult();
+	}
+
+	// insert
+	@RequestMapping(value = "/insertQuantityInput", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult insertQuantityInput(@RequestBody List<QuantityInputPojo> list) {
+		// insert table avoidedcostassetreplacementcosts
+		serivce.insertQuantityInput(list);
+		return new ResponseResult();
+	}
+
+	@RequestMapping(value = "/findQuantityInputBasicData", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<QuantityInputBasicData> findQuantityInputBasicData(
+			@RequestBody QuantityInputItermGroupIdPojo requestPojo) {
+		// get by any attribute input (one or many)
+
+		List<QuantityInputBasicData> l = serivce.findQuantityInputBasicData(requestPojo);
+		return l;
+	}
+
+//	@RequestMapping(value = "/findQuantityInputItermType", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public List<QuantityInputItermType> findQuantityInputItermType(
+//			@RequestBody QuantityInputItermTypePojo requestPojo) {
+//		// get by any attribute input (one or many)
+//
+//		List<QuantityInputItermType> l = serivce.findQuantityInputItermType(requestPojo);
+//		return l;
+//	}
+
+	@RequestMapping(value = "/findQuantityInputDetail", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<QuantityInputDetailPojo> findQuantityInputDetail(@RequestBody projectIdPojo requestPojo) {
+
+
+		List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
+		return l;
+	}
+
+}

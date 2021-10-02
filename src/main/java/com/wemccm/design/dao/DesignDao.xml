@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.design.dao.DesignDao">
+
+	
+
+		 <select id="findWBSElement" 
+ 	parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="Integer">
+		
+		SELECT zinfraWBS
+		
+		FROM customercontribution
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+	<!-- <select id="selectAllFIMinputItermQuantityType" 
+	
+		resultType="com.wemccm.common.entity.FIMinputItermQuantityType">
+
+		SELECT * FROM fiminputitermquantitytype 
+
+	</select> -->
+	
+	
+
+	
+
+	
+	
+	
+	
+		<select id="insertDesign" 
+ 	parameterType="com.wemccm.common.entity.Design">
+		
+		INSERT INTO design (projectId,worksDescription,retirements,WBSElement) 
+		VALUES (#{projectId},#{worksDescription},#{retirements},#{wBSElement})
+		
+	</select>
+	
+	
+	
+
+	
+
+
+
+
+</mapper>

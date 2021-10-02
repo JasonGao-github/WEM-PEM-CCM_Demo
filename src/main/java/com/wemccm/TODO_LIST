@@ -1,0 +1,146 @@
+1.添加了一个分页查询的框架，请重新更新整个项目。
+2.common.page包中包含了分页查询三个需要用到的类。
+3.demo包中放了我最新开发的分页查询demo。看懂这个demo以后，开发project列表页面，包括查询、列表展示、搜索及分页等功能。
+4.代码写好之后直接提交到项目当中来，branch先不用管。
+5.写好之后如果还有时间，就和前端人员调试开发过的功能。
+
+---------------------
+
+1，开发一个接口，返回所有的projectType（包含其id和name）。
+2. 与前端调试开发好的接口。
+3.暂时不考虑branch，等这一波功能都测试完成了再分。
+4.project中增加了一个version字段，请更新到数据库脚本和数据库中。
+5.添加了几个entity，更新到sql文件中。
+
+---------------------
+周四前后完成：
+1.又更新了一波entity，同样的更新到sql脚本和数据库。
+2.开发一个接口，往CurrentOccupy表里插入新数据。
+3.开发一个接口，根据projectId查询对应的CurrentOccupy
+4.开发一个接口，根据userId和projectId删除对应的CurrentOccupy数据。
+5.开发一个接口，往Notice里插入数据。
+6.开发Notice表的Dao，包括这2个方法：
+（1）插入数据
+（2）根据收件人查询所有的Notice
+
+--------------------
+周五周六前后完成：
+1.findpage那个包里面是查询项目列表吗？如果是，移到project包里，findpage包删掉。
+CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包名都是纯小写。
+2.封装了一个发送邮件的工具类，可以先熟悉熟悉。
+3.添加了entity，应该是最后一波了。添加到数据库脚本里。
+-------------------
+//
+周六至周一完成：
+1.开发一个接口，根据usertype 查询user
+2.开发一个接口，查询这个用户下属的所有用户（leaderid）
+3.开发一个接口，往CICauthorisation表中插入数据。要求动态添加（前端如果只传一个人的签名就添加一条数据，传两个人就添加两条数据，三个人就插入三条。以此类推。。）
+4.开发一个接口，实现对CICauthorisation的更新操作，同样要求实现动态更新。
+5.开发一个接口，更新CustomerContribution表中的信息。前端传什么字段，就更新什么字段，不传的就不更新。
+--------------------
+修改：
+1.不管是包名还是类名，都要让人一眼懂。cc和cic这种不行。
+2.cc和cic两个包中的java文件命名也不规范，类名都是标准大小写命名。
+3.代码中所有的system.out.println();能删掉的都删掉。不要出现“!!!!!”这种奇怪的字符。
+---------------------
+1.project entity中去掉了之前错误的字段。所以把对应的sql脚本和代码中受影响的功能都改过来。(应该只有project的包中涉及？我不是很确定。这个应该你比我清楚。)
+简单叙述一下逻辑：project和CustomerContribution是一对一的关系，之所以不做成一张表是因为这样分开更贴合客户给的Excel上的逻辑模块，从而更容易理解。
+注意开发的过程中，一定要参照前端画的原型图以及我画的数据库ER模型。
+2.开发添加项目的接口，注意牵扯到两张表，project和customercontribution。
+---------------------
+1.添加project的逻辑中，Id是数据库的自增主键，前端是传不进来值的。请改正相关逻辑。
+2.写一个接口，读取QuantityInputItermType中所有数据，不需要分页。
+3.写一个接口，查询所有的QuantityInputItermType
+4.根据QuantityInputIterm的projectItemTypeId查QuantityInputIterm
+									和QuantityInputItermSubTypePrice(list)
+									和QuantityInputSubType
+									
+---------------------
+1.重构上一次的4号任务。数据格式请看QuantityInputBasicDataListPojo。需要返回给前端的是这个pojo的List,“Three...”这个名字太离谱了，删掉。
+---------------------
+
+注意：数据库表结构和SQL脚本都做了更新，请熟悉。
+1.开发接口：往QuantityInput表中插入数据。
+2.开发接口：查询所有的projectType，不需要分页。
+3.开发接口：根据projectTypeId，查询的NonContestableProjectComponent；
+4.开发接口：往ProjectNonContestableProjectComponent插入数据，要求一次性能同时插入多条。
+5.开发接口：查询所有的NonContestableType，不需要分页
+6.开发接口：根据NonContestableTypeId查询所有的NonContestableOtherCostsIterm
+7.开发接口：往NonContestableOtherCosts插入数据，要求一次性能同时插入多条。。
+------------------------
+1.开发接口：查询所有的FIMinputType
+2.开发接口：根据FIMinputTypeID查询FIMinputSubType
+3.开发接口：根据FIMinputSubTypeID查询FIMinputIterm
+4.开发接口：查询所有的FIMinputItermQuantityType
+5.开发接口：往FIMinputItermQuantity里插入数据。
+---------------------------
+1.新加的Avoid开头那四个entity，加到sql脚本里面去。
+2.开发接口，读取AvoidedCostType中的所有数据，不要分页。
+3.AvoidedCostAssetReplacementCosts，AvoidedCostESCGuideline，AvoidedCostMaintenanceCosts开发三个接口分别往这三张表里插入数据，均要求同时插入多条。
+4.开发一个接口，根据projectId查询这三张表里的所有信息，要与AvoidedCostType关联。结构不清楚的话，请参照UML图，我已经画好了。
+---------------------------
+1.增加了一个表，AvoidedCostassetReplacementIterm，脚本已经都加上了。
+		但是之前开发的有关AvoidedCostassetReplacementCosts的功能需要修改，
+		要通过外键left join到这个新表里面去取数据。所以请做出调整。
+2.开发一个接口，取出这个新表里的所有数据。
+---------------------------
+************************************************************************
+1.addproject需要插入project和CustomerContribution两张表每个字段的数据。
+2.在创建project的时候，需要往customerContributionPrice初始化一部分数据。并在所有的数据都填完之后，更新这一部分数据。
+			customerContributionPricetypeid:1-8
+3.需要开发一个接口，往customerContributionAuthoris插入数据，同时插入多条。
+4.threeQuantityInputItermTable名字改掉！！要直接看懂接口是用来干什么的！
+5.开发一个接口，根据quantityInputItermTypeId查询所有的QuantityInputIterm
+6.insertQuantityInput需要能同时插入多条数据。
+7.开发一个接口，根据projectId查询ProjectNonContestableProjectComponent，
+							NonContestableProjectComponent，
+							ProjecTypet三张表里的信息。开发完以后，给出json格式。
+
+8.开发一个接口，根据projectId查询NonContestableOtherCosts，
+						NonContestableOtherCostsIterm，
+						NonContestableType三张表里的信息，开发完之后给出json格式。
+
+
+--------------------------------------
+1.用postman测试ProjectController中的addProject接口，之前逻辑不对，我给重构了。
+				参数取消了一部分，可以看pojo对象。
+2.开发一个接口，通过projectId取出所有cc有关的信息。
+		接口已经声明在了CustomerContributionController里，
+		返回的pojo对象也已经写好了（CustomerContributionDetailPojo）
+3.写完给我json格式。
+---------------------------------------
+以下都是关于Quantityinput：
+1.注释掉了之前Quantityinput的相关逻辑，因为跟前端的页面逻辑有冲突。
+2.entity做了大幅度调整。变得更简单了，可以参考UML图。
+3.把两张新表以及Quantityinput表的建表语句添加或者更新到sql中。旧的语句我已经注释。
+4.开发接口读取QuantityInputItermGroup中的所有数据
+5.开发接口读取QuantityInputBasicData根据quantityInputItermGroupId
+6.开发接口往QuantityInputBasicData中添加新的数据。
+7。开发接口往更新后的QuantityInput中插入数据，要求要批量操作。
+8.用projectId读取QuantityInput的所有数据，三张表联查。
+9.如果其他功能有涉及到此次改动的，做出对应的调整。
+--------------------------------------
+1.findMultiNonContestableProjectComponent返回数据格式不对，我写了NccProjectComponentPojo，返回List<NccProjectComponentPojo>。
+2.findMultiNonContestableOtherCosts也不对，我写了NccItemsPojo，返回List<NccItemsPojo>,并且入参需要有一个nonContestableOtherCostsItemId，没传这个参数就返回所数据，传了就筛选。
+
+3.开发接口，插入数据到NonContestableProjectComponent。单条数据。
+4.开发接口，插入数据到NonContestableOtherCostsIterm。单条数据。
+
+---------------------------------------
+1.开发一个接口，往FIMinputIterm中插入数据。
+---------------------------------------
+开发Connection Handover、Contract Schedule、CCM-WEM Section三个页面的所有功能。并与前端相关人员联调。
+
+
+
+
+
+
+
+
+
+
+
+
+
+

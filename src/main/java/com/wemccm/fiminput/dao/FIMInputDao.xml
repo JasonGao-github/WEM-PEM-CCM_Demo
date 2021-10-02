@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.fiminput.dao.FIMInputDao">
+
+	
+
+	
+
+	<select id="selectAllFIMinputType" 
+	
+		resultType="com.wemccm.common.entity.FIMinputType">
+
+		SELECT * FROM fiminputtype 
+
+	</select>
+	
+	
+	<!-- <select id="selectAllFIMinputItermQuantityType" 
+	
+		resultType="com.wemccm.common.entity.FIMinputItermQuantityType">
+
+		SELECT * FROM fiminputitermquantitytype 
+
+	</select> -->
+	
+	
+	 <select id="findFIMinputSubType" 
+ 	parameterType="com.wemccm.common.pojo.FIMinputSubTypePojo"
+		resultType="com.wemccm.common.entity.FIMinputSubType">
+		
+		SELECT *
+		
+		FROM fiminputsubtype
+		
+		WHERE fIMinputTypeID=#{fIMinputTypeID}
+		
+	</select>
+	
+	<select id="insertFIMinputItermQuantity" 
+ 	parameterType="com.wemccm.common.pojo.FIMinputItermQuantityPojo">
+		
+		INSERT INTO fiminputitermquantity (projectId, fIMinputItermId,acturalQuantity,jenFoundedQuantity,lctaQuantity,acturalSubTotal,jenFoundedTotal,lctaTotal) 
+		VALUES (#{projectId},#{fIMinputItermId},#{acturalQuantity},#{jenFoundedQuantity},#{lctaQuantity},#{acturalSubTotal},#{jenFoundedTotal},#{lctaTotal})
+		
+	</select>
+	
+	
+	
+	
+		<select id="insertFIMinputIterm" 
+ 	parameterType="com.wemccm.common.entity.FIMinputIterm">
+		
+		INSERT INTO fiminputiterm (fIMinputSubTypeID, description,currency,unitCost) 
+		VALUES (#{fIMinputSubTypeID},#{description},#{currency},#{unitCost})
+		
+	</select>
+	
+	
+	
+		 <select id="findFIMinputIterm" 
+ 	parameterType="com.wemccm.common.pojo.FIMinputItermPojo"
+		resultType="com.wemccm.common.entity.FIMinputIterm">
+		
+		SELECT *
+		
+		FROM fiminputiterm
+		
+		WHERE fIMinputSubTypeID=#{fIMinputSubTypeID}
+		
+	</select>
+	
+	
+
+
+
+
+</mapper>

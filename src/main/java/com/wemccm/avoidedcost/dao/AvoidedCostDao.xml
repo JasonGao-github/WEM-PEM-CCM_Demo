@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.avoidedcost.dao.AvoidedCostDao">
+
+
+
+
+
+	<select id="selectAllAvoidedCostType"
+
+		resultType="com.wemccm.common.entity.AvoidedCostType">
+
+		SELECT * FROM avoidedcosttype
+
+	</select>
+
+	<select id="selectAllAvoidedCostassetReplacementIterm"
+
+		resultType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
+
+		SELECT * FROM avoidedcostassetreplacementiterm
+
+	</select>
+	
+
+
+	<select id="insertAvoidedCostAssetReplacementCosts"
+		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
+
+		INSERT INTO avoidedcostassetreplacementcosts (projectId,
+		name,source,unitCost,unit,quantity,totalCost,assetAge,stdLife,remLife,presentValueRC,avoidedCostInputTypeId)
+		VALUES
+		(#{projectId},#{name},#{source},#{unitCost},#{unit},#{quantity},#{totalCost},#{assetAge},#{stdLife},#{remLife},#{presentValueRC},#{avoidedCostInputTypeId})
+
+	</select>
+
+
+
+	<select id="insertAvoidedCostESCGuideline"
+		parameterType="com.wemccm.common.entity.AvoidedCostESCGuideline">
+
+		INSERT INTO avoidedcostescguideline (projectId,
+		assumptions,source,constant,notes)
+		VALUES
+		(#{projectId},#{assumptions},#{source},#{constant},#{notes})
+
+	</select>
+
+
+
+	<select id="insertAvoidedCostMaintenanceCosts"
+		parameterType="com.wemccm.common.entity.AvoidedCostMaintenanceCosts">
+
+		INSERT INTO avoidedcostmaintenancecosts (projectId,
+		name,source,maint,vegMgt,unit,quantity,costPa,ameExist,avoidedCostInputTypeId)
+		VALUES
+		(#{projectId},#{name},#{source},#{maint},#{vegMgt},#{unit},#{quantity},#{costPa},#{ameExist},#{avoidedCostInputTypeId})
+
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+	<select id="findAvoidedCostAssetReplacementCosts"
+		parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo">
+		SELECT arc.*,t.`name` as InputTypeName,ari.`name` as ReplacementItermName
+
+		FROM avoidedcostassetreplacementcosts as arc
+
+		LEFT JOIN  avoidedcosttype as t
+		ON
+		arc.avoidedCostInputTypeId=t.id
+		
+		LEFT JOIN avoidedcostassetreplacementiterm as ari
+		ON
+		arc.avoidedCostassetReplacementItermId=ari.id
+		
+		
+		WHERE arc.projectId=#{projectId}
+	</select>
+
+	<select id="findAvoidedCostMaintenanceCosts"
+		parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.AvoidedCostMaintenanceCostsTypeJojo">
+		SELECT mc.*,t.`name` as InputTypeName
+
+		FROM avoidedcosttype as t
+
+		LEFT JOIN avoidedcostmaintenancecosts as mc
+		ON
+		mc.avoidedCostInputTypeId=t.id
+
+		WHERE mc.projectId=#{projectId}
+	</select>
+
+	<select id="findAvoidedCostESCGuideline"
+		parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.entity.AvoidedCostESCGuideline">
+		SELECT *
+
+		FROM avoidedcostescguideline
+
+
+		WHERE projectId=#{projectId}
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

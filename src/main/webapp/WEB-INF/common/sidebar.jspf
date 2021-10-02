@@ -1,0 +1,108 @@
+<%
+    String userType = new String("");
+    if ((String) session.getAttribute("username") != null) {
+        userType = (String) session.getAttribute("userTypeId").toString();
+    }
+%>
+
+
+<div class="sidebar">
+    <div class="logo_details">
+        <img src="<%=path%>static/images/jemena.svg" alt="logo" id="Jem-logo"
+             style="visibility: hidden"/> <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li><a href="dashboard_page"> <i class="bx bx-grid-alt"></i>
+            <span class="links_name">All Projects</span>
+        </a> <span class="subtitle">All Projects</span></li>
+        <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
+                class="links_name">View Projects</span>
+        </a> <span class="subtitle">View Projects</span></li>
+        <li><a href="create_project_page"> <i class="bx bx-user"></i>
+            <span class="links_name">Create New Projects</span>
+        </a> <span class="subtitle">Create New Projects</span></li>
+        <li><a href="approve_page"> <i class="bx bx-search"></i> <span
+                class="links_name">Approve Projects</span>
+        </a> <span class="subtitle">Approve Projects</span></li>
+
+
+        <%--		<%--%>
+        <%--			if (userType.equals("1")) {--%>
+        <%--		%>--%>
+        <li><a href="addUser_page"> <i class="bx bx-folder"></i> <span
+                class="links_name">Manage Users</span>
+        </a> <span class="subtitle">Manage Users</span></li>
+
+        <%--        <li><a href="basic_data"> <i class="bx bx-folder"></i> <span--%>
+        <%--                class="links_name">Basic Data</span>--%>
+        <%--        </a> <span class="subtitle">Basic Data</span></li>--%>
+        <li class="dropdown">
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <i class="bx bx-folder"></i>
+                    <span class="links_name menu-collapsed">Add basic data<i class='bx bx-chevron-down'></i></span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu1' class="collapse sidebar-submenu">
+                <a href="quantity_input_basic_data" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Quantity | Input</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">FIM | Input</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Avoided Cost | Input</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Non-contestable | Input</span>
+                </a>
+            </div>
+            <span class="subtitle">Add basic data</span>
+        </li>
+
+        <li><a href="settings_page"> <i class="bx bx-folder"></i> <span
+                class="links_name">Settings</span>
+        </a> <span class="subtitle">Settings</span></li>
+        <%--		<%--%>
+        <%--			}--%>
+        <%--		%>--%>
+
+
+        <li class="profile">
+            <div class="profile_details">
+                <img src="https://img.icons8.com/bubbles/50/000000/user.png"
+                     alt="profileImg">
+                <div class="name_job">
+                    <div class="name">Yun-Tung Shih</div>
+                    <div class="job">Web designer</div>
+                </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+    </ul>
+</div>
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+
+    closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange();
+    });
+
+    function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            document.getElementById("Jem-logo").style.visibility = "visible";
+        } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            document.getElementById("Jem-logo").style.visibility = "hidden";
+        }
+    }
+</script>
