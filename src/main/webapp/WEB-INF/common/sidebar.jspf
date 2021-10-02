@@ -35,6 +35,9 @@
         <li><a href="basic_data"> <i class="bx bx-folder"></i> <span
                 class="links_name">Basic Data</span>
         </a> <span class="subtitle">Basic Data</span></li>
+        <li><a href="settings_page"> <i class="bx bx-folder"></i> <span
+                class="links_name">Settings</span>
+        </a> <span class="subtitle">Settings</span></li>
         <%--		<%--%>
         <%--			}--%>
         <%--		%>--%>

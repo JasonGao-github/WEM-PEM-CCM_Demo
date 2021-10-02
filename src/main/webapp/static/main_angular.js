@@ -297,6 +297,37 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
+    $scope.user_old_password = ''
+    $scope.user_new_password_to_change = ''
+    $scope.user_confirm_new_password_to_change = ''
+    $scope.change_user_password_mismatch = false
+
+    $scope.changePassword = function (id) {
+        console.log("clicked changePassword function")
+        console.log($scope.user_old_password)
+        console.log($scope.user_new_password_to_change)
+        console.log($scope.user_confirm_new_password_to_change)
+
+        if ($scope.user_new_password_to_change.toString() === $scope.user_confirm_new_password_to_change.toString()) {
+            $scope.change_user_password_mismatch = false
+            var obj = JSON.stringify({
+                "newPassword": $scope.user_new_password_to_change,
+                "originalPassword": $scope.user_old_password,
+            })
+            $http({
+                method: 'POST',
+                url: url + '/changePassword',
+                data: obj
+            }).then(function mySuccess(response) {
+                console.log(response)
+
+            })
+        } else {
+            $scope.change_user_password_mismatch = true
+        }
+    }
+
+
 }])
 
 
