@@ -65,14 +65,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-primary" ng-click="changePassword()">Change Password</button>
-                                    </div>
-                                </div>
+
                                 <div class="row" ng-show="change_user_password_mismatch">
                                     <div class="col">
                                         <h6 style="color: red">New passwords do not match!</h6>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary" ng-click="changePassword()">Change
+                                            Password
+                                        </button>
                                     </div>
                                 </div>
                             </form>
