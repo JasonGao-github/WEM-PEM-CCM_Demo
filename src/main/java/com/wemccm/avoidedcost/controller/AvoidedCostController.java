@@ -16,6 +16,7 @@ import com.wemccm.common.entity.AvoidedCostType;
 import com.wemccm.common.entity.AvoidedCostassetReplacementIterm;
 import com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo;
 import com.wemccm.common.pojo.AvoidedCostMaintenanceCostsTypeJojo;
+import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 
 @RestController
@@ -32,12 +33,21 @@ public class AvoidedCostController {
 		return l;
 	}
 
+	// select All basic data
 	@RequestMapping(value = "/selectAllAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
 		// get all table avoidedcostassetreplacementiterm
 		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm();
 		return l;
+	}
+
+	// insert basic data
+	@RequestMapping(value = "/insertAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult insertAvoidedCostassetReplacementIterm(@RequestBody AvoidedCostassetReplacementIterm pojo) {
+		serivce.insertAvoidedCostassetReplacementIterm(pojo);
+		return new ResponseResult();
 	}
 
 	@RequestMapping(value = "/insertAvoidedCostAssetReplacementCosts", produces = "application/json;charset=UTF-8")

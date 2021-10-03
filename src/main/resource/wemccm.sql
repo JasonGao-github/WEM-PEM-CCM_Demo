@@ -130,7 +130,12 @@ CREATE TABLE `avoidedcostassetreplacementcosts`  (
 ); 
 CREATE TABLE `avoidedcostassetreplacementIterm` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(128) NULL DEFAULT NULL,
+    `assertName` VARCHAR(256) NULL DEFAULT NULL,
+    `assertLife` int(32) NULL DEFAULT NULL,
+    `units` VARCHAR(128) NULL DEFAULT NULL,
+    `newAssertCost` double(24, 14) NULL DEFAULT NULL,
+    `maintenanceCost` double(24, 14) NULL DEFAULT NULL,
+    `vegetationManagementCost` double(24, 14) NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `cicauthorisation`  (
@@ -575,3 +580,16 @@ INSERT INTO `customercontributionpricetype` VALUES (5, 'TOTAL CUSTOMER CONTRIBUT
 INSERT INTO `customercontributionpricetype` VALUES (6, 'BALANCE OF CONTRIBUTION AFTER PROJECT FEE ');
 INSERT INTO `customercontributionpricetype` VALUES (7, 'JEN Contribution to Project ');
 INSERT INTO `customercontributionpricetype` VALUES (8, 'Customer Supply Requested Target Date ');
+
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (1,'Wooden Pole - HV',54,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (2,'Wooden Pole - LV',54,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (3,'Concrete Pole - HV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (4,'Concrete Pole - LV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (5,'Steel Pole - LV',40,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (6,'Steel Cross Arms (incl. Insulators) - HV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (7,'Wood Cross Arms (incl. Insulators) - HV',45,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (8,'Wood Cross Arms (incl. Insulators) - LV',45,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (9,'Bare Conductors (Al)',60,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (10,'Insulated Conductors - LV',60,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (11,'Underground Cables and Cablehead - HV, XLPE',40,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (12,'Underground Cables and Cablehead - LV, XLPE',55,'$/Pole',14417.69623,14.81813663,11.05945032);
