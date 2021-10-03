@@ -1,0 +1,92 @@
+.Group{
+  width: 44px;
+  height: 16px;
+  margin: 5px 8px 1px 5px;
+  object-fit: contain;
+  font-family: Abel;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 5;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000;
+}
+.item{
+  width: 201px;
+  height: 28px;
+  margin: 67px 56px 28px 3px;
+  padding: 5px 48px 5px 49px;
+  border-radius: 10px;
+  background-color: #ccc;
+  font-family: Abel;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+
+}
+
+.testing{
+  width: 339px;
+  height: 27px;
+  margin: 28px 79px 32px 59px;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+
+
+}
+
+.content{
+  overflow: scroll;
+}
+
+.savebtn{
+  width: 118px;
+  height: 34px;
+  margin: 51px 16px 29px 700px;
+  object-fit: contain;
+  border-radius: 30px;
+  background-color: #c1e7f0;
+}
+
+.draft{
+  width: 118px;
+  height: 33px;
+  margin: 51px 13px 30px 4px;
+  object-fit: contain;
+  border-radius: 30px;
+  background-color: #c1e7f0;
+}
+
+.Total{
+  width: 44px;
+  height: 16px;
+  margin: 5px 8px 1px 5px;
+  object-fit: contain;
+  font-family: Abel;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 5;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000;
+}
+
+.total{
+  width: 292px;
+  height: 30px;
+  margin: 10px 0 10px 0px;
+  padding: 7px 136px 7px 12px;
+  object-fit: contain;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, 0.13);
+  background-color: rgba(196, 196, 196, 0);
+  display: inline;
+}

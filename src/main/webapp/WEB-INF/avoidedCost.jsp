@@ -109,10 +109,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						</tr>
 					</thead>
 
-
-
-
-
 				</table>
 				<%
 					int curr_page = 5;

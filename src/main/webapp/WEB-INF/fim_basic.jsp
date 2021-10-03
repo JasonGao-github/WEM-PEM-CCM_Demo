@@ -20,22 +20,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h2>Non-Contestable Costs</h2>
-				<form class="form container" name="newUser" action="" method="POST"
+				<h2>FIM Basic Data Page</h2>
+				<form class="form container" name="newFim" action="" method="POST"
 					style="justify-content: center">
 
 					<div class="row">
 						<h3>Type</h3>
-						<select id="position" ng-model="fim_type">
-							<option value="pc">FIM Input Type</option>
-							<option ng-repeat="ft in fim_types" value="{{type.id}}">{{type.name}}</option>
+						<select id="position" ng-model="fim_type"
+							ng-change="basic_change_fim_type()">
+							<option ng-repeat="ft in fim_types" value="{{ft.id}}">{{ft.name}}</option>
 						</select>
 					</div>
 
 					<div class="row">
-						<h3>Project Type</h3>
-						<select id="position" ng-model="selected_type">
-							<option ng-repeat="type in project_types" value="{{type.id}}">{{type.name}}</option>
+						<h3>Subtype</h3>
+						<select id="position" ng-model="selected_sub_type">
+							<option ng-repeat="type in sub_types" value="{{type.id}}">{{type.name}}</option>
 						</select>
 					</div>
 
@@ -44,18 +44,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<Input type="text" ng-model="description">
 					</div>
 					<div class="row">
-						<h3>Unit</h3>
-						<Input type="text" ng-model="unit"> <br>
+						<h3>Currency</h3>
+						<Input type="text" ng-model="currency"> <br>
 					</div>
 					<div class="row">
-						<h3>Rate</h3>
-						<Input type="number" ng-model="rate"> <br>
+						<h3>unitCost</h3>
+						<Input type="number" ng-model="unitCost"> <br>
 					</div>
 
-					<button type="button" class="btn btn-primary"
-						ng-click="add_ncc_basic()">submit</button>
+					<a data-toggle="modal" data-target="#exampleModalCenter">
+						<button type="button" class="btn btn-primary"
+							ng-click="fim_basic_submit()">submit</button>
+					</a>
 
 				</form>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalCenterTitle"
+					aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">FIM
+									Basic Data</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Submit successful!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</section>
