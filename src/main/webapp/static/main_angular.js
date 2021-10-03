@@ -300,7 +300,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	//record quantity changes in fim input
 	$scope.fim_data = []
-	$scope.fim_input_changed = function(itemId, actQ, jenQ, lctaQ, actTotal, jenTotal, lctaTotal) {
+	$scope.fim_type_total = {}
+	$scope.fim_input_changed = function(itemId, actQ, jenQ, lctaQ, actTotal, jenTotal, lctaTotal, fimTypeId) {
 		for (let i = 0; i < $scope.fim_data.length; i++) {
 			if ($scope.fim_data[i].fIMinputItermId == itemId) {
 				$scope.fim_data.splice(i, 1);
@@ -315,11 +316,28 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 				lctaQuantity: lctaQ,
 				acturalSubTotal: actTotal,
 				jenFoundedTotal: jenTotal,
-				lctaTotal: lctaTotal
+				lctaTotal: lctaTotal,
+				fimTypeId: fimTypeId
 			})
 		}
-		console.log($scope.fim_data)
+		update_fim_type_total()
 
+	}
+
+	update_fim_type_total = function() {
+		$scope.fim_type_total = {}
+		let total = { actTotal: 0, jenTotal: 0, lctaTotal: 0 }
+		for (let i = 0; i < $scope.fim_data.length; i++) {
+			typeId = $scope.fim_data[i].fimTypeId;
+			if (!$scope.fim_type_total[typeId]) {
+				$scope.fim_type_total[typeId] = Object.assign({}, total)
+			}
+
+			$scope.fim_type_total[typeId].actTotal += $scope.fim_data[i].acturalSubTotal;
+			$scope.fim_type_total[typeId].jenTotal += $scope.fim_data[i].jenFoundedTotal;
+			$scope.fim_type_total[typeId].lctaTotal += $scope.fim_data[i].lctaTotal;
+
+		}
 	}
 
 	$scope.fim_submit_input = function() {
