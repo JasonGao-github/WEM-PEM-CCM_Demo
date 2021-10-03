@@ -40,9 +40,9 @@
 		parameterType="com.wemccm.common.entity.AvoidedCostESCGuideline">
 
 		INSERT INTO avoidedcostescguideline (projectId,
-		jemAvoidedCostModelId,assumptions,source,constant,notes)
+		assumptions,source,constant,notes)
 		VALUES
-		(#{projectId},#{jemAvoidedCostModelId},#{assumptions},#{source},#{constant},#{notes})
+		(#{projectId},#{assumptions},#{source},#{constant},#{notes})
 
 	</select>
 

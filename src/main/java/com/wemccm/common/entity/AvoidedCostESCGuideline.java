@@ -3,7 +3,7 @@ package com.wemccm.common.entity;
 public class AvoidedCostESCGuideline extends BaseEntity {
 
 	private Integer projectId;
-	private Integer jemAvoidedCostModelId;
+//	private Integer jemAvoidedCostModelId;
 	private String assumptions;
 	private String source;
 	private String constant;
@@ -15,14 +15,6 @@ public class AvoidedCostESCGuideline extends BaseEntity {
 
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
-	}
-
-	public Integer getJemAvoidedCostModelId() {
-		return jemAvoidedCostModelId;
-	}
-
-	public void setJemAvoidedCostModelId(Integer jemAvoidedCostModelId) {
-		this.jemAvoidedCostModelId = jemAvoidedCostModelId;
 	}
 
 	public String getAssumptions() {

@@ -57,6 +57,22 @@
 
                     <div class="row">
                         <div class="col-lg-2">
+                            <h3>Allocate Project Manager</h3>
+                        </div>
+                        <div class="col-lg-10">
+                            <select id="allocatePMCC" placeholder="Select project manager"
+                                    ng-model="cc_allocate_project_manager">
+                                <option value="" selected disabled hidden>Select
+                                    Project Manager
+                                </option>
+                                <option value="NG">Project Manager name 1</option>
+                                <option value="URD">Project Manager name 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-2">
                             <h3>Project Title</h3>
                         </div>
                         <div class="col-lg-10">

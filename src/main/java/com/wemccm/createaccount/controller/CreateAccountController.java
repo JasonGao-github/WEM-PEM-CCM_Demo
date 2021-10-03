@@ -28,11 +28,11 @@ public class CreateAccountController {
 
 		String email = requestPojo.getEmail();
 		String password = requestPojo.getPassword();
-		String username = requestPojo.getUsername();
+		String firstname = requestPojo.getFirstname();
 		Integer userTypeId = requestPojo.getUserTypeId();
-		Integer leaderId = requestPojo.getLeaderId();
+		String lastname = requestPojo.getLastname();
 		
-		String s = serivce.CreateAccount(email, password,username,userTypeId,leaderId);
+		String s = serivce.CreateAccount(email, password,firstname,userTypeId,lastname);
 		if ("01".equals(s)) {
 			return new ResponseResult(SR.REQUEST_RESULT_FAIL, SR.CreateAccount_ERROR1);
 		}
