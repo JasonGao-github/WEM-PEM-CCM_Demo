@@ -20,43 +20,43 @@ import com.wemccm.login.service.LoginService;
 @RestController
 public class LoginController {
 
-	@Autowired
-	private LoginService serivce;
+    @Autowired
+    private LoginService serivce;
 
-	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public ResponseResult sendMyName(@RequestBody LoginRequestPojo requestPojo) {
-		//find by email
-		String email = requestPojo.getEmail();
-		String password = requestPojo.getPassword();
+    @RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ResponseResult sendMyName(@RequestBody LoginRequestPojo requestPojo) {
+        //find by email
+        String email = requestPojo.getEmail();
+        String password = requestPojo.getPassword();
 
-		String s = serivce.login(email, password);
-		if ("-1".equals(s)) {
+        String s = serivce.login(email, password);
+        if ("-1".equals(s)) {
 
-			return new ResponseResult(SR.REQUEST_RESULT_FAIL, SR.LOGIN_ERROR1);
-		}
-		if ("-2".equals(s)) {
+            return new ResponseResult(SR.REQUEST_RESULT_FAIL, SR.LOGIN_ERROR1);
+        }
+        if ("-2".equals(s)) {
 
-			return new ResponseResult(SR.REQUEST_RESULT_FAIL, SR.LOGIN_ERROR2);
-		}
+            return new ResponseResult(SR.REQUEST_RESULT_FAIL, SR.LOGIN_ERROR2);
+        }
 
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-				.getRequest();
-		HttpSession session = request.getSession();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+                .getRequest();
+        HttpSession session = request.getSession();
 
-		int id = Integer.valueOf(s);
-		wholeUserPojo wu = serivce.getWholeUser(id);
+        int id = Integer.valueOf(s);
+        wholeUserPojo wu = serivce.getWholeUser(id);
 
-		session.setAttribute("id", wu.getId());
-		session.setAttribute("username", wu.getUsername());
-		session.setAttribute("email", wu.getEmail());
-		session.setAttribute("userTypeId", wu.getUserTypeId());
-		session.setAttribute("leaderId", wu.getLeaderId());
-		session.setAttribute("name", wu.getName());
+        session.setAttribute("id", wu.getId());
+        session.setAttribute("username", wu.getUsername());
+        session.setAttribute("email", wu.getEmail());
+        session.setAttribute("userTypeId", wu.getUserTypeId());
+        session.setAttribute("leaderId", wu.getLeaderId());
+        session.setAttribute("name", wu.getName());
 
 
-		return new ResponseResult();
+        return new ResponseResult();
 
-	}
+    }
 
 }

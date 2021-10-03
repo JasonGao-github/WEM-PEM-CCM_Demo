@@ -17,7 +17,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h1>Approve Project Page</h1>
+				<h1>Create New Project</h1>
 				<%
 					String[] pages = new String[] { "create_project_page", " ccf_page", 
 						"quantity_input_page", "ncc_page", "fim_page",
@@ -31,7 +31,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						%>
 					<h3><a href="<%= pages[i] %>"><%= titles[i] %></a></h3>
 					<%  } %>
-
 			</div>
 		</div>
 	</section>
