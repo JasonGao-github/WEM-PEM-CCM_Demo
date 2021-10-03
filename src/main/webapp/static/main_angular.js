@@ -231,6 +231,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.new_user_email = ''
     $scope.new_user_job_role = ''
     $scope.new_user_password_mismatch = false
+    $scope.addUserStatusSuccess = false
+    $scope.addUserStatusError = false
+
     //add new user
     $scope.add_new_user = function () {
         console.log("clicked add_new_user function")
@@ -257,8 +260,20 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                 data: obj
             }).then(function mySuccess(response) {
                 console.log(response)
-                //var data = JSON.parse(response.data);
-
+                var status = response.data['result']
+                console.log(status)
+                if (status.toString() === 'success') {
+                    $('#addUserModal').modal('hide');
+                    $('#addUserStatusModal').modal('show');
+                    $scope.addUserStatusSuccess = true
+                    $scope.addUserStatusError = false
+                    $scope.get_all_users()
+                } else {
+                    $('#addUserModal').modal('hide');
+                    $('#addUserStatusModal').modal('show');
+                    $scope.addUserStatusSuccess = false
+                    $scope.addUserStatusError = true
+                }
             })
         } else {
             $scope.new_user_password_mismatch = true

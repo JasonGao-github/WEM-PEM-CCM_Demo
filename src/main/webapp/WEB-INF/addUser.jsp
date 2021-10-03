@@ -69,7 +69,9 @@
                                             {{data['userType']}}
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-danger" ng-click="delete_user($index)">Delete User</button>
+                                            <button type="button" class="btn btn-danger" ng-click="delete_user($index)">
+                                                Delete User
+                                            </button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -85,7 +87,8 @@
     </div>
 </section>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div id="addUserModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -169,6 +172,29 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" ng-click="add_new_user()">Add User</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addUserStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Add User - Status</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 ng-show="addUserStatusSuccess">User added successfully!</h5>
+                <h5 ng-show="addUserStatusError">An error occurred!</h5>
+            </div>
+            <div class="modal-footer">
+                <%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
