@@ -51,11 +51,33 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<h3>Rate</h3>
 						<Input type="number" ng-model="rate"> <br>
 					</div>
-
-					<button type="button" class="btn btn-primary"
-						ng-click="add_ncc_basic()">submit</button>
+					<a data-toggle="modal" data-target="#exampleModalCenter">
+						<button type="button" class="btn btn-primary"
+							ng-click="add_ncc_basic()">submit</button>
+					</a>
 
 				</form>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalCenterTitle"
+					aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">NCC
+									Basic Data</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Submit successful!</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

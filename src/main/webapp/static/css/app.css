@@ -298,3 +298,7 @@ ul.pagination li a.active {
 	background-color: #4CAF50;
 	color: white;
 }
+
+.modal-backdrop {
+	z-index: -1 !important;
+}

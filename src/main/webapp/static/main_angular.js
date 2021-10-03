@@ -155,7 +155,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 
 	$scope.ncc_otherChanged = function(itemId, quantity, total) {
-
+		console.log($scope.projectId);
 		if (quantity == null) {
 			for (let i = 0; i < $scope.ncc_data.other.length; i++) {
 				if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {

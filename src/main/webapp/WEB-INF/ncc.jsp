@@ -2,16 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
-	+ "/";
-	int projectId;
-	if(session.getAttribute("projectId") != null){
-		projectId = (int) session.getAttribute("projectId");
-	} 
-	else{
-		projectId = -1;
-	}
-	System.out.println(projectId);
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+int projectId;
+if (session.getAttribute("projectId") != null) {
+	projectId = (int) session.getAttribute("projectId");
+} else {
+	projectId = -1;
+}
+System.out.println(projectId);
 %>
 
 <%@  include file="common/checkSessionExist.jspf"%>
@@ -32,7 +30,7 @@
 				<h2>Non-Contestable Costs</h2>
 				<form class="form container" name="newUser" action="" method="POST"
 					style="justify-content: center">
-					<Input type="hidden" value=<%= projectId %> ng-model="projectId">
+					<Input type="hidden" value=<%=projectId%> ng-model="projectId">
 					<div class="row">
 						<h3>Project Type</h3>
 						<select id="position" ng-change="ncc_typeChanged()"
@@ -53,8 +51,8 @@
 							<h4 class="col-2">Hour</h4>
 							<input class="col-2" type="number" ng-model="comp.quantity"
 								ng-change="ncc_projCompChanged(comp.id, comp.quantity, comp.quantity * comp.cost)">
-							<h4 class="col-2">{{comp.cost}}</h4>
-							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
+							<h4 class="col-2">${{comp.cost}}</h4>
+							<h4 class="col-2">${{comp.quantity * comp.cost}}</h4>
 						</div>
 
 					</div>
@@ -91,9 +89,31 @@
 						</div>
 
 					</div>
+					<a data-toggle="modal" data-target="#exampleModalCenter">
+						<button type="button" class="btn btn-primary"
+							ng-click="ncc_submit_input()">submit</button>
+					</a>
 
-					<button type="button" class="btn btn-primary"
-						ng-click="ncc_submit_input()">submit</button>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalCenterTitle"
+						aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">NCC
+										Input</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>Submit successful!</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</form>
 				<%
 					int curr_page = 3;
