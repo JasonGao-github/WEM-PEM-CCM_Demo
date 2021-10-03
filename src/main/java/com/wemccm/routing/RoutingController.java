@@ -114,6 +114,18 @@ public class RoutingController {
         return "ncc_basic";// test.jsp
     }
 
+    @RequestMapping(value = "/fim_basic_page")
+    public String fimBasicRouting() {
+
+        return "fim_basic";// test.jsp
+    }
+
+    @RequestMapping(value = "/ac_basic_page")
+    public String acBasicRouting() {
+
+        return "ac_basic";// test.jsp
+    }
+
     @RequestMapping(value = "/settings_page")
     public String userSettingsRouting() {
 

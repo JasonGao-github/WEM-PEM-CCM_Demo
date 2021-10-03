@@ -50,15 +50,15 @@
                    style="border-radius:12px;border: 0px;">
                     <span class="menu-collapsed">Quantity | Input</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action text-black"
+                <a href="fim_basic_page" class="list-group-item list-group-item-action text-black"
                    style="border-radius:12px;border: 0px;">
                     <span class="menu-collapsed">FIM | Input</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action text-black"
+                <a href="ac_basic_page" class="list-group-item list-group-item-action text-black"
                    style="border-radius:12px;border: 0px;">
                     <span class="menu-collapsed">Avoided Cost | Input</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action text-black"
+                <a href="ncc_basic_page" class="list-group-item list-group-item-action text-black"
                    style="border-radius:12px;border: 0px;">
                     <span class="menu-collapsed">Non-contestable | Input</span>
                 </a>
