@@ -572,6 +572,7 @@ INSERT INTO `fiminputsubtype` VALUES (5, 2, 'PAD 11kV');
 INSERT INTO `fiminputsubtype` VALUES (6, 2, 'Kiosk 22kV');
 INSERT INTO `fiminputsubtype` VALUES (7, 2, 'PAD 22kV');
 
+
 INSERT INTO `customercontributionpricetype` VALUES (1, 'Zinfra Fixed Price ');
 INSERT INTO `customercontributionpricetype` VALUES (2, 'Other Costs (O/Hs, FIM) ');
 INSERT INTO `customercontributionpricetype` VALUES (3, 'Total Assset Value (JEN Project Budget) ');

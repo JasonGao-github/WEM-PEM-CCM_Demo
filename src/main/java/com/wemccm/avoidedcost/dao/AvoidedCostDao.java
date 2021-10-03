@@ -15,6 +15,7 @@ import com.wemccm.common.pojo.projectIdPojo;
 
 @Mapper
 public interface AvoidedCostDao {
+	
 
 	public List<AvoidedCostType> selectAllAvoidedCostType();
 

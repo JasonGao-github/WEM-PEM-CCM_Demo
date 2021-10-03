@@ -8,6 +8,7 @@ public class AvoidedCostassetReplacementIterm extends BaseEntity {
 	private Double newAssertCost;
 	private Double maintenanceCost;
 	private Double vegetationManagementCost;
+	
 
 	public String getAssertName() {
 		return assertName;

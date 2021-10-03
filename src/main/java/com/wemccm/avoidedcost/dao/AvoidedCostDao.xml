@@ -36,6 +36,7 @@
 
 
 
+
 	<select id="insertAvoidedCostESCGuideline"
 		parameterType="com.wemccm.common.entity.AvoidedCostESCGuideline">
 
