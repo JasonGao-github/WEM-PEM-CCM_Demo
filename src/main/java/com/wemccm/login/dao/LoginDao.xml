@@ -12,7 +12,7 @@
 	<select id="getWholeUser" parameterType="Integer"
 		resultType="com.wemccm.common.pojo.wholeUserPojo">
 		
-		SELECT user.*,usertype.`name`
+		SELECT user.*,usertype.`name` as userType
 		FROM user
 		LEFT JOIN usertype
 		ON user.userTypeId=usertype.`id`

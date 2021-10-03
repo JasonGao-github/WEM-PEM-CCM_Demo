@@ -87,7 +87,7 @@ public class UserController {
 			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 					.getRequest();
 			HttpSession session = request.getSession();
-			int userId = (int) session.getAttribute("id");
+			int userId = (int) session.getAttribute("userId");
 			pojo.setUserId(userId);
 		}
 

@@ -26,7 +26,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult sendMyName(@RequestBody LoginRequestPojo requestPojo) {
-		//find by email
+		// find by email
 		String email = requestPojo.getEmail();
 		String password = requestPojo.getPassword();
 
@@ -47,14 +47,12 @@ public class LoginController {
 		int id = Integer.valueOf(s);
 		wholeUserPojo wu = serivce.getWholeUser(id);
 
-		session.setAttribute("id", wu.getId());
-		session.setAttribute("username", wu.getUsername());
+		session.setAttribute("userId", wu.getId());
 		session.setAttribute("email", wu.getEmail());
 		session.setAttribute("userTypeId", wu.getUserTypeId());
-		session.setAttribute("leaderId", wu.getLeaderId());
-		session.setAttribute("name", wu.getName());
-
-
+		session.setAttribute("userType", wu.getUserType());
+		session.setAttribute("firstName", wu.getFirstName());
+		session.setAttribute("lastName", wu.getLastName());
 		return new ResponseResult();
 
 	}
