@@ -43,16 +43,16 @@ System.out.println(projectId);
 							<h4 class="col-4">Project Component</h4>
 							<h4 class="col-2">Unit</h4>
 							<h4 class="col-2">Quantity</h4>
-							<h4 class="col-2">Cost</h4>
-							<h4 class="col-2">Total</h4>
+							<h4 class="col-2">Cost ($)</h4>
+							<h4 class="col-2">Total ($)</h4>
 						</div>
 						<div class="row light" ng-repeat="comp in proj_comps">
 							<h4 class="col-4">{{comp.description}}</h4>
 							<h4 class="col-2">Hour</h4>
 							<input class="col-2" type="number" ng-model="comp.quantity"
 								ng-change="ncc_projCompChanged(comp.id, comp.quantity, comp.quantity * comp.cost)">
-							<h4 class="col-2">${{comp.cost}}</h4>
-							<h4 class="col-2">${{comp.quantity * comp.cost}}</h4>
+							<h4 class="col-2">{{comp.cost}}</h4>
+							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
 						</div>
 
 					</div>
@@ -89,31 +89,8 @@ System.out.println(projectId);
 						</div>
 
 					</div>
-					<a data-toggle="modal" data-target="#exampleModalCenter">
-						<button type="button" class="btn btn-primary"
-							ng-click="ncc_submit_input()">submit</button>
-					</a>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalCenterTitle"
-						aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLongTitle">NCC
-										Input</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<p>Submit successful!</p>
-								</div>
-							</div>
-						</div>
-					</div>
+					<button type="button" class="btn btn-primary"
+						ng-click="ncc_submit_input()">submit</button>
 				</form>
 				<%
 					int curr_page = 3;

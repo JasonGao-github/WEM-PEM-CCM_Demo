@@ -71,22 +71,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									<h4 class="col-1">{{item.id}}</h4>
 									<h4 class="col-2">{{item.description}}</h4>
 									<input class="currency col-1" type="number"
-										ng-model="item.actual"> <input
-										class="currency col-1" type="number" ng-model="item.JEM">
+										ng-model="item.actual"
+										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
+										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost)">
+									<input class="currency col-1" type="number" ng-model="item.jen"
+										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
+										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost)">
 									<input class="currency col-1" type="number"
-										ng-model="item.LCTA">
+										ng-model="item.lcta"
+										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
+										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost)">
 									<h4 class="col-1">{{item.currency}}</h4>
 									<h4 class="col-2">{{item.unitCost}}</h4>
-									<input class="currency col-1" type="number"> <input
-										class="currency col-1" type="number"> <input
-										class="currency col-1" type="number">
+
+									<h4 class="col-1">{{item.actual * item.unitCost}}</h4>
+									<h4 class="col-1">{{item.jen * item.unitCost}}</h4>
+									<h4 class="col-1">{{item.lcta * item.unitCost}}</h4>
+
 								</div>
 							</div>
 						</div>
 
 					</div>
-
-
+					<button type="button" class="btn btn-primary"
+						ng-click="fim_submit_input()">submit</button>
 				</form>
 				<%
 					int curr_page = 4;
