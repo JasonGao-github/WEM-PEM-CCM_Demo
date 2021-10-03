@@ -18,9 +18,35 @@
         <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
                 class="links_name">View Projects</span>
         </a> <span class="subtitle">View Projects</span></li>
-        <li><a href="create_project_page"> <i class="bx bx-user"></i>
-            <span class="links_name">Create New Projects</span>
-        </a> <span class="subtitle">Create New Projects</span></li>
+
+        <%--        <li>--%>
+        <%--            <a href="create_project_page"> <i class="bx bx-user"></i>--%>
+        <%--                <span class="links_name">Create New Projects</span>--%>
+        <%--            </a>--%>
+        <%--            <span class="subtitle">Create New Projects</span>--%>
+        <%--        </li>--%>
+        <li class="dropdown">
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <i class="bx bx-folder"></i>
+                    <span class="links_name menu-collapsed">Create New Project<i class='bx bx-chevron-down'></i></span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <a href="project_page" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">New or Existing Connection</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Pole to Pit</span>
+                </a>
+            </div>
+            <span class="subtitle">Create New Project</span>
+        </li>
+
         <li><a href="approve_page"> <i class="bx bx-search"></i> <span
                 class="links_name">Approve Projects</span>
         </a> <span class="subtitle">Approve Projects</span></li>
