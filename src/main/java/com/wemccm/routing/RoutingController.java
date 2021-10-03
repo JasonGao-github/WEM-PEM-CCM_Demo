@@ -126,5 +126,11 @@ public class RoutingController {
         return "quantity_input_basic_data";
     }
 
+    @RequestMapping(value = "/customer_contribution_basic_data")
+    public String customerContributionBasicDataRouting() {
+
+        return "customer_contribution_basic_data";
+    }
+
 
 }

@@ -391,6 +391,62 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
+    $scope.scopeExclusionItemDescription = ''
+    $scope.scopeExclusionItemDescriptionDataSuccess = false
+    $scope.scopeExclusionItemDescriptionDataError = false
+
+    $scope.add_scope_exclusion_item = function () {
+        console.log("clicked add_scope_exclusion_item function")
+        console.log($scope.scopeExclusionItemDescription)
+        var obj = JSON.stringify({
+            "scopeExclusionItemDescription": $scope.scopeExclusionItemDescription,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/addScopeExclusionItem',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $scope.scopeExclusionItemDescriptionDataSuccess = true
+                $scope.scopeExclusionItemDescriptionDataError = false
+            } else {
+                $scope.scopeExclusionItemDescriptionDataSuccess = false
+                $scope.scopeExclusionItemDescriptionDataError = true
+            }
+        })
+    }
+
+    $scope.scopeAssumptionItemDescription = ''
+    $scope.scopeAssumptionItemDescriptionDataSuccess = false
+    $scope.scopeAssumptionItemDescriptionDataError = false
+
+    $scope.add_assumption_item = function () {
+        console.log("clicked add_assumption_item function")
+        console.log($scope.scopeAssumptionItemDescription)
+        var obj = JSON.stringify({
+            "scopeExclusionItemDescription": $scope.scopeAssumptionItemDescription,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/addAssumptionItem',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $scope.scopeAssumptionItemDescriptionDataSuccess = true
+                $scope.scopeAssumptionItemDescriptionDataError = false
+            } else {
+                $scope.scopeAssumptionItemDescriptionDataSuccess = false
+                $scope.scopeAssumptionItemDescriptionDataError = true
+            }
+        })
+    }
+
 
 }])
 
