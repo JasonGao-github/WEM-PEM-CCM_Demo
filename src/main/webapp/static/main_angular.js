@@ -385,6 +385,37 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		})
 
 	}
+	
+	//for avoided cost
+	$scope.exist_asset_rows = [{id:0}]
+	$scope.repl_asset_rows = ['row1']
+	
+	$scope.get_ac = function(){
+		$http.get('/selectAllAvoidedCostassetReplacementIterm').then(function(response) {
+			//console.log(response.data);
+			$scope.ac_items = response.data;
+			console.log($scope.ac_items)
+		});
+	}
+	
+	//ac basic data
+	$scope.ac_submit_basic = function(){
+		var obj = JSON.stringify({
+			assertName: $scope.asset,
+			assertLife: $scope.life,
+			units: $scope.units,
+			newAssertCost: $scope.new_asset_cost,
+			maintenanceCost: $scope.mai_cost,
+			vegetationManagementCost: $scope.veg_cost
+		})
+		$http({
+			method: 'POST',
+			url: url + '/insertAvoidedCostassetReplacementIterm',
+			data: obj,
+		}).then(function mySuccess(response) {
+			console.log(response.data);
+		})
+	}
 
 	// $('#add_new_user_btn').click(function (e) {
 	//     e.preventDefault();
