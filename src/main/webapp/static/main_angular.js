@@ -386,6 +386,175 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	}
 
+	//for avoided cost
+	$scope.get_ac = function() {
+		$http.get('/selectAllAvoidedCostassetReplacementIterm').then(function(response) {
+			//console.log(response.data);
+			$scope.ac_items = response.data;
+			console.log($scope.ac_items);
+
+			$scope.wacc = 4.72
+			$scope.overhead = ''
+
+			$scope.add_ex_asset();
+			$scope.add_repl_asset();
+		});
+	}
+
+	data = {
+		id: 0,
+		assertLife: '',
+		units: '',
+		newAssertCost: '',
+		maintenanceCost: '',
+		vegetationManagementCost: '',
+		quantity: '',
+		itemId: '',
+		assetAge: '',
+		remLife: '',
+		totalCost: '',
+		presentValueRC: '',
+	};
+	$scope.exist_asset_data = []
+	$scope.repl_asset_data = []
+
+	$scope.add_ex_asset = function() {
+		let new_data = Object.assign({}, data);
+		itemId = $scope.exist_asset_data.length
+		new_data.id = itemId
+		$scope.exist_asset_data.push(new_data)
+	}
+	$scope.add_repl_asset = function() {
+		let new_data = Object.assign({}, data);
+		new_data.id = $scope.repl_asset_data.length
+		$scope.repl_asset_data.push(new_data)
+	}
+
+	$scope.rm_ex_asset = function() {
+		$scope.exist_asset_data.pop()
+		$scope.ac_update_total()
+	}
+	$scope.rm_repl_asset = function() {
+		$scope.repl_asset_data.pop()
+		$scope.ac_update_total()
+	}
+
+	$scope.ac_exist_select_item = function(index) {
+		if ($scope.ac_items[$scope.exist_asset_data[index].itemId]) {
+			ac_item = $scope.ac_items[$scope.exist_asset_data[index].itemId]
+			$scope.exist_asset_data[index].assertLife = ac_item.assertLife
+			$scope.exist_asset_data[index].units = ac_item.units
+			$scope.exist_asset_data[index].newAssertCost = ac_item.newAssertCost
+			$scope.exist_asset_data[index].maintenanceCost = ac_item.maintenanceCost
+			$scope.exist_asset_data[index].vegetationManagementCost = ac_item.vegetationManagementCost
+			$scope.exist_asset_data[index].quantity = ''
+			$scope.exist_asset_data[index].assetAge = ''
+		}
+		$scope.ac_update_exist_item(index)
+		$scope.ac_update_total()
+	}
+	$scope.ac_repl_select_item = function(index) {
+		if ($scope.ac_items[$scope.repl_asset_data[index].itemId]) {
+			ac_item = $scope.ac_items[$scope.repl_asset_data[index].itemId]
+			$scope.repl_asset_data[index].assertLife = ac_item.assertLife
+			$scope.repl_asset_data[index].units = ac_item.units
+			$scope.repl_asset_data[index].newAssertCost = ac_item.newAssertCost
+			$scope.repl_asset_data[index].maintenanceCost = ac_item.maintenanceCost
+			$scope.repl_asset_data[index].vegetationManagementCost = ac_item.vegetationManagementCost
+			$scope.repl_asset_data[index].quantity = ''
+		}
+		$scope.ac_update_repl_item(index)
+		$scope.ac_update_total()
+	}
+
+	$scope.ac_update_exist_item = function(index) {
+		item = $scope.exist_asset_data[index]
+		total = item.newAssertCost * item.quantity * (1 + $scope.overhead / 100)
+		$scope.exist_asset_data[index].totalCost = total.toFixed(2)
+		$scope.exist_asset_data[index].remLife = item.assertLife - item.assetAge
+		value = $scope.exist_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.exist_asset_data[index].remLife)
+		$scope.exist_asset_data[index].presentValueRC = value.toFixed(2)
+		$scope.ac_update_total()
+
+	}
+	$scope.ac_update_repl_item = function(index) {
+		item = $scope.repl_asset_data[index]
+		total = item.newAssertCost * item.quantity * (1 + $scope.overhead / 100)
+		$scope.repl_asset_data[index].totalCost = total.toFixed(2)
+		$scope.repl_asset_data[index].remLife = item.assertLife
+		value = $scope.repl_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.repl_asset_data[index].remLife)
+		$scope.repl_asset_data[index].presentValueRC = value.toFixed(2)
+
+		$scope.ac_update_total()
+	}
+
+	$scope.ac_update_overhead = function() {
+		if ($scope.exist_asset_data) {
+			for (let i = 0; i < $scope.exist_asset_data.length; i++) {
+				$scope.ac_update_exist_item(i)
+			}
+		}
+		if ($scope._repl_asset_data) {
+			for (let i = 0; i < $scope.repl_asset_data.length; i++) {
+				$scope.ac_update_repl_item(i)
+			}
+		}
+	}
+	
+	$scope.netCosts = 0
+	$scope.ac_total = ['', '']
+	$scope.ac_update_total = function() {
+		$scope.ac_total = ['', '']
+		if ($scope.exist_asset_data) {
+			value0 = 0
+			for (let i = 0; i < $scope.exist_asset_data.length; i++) {
+				//only add when it is a number
+				if (!isNaN(parseFloat($scope.exist_asset_data[i].presentValueRC))) {
+					value0 += parseFloat($scope.exist_asset_data[i].presentValueRC)
+				}
+			}
+
+			$scope.ac_total[0] = value0.toFixed(2)
+		}
+		if ($scope.repl_asset_data) {
+			value1 = 0
+			for (let i = 0; i < $scope.repl_asset_data.length; i++) {
+				//only add when it is a number
+				if (!isNaN(parseFloat($scope.repl_asset_data[i].presentValueRC))) {
+					value1 += parseFloat($scope.repl_asset_data[i].presentValueRC)
+				}
+			}
+			$scope.ac_total[1] = value1.toFixed(2)
+		}
+		total = value0 + value1
+		$scope.netCosts = total.toFixed(2)
+	}
+
+	$scope.ac_submit_input = function() {
+		console.log($scope.exist_asset_data)
+		console.log($scope.repl_asset_data)
+
+	}
+
+	//ac basic data
+	$scope.ac_submit_basic = function() {
+		var obj = JSON.stringify({
+			assertName: $scope.asset,
+			assertLife: $scope.life,
+			units: $scope.units,
+			newAssertCost: $scope.new_asset_cost,
+			maintenanceCost: $scope.mai_cost,
+			vegetationManagementCost: $scope.veg_cost
+		})
+		$http({
+			method: 'POST',
+			url: url + '/insertAvoidedCostassetReplacementIterm',
+			data: obj,
+		}).then(function mySuccess(response) {
+			console.log(response.data);
+		})
+	}
+
 	// $('#add_new_user_btn').click(function (e) {
 	//     e.preventDefault();
 	//     // your statements;
