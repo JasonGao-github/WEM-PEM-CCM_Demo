@@ -6,13 +6,13 @@
 
 
 
-	<select id="selectAllAvoidedCostType"
+<!-- 	<select id="selectAllAvoidedCostType"
 
 		resultType="com.wemccm.common.entity.AvoidedCostType">
 
 		SELECT * FROM avoidedcosttype
 
-	</select>
+	</select> -->
 
 	<select id="selectAllAvoidedCostassetReplacementIterm"
 
@@ -28,9 +28,11 @@
 		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 
 		INSERT INTO avoidedcostassetreplacementcosts (projectId,
-		name,source,unitCost,unit,quantity,totalCost,assetAge,stdLife,remLife,presentValueRC,avoidedCostInputTypeId)
+		name,source,unitCost,unit,quantity,totalCost,assetAge,stdLife,remLife,presentValueRC,avoidedCostassetReplacementItermId)
 		VALUES
-		(#{projectId},#{name},#{source},#{unitCost},#{unit},#{quantity},#{totalCost},#{assetAge},#{stdLife},#{remLife},#{presentValueRC},#{avoidedCostInputTypeId})
+		(#{projectId},#{name},#{source},
+		#{unitCost},#{unit},#{quantity},#{totalCost},#{assetAge},#{stdLife},#{remLife},#{presentValueRC},
+		#{avoidedCostassetReplacementItermId})
 
 	</select>
 
@@ -49,7 +51,7 @@
 
 
 
-	<select id="insertAvoidedCostMaintenanceCosts"
+	<!-- <select id="insertAvoidedCostMaintenanceCosts"
 		parameterType="com.wemccm.common.entity.AvoidedCostMaintenanceCosts">
 
 		INSERT INTO avoidedcostmaintenancecosts (projectId,
@@ -58,7 +60,7 @@
 		(#{projectId},#{name},#{source},#{maint},#{vegMgt},#{unit},#{quantity},#{costPa},#{ameExist},#{avoidedCostInputTypeId})
 
 	</select>
-
+ -->
 
 
 	<select id="insertAvoidedCostassetReplacementIterm"
@@ -76,15 +78,9 @@
 	<select id="findAvoidedCostAssetReplacementCosts"
 		parameterType="com.wemccm.common.pojo.projectIdPojo"
 		resultType="com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo">
-		SELECT arc.*,t.`name` as InputTypeName,ari.`name` as
-		ReplacementItermName
+		SELECT arc.*,ari.`name` as replacementItermName
 
 		FROM avoidedcostassetreplacementcosts as arc
-
-		LEFT
-		JOIN avoidedcosttype as t
-		ON
-		arc.avoidedCostInputTypeId=t.id
 
 		LEFT JOIN
 		avoidedcostassetreplacementiterm as ari
