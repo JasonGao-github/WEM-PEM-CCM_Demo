@@ -44,9 +44,9 @@
 
 		INSERT INTO projectnoncontestableprojectcomponent
 		(projectId,
-		nonContestableProjectComponentId,hours,total)
+		nonContestableProjectComponentId,cost,hours,total)
 		VALUES
-		(#{projectId},#{nonContestableProjectComponentId},#{hours},#{total})
+		(#{projectId},#{nonContestableProjectComponentId},#{cost},#{hours},#{total})
 
 	</select>
 
@@ -68,9 +68,9 @@
 		parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
 
 		INSERT INTO noncontestableothercosts (projectId,
-		nonContestableOtherCostsItemId,quantity,total)
+		nonContestableOtherCostsItemId,unit,rate,quantity,total)
 		VALUES
-		(#{projectId},#{nonContestableOtherCostsItemId},#{quantity},#{total})
+		(#{projectId},#{nonContestableOtherCostsItemId},#{unit},#{rate},#{quantity},#{total})
 
 	</select>
 

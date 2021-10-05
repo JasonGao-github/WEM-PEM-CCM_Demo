@@ -241,6 +241,8 @@ CREATE TABLE `fiminputiterm`  (
 CREATE TABLE `fiminputitermquantity`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
+  `currency` varchar(32)  NULL DEFAULT NULL,
+  `unitCost` double(10, 2) NULL DEFAULT NULL,
   `fIMinputItermId` int(11) NULL DEFAULT NULL,
   `acturalQuantity` int(11) NULL DEFAULT NULL,
   `jenFoundedQuantity` int(11) NULL DEFAULT NULL,
@@ -270,6 +272,8 @@ CREATE TABLE `noncontestableothercosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableOtherCostsItemId` int(11) NULL DEFAULT NULL,
+  `unit` varchar(32)  NULL DEFAULT NULL,
+  `rate` double(10, 2) NULL DEFAULT NULL,
   `quantity` int(11) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -294,6 +298,7 @@ CREATE TABLE `projectnoncontestableprojectcomponent`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableProjectComponentId` int(11) NULL DEFAULT NULL,
+  `cost` double(10, 2) NULL DEFAULT NULL,
   `hours` int(11) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE

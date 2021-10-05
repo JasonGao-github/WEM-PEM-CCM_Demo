@@ -4,12 +4,33 @@ public class FIMinputItermQuantity extends BaseEntity {
 
 	private Integer projectId;
 	private Integer fIMinputItermId;
+
+	private String currency;
+
+	private double unitCost;
+
 	private Integer acturalQuantity;
 	private Integer jenFoundedQuantity;
 	private Integer lctaQuantity;
 	private double acturalSubTotal;
 	private double jenFoundedTotal;
 	private double lctaTotal;
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public double getUnitCost() {
+		return unitCost;
+	}
+
+	public void setUnitCost(double unitCost) {
+		this.unitCost = unitCost;
+	}
 
 	public Integer getActuralQuantity() {
 		return acturalQuantity;
