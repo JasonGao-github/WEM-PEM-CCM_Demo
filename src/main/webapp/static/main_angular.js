@@ -443,7 +443,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 
 	$scope.ac_exist_select_item = function(index) {
-		if ($scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId]) {
+		if ($scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
 			ac_item = $scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]
 			$scope.exist_asset_data[index].stdLife = ac_item.stdLife
 			$scope.exist_asset_data[index].unit = ac_item.unit
@@ -457,7 +457,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		$scope.ac_update_exist_item(index)
 	}
 	$scope.ac_repl_select_item = function(index) {
-		if ($scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId]) {
+		if ($scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
 			ac_item = $scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId - 1]
 			$scope.repl_asset_data[index].stdLife = ac_item.stdLife
 			$scope.repl_asset_data[index].unit = ac_item.unit
