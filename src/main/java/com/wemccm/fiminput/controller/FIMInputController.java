@@ -73,8 +73,29 @@ public class FIMInputController {
 	@ResponseBody
 	public ResponseResult insertFIMinputIterm(@RequestBody FIMinputIterm pojo) {
 
-		serivce.insertFIMinputIterm(pojo);
+
+		
+		
+		String result = serivce.insertFIMinputIterm(pojo);
+		if ("-1".equals(result)) {
+			return new ResponseResult("false", "the code has already exist in our system!");
+		}
 		return new ResponseResult();
+
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

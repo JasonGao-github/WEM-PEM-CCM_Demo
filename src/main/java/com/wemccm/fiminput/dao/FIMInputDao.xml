@@ -71,7 +71,11 @@
 
 	</select>
 
-
+	<select id="getByfIMinputSubTypeID"
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.FIMinputIterm">
+		SELECT * FROM fiminputiterm WHERE fIMinputSubTypeID=#{fIMinputSubTypeID}
+	</select>
 
 
 

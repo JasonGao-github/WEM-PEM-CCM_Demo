@@ -35,10 +35,18 @@ public class AvoidedCostController {
 	@RequestMapping(value = "/insertAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult insertAvoidedCostassetReplacementIterm(@RequestBody AvoidedCostassetReplacementIterm pojo) {
-		serivce.insertAvoidedCostassetReplacementIterm(pojo);
+		String result = serivce.insertAvoidedCostassetReplacementIterm(pojo);
+		if ("-1".equals(result)) {
+			return new ResponseResult("false", "the code has already exist in our system!");
+		}
 		return new ResponseResult();
+		
+
 	}
 
+	
+	
+	
 	// insert data of the first part
 	@RequestMapping(value = "/insertAvoidedCostESCGuideline", produces = "application/json;charset=UTF-8")
 	@ResponseBody

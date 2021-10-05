@@ -49,9 +49,19 @@ public class AvoidedCostService {
 //		}
 //	}
 
-	public void insertAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm pojo) {
+	public String insertAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm pojo) {
 
-		avoidedCostDao.insertAvoidedCostassetReplacementIterm(pojo);
+		AvoidedCostassetReplacementIterm qibd = avoidedCostDao.getByName(pojo.getName());
+
+			if (null != qibd) {
+				return "-1";
+			}
+
+			avoidedCostDao.insertAvoidedCostassetReplacementIterm(pojo);
+
+			return "00";
+			
+			
 
 	}
 

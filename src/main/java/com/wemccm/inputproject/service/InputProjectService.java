@@ -21,13 +21,17 @@ public class InputProjectService {
 
 
 
-	public InputProjectPojo findInputProject(Integer projectId) {
+	public InputProjectPojo findInputProjectYes(Integer projectId) {
 //		InputProjectPojo ip=Dao.findIPinF(projectId);
 //		return ip;
 		return null;
 	}
 
-
+	public InputProjectPojo findInputProjectNo(Integer projectId) {
+//		InputProjectPojo ip=Dao.findIPinF(projectId);
+//		return ip;
+		return null;
+	}
 
 	public void insertInputProject(InputProject pojo) {
 		Dao.insertInputProject(pojo);

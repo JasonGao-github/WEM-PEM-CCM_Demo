@@ -122,7 +122,11 @@
 
 
 
-
+	<select id="getByName"
+		parameterType="String"
+		resultType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
+		SELECT * FROM avoidedcostassetreplacementiterm WHERE name=#{name}
+	</select>
 
 
 

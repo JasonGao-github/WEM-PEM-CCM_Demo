@@ -35,4 +35,12 @@ public interface AvoidedCostDao {
 
 	public List<AvoidedCostESCGuideline> findAvoidedCostESCGuideline(projectIdPojo requestPojo);
 
+	
+	
+	
+	public AvoidedCostassetReplacementIterm getByName(String name);
+
+	
+	
+	
 }

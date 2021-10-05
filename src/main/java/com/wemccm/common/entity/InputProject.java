@@ -2,6 +2,8 @@ package com.wemccm.common.entity;
 
 public class InputProject extends BaseEntity {
 
+	
+	
 	private String projectNumber;
 	//cc 	projectTitle
 	private String projectName;
@@ -10,15 +12,12 @@ public class InputProject extends BaseEntity {
 	//=IF('JEN Overheads|Build Up'!B23,"Yes","No")
 	private String showContestableBreakdown10;
 	
+	
+	
 	//---------------------------------------------------------------------------------------
 	
 	//sum of next 4
 	private Double connectionAssets13Total;
-//	(
-//		(Financials!J10*(1+'JEN Overheads|Build Up'!$B$20))
-//	+	SUM('Quantity|Input'!X541, 'Quantity|Input'!X540)
-//	)
-//	*	1+'JEN Overheads|Build Up'!B10
 
 	private Double PMDEC14Total;
 	
