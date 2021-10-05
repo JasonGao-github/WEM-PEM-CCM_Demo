@@ -595,14 +595,14 @@ INSERT INTO `customercontributionpricetype` VALUES (7, 'JEN Contribution to Proj
 INSERT INTO `customercontributionpricetype` VALUES (8, 'Customer Supply Requested Target Date ');
 
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (1,'Wooden Pole - HV',54,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (2,'Wooden Pole - LV',54,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (2,'Wooden Pole - LV',54,'$/Pole',9390.405133,14.81813663,11.05945032);
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (3,'Concrete Pole - HV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (4,'Concrete Pole - LV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (5,'Steel Pole - LV',40,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (6,'Steel Cross Arms (incl. Insulators) - HV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (7,'Wood Cross Arms (incl. Insulators) - HV',45,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (8,'Wood Cross Arms (incl. Insulators) - LV',45,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (4,'Concrete Pole - LV',70,'$/Pole',9390.405133,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (5,'Steel Pole - LV',40,'$/Pole',9390.405133,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (6,'Steel Cross Arms (incl. Insulators) - HV',70,'$/Cross Arm',3509.397807,0,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (7,'Wood Cross Arms (incl. Insulators) - HV',45,'$/Cross Arm',3509.397807,0,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (8,'Wood Cross Arms (incl. Insulators) - LV',45,'$/Cross Arm',2799.119837,0,0);
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (9,'Bare Conductors (Al)',60,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (10,'Insulated Conductors - LV',60,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (11,'Underground Cables and Cablehead - HV, XLPE',40,'$/Pole',14417.69623,14.81813663,11.05945032);
-INSERT INTO `avoidedcostassetreplacementiterm` VALUES (12,'Underground Cables and Cablehead - LV, XLPE',55,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (10,'Insulated Conductors - LV',60,'$/metre',131.3722217,0.154763897,0.259578461);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (11,'Underground Cables and Cablehead - HV, XLPE',40,'$/metre',711.55,0.016655326,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (12,'Underground Cables and Cablehead - LV, XLPE',55,'$/metre',574.69,0.016655326,0);
