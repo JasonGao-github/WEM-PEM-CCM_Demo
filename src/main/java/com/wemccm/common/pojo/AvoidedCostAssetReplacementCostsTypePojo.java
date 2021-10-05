@@ -13,15 +13,10 @@ public class AvoidedCostAssetReplacementCostsTypePojo {
 	private Double stdLife;
 	private Double remLife;
 	private Double presentValueRC;
-	
-	private Integer avoidedCostInputTypeId;
+
 	private Integer avoidedCostassetReplacementItermId;
-	
-	private String InputTypeName; //table avoidedcosttype
-	
-	private String ReplacementItermName;  //avoidedcostassetreplacementiterm
-	
-	
+
+	private String replacementItermName; // avoidedcostassetreplacementiterm
 
 	public Integer getAvoidedCostassetReplacementItermId() {
 		return avoidedCostassetReplacementItermId;
@@ -29,14 +24,6 @@ public class AvoidedCostAssetReplacementCostsTypePojo {
 
 	public void setAvoidedCostassetReplacementItermId(Integer avoidedCostassetReplacementItermId) {
 		this.avoidedCostassetReplacementItermId = avoidedCostassetReplacementItermId;
-	}
-
-	public String getReplacementItermName() {
-		return ReplacementItermName;
-	}
-
-	public void setReplacementItermName(String replacementItermName) {
-		ReplacementItermName = replacementItermName;
 	}
 
 	public Integer getId() {
@@ -135,20 +122,12 @@ public class AvoidedCostAssetReplacementCostsTypePojo {
 		this.presentValueRC = presentValueRC;
 	}
 
-	public Integer getAvoidedCostInputTypeId() {
-		return avoidedCostInputTypeId;
+	public String getReplacementItermName() {
+		return replacementItermName;
 	}
 
-	public void setAvoidedCostInputTypeId(Integer avoidedCostInputTypeId) {
-		this.avoidedCostInputTypeId = avoidedCostInputTypeId;
+	public void setReplacementItermName(String replacementItermName) {
+		this.replacementItermName = replacementItermName;
 	}
 
-	public String getInputTypeName() {
-		return InputTypeName;
-	}
-
-	public void setInputTypeName(String inputTypeName) {
-		InputTypeName = inputTypeName;
-	}
-	
 }

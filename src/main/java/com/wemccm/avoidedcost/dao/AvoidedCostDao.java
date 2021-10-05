@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.wemccm.common.entity.AvoidedCostAssetReplacementCosts;
 import com.wemccm.common.entity.AvoidedCostESCGuideline;
-import com.wemccm.common.entity.AvoidedCostMaintenanceCosts;
-import com.wemccm.common.entity.AvoidedCostType;
 import com.wemccm.common.entity.AvoidedCostassetReplacementIterm;
 import com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo;
 import com.wemccm.common.pojo.AvoidedCostMaintenanceCostsTypeJojo;
@@ -17,7 +15,7 @@ import com.wemccm.common.pojo.projectIdPojo;
 public interface AvoidedCostDao {
 	
 
-	public List<AvoidedCostType> selectAllAvoidedCostType();
+//	public List<AvoidedCostType> selectAllAvoidedCostType();
 
 	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm();
 
@@ -26,7 +24,7 @@ public interface AvoidedCostDao {
 
 	public void insertAvoidedCostESCGuideline(AvoidedCostESCGuideline avoidedCostESCGuideline);
 
-	public void insertAvoidedCostMaintenanceCosts(AvoidedCostMaintenanceCosts avoidedCostMaintenanceCosts);
+//	public void insertAvoidedCostMaintenanceCosts(AvoidedCostMaintenanceCosts avoidedCostMaintenanceCosts);
 
 	public void insertAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm iterm);
 

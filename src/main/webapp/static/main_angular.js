@@ -423,6 +423,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		itemId = $scope.exist_asset_data.length
 		new_data.id = itemId
 		$scope.exist_asset_data.push(new_data)
+		console.log($scope.exist_asset_data)
 	}
 	$scope.add_repl_asset = function() {
 		let new_data = Object.assign({}, data);
@@ -441,7 +442,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	$scope.ac_exist_select_item = function(index) {
 		if ($scope.ac_items[$scope.exist_asset_data[index].itemId]) {
-			ac_item = $scope.ac_items[$scope.exist_asset_data[index].itemId]
+			ac_item = $scope.ac_items[$scope.exist_asset_data[index].itemId - 1]
 			$scope.exist_asset_data[index].assertLife = ac_item.assertLife
 			$scope.exist_asset_data[index].units = ac_item.units
 			$scope.exist_asset_data[index].newAssertCost = ac_item.newAssertCost
@@ -455,7 +456,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 	$scope.ac_repl_select_item = function(index) {
 		if ($scope.ac_items[$scope.repl_asset_data[index].itemId]) {
-			ac_item = $scope.ac_items[$scope.repl_asset_data[index].itemId]
+			ac_item = $scope.ac_items[$scope.repl_asset_data[index].itemId - 1]
 			$scope.repl_asset_data[index].assertLife = ac_item.assertLife
 			$scope.repl_asset_data[index].units = ac_item.units
 			$scope.repl_asset_data[index].newAssertCost = ac_item.newAssertCost

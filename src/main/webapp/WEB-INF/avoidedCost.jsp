@@ -83,7 +83,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.assertName}}</option>
 							</select></td>
 							<td>Jemena</td>
-							<td>{{exist_asset_data[asset.id].newAssertCost}}</td>
+							<td>{{exist_asset_data[asset.id].newAssertCost | number : '1.2'}}</td>
 							<td>{{exist_asset_data[asset.id].units}}</td>
 							<td><input type="number"
 								ng-model="exist_asset_data[asset.id].quantity"
