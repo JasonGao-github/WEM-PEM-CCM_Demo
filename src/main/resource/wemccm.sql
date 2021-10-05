@@ -130,10 +130,10 @@ CREATE TABLE `avoidedcostassetreplacementcosts`  (
 ); 
 CREATE TABLE `avoidedcostassetreplacementIterm` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `assertName` VARCHAR(256) NULL DEFAULT NULL,
-    `assertLife` int(32) NULL DEFAULT NULL,
-    `units` VARCHAR(128) NULL DEFAULT NULL,
-    `newAssertCost` double(24, 14) NULL DEFAULT NULL,
+    `name` VARCHAR(256) NULL DEFAULT NULL,
+    `stdLife` int(32) NULL DEFAULT NULL,
+    `unit` VARCHAR(128) NULL DEFAULT NULL,
+    `unitCost` double(24, 14) NULL DEFAULT NULL,
     `maintenanceCost` double(24, 14) NULL DEFAULT NULL,
     `vegetationManagementCost` double(24, 14) NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE
