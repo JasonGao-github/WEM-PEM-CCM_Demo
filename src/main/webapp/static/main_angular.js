@@ -527,7 +527,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			}
 			$scope.ac_total[1] = value1.toFixed(2)
 		}
-		total = value0 + value1
+		total = value0 - value1
 		$scope.netCosts = total.toFixed(2)
 	}
 
