@@ -544,7 +544,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			$scope.exist_asset_data.concat($scope.repl_asset_data)
 		);
 		console.log(obj)
-		
+
 		$http({
 			method: 'POST',
 			url: url + '/insertAvoidedCostAssetReplacementCosts',
@@ -562,7 +562,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			stdLife: $scope.life,
 			unit: $scope.unit,
 			unitCost: $scope.new_asset_cost,
-			maintenanceCost: $scope.mai_cost,
+			maintenanceCost: $scope.main_cost,
 			vegetationManagementCost: $scope.veg_cost
 		})
 		$http({
@@ -572,6 +572,44 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		}).then(function mySuccess(response) {
 			console.log(response.data);
 		})
+	}
+
+	//connection hand over
+	$scope.conn_handover_submit = function() {
+		var obj = JSON.stringify({
+			projectRef: $scope.projectRef,
+			portalNo: $scope.portalNo,
+			date: $scope.date,
+			coustomerBusinesName: $scope.coustomerBusinesName,
+			projectAddress: $scope.projectAddress,
+			customerContactName: $scope.customerContactName,
+			customerContactNumber: $scope.customerContactNumber,
+			customerContactEmail: $scope.customerContactEmail,
+			maximumAllocatedCapacityPhases: $scope.maximumAllocatedCapacityPhases,
+			maximumAllocatedCapacityAmps: $scope.maximumAllocatedCapacityAmps,
+			maximumAllocatedCapacitykVA: $scope.maximumAllocatedCapacitykVA,
+			existingConnection: $scope.existingConnection,
+			embeddedNetwork: $scope.embeddedNetwork,
+			reCadvisedofCTarrangement: $scope.reCadvisedofCTarrangement,
+			propertyRequirement: $scope.propertyRequirement,
+			projectManagerName: $scope.projectManagerName,
+			projectManagerPhone: $scope.projectManagerPhone,
+			ugCrewRequired: $scope.ugCrewRequired,
+			networkOperatorRequired: $scope.networkOperatorRequired,
+			complianceReviewedDesign: $scope.complianceReviewedDesign,
+			supplyPointDetails: $scope.supplyPointDetails,
+			supplyPointComments: $scope.supplyPointComments,
+			silVonissue: $scope.silVonissue,
+			silVonissueComments: $scope.silVonissueComments
+		})
+		$http({
+			method: 'POST',
+			url: url + '/insertConnectionHandover',
+			data: obj,
+		}).then(function mySuccess(response) {
+			console.log(response.data);
+		})
+
 	}
 
 	// $('#add_new_user_btn').click(function (e) {
