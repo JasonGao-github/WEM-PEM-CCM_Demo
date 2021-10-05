@@ -410,7 +410,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		maintenanceCost: '',
 		vegetationManagementCost: '',
 		quantity: '',
-		itemId: '',
+		avoidedCostassetReplacementItermId: '',
 		assetAge: '',
 		remLife: '',
 		totalCost: '',
@@ -422,8 +422,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	$scope.add_ex_asset = function() {
 		let new_data = Object.assign({}, data);
-		itemId = $scope.exist_asset_data.length
-		new_data.id = itemId
+		avoidedCostassetReplacementItermId = $scope.exist_asset_data.length
+		new_data.id = avoidedCostassetReplacementItermId
 		$scope.exist_asset_data.push(new_data)
 		console.log($scope.exist_asset_data)
 	}
@@ -443,8 +443,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 
 	$scope.ac_exist_select_item = function(index) {
-		if ($scope.ac_items[$scope.exist_asset_data[index].itemId]) {
-			ac_item = $scope.ac_items[$scope.exist_asset_data[index].itemId - 1]
+		if ($scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId]) {
+			ac_item = $scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]
 			$scope.exist_asset_data[index].stdLife = ac_item.stdLife
 			$scope.exist_asset_data[index].unit = ac_item.unit
 			$scope.exist_asset_data[index].unitCost = ac_item.unitCost
@@ -455,11 +455,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			$scope.exist_asset_data[index].name = ac_item.name
 		}
 		$scope.ac_update_exist_item(index)
-		$scope.ac_update_total()
 	}
 	$scope.ac_repl_select_item = function(index) {
-		if ($scope.ac_items[$scope.repl_asset_data[index].itemId]) {
-			ac_item = $scope.ac_items[$scope.repl_asset_data[index].itemId - 1]
+		if ($scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId]) {
+			ac_item = $scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId - 1]
 			$scope.repl_asset_data[index].stdLife = ac_item.stdLife
 			$scope.repl_asset_data[index].unit = ac_item.unit
 			$scope.repl_asset_data[index].unitCost = ac_item.unitCost
@@ -469,28 +468,28 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			$scope.repl_asset_data[index].name = ac_item.name
 		}
 		$scope.ac_update_repl_item(index)
-		$scope.ac_update_total()
 	}
 
 	$scope.ac_update_exist_item = function(index) {
 		item = $scope.exist_asset_data[index]
 		total = item.unitCost * item.quantity * (1 + $scope.overhead / 100)
-		$scope.exist_asset_data[index].totalCost = total.toFixed(2)
+		$scope.exist_asset_data[index].totalCost = total
 		$scope.exist_asset_data[index].remLife = item.stdLife - item.assetAge
 		value = $scope.exist_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.exist_asset_data[index].remLife)
-		$scope.exist_asset_data[index].presentValueRC = value.toFixed(2)
+		$scope.exist_asset_data[index].presentValueRC = value
 		$scope.ac_update_total()
 
 	}
 	$scope.ac_update_repl_item = function(index) {
 		item = $scope.repl_asset_data[index]
 		total = item.unitCost * item.quantity * (1 + $scope.overhead / 100)
-		$scope.repl_asset_data[index].totalCost = total.toFixed(2)
+		$scope.repl_asset_data[index].totalCost = total
 		$scope.repl_asset_data[index].remLife = item.stdLife
 		value = $scope.repl_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.repl_asset_data[index].remLife)
-		$scope.repl_asset_data[index].presentValueRC = value.toFixed(2)
+		$scope.repl_asset_data[index].presentValueRC = value
 
 		$scope.ac_update_total()
+		$scope.ac_update_weigted_avg_age()
 	}
 
 	$scope.ac_update_overhead = function() {
@@ -509,13 +508,23 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.netCosts = 0
 	$scope.ac_total = ['', '']
 	$scope.ac_update_total = function() {
+		wacc = parseFloat($scope.wacc) / 100
 		$scope.ac_total = ['', '']
+		mainCostExist = 0
+		mainCostNew = 0
 		if ($scope.exist_asset_data) {
 			value0 = 0
 			for (let i = 0; i < $scope.exist_asset_data.length; i++) {
+				e_item = $scope.exist_asset_data[i]
 				//only add when it is a number
-				if (!isNaN(parseFloat($scope.exist_asset_data[i].presentValueRC))) {
-					value0 += parseFloat($scope.exist_asset_data[i].presentValueRC)
+				if (!isNaN(parseFloat(e_item.presentValueRC))) {
+					value0 += parseFloat(e_item.presentValueRC)
+					cost_pa = (parseFloat(e_item.maintenanceCost) + parseFloat(e_item.vegetationManagementCost))
+						* parseFloat(e_item.quantity)
+					//console.log(cost_pa)
+					present_value = cost_pa * ((1 - (1 + wacc) ** (-$scope.ac_new_weighted_avg_age)) / wacc)
+					//console.log(present_value)
+					mainCostExist += present_value
 				}
 			}
 
@@ -524,15 +533,38 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		if ($scope.repl_asset_data) {
 			value1 = 0
 			for (let i = 0; i < $scope.repl_asset_data.length; i++) {
+				n_item = $scope.repl_asset_data[i]
 				//only add when it is a number
-				if (!isNaN(parseFloat($scope.repl_asset_data[i].presentValueRC))) {
-					value1 += parseFloat($scope.repl_asset_data[i].presentValueRC)
+				if (!isNaN(parseFloat(n_item.presentValueRC))) {
+					value1 += parseFloat(n_item.presentValueRC)
+					cost_pa = (parseFloat(n_item.maintenanceCost) + parseFloat(n_item.vegetationManagementCost))
+						* parseFloat(n_item.quantity)
+					//console.log(cost_pa)
+					present_value = cost_pa * ((1 - (1 + wacc) ** (-$scope.ac_new_weighted_avg_age)) / wacc)
+					//console.log(present_value)
+					mainCostNew += present_value
 				}
 			}
-			$scope.ac_total[1] = value1.toFixed(2)
+			$scope.ac_total[1] = value1
 		}
-		total = value0 - value1
-		$scope.netCosts = total.toFixed(2)
+		total = value0 - value1 + mainCostExist - mainCostNew
+		$scope.netCosts = total
+	}
+
+	$scope.ac_new_weighted_avg_age = 0
+	$scope.ac_update_weigted_avg_age = function() {
+		cost_age_sum = 0
+		cost_sum = 0
+		for (let i = 0; i < $scope.repl_asset_data.length; i++) {
+			//only add when it is a number
+			item = $scope.repl_asset_data[i]
+			if (!isNaN(parseFloat(item.stdLife))) {
+				cost_age_sum += parseFloat(item.totalCost) * parseFloat(item.stdLife)
+				cost_sum += parseFloat(item.totalCost)
+			}
+		}
+		$scope.ac_new_weighted_avg_age = cost_age_sum / cost_sum
+		//console.log($scope.ac_new_weighted_avg_age)
 	}
 
 	$scope.ac_submit_input = function() {
@@ -551,6 +583,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			data: obj,
 		}).then(function mySuccess(response) {
 			console.log(response.data);
+			$window.location.href = '/financials_page'
 		})
 
 	}
