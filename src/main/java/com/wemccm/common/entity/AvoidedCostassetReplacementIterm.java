@@ -2,44 +2,43 @@ package com.wemccm.common.entity;
 
 public class AvoidedCostassetReplacementIterm extends BaseEntity {
 
-	private String assertName;
-	private Integer assertLife;
-	private String units;
-	private Double newAssertCost;
+	private String name;
+	private Integer stdLife;
+	private String unit;
+	private Double unitCost;
 	private Double maintenanceCost;
 	private Double vegetationManagementCost;
-	
 
-	public String getAssertName() {
-		return assertName;
+	public String getName() {
+		return name;
 	}
 
-	public void setAssertName(String assertName) {
-		this.assertName = assertName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Integer getAssertLife() {
-		return assertLife;
+	public Integer getStdLife() {
+		return stdLife;
 	}
 
-	public void setAssertLife(Integer assertLife) {
-		this.assertLife = assertLife;
+	public void setStdLife(Integer stdLife) {
+		this.stdLife = stdLife;
 	}
 
-	public String getUnits() {
-		return units;
+	public String getUnit() {
+		return unit;
 	}
 
-	public void setUnits(String units) {
-		this.units = units;
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
-	public Double getNewAssertCost() {
-		return newAssertCost;
+	public Double getUnitCost() {
+		return unitCost;
 	}
 
-	public void setNewAssertCost(Double newAssertCost) {
-		this.newAssertCost = newAssertCost;
+	public void setUnitCost(Double unitCost) {
+		this.unitCost = unitCost;
 	}
 
 	public Double getMaintenanceCost() {

@@ -62,14 +62,13 @@
 	</select>
  -->
 
-
 	<select id="insertAvoidedCostassetReplacementIterm"
 		parameterType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
 
 		INSERT INTO avoidedcostassetreplacementiterm
-		(assertName,assertLife,units,newAssertCost,maintenanceCost,vegetationManagementCost)
+		(name,stdLife,unit,unitCost,maintenanceCost,vegetationManagementCost)
 		VALUES
-		(#{assertName},#{assertLife},#{units},#{newAssertCost},#{maintenanceCost},#{vegetationManagementCost})
+		(#{name},#{stdLife},#{unit},#{unitCost},#{maintenanceCost},#{vegetationManagementCost})
 
 	</select>
 
