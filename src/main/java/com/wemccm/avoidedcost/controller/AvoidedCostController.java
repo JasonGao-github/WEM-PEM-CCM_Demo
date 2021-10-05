@@ -51,10 +51,11 @@ public class AvoidedCostController {
 	// insert data of other part
 	@RequestMapping(value = "/insertAvoidedCostAssetReplacementCosts", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String insertAvoidedCostAssetReplacementCosts(@RequestBody List<AvoidedCostAssetReplacementCosts> list) {
+	public ResponseResult insertAvoidedCostAssetReplacementCosts(
+			@RequestBody List<AvoidedCostAssetReplacementCosts> list) {
 		// insert table avoidedcostassetreplacementcosts
 		serivce.insertAvoidedCostAssetReplacementCosts(list);
-		return "success";
+		return new ResponseResult();
 	}
 
 	// list the data of first part
