@@ -36,7 +36,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 				<div>
 					<span class="item">Units</span> <input class="testing" type="text"
-						placeholder="Type" ng-model="units">
+						placeholder="Type" ng-model="unit">
 				</div>
 				<div>
 					<span class="item">New Asset Cost</span> <input class="testing"
