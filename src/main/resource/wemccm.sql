@@ -125,7 +125,7 @@ CREATE TABLE `avoidedcostassetreplacementcosts`  (
   `stdLife` double(10, 2) NULL DEFAULT NULL,
   `remLife` double(10, 2) NULL DEFAULT NULL,
   `presentValueRC` double(10, 2) NULL DEFAULT NULL,
-  `avoidedCostInputTypeId` int(11) NULL DEFAULT NULL,
+  `avoidedCostassetReplacementItermId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ); 
 CREATE TABLE `avoidedcostassetreplacementIterm` (
