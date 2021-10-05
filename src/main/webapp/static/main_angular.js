@@ -568,21 +568,21 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 
 	$scope.ac_submit_input = function() {
-		console.log($scope.exist_asset_data)
-		console.log($scope.repl_asset_data)
+		//console.log($scope.exist_asset_data)
+		//console.log($scope.repl_asset_data)
 		data = $scope.exist_asset_data.concat($scope.repl_asset_data);
-		console.log(data)
+		//console.log(data)
 		var obj = JSON.stringify(
 			$scope.exist_asset_data.concat($scope.repl_asset_data)
 		);
-		console.log(obj)
+		//console.log(obj)
 
 		$http({
 			method: 'POST',
 			url: url + '/insertAvoidedCostAssetReplacementCosts',
 			data: obj,
 		}).then(function mySuccess(response) {
-			console.log(response.data);
+			//console.log(response.data);
 			$window.location.href = '/financials_page'
 		})
 
