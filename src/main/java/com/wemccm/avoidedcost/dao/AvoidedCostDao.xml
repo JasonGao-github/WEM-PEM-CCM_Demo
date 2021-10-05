@@ -27,8 +27,7 @@
 	<select id="insertAvoidedCostAssetReplacementCosts"
 		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 
-		INSERT INTO avoidedcostassetreplacementcosts (projectId,
-		name,source,unitCost,unit,quantity,totalCost,assetAge,stdLife,remLife,presentValueRC,avoidedCostassetReplacementItermId)
+		INSERT INTO avoidedcostassetreplacementcosts (projectId,name,source,unitCost,unit,quantity,totalCost,assetAge,stdLife,remLife,presentValueRC,avoidedCostassetReplacementItermId)
 		VALUES
 		(#{projectId},#{name},#{source},
 		#{unitCost},#{unit},#{quantity},#{totalCost},#{assetAge},#{stdLife},#{remLife},#{presentValueRC},

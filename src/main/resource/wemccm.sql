@@ -115,7 +115,7 @@ CREATE TABLE `avoidedcostescguideline`  (
 CREATE TABLE `avoidedcostassetreplacementcosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
-  `avoidedCostassetReplacementItermId` int(11) ,
+  `name` varchar(128) ,
   `source` varchar(32) ,
   `unitCost` double(10, 2) NULL DEFAULT NULL,
   `unit` varchar(32) ,
