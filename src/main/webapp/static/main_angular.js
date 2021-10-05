@@ -577,6 +577,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	//connection hand over
 	$scope.conn_handover_submit = function() {
 		var obj = JSON.stringify({
+			projectId: '',
 			projectRef: $scope.projectRef,
 			portalNo: $scope.portalNo,
 			date: $scope.date,

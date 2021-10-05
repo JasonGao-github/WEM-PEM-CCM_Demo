@@ -10,6 +10,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <head>
 <%@ include file="common/meta.jspf"%>
+<link rel="stylesheet" href="<%=path%>static/css/viewProject.css" />
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller">

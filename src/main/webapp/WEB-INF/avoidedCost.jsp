@@ -18,7 +18,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
-			<div class="container content d-flex flex-column">
+			<div class="container content">
 				<h1 style="margin: 2vh;">Avoided Cost Page</h1>
 				<table class="table" ng-init="get_ac()">
 					<thead>
