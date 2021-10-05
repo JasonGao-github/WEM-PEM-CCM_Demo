@@ -80,11 +80,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<td colspan="1"><select
 								ng-model="exist_asset_data[asset.id].itemId"
 								ng-change="ac_exist_select_item(asset.id)">
-									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.assertName}}</option>
+									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.name}}</option>
 							</select></td>
 							<td>Jemena</td>
-							<td>{{exist_asset_data[asset.id].newAssertCost | number : '1.2'}}</td>
-							<td>{{exist_asset_data[asset.id].units}}</td>
+							<td>{{exist_asset_data[asset.id].unitCost | number : '1.2'}}</td>
+							<td>{{exist_asset_data[asset.id].unit}}</td>
 							<td><input type="number"
 								ng-model="exist_asset_data[asset.id].quantity"
 								ng-change="ac_update_exist_item(asset.id)"></td>
@@ -92,7 +92,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<td><input type="number"
 								ng-model="exist_asset_data[asset.id].assetAge"
 								ng-change="ac_update_exist_item(asset.id)"></td>
-							<td>{{exist_asset_data[asset.id].assertLife}}</td>
+							<td>{{exist_asset_data[asset.id].stdLife}}</td>
 							<td>{{exist_asset_data[asset.id].remLife}}</td>
 							<td>{{exist_asset_data[asset.id].presentValueRC}}</td>
 						</tr>
@@ -124,17 +124,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<td colspan="1"><select
 								ng-model="repl_asset_data[asset.id].itemId"
 								ng-change="ac_repl_select_item(asset.id)">
-									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.assertName}}</option>
+									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.name}}</option>
 							</select></td>
 							<td>Jemena</td>
-							<td>{{repl_asset_data[asset.id].newAssertCost}}</td>
-							<td>{{repl_asset_data[asset.id].units}}</td>
+							<td>{{repl_asset_data[asset.id].unitCost | number : '1.2'}}</td>
+							<td>{{repl_asset_data[asset.id].unit}}</td>
 							<td><input type="number"
 								ng-model="repl_asset_data[asset.id].quantity"
 								ng-change="ac_update_repl_item(asset.id)"></td>
 							<td>{{repl_asset_data[asset.id].totalCost}}</td>
 							<td>-</td>
-							<td>{{repl_asset_data[asset.id].assertLife}}</td>
+							<td>{{repl_asset_data[asset.id].stdLife}}</td>
 							<td>{{repl_asset_data[asset.id].remLife}}</td>
 							<td>{{repl_asset_data[asset.id].presentValueRC}}</td>
 						</tr>

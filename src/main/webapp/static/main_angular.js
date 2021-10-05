@@ -403,9 +403,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	data = {
 		id: 0,
-		assertLife: '',
-		units: '',
-		newAssertCost: '',
+		name: '',
+		stdLife: '',
+		unit: '',
+		unitCost: '',
 		maintenanceCost: '',
 		vegetationManagementCost: '',
 		quantity: '',
@@ -414,6 +415,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		remLife: '',
 		totalCost: '',
 		presentValueRC: '',
+		source: 'Jemena'
 	};
 	$scope.exist_asset_data = []
 	$scope.repl_asset_data = []
@@ -443,13 +445,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.ac_exist_select_item = function(index) {
 		if ($scope.ac_items[$scope.exist_asset_data[index].itemId]) {
 			ac_item = $scope.ac_items[$scope.exist_asset_data[index].itemId - 1]
-			$scope.exist_asset_data[index].assertLife = ac_item.assertLife
-			$scope.exist_asset_data[index].units = ac_item.units
-			$scope.exist_asset_data[index].newAssertCost = ac_item.newAssertCost
+			$scope.exist_asset_data[index].stdLife = ac_item.stdLife
+			$scope.exist_asset_data[index].unit = ac_item.unit
+			$scope.exist_asset_data[index].unitCost = ac_item.unitCost
 			$scope.exist_asset_data[index].maintenanceCost = ac_item.maintenanceCost
 			$scope.exist_asset_data[index].vegetationManagementCost = ac_item.vegetationManagementCost
 			$scope.exist_asset_data[index].quantity = ''
 			$scope.exist_asset_data[index].assetAge = ''
+			$scope.exist_asset_data[index].name = ac_item.name
 		}
 		$scope.ac_update_exist_item(index)
 		$scope.ac_update_total()
@@ -457,12 +460,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.ac_repl_select_item = function(index) {
 		if ($scope.ac_items[$scope.repl_asset_data[index].itemId]) {
 			ac_item = $scope.ac_items[$scope.repl_asset_data[index].itemId - 1]
-			$scope.repl_asset_data[index].assertLife = ac_item.assertLife
-			$scope.repl_asset_data[index].units = ac_item.units
-			$scope.repl_asset_data[index].newAssertCost = ac_item.newAssertCost
+			$scope.repl_asset_data[index].stdLife = ac_item.stdLife
+			$scope.repl_asset_data[index].unit = ac_item.unit
+			$scope.repl_asset_data[index].unitCost = ac_item.unitCost
 			$scope.repl_asset_data[index].maintenanceCost = ac_item.maintenanceCost
 			$scope.repl_asset_data[index].vegetationManagementCost = ac_item.vegetationManagementCost
 			$scope.repl_asset_data[index].quantity = ''
+			$scope.repl_asset_data[index].name = ac_item.name
 		}
 		$scope.ac_update_repl_item(index)
 		$scope.ac_update_total()
@@ -470,9 +474,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 	$scope.ac_update_exist_item = function(index) {
 		item = $scope.exist_asset_data[index]
-		total = item.newAssertCost * item.quantity * (1 + $scope.overhead / 100)
+		total = item.unitCost * item.quantity * (1 + $scope.overhead / 100)
 		$scope.exist_asset_data[index].totalCost = total.toFixed(2)
-		$scope.exist_asset_data[index].remLife = item.assertLife - item.assetAge
+		$scope.exist_asset_data[index].remLife = item.stdLife - item.assetAge
 		value = $scope.exist_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.exist_asset_data[index].remLife)
 		$scope.exist_asset_data[index].presentValueRC = value.toFixed(2)
 		$scope.ac_update_total()
@@ -480,9 +484,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 	$scope.ac_update_repl_item = function(index) {
 		item = $scope.repl_asset_data[index]
-		total = item.newAssertCost * item.quantity * (1 + $scope.overhead / 100)
+		total = item.unitCost * item.quantity * (1 + $scope.overhead / 100)
 		$scope.repl_asset_data[index].totalCost = total.toFixed(2)
-		$scope.repl_asset_data[index].remLife = item.assertLife
+		$scope.repl_asset_data[index].remLife = item.stdLife
 		value = $scope.repl_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.repl_asset_data[index].remLife)
 		$scope.repl_asset_data[index].presentValueRC = value.toFixed(2)
 
@@ -501,7 +505,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			}
 		}
 	}
-	
+
 	$scope.netCosts = 0
 	$scope.ac_total = ['', '']
 	$scope.ac_update_total = function() {
@@ -534,16 +538,30 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.ac_submit_input = function() {
 		console.log($scope.exist_asset_data)
 		console.log($scope.repl_asset_data)
+		data = $scope.exist_asset_data.concat($scope.repl_asset_data);
+		console.log(data)
+		var obj = JSON.stringify(
+			$scope.exist_asset_data.concat($scope.repl_asset_data)
+		);
+		console.log(obj)
+		
+		$http({
+			method: 'POST',
+			url: url + '/insertAvoidedCostAssetReplacementCosts',
+			data: obj,
+		}).then(function mySuccess(response) {
+			console.log(response.data);
+		})
 
 	}
 
 	//ac basic data
 	$scope.ac_submit_basic = function() {
 		var obj = JSON.stringify({
-			assertName: $scope.asset,
-			assertLife: $scope.life,
-			units: $scope.units,
-			newAssertCost: $scope.new_asset_cost,
+			name: $scope.asset,
+			stdLife: $scope.life,
+			unit: $scope.unit,
+			unitCost: $scope.new_asset_cost,
 			maintenanceCost: $scope.mai_cost,
 			vegetationManagementCost: $scope.veg_cost
 		})
