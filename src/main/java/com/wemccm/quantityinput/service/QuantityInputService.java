@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.QuantityInputBasicData;
 import com.wemccm.common.entity.QuantityInputItermGroup;
-import com.wemccm.common.pojo.QIDataPojo;
 import com.wemccm.common.pojo.QuantityInputDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermGroupIdPojo;
 import com.wemccm.common.pojo.QuantityInputPojo;
@@ -18,22 +17,31 @@ import com.wemccm.quantityinput.dao.QuantityInputDao;
 public class QuantityInputService {
 
 	@Autowired
-	private QuantityInputDao Dao;
+	private QuantityInputDao qiDao;
 
 	public List<QuantityInputItermGroup> selectAllQuantityInputItermGroup() {
-		List<QuantityInputItermGroup> l = Dao.selectAllQuantityInputItermGroup();
+		List<QuantityInputItermGroup> l = qiDao.selectAllQuantityInputItermGroup();
 
 		return l;
 	}
 
 	public List<QuantityInputBasicData> findQuantityInputBasicData(QuantityInputItermGroupIdPojo requestPojo) {
-		List<QuantityInputBasicData> l = Dao.findQuantityInputBasicData(requestPojo);
+		List<QuantityInputBasicData> l = qiDao.findQuantityInputBasicData(requestPojo);
 
 		return l;
 	}
 
-	public void insertQuantityInputBasicData(QuantityInputBasicData data) {
-		Dao.insertQuantityInputBasicData(data);
+	public String insertQuantityInputBasicData(QuantityInputBasicData data) {
+
+		QuantityInputBasicData qibd = qiDao.getByCode(data.getCode());
+
+		if (null != qibd) {
+			return "-1";
+		}
+
+		qiDao.insertQuantityInputBasicData(data);
+
+		return "00";
 
 	}
 
@@ -65,12 +73,12 @@ public class QuantityInputService {
 
 	public void insertQuantityInput(List<QuantityInputPojo> list) {
 		for (int i = 0; i < list.size(); i++) {
-			Dao.insertQuantityInput(list.get(i));
+			qiDao.insertQuantityInput(list.get(i));
 		}
 	}
 
 	public List<QuantityInputDetailPojo> findQuantityInputDetail(projectIdPojo requestPojo) {
-		List<QuantityInputDetailPojo> l = Dao.findQuantityInputDetail(requestPojo);
+		List<QuantityInputDetailPojo> l = qiDao.findQuantityInputDetail(requestPojo);
 
 		return l;
 	}

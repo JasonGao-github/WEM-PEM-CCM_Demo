@@ -37,7 +37,10 @@ public class QuantityInputController {
 	@ResponseBody
 	public ResponseResult insertQuantityInputBasicData(@RequestBody QuantityInputBasicData data) {
 		// insert table avoidedcostassetreplacementcosts
-		serivce.insertQuantityInputBasicData(data);
+		String result = serivce.insertQuantityInputBasicData(data);
+		if ("-1".equals(result)) {
+			return new ResponseResult("false", "the code has already exist in our system!");
+		}
 		return new ResponseResult();
 	}
 
@@ -73,7 +76,6 @@ public class QuantityInputController {
 	@RequestMapping(value = "/findQuantityInputDetail", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<QuantityInputDetailPojo> findQuantityInputDetail(@RequestBody projectIdPojo requestPojo) {
-
 
 		List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
 		return l;

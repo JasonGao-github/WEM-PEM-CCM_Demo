@@ -58,11 +58,9 @@ public class NonContestableService {
 		}
 	}
 
-	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(
-			projectIdPojo requestPojo) {
+	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(projectIdPojo requestPojo) {
 
 		List<NccProjectComponentPojo> l = Dao.findMultiNonContestableProjectComponent(requestPojo);
-
 
 		return l;
 	}
@@ -73,14 +71,29 @@ public class NonContestableService {
 		return l;
 	}
 
-	public void insertNonContestableProjectComponent(NonContestableProjectComponent ncpc) {
+	public String insertNonContestableProjectComponent(NonContestableProjectComponent ncpc) {
+
+		NonContestableProjectComponent temp = Dao.getNonContestableProjectComponentByDescription(ncpc.getDescription());
+		if (null != temp) {
+			return "-1";
+		}
 		Dao.insertNonContestableProjectComponent(ncpc);
-		
+
+		return "00";
+
 	}
 
-	public void insertNonContestableOtherCostsItem(NonContestableOtherCostsItem ncoci) {
+	public String insertNonContestableOtherCostsItem(NonContestableOtherCostsItem ncoci) {
+
+		NonContestableOtherCostsItem temp = Dao.getNonContestableOtherCostsItemByDescription(ncoci.getDescription());
+
+		if (null != temp) {
+			return "-1";
+		}
 		Dao.insertNonContestableOtherCostsItem(ncoci);
-		
+
+		return "00";
+
 	}
 
 }
