@@ -28,7 +28,9 @@
 
     <select id="listAllUser" parameterType="String"
             resultType="com.wemccm.common.pojo.UserListPojo">
-        SELECT u.firstName,
+        SELECT 
+        	   u.id,
+        	   u.firstName,
         	   u.lastName,
         	   u.email,
                ut.name AS userType
