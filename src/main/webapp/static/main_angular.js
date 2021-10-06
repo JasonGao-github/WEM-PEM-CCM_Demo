@@ -743,6 +743,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.user_new_password_to_change = ''
     $scope.user_confirm_new_password_to_change = ''
     $scope.change_user_password_mismatch = false
+    $scope.change_user_password_original_wrong = false
+    $scope.change_user_password_success = false
 
     $scope.changePassword = function (id) {
         console.log("clicked changePassword function")
@@ -753,6 +755,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         // console.log(userId)
         if ($scope.user_new_password_to_change.toString() === $scope.user_confirm_new_password_to_change.toString()) {
             $scope.change_user_password_mismatch = false
+            $scope.change_user_password_original_wrong = false
+            $scope.change_user_password_success = false
             var obj = JSON.stringify({
                 // "userId": userId,
                 "newPassword": $scope.user_new_password_to_change,
@@ -764,10 +768,24 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                 data: obj
             }).then(function mySuccess(response) {
                 console.log(response)
+                var response_data = response.data
+                if (response_data['result'].toString() === 'false') {
+                    console.log(response_data['message'])
+                    $scope.change_user_password_mismatch = false
+                    $scope.change_user_password_original_wrong = true
+                    $scope.change_user_password_success = false
+                } else {
+                    console.log(response_data['message'])
+                    $scope.change_user_password_mismatch = false
+                    $scope.change_user_password_original_wrong = false
+                    $scope.change_user_password_success = true
+                }
 
             })
         } else {
             $scope.change_user_password_mismatch = true
+            $scope.change_user_password_original_wrong = false
+            $scope.change_user_password_success = false
         }
     }
 

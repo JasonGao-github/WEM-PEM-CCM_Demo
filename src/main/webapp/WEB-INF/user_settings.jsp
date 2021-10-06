@@ -73,6 +73,16 @@
                                         <h6 style="color: red">New passwords do not match!</h6>
                                     </div>
                                 </div>
+                                <div class="row" ng-show="change_user_password_original_wrong">
+                                    <div class="col">
+                                        <h6 style="color: red">The old password you entered is wrong!</h6>
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="change_user_password_success">
+                                    <div class="col">
+                                        <h6 style="color: green">New password set successfully!</h6>
+                                    </div>
+                                </div>
 
                                 <div class="row mt-3">
                                     <div class="col">
