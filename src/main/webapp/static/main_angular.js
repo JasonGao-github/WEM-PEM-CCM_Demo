@@ -89,121 +89,121 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     };
 
-	//for ncc page
-	$scope.ncc_data = { "proj_comp": [], "other": [] }
-	$scope.get_ncc = function() {
-		$http.get('/selectAllProjectType').then(function(response) {
-			$scope.project_types = response.data;
-			$scope.selected_type = $scope.project_types[1].projectTypeId;
-		});
+    //for ncc page
+    $scope.ncc_data = {"proj_comp": [], "other": []}
+    $scope.get_ncc = function () {
+        $http.get('/selectAllProjectType').then(function (response) {
+            $scope.project_types = response.data;
+            $scope.selected_type = $scope.project_types[1].projectTypeId;
+        });
 
-		$http.get('/selectAllNonContestableType').then(function(response) {
-			$scope.ncc_otherTypes = response.data;
-			get_item();
-		});
+        $http.get('/selectAllNonContestableType').then(function (response) {
+            $scope.ncc_otherTypes = response.data;
+            get_item();
+        });
 
-		//get item of each type and concat to json
-		get_item = function() {
-			for (let i = 0; i < $scope.ncc_otherTypes.length; i++) {
-				typeId = $scope.ncc_otherTypes[i].id
-				var obj = JSON.stringify({
-					"nonContestableTypeId": typeId
-				});
-				$http({
-					method: 'POST',
-					url: url + '/findNonContestableOtherCostsIterm',
-					data: obj,
-				}).then(function mySuccess(response) {
-					$scope.ncc_otherTypes[i].items = response.data;
-				})
-			}
-		}
-	}
+        //get item of each type and concat to json
+        get_item = function () {
+            for (let i = 0; i < $scope.ncc_otherTypes.length; i++) {
+                typeId = $scope.ncc_otherTypes[i].id
+                var obj = JSON.stringify({
+                    "nonContestableTypeId": typeId
+                });
+                $http({
+                    method: 'POST',
+                    url: url + '/findNonContestableOtherCostsIterm',
+                    data: obj,
+                }).then(function mySuccess(response) {
+                    $scope.ncc_otherTypes[i].items = response.data;
+                })
+            }
+        }
+    }
 
     $scope.ncc_typeChanged = function () {
         var obj = JSON.stringify({
             "projectTypeId": $scope.selected_type,
         });
 
-		$http({
-			method: 'POST',
-			url: url + '/findNonContestableProjectComponent',
-			data: obj
-		}).then(function mySuccess(response) {
-			$scope.proj_comps = response.data;
-		})
+        $http({
+            method: 'POST',
+            url: url + '/findNonContestableProjectComponent',
+            data: obj
+        }).then(function mySuccess(response) {
+            $scope.proj_comps = response.data;
+        })
 
-		//when type changed, reset the content
-		$scope.ncc_data.proj_comp = []
-	}
+        //when type changed, reset the content
+        $scope.ncc_data.proj_comp = []
+    }
 
-	$scope.ncc_projCompChanged = function(compId, quantity, total) {
+    $scope.ncc_projCompChanged = function (compId, quantity, total) {
 
-		if (quantity == null) {
-			for (let i = 0; i < $scope.ncc_data.proj_comp.length; i++) {
-				if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
-					$scope.ncc_data.proj_comp.splice(i, 1);
-				}
-			}
-		} else {
+        if (quantity == null) {
+            for (let i = 0; i < $scope.ncc_data.proj_comp.length; i++) {
+                if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
+                    $scope.ncc_data.proj_comp.splice(i, 1);
+                }
+            }
+        } else {
 
-			$scope.ncc_data.proj_comp.push({
-				"projectId": $scope.projectId,
-				"nonContestableProjectComponentId": compId,
-				"hours": quantity,
-				"total": total
-			})
-		}
-		console.log($scope.ncc_data)
-	}
+            $scope.ncc_data.proj_comp.push({
+                "projectId": $scope.projectId,
+                "nonContestableProjectComponentId": compId,
+                "hours": quantity,
+                "total": total
+            })
+        }
+        console.log($scope.ncc_data)
+    }
 
-	$scope.ncc_otherChanged = function(itemId, quantity, total) {
-		console.log($scope.projectId);
-		if (quantity == null) {
-			for (let i = 0; i < $scope.ncc_data.other.length; i++) {
-				if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
-					$scope.ncc_data.other.splice(i, 1);
-				}
-			}
-		} else {
-			$scope.ncc_data.other.push({
-				"projectId": $scope.projectId,
-				"nonContestableOtherCostsItemId": itemId,
-				"quantity": quantity,
-				"total": total
-			})
-		}
-		console.log($scope.ncc_data)
-		console.log($scope.projectId)
-	}
+    $scope.ncc_otherChanged = function (itemId, quantity, total) {
+        console.log($scope.projectId);
+        if (quantity == null) {
+            for (let i = 0; i < $scope.ncc_data.other.length; i++) {
+                if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
+                    $scope.ncc_data.other.splice(i, 1);
+                }
+            }
+        } else {
+            $scope.ncc_data.other.push({
+                "projectId": $scope.projectId,
+                "nonContestableOtherCostsItemId": itemId,
+                "quantity": quantity,
+                "total": total
+            })
+        }
+        console.log($scope.ncc_data)
+        console.log($scope.projectId)
+    }
 
-	$scope.ncc_submit_input = function() {
-		var proj_comp = JSON.stringify(
-			$scope.ncc_data.proj_comp
-		);
-		console.log(proj_comp);
+    $scope.ncc_submit_input = function () {
+        var proj_comp = JSON.stringify(
+            $scope.ncc_data.proj_comp
+        );
+        console.log(proj_comp);
 
-		var other = JSON.stringify(
-			$scope.ncc_data.other
-		);
-		console.log(other);
+        var other = JSON.stringify(
+            $scope.ncc_data.other
+        );
+        console.log(other);
 
-		$http({
-			method: 'POST',
-			url: url + '/insertProjectNonContestableProjectComponent',
-			data: proj_comp
-		}).then(function mySuccess(response) {
-			console.log(response.data)
-		})
+        $http({
+            method: 'POST',
+            url: url + '/insertProjectNonContestableProjectComponent',
+            data: proj_comp
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+        })
 
-		$http({
-			method: 'POST',
-			url: url + '/insertNonContestableOtherCosts',
-			data: other
-		}).then(function mySuccess(response) {
-			console.log(response.data)
-		})
-	}
+        $http({
+            method: 'POST',
+            url: url + '/insertNonContestableOtherCosts',
+            data: other
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+        })
+    }
 
     //add ncc basic data
     $scope.add_ncc_basic = function () {
@@ -266,27 +266,27 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                     $scope.fim_types[i].sub_types = data;
                     //console.log($scope.fim_types)
 
-					//get item for each sub type
-					for (let j = 0; j < $scope.fim_types[i].sub_types.length; j++) {
-						subTypeId = $scope.fim_types[i].sub_types[j].id
-						//console.log("type id: " + typeId)
-						var obj = JSON.stringify({
-							"fIMinputSubTypeID": subTypeId
-						});
+                    //get item for each sub type
+                    for (let j = 0; j < $scope.fim_types[i].sub_types.length; j++) {
+                        subTypeId = $scope.fim_types[i].sub_types[j].id
+                        //console.log("type id: " + typeId)
+                        var obj = JSON.stringify({
+                            "fIMinputSubTypeID": subTypeId
+                        });
 
-						$http({
-							method: 'POST',
-							url: url + '/findFIMinputIterm',
-							data: obj,
-						}).then(function mySuccess(response) {
-							var data = response.data;
-							$scope.fim_types[i].sub_types[j].items = data;
-							console.log($scope.fim_types)
-						})
-					}
-				})
-			}
-		}
+                        $http({
+                            method: 'POST',
+                            url: url + '/findFIMinputIterm',
+                            data: obj,
+                        }).then(function mySuccess(response) {
+                            var data = response.data;
+                            $scope.fim_types[i].sub_types[j].items = data;
+                            console.log($scope.fim_types)
+                        })
+                    }
+                })
+            }
+        }
 
     }
 
