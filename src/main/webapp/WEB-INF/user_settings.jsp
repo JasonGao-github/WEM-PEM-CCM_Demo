@@ -39,6 +39,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
+<%--                                            <input id="userSettingsUserId" style="display: none"><%=userId%>--%>
+<%--                                            </input>--%>
                                             <label for="userOldPassword">Old Password</label>
                                             <input id="userOldPassword" ng-model="user_old_password" type="password"
                                                    class="form-control"

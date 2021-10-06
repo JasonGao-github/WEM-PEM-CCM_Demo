@@ -1,11 +1,18 @@
 <%@ page import="org.springframework.web.context.request.ServletRequestAttributes" %>
-<%@ page import="org.springframework.web.context.request.RequestContextHolder" %><%
+<%@ page import="org.springframework.web.context.request.RequestContextHolder" %>
+<%
     String userType = new String("");
     String userEmail = new String("");
+    String firstName = new String("");
+    String userId = new String("");
+    String userTypeId = new String("");
+
     if ((String) session.getAttribute("email") != null) {
-        userType = (String) session.getAttribute("userTypeId").toString();
+        userTypeId = (String) session.getAttribute("userTypeId").toString();
         userEmail = (String) session.getAttribute("email").toString();
-//        firstName = (String) session.getAttribute("firstname").toString();
+        firstName = (String) session.getAttribute("firstName").toString();
+        userType = (String) session.getAttribute("userType").toString();
+        userId = (String) session.getAttribute("userId").toString();
     }
 %>
 
@@ -113,9 +120,10 @@
                 <img src="https://img.icons8.com/bubbles/50/000000/user.png"
                      alt="profileImg">
                 <div class="name_job">
-                    <div class="name"><%=userEmail%>
+                    <div class="name"><%=firstName%>
                     </div>
-                    <div class="job">Web designer</div>
+                    <div class="job"><%=userType%>
+                    </div>
                 </div>
             </div>
             <a href="login_page"><i class="bx bx-log-out" id="log_out"></i></a>
