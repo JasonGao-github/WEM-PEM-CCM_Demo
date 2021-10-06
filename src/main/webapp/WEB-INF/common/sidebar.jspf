@@ -26,9 +26,12 @@
         <li><a href="dashboard_page"> <i class="bx bx-grid-alt"></i>
             <span class="links_name">All Projects</span>
         </a> <span class="subtitle">All Projects</span></li>
-        <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
-                class="links_name">View Projects</span>
-        </a> <span class="subtitle">View Projects</span></li>
+        <li><a href="approve_page"> <i class="bx bx-search"></i> <span
+                class="links_name">Approve Projects</span>
+        </a> <span class="subtitle">Approve Projects</span></li>
+        <%--        <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span--%>
+        <%--                class="links_name">View Projects</span>--%>
+        <%--        </a> <span class="subtitle">View Projects</span></li>--%>
 
         <%--        <li>--%>
         <%--            <a href="create_project_page"> <i class="bx bx-user"></i>--%>
@@ -57,10 +60,6 @@
             </div>
             <span class="subtitle">Create New Project</span>
         </li>
-
-        <li><a href="approve_page"> <i class="bx bx-search"></i> <span
-                class="links_name">Approve Projects</span>
-        </a> <span class="subtitle">Approve Projects</span></li>
 
 
         <%--		<%--%>
