@@ -82,7 +82,10 @@ public class NonContestableController {
 	@ResponseBody
 	public ResponseResult insertNonContestableProjectComponent(@RequestBody NonContestableProjectComponent ncpc) {
 
-		serivce.insertNonContestableProjectComponent(ncpc);
+		String result = serivce.insertNonContestableProjectComponent(ncpc);
+		if ("-1".equals(result)) {
+			return new ResponseResult("false", "this data has already exist in our system!");
+		}
 		return new ResponseResult();
 	}
 
@@ -90,7 +93,11 @@ public class NonContestableController {
 	@ResponseBody
 	public ResponseResult insertNonContestableOtherCostsItem(@RequestBody NonContestableOtherCostsItem ncoci) {
 
-		serivce.insertNonContestableOtherCostsItem(ncoci);
+		String result = serivce.insertNonContestableOtherCostsItem(ncoci);
+
+		if ("-1".equals(result)) {
+			return new ResponseResult("false", "this data has already exist in our system!");
+		}
 		return new ResponseResult();
 	}
 

@@ -23,19 +23,31 @@ public class InputProjectController {
 	@Autowired
 	private InputProjectService serivce;
 
-	@RequestMapping(value = "/findInputProject ", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/findInputProjectYes", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public InputProjectPojo findInputProject() {
+	public InputProjectPojo findInputProjectYes() {
 		Integer projectId=123;
 //		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 //				.getRequest();
 //		HttpSession session = request.getSession();
 //		projectId=(int) session.getAttribute("projectId");
 		
-		InputProjectPojo p = serivce.findInputProject(projectId);
+		InputProjectPojo p = serivce.findInputProjectYes(projectId);
 		return p;
 	}
 
+	@RequestMapping(value = "/findInputProjectNo", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public InputProjectPojo findInputProjectNo() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+		
+		InputProjectPojo p = serivce.findInputProjectNo(projectId);
+		return p;
+	}
 
 
 	@RequestMapping(value = "/insertInputProject", produces = "application/json;charset=UTF-8")

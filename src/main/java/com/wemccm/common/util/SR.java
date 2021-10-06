@@ -9,7 +9,7 @@ public class SR {
 	public static final String LOGIN_ERROR2 = "incorect password !";
 	public static final String LOGIN_SUCCESS = "000";
 
-	public static final String CreateAccount_ERROR1 = "This account is exsit!";
+	public static final String CreateAccount_ERROR1 = "This email is exsit!";
 	public static final String CreateAccount_SUCCESS = "000";
 
 	public static final String NOTICE_STATUS_1 = "unread";

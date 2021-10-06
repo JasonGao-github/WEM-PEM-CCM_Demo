@@ -4,6 +4,15 @@ public class QuantityInput extends BaseEntity {
 
 	private Integer projectId;
 	private Integer quantityInputBasicDataId;
+
+	private String unit;
+	private double labour;
+	private double material;
+	private double plant;
+	private double subcontract;
+	private double unitRate;
+	private double manhours;
+
 	private Integer actuals;
 	private Integer recouverable;
 	private Integer jemena;
@@ -12,6 +21,62 @@ public class QuantityInput extends BaseEntity {
 	private Double recouverableSubTotal;
 	private Double jemenaSubTotal;
 	private Double lcatSubTotal;
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public double getLabour() {
+		return labour;
+	}
+
+	public void setLabour(double labour) {
+		this.labour = labour;
+	}
+
+	public double getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(double material) {
+		this.material = material;
+	}
+
+	public double getPlant() {
+		return plant;
+	}
+
+	public void setPlant(double plant) {
+		this.plant = plant;
+	}
+
+	public double getSubcontract() {
+		return subcontract;
+	}
+
+	public void setSubcontract(double subcontract) {
+		this.subcontract = subcontract;
+	}
+
+	public double getUnitRate() {
+		return unitRate;
+	}
+
+	public void setUnitRate(double unitRate) {
+		this.unitRate = unitRate;
+	}
+
+	public double getManhours() {
+		return manhours;
+	}
+
+	public void setManhours(double manhours) {
+		this.manhours = manhours;
+	}
 
 	public Double getActualsSubTotal() {
 		return actualsSubTotal;

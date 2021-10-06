@@ -18,7 +18,6 @@ public class CreateAccountService {
 		User u = Dao.getUserByEmail(email);
 		if (null != u) {
 
-			System.out.println(u.getPassword()+"++++++++++++++++++++++++++"+u.getEmail());
 			return "01";
 		}
 		

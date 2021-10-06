@@ -44,9 +44,9 @@
 
 		INSERT INTO projectnoncontestableprojectcomponent
 		(projectId,
-		nonContestableProjectComponentId,hours,total)
+		nonContestableProjectComponentId,cost,hours,total)
 		VALUES
-		(#{projectId},#{nonContestableProjectComponentId},#{hours},#{total})
+		(#{projectId},#{nonContestableProjectComponentId},#{cost},#{hours},#{total})
 
 	</select>
 
@@ -63,14 +63,33 @@
 	</select>
 
 
+	<select id="getNonContestableProjectComponentByDescription"
+		parameterType="String"
+		resultType="com.wemccm.common.entity.NonContestableProjectComponent">
+
+		SELECT * FROM noncontestableprojectcomponent WHERE
+		description =#{description}
+
+	</select>
+	
+	<select id="getNonContestableOtherCostsItemByDescription"
+		parameterType="String"
+		resultType="com.wemccm.common.entity.NonContestableOtherCostsItem">
+
+		SELECT * FROM noncontestableothercostsiterm WHERE
+		description =#{description}
+
+	</select>
+
+
 
 	<select id="insertNonContestableOtherCosts"
 		parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
 
 		INSERT INTO noncontestableothercosts (projectId,
-		nonContestableOtherCostsItemId,quantity,total)
+		nonContestableOtherCostsItemId,unit,rate,quantity,total)
 		VALUES
-		(#{projectId},#{nonContestableOtherCostsItemId},#{quantity},#{total})
+		(#{projectId},#{nonContestableOtherCostsItemId},#{unit},#{rate},#{quantity},#{total})
 
 	</select>
 
@@ -125,9 +144,11 @@
 		oci.description,
 		oci.unit,
 		oci.rate,
-		FROM noncontestableothercostsiterm as oci
+		FROM
+		noncontestableothercostsiterm as oci
 		LEFT JOIN
-		noncontestableothercosts as ncoc
+		noncontestableothercosts
+		as ncoc
 		ON
 		ncoc.nonContestableOtherCostsItemId=oci.id
 

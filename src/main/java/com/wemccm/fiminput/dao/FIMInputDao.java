@@ -26,4 +26,6 @@ public interface FIMInputDao {
 
 	public void insertFIMinputIterm(FIMinputIterm pojo);
 
+	public FIMinputIterm getByfIMinputSubTypeID(Integer getfIMinputSubTypeID);
+
 }

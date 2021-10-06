@@ -4,8 +4,17 @@ public class ProjectNonContestableProjectComponent extends BaseEntity {
 
 	private Integer projectId;
 	private Integer nonContestableProjectComponentId;
+	private double cost;
 	private Integer hours;
 	private double total;
+
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
 
 	public Integer getProjectId() {
 		return projectId;

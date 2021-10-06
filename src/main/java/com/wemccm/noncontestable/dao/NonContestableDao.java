@@ -40,4 +40,8 @@ public interface NonContestableDao {
 
 	public void insertNonContestableOtherCostsItem(NonContestableOtherCostsItem ncoci);
 
+	public NonContestableProjectComponent getNonContestableProjectComponentByDescription(String description);
+
+	public NonContestableOtherCostsItem getNonContestableOtherCostsItemByDescription(String description);
+
 }

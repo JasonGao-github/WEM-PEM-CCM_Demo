@@ -11,7 +11,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <head>
 <%@ include file="common/meta.jspf"%>
-<link rel="stylesheet" href="<%=path%>static/css/ncc_basic.css" />
+<link rel="stylesheet"
+	href="<%=path%>static/css/addBasicData_AvoidedCost.css" />
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller"
@@ -20,44 +21,44 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h2>FIM Basic Data Page</h2>
-				<form class="form container" name="newFim" action="" method="POST"
-					style="justify-content: center">
+				<h3>Avoided cost - Add basic data</h3>
+				<nav>
+					<div>
+						<span class="Group"> Asset </span> <input class="testing"
+							type="text" placeholder="Type" ng-model="asset">
 
-					<div class="row">
-						<h3>Type</h3>
-						<select id="position" ng-model="fim_type"
-							ng-change="basic_change_fim_type()">
-							<option ng-repeat="ft in fim_types" value="{{ft.id}}">{{ft.name}}</option>
-						</select>
 					</div>
+				</nav>
+				<div>
+					<span class="item">Asset Life</span> <input class="testing"
+						type="number" placeholder="Type" ng-model="life">
+				</div>
 
-					<div class="row">
-						<h3>Subtype</h3>
-						<select id="position" ng-model="selected_sub_type">
-							<option ng-repeat="type in sub_types" value="{{type.id}}">{{type.name}}</option>
-						</select>
-					</div>
+				<div>
+					<span class="item">Units</span> <input class="testing" type="text"
+						placeholder="Type" ng-model="unit">
+				</div>
+				<div>
+					<span class="item">New Asset Cost</span> <input class="testing"
+						type="number" placeholder="Type" ng-model="new_asset_cost">
+				</div>
+				<div>
+					<span class="item">Maintenance Cost</span> <input class="testing"
+						type="number" placeholder="Type" ng-model="main_cost">
+				</div>
+				<div>
+					<span class="item">Vegetation Management Cost</span> <input
+						class="testing" type="number" placeholder="Type"
+						ng-model="veg_cost">
+				</div>
 
-					<div class="row">
-						<h3>Description</h3>
-						<Input type="text" ng-model="description">
-					</div>
-					<div class="row">
-						<h3>Currency</h3>
-						<Input type="text" ng-model="currency"> <br>
-					</div>
-					<div class="row">
-						<h3>unitCost</h3>
-						<Input type="number" ng-model="unitCost"> <br>
-					</div>
 
-					<a data-toggle="modal" data-target="#exampleModalCenter">
-						<button type="button" class="btn btn-primary"
-							ng-click="fim_basic_submit()">submit</button>
-					</a>
 
-				</form>
+
+				<a data-toggle="modal" data-target="#exampleModalCenter">
+					<button class="savebtn" ng-click="ac_submit_basic()">Save
+					</button>
+				</a>
 
 				<!-- Modal -->
 				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
@@ -66,7 +67,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">FIM
+								<h5 class="modal-title" id="exampleModalLongTitle">NCC
 									Basic Data</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">

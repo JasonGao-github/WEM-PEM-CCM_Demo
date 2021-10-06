@@ -58,8 +58,21 @@ public class FIMInputService {
 		return l;
 	}
 
-	public void insertFIMinputIterm(FIMinputIterm pojo) {
+	public String insertFIMinputIterm(FIMinputIterm pojo) {
+		
+		FIMinputIterm f = Dao.getByfIMinputSubTypeID(pojo.getfIMinputSubTypeID());
+
+		if (null != f) {
+			return "-1";
+		}
+
 		Dao.insertFIMinputIterm(pojo);
+
+		return "00";
+		
+		
+		
+		
 	}
 
 //	public void insertFIMinputIterm(List<FIMinputIterm> pojoList) {

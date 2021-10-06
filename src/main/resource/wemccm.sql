@@ -115,7 +115,7 @@ CREATE TABLE `avoidedcostescguideline`  (
 CREATE TABLE `avoidedcostassetreplacementcosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
-  `avoidedCostassetReplacementItermId` int(11) ,
+  `name` varchar(128) ,
   `source` varchar(32) ,
   `unitCost` double(10, 2) NULL DEFAULT NULL,
   `unit` varchar(32) ,
@@ -125,12 +125,17 @@ CREATE TABLE `avoidedcostassetreplacementcosts`  (
   `stdLife` double(10, 2) NULL DEFAULT NULL,
   `remLife` double(10, 2) NULL DEFAULT NULL,
   `presentValueRC` double(10, 2) NULL DEFAULT NULL,
-  `avoidedCostInputTypeId` int(11) NULL DEFAULT NULL,
+  `avoidedCostassetReplacementItermId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ); 
 CREATE TABLE `avoidedcostassetreplacementIterm` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(128) NULL DEFAULT NULL,
+    `name` VARCHAR(256) NULL DEFAULT NULL,
+    `stdLife` int(32) NULL DEFAULT NULL,
+    `unit` VARCHAR(128) NULL DEFAULT NULL,
+    `unitCost` double(24, 14) NULL DEFAULT NULL,
+    `maintenanceCost` double(24, 14) NULL DEFAULT NULL,
+    `vegetationManagementCost` double(24, 14) NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `cicauthorisation`  (
@@ -236,6 +241,8 @@ CREATE TABLE `fiminputiterm`  (
 CREATE TABLE `fiminputitermquantity`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
+  `currency` varchar(32)  NULL DEFAULT NULL,
+  `unitCost` double(10, 2) NULL DEFAULT NULL,
   `fIMinputItermId` int(11) NULL DEFAULT NULL,
   `acturalQuantity` int(11) NULL DEFAULT NULL,
   `jenFoundedQuantity` int(11) NULL DEFAULT NULL,
@@ -265,6 +272,8 @@ CREATE TABLE `noncontestableothercosts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableOtherCostsItemId` int(11) NULL DEFAULT NULL,
+  `unit` varchar(32)  NULL DEFAULT NULL,
+  `rate` double(10, 2) NULL DEFAULT NULL,
   `quantity` int(11) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -289,6 +298,7 @@ CREATE TABLE `projectnoncontestableprojectcomponent`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `nonContestableProjectComponentId` int(11) NULL DEFAULT NULL,
+  `cost` double(10, 2) NULL DEFAULT NULL,
   `hours` int(11) NULL DEFAULT NULL,
   `total` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -334,6 +344,13 @@ CREATE TABLE `quantityinput`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
   `quantityInputBasicDataId` int(11) NULL DEFAULT NULL,
+  `unit` varchar(32) NULL DEFAULT NULL,
+  `labour` double(10, 2) NULL DEFAULT NULL,
+  `material` double(10, 2) NULL DEFAULT NULL,
+  `plant` double(10, 2) NULL DEFAULT NULL,
+  `subcontract` double(10, 2) NULL DEFAULT NULL,
+  `unitRate` double(10, 2) NULL DEFAULT NULL,
+  `manhours` double(10, 2) NULL DEFAULT NULL,
   `actuals` int(11) NULL DEFAULT NULL,
   `recouverable` int(11) NULL DEFAULT NULL,
   `jemena` int(11) NULL DEFAULT NULL,
@@ -567,6 +584,7 @@ INSERT INTO `fiminputsubtype` VALUES (5, 2, 'PAD 11kV');
 INSERT INTO `fiminputsubtype` VALUES (6, 2, 'Kiosk 22kV');
 INSERT INTO `fiminputsubtype` VALUES (7, 2, 'PAD 22kV');
 
+
 INSERT INTO `customercontributionpricetype` VALUES (1, 'Zinfra Fixed Price ');
 INSERT INTO `customercontributionpricetype` VALUES (2, 'Other Costs (O/Hs, FIM) ');
 INSERT INTO `customercontributionpricetype` VALUES (3, 'Total Assset Value (JEN Project Budget) ');
@@ -575,3 +593,16 @@ INSERT INTO `customercontributionpricetype` VALUES (5, 'TOTAL CUSTOMER CONTRIBUT
 INSERT INTO `customercontributionpricetype` VALUES (6, 'BALANCE OF CONTRIBUTION AFTER PROJECT FEE ');
 INSERT INTO `customercontributionpricetype` VALUES (7, 'JEN Contribution to Project ');
 INSERT INTO `customercontributionpricetype` VALUES (8, 'Customer Supply Requested Target Date ');
+
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (1,'Wooden Pole - HV',54,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (2,'Wooden Pole - LV',54,'$/Pole',9390.405133,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (3,'Concrete Pole - HV',70,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (4,'Concrete Pole - LV',70,'$/Pole',9390.405133,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (5,'Steel Pole - LV',40,'$/Pole',9390.405133,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (6,'Steel Cross Arms (incl. Insulators) - HV',70,'$/Cross Arm',3509.397807,0,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (7,'Wood Cross Arms (incl. Insulators) - HV',45,'$/Cross Arm',3509.397807,0,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (8,'Wood Cross Arms (incl. Insulators) - LV',45,'$/Cross Arm',2799.119837,0,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (9,'Bare Conductors (Al)',60,'$/Pole',14417.69623,14.81813663,11.05945032);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (10,'Insulated Conductors - LV',60,'$/metre',131.3722217,0.154763897,0.259578461);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (11,'Underground Cables and Cablehead - HV, XLPE',40,'$/metre',711.55,0.016655326,0);
+INSERT INTO `avoidedcostassetreplacementiterm` VALUES (12,'Underground Cables and Cablehead - LV, XLPE',55,'$/metre',574.69,0.016655326,0);
