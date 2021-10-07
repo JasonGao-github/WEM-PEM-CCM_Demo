@@ -82,14 +82,17 @@ public class UserController {
 	@ResponseBody
 	public ResponseResult changePassword(@RequestBody ChangePasswordPojo pojo) {
 
-		String result = serivce.changePassword(pojo);
 		if (null == pojo.getUserId()) {
 			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 					.getRequest();
 			HttpSession session = request.getSession();
-			int userId = (int) session.getAttribute("userId");
-			pojo.setUserId(userId);
+			String userId = (String) session.getAttribute("userId");
+
+			System.out.println("userId in session is >>> " + userId);
+
+			pojo.setUserId(Integer.valueOf(userId));
 		}
+		String result = serivce.changePassword(pojo);
 
 		if (result.equals("01")) {
 			return new ResponseResult("false", "the original password is not correct!");

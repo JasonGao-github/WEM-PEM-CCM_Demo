@@ -39,6 +39,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
+<%--                                            <input id="userSettingsUserId" style="display: none"><%=userId%>--%>
+<%--                                            </input>--%>
                                             <label for="userOldPassword">Old Password</label>
                                             <input id="userOldPassword" ng-model="user_old_password" type="password"
                                                    class="form-control"
@@ -69,6 +71,16 @@
                                 <div class="row" ng-show="change_user_password_mismatch">
                                     <div class="col">
                                         <h6 style="color: red">New passwords do not match!</h6>
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="change_user_password_original_wrong">
+                                    <div class="col">
+                                        <h6 style="color: red">The old password you entered is wrong!</h6>
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="change_user_password_success">
+                                    <div class="col">
+                                        <h6 style="color: green">New password set successfully!</h6>
                                     </div>
                                 </div>
 

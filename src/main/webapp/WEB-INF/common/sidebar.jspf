@@ -1,13 +1,24 @@
+<%@ page import="org.springframework.web.context.request.ServletRequestAttributes" %>
+<%@ page import="org.springframework.web.context.request.RequestContextHolder" %>
 <%
     String userType = new String("");
-    if ((String) session.getAttribute("username") != null) {
-        userType = (String) session.getAttribute("userTypeId").toString();
+    String userEmail = new String("");
+    String firstName = new String("");
+    String userId = new String("");
+    String userTypeId = new String("");
+
+    if ((String) session.getAttribute("email") != null) {
+        userTypeId = (String) session.getAttribute("userTypeId").toString();
+        userEmail = (String) session.getAttribute("email").toString();
+        firstName = (String) session.getAttribute("firstName").toString();
+        userType = (String) session.getAttribute("userType").toString();
+        userId = (String) session.getAttribute("userId").toString();
     }
 %>
 
 
 <div class="sidebar">
-    <div class="logo_details">
+    <div class="logo_details d-flex justify-content-center">
         <img src="<%=path%>static/images/jemena.svg" alt="logo" id="Jem-logo"
              style="visibility: hidden"/> <i class="bx bx-menu" id="btn"></i>
     </div>
@@ -15,15 +26,40 @@
         <li><a href="dashboard_page"> <i class="bx bx-grid-alt"></i>
             <span class="links_name">All Projects</span>
         </a> <span class="subtitle">All Projects</span></li>
-        <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span
-                class="links_name">View Projects</span>
-        </a> <span class="subtitle">View Projects</span></li>
-        <li><a href="create_project_page"> <i class="bx bx-user"></i>
-            <span class="links_name">Create New Projects</span>
-        </a> <span class="subtitle">Create New Projects</span></li>
         <li><a href="approve_page"> <i class="bx bx-search"></i> <span
                 class="links_name">Approve Projects</span>
         </a> <span class="subtitle">Approve Projects</span></li>
+        <%--        <li><a href="projects_page"> <i class="bx bx-grid-alt"></i> <span--%>
+        <%--                class="links_name">View Projects</span>--%>
+        <%--        </a> <span class="subtitle">View Projects</span></li>--%>
+
+        <%--        <li>--%>
+        <%--            <a href="create_project_page"> <i class="bx bx-user"></i>--%>
+        <%--                <span class="links_name">Create New Projects</span>--%>
+        <%--            </a>--%>
+        <%--            <span class="subtitle">Create New Projects</span>--%>
+        <%--        </li>--%>
+        <li class="dropdown">
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <i class="bx bx-folder"></i>
+                    <span class="links_name menu-collapsed">Create New Project<i class='bx bx-chevron-down'></i></span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <a href="project_page" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">New or Existing Connection</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action text-black"
+                   style="border-radius:12px;border: 0px;">
+                    <span class="menu-collapsed">Pole to Pit</span>
+                </a>
+            </div>
+            <span class="subtitle">Create New Project</span>
+        </li>
 
 
         <%--		<%--%>
@@ -83,11 +119,13 @@
                 <img src="https://img.icons8.com/bubbles/50/000000/user.png"
                      alt="profileImg">
                 <div class="name_job">
-                    <div class="name">Yun-Tung Shih</div>
-                    <div class="job">Web designer</div>
+                    <div class="name"><%=firstName%>
+                    </div>
+                    <div class="job"><%=userType%>
+                    </div>
                 </div>
             </div>
-            <i class="bx bx-log-out" id="log_out"></i>
+            <a href="login_page"><i class="bx bx-log-out" id="log_out"></i></a>
         </li>
     </ul>
 </div>
