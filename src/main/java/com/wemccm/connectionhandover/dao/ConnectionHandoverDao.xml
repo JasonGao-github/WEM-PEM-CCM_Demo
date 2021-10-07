@@ -50,9 +50,27 @@ where nc.projectId=#{projectId}
 		
 	</select>
 	
-	
-	
+	<select id="uplaodedFiles" 
+	parameterType="com.wemccm.common.entity.UplaodedFiles">
 
+		INSERT INTO uplaodedfiles (	
+		fileName,projectId,module,localURL,s3URL) 
+		VALUES (	
+			#{fileName},#{projectId},#{module},#{localURL},#{s3URL})
+
+
+	</select> 
+	
+<select id="downlaodedFiles" 
+	parameterType="Integer"
+		resultType="com.wemccm.common.entity.UplaodedFiles">
+
+select *
+from uplaodedfiles
+where projectId=#{projectId}
+
+
+	</select> 
 	
 
 

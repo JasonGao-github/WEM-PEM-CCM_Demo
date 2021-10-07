@@ -47,9 +47,19 @@ DROP TABLE IF EXISTS `connectionhandover`;
 DROP TABLE IF EXISTS `assetrelocation`;
 DROP TABLE IF EXISTS `urd`;
 DROP TABLE IF EXISTS `negotiatedconnection`;
+DROP TABLE IF EXISTS `uplaodedfiles`;
 --  -- -- -- -- -- -- -- -- -
 --  create tables 
 --  -- -- -- -- -- -- -- -- -
+CREATE TABLE `uplaodedfiles`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fileName` varchar(255) ,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `module` varchar(255) ,
+  `localURL` varchar(255) ,
+  `s3URL` varchar(255) ,
+  PRIMARY KEY (`id`) USING BTREE
+) 
 CREATE TABLE `assetrelocation`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inquiryNumber` int(11) NULL DEFAULT NULL,

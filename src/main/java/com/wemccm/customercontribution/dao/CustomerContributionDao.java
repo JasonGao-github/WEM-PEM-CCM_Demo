@@ -28,4 +28,6 @@ public interface CustomerContributionDao {
 
 	public List<CustomerContributionPricePojo> findCustomerContributionPricePojo(Integer customerContributionId);
 
+	public Boolean JENOverheadsBuildUpB23(Integer projectId);
+
 }
