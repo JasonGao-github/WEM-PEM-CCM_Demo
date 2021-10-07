@@ -68,7 +68,7 @@ public class ConnectionHandoverController {
 		Pojo.setProjectId(projectId);
 		String fileName = file.getOriginalFilename();
 		Pojo.setFileName(fileName);
-		String filePath ="src/main/resource/uploadfile/" + fileName;
+		String filePath ="/src/main/resource/uploadfile/" + fileName;
 		Pojo.setLocalURL(filePath);
 		Pojo.setModule("ConnectionHandover");
 		File dest = new File(filePath);
