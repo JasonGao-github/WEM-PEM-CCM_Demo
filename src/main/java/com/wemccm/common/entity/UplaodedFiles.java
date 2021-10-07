@@ -4,7 +4,7 @@ public class UplaodedFiles extends BaseEntity {
 
 	private String fileName;
 	private Integer projectId;
-	private String module;
+	private String module; 			//page name
 	private String localURL;
 	private String s3URL;
 

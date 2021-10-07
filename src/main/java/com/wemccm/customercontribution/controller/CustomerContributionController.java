@@ -12,6 +12,7 @@ import com.wemccm.common.entity.CustomerContribution;
 import com.wemccm.common.entity.CustomerContributionAuthoris;
 import com.wemccm.common.pojo.CustomerContributionDetailPojo;
 import com.wemccm.common.pojo.CustomerContributionPojo;
+import com.wemccm.common.pojo.CustomerContributionURDPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.customercontribution.service.CustomerContributionService;
@@ -46,4 +47,26 @@ public class CustomerContributionController {
 
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/CustomerContributionURD", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public CustomerContributionURDPojo CustomerContributionURD() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+		CustomerContributionURDPojo result = serivce.CustomerContributionURD(projectId);
+
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
