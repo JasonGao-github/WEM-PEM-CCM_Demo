@@ -10,6 +10,7 @@ import com.wemccm.common.entity.NonContestableOtherCostsItem;
 import com.wemccm.common.entity.NonContestableProjectComponent;
 import com.wemccm.common.entity.NonContestableType;
 import com.wemccm.common.entity.ProjectNonContestableProjectComponent;
+import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
 import com.wemccm.common.pojo.NccItemsPojo;
 import com.wemccm.common.pojo.NccProjectComponentPojo;
@@ -94,6 +95,22 @@ public class NonContestableService {
 
 		return "00";
 
+	}
+
+	public List<NonContestableOtherCostsItem> listAllNonContestableOtherCostsIterm(Integer projectId) {
+		List<NonContestableOtherCostsItem> l = Dao.listAllNonContestableOtherCostsIterm(projectId);
+
+		return l;
+	}
+
+	public void deleteNonContestableOtherCostsIterm(IdPojo requestPojo) {
+		Dao.deleteNonContestableOtherCostsIterm(requestPojo);
+		
+	}
+
+	public void deleteNonContestableProjectComponent(IdPojo requestPojo) {
+		Dao.deleteNonContestableProjectComponent(requestPojo);
+		
 	}
 
 }

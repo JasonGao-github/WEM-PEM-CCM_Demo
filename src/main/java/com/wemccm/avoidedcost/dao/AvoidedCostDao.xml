@@ -24,6 +24,18 @@
 
 
 
+		<select id="deleteAvoidedCostassetReplacementIterm"
+
+		parameterType="com.wemccm.common.pojo.IdPojo">
+
+			DELETE FROM avoidedcostassetreplacementiterm
+WHERE id= #{id}
+
+	</select>
+
+
+
+
 	<select id="insertAvoidedCostAssetReplacementCosts"
 		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 

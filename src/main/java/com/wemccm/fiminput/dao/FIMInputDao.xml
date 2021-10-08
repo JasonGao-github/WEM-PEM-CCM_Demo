@@ -71,6 +71,46 @@
 
 	</select>
 
+
+
+
+	<select id="listAllFIMinputIterm"
+
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.FIMinputIterm">
+		SELECT ci.* FROM fiminputiterm as ci
+		left join fiminputitermquantity as oc
+		on ci.id=oc.fIMinputItermId
+
+		WHERE
+		oc.projectId = #{projectId}
+
+	</select>
+	
+	
+	
+	
+		<select id="deleteFIMinputIterm"
+
+		parameterType="com.wemccm.common.pojo.IdPojo">
+
+			DELETE FROM fiminputiterm
+WHERE id= #{id}
+
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<select id="getByfIMinputSubTypeID"
 		parameterType="Integer"
 		resultType="com.wemccm.common.entity.FIMinputIterm">

@@ -11,6 +11,7 @@ import com.wemccm.common.entity.AvoidedCostESCGuideline;
 import com.wemccm.common.entity.AvoidedCostassetReplacementIterm;
 import com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo;
 import com.wemccm.common.pojo.AvoidedCostMaintenanceCostsTypeJojo;
+import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.projectIdPojo;
 
 @Service
@@ -89,6 +90,11 @@ public class AvoidedCostService {
 		List<AvoidedCostassetReplacementIterm> l = avoidedCostDao.selectAllAvoidedCostassetReplacementIterm();
 
 		return l;
+	}
+
+	public void deleteAvoidedCostassetReplacementIterm(IdPojo requestPojo) {
+		avoidedCostDao.deleteAvoidedCostassetReplacementIterm(requestPojo);
+		
 	}
 
 }

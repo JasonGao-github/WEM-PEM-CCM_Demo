@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.QuantityInputBasicData;
 import com.wemccm.common.entity.QuantityInputItermGroup;
+import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.QuantityInputDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermGroupIdPojo;
 import com.wemccm.common.pojo.QuantityInputPojo;
@@ -79,6 +80,17 @@ public class QuantityInputService {
 
 	public List<QuantityInputDetailPojo> findQuantityInputDetail(projectIdPojo requestPojo) {
 		List<QuantityInputDetailPojo> l = qiDao.findQuantityInputDetail(requestPojo);
+
+		return l;
+	}
+
+	public void deleteQuantityInputBasicData(IdPojo requestPojo) {
+		qiDao.deleteQuantityInputBasicData(requestPojo);
+		
+	}
+
+	public List<QuantityInputBasicData> listAllQuantityInputBasicData(Integer projectId) {
+		List<QuantityInputBasicData> l = qiDao.listAllQuantityInputBasicData(projectId);
 
 		return l;
 	}

@@ -33,6 +33,41 @@
 		#{plant},#{subcontract},#{unitRate},#{manhours})
 
 	</select>
+	
+	<select id="listAllQuantityInputBasicData"
+
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.QuantityInputBasicData">
+
+		SELECT ci.* FROM quantityinputbasicdata as ci
+		left join quantityinput as oc
+		on ci.id=oc.quantityInputBasicDataId
+
+		WHERE
+		oc.projectId =  #{projectId}
+
+	</select>
+	
+		<select id="deleteQuantityInputBasicData"
+
+		parameterType="com.wemccm.common.pojo.IdPojo">
+
+			DELETE FROM quantityinputbasicdata
+WHERE id= #{id}
+
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
