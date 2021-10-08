@@ -148,6 +148,143 @@
 
 
 	</select>
+	
+	
+	<select id="FIMacturalQuantity"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(acturalQuantity)
+		FROM fiminputitermquantity
+		WHERE
+		projectId=#{projectId}
+
+	</select>
+
+
+
+
+
+
+
+
+
+	<select id="FIMHVunderground"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='3.04-09' or bd.`code`='3.04-10' or bd.`code`='3.04-11' or bd.`code`='3.04-12' or bd.`code`='3.04-13' )
+	</select>	
+	<select id="FIMLVunderground"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='3.04-05' or bd.`code`='3.04-06' )
+
+	</select>	
+	<select id="FIMHVcableheadpole"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code` LIKE '1.11%' )
+
+	</select>
+
+
+
+
+
+	<select id="FIMHVstraightjoints"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='3.01-07')
+
+	</select>	
+	<select id="FIMLVmainsjoints"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='3.02-09' or bd.`code`='3.02-10' )
+	</select>	
+	<select id="FIMLVservicetjoints"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='3.02-12')
+
+	</select>
+
+
+
+
+
+	<select id="FIMpubliclights"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='2.02-07' or bd.`code`='2.02-08' or bd.`code`='2.02-09'or bd.`code`='2.01-14'or bd.`code`='2.01-15'or bd.`code`='2.01-16'or bd.`code`='2.01-17' or bd.`code`='2.01-19'or bd.`code`='2.01-20')
+
+	</select>	
+	<select id="FIMservicepits"
+		parameterType="Integer"
+		resultType="Integer">
+		SELECT SUM(actuals)
+		FROM quantityinput as i
+		LEFT JOIN quantityinputbasicdata as bd
+		on i.quantityInputBasicDataId=bd.id
+		WHERE
+		i.projectId=#{projectId}
+		and (bd.`code`='3.02-11')
+
+	</select>	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

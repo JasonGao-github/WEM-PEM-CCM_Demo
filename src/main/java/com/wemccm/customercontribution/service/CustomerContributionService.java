@@ -48,23 +48,62 @@ public class CustomerContributionService {
 	}
 
 	public CustomerContributionURDPojo CustomerContributionURD(Integer projectId) {
+		
 		Boolean b=Dao.JENOverheadsBuildUpB23(projectId);
-		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//OverheadsBuildUp is not finish!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
 		
-		CustomerContributionURDPojo result = null;
+		CustomerContributionURDPojo result = new CustomerContributionURDPojo();
 		if(b==true){
+			
+			
 			result.setScope("The services listed below must be performed by Jemena and in accordance with the Conditions of this contract.\r\n" + 
 					"• Design review and approval.\r\n"+
 					"• Project management.\r\n"+
 					"• Final audit and inspection.\r\n"+
 					"• Co-ordination of access to the network.");
 			
-			result.setExclusions("Depaned on input??????????????????????????????????????????");
+			result.setExclusions("\"Unless otherwise agreed by the parties, the services listed are hereby expressly excluded from the Works to be carried out by Jemena under this contract and must be provided by the Customer.\"&\"As outlined in drawing JEMEE-DW-UG-\"&\" and summarised below.\"&\"\r\n" + 
+					"\r\n" + 
+					"• Install "+Dao.FIMacturalQuantity(projectId)+" x 500kVA kiosk.\"&\"s\r\n" + 
+					
+							"• Install "+Dao.FIMHVunderground(projectId)+"m of HV underground cable.\"&\"\r\n" + 
+							"• Install "+Dao.FIMLVunderground(projectId)+"m of LV underground cable.\"&\"\r\n" + 
+							"• Install "+Dao.FIMHVcableheadpole(projectId)+" HV cablehead pole.\"&\"\r\n" + 
+							
+							"• Install "+Dao.FIMHVstraightjoints(projectId)+" HV straight joints.\"&\"\r\n" + 
+							"• Install "+Dao.FIMLVmainsjoints(projectId)+" LV mains joints.\"&\"\r\n" + 
+							"• Install "+Dao.FIMLVservicetjoints(projectId)+" LV service t-joints\"&\"\r\n" + 
+							
+							"• Install "+Dao.FIMpubliclights(projectId)+" public lights.\"&\"\r\n" + 
+							"• Install "+Dao.FIMservicepits(projectId)+" service pits\"&\"\r\n\")");
 			
 			result.setAssumptions("None");
+			
+			
+			
 		}else {
-			result.setScope("Depaned on input??????????????????????????????????????????");
+			
+			
+			result.setScope("\"Unless otherwise agreed by the parties, the services listed are hereby expressly excluded from the Works to be carried out by Jemena under this contract and must be provided by the Customer.\"&\"As outlined in drawing JEMEE-DW-UG-\"&\" and summarised below.\"&\"\r\n" + 
+					"\r\n" + 
+					"• Install "+Dao.FIMacturalQuantity(projectId)+" x 500kVA kiosk.\"&\"s\r\n" + 
+					
+							"• Install "+Dao.FIMHVunderground(projectId)+"m of HV underground cable.\"&\"\r\n" + 
+							"• Install "+Dao.FIMLVunderground(projectId)+"m of LV underground cable.\"&\"\r\n" + 
+							"• Install "+Dao.FIMHVcableheadpole(projectId)+" HV cablehead pole.\"&\"\r\n" + 
+							
+							"• Install "+Dao.FIMHVstraightjoints(projectId)+" HV straight joints.\"&\"\r\n" + 
+							"• Install "+Dao.FIMLVmainsjoints(projectId)+" LV mains joints.\"&\"\r\n" + 
+							"• Install "+Dao.FIMLVservicetjoints(projectId)+" LV service t-joints\"&\"\r\n" + 
+							
+							"• Install "+Dao.FIMpubliclights(projectId)+" public lights.\"&\"\r\n" + 
+							"• Install "+Dao.FIMservicepits(projectId)+" service pits\"&\"\r\n\")");
 			
 			result.setExclusions("• Work outside normal hours.\r\n" + 
 					"			• Supply Authority Charges.\r\n" + 

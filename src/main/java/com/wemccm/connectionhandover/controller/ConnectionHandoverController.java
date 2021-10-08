@@ -23,6 +23,7 @@ import com.wemccm.connectionhandover.service.ConnectionHandoverService;
 @RestController
 public class ConnectionHandoverController {
 
+	
 	@Autowired
 	private ConnectionHandoverService serivce;
 
@@ -68,7 +69,7 @@ public class ConnectionHandoverController {
 		Pojo.setProjectId(projectId);
 		String fileName = file.getOriginalFilename();
 		Pojo.setFileName(fileName);
-		String filePath ="/src/main/resource/uploadfile/" + fileName;
+		String filePath ="C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
 		Pojo.setLocalURL(filePath);
 		Pojo.setModule("ConnectionHandover");
 		File dest = new File(filePath);
