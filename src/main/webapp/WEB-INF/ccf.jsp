@@ -234,7 +234,7 @@
                                             for="revised_SOW">Revised SOW</label></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>Zinfra Fixed Price</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -243,7 +243,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>Other Costs (O/H's, FIM)</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -252,7 +252,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>Total Asset Value (JEN Project Budget)</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -261,7 +261,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>ZRO ∆</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -269,7 +269,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>Total Customer Contribution</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -279,7 +279,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>Balance of contribution after project fee</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -288,7 +288,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>JEN Contribution to Project</h3>
                                     </div>
                                     <div class="col-lg-3">
@@ -298,7 +298,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <h3>Customer Supply Requested Target Date</h3>
                                     </div>
                                     <div class="col-lg-3">
