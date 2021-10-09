@@ -1,11 +1,31 @@
 package com.wemccm.common.pojo;
 
+import java.util.List;
+
 import com.wemccm.common.util.SR;
 
 public class ResponseResult {
 
 	private String result;
 	private String massage;
+	private String projectStatus;// "new","existing";
+	private List data;
+
+	public String getProjectStatus() {
+		return projectStatus;
+	}
+
+	public void setProjectStatus(String projectStatus) {
+		this.projectStatus = projectStatus;
+	}
+
+	public List getData() {
+		return data;
+	}
+
+	public void setData(List data) {
+		this.data = data;
+	}
 
 	public ResponseResult() {
 		super();

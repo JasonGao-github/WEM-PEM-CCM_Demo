@@ -56,11 +56,14 @@ public class UserController {
 	// list all users
 	@RequestMapping(value = "/listAllUsers", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<UserListPojo> listAllUsers() {
+	public ResponseResult listAllUsers() {
 
 		List<UserListPojo> list = serivce.listAllUser();
 
-		return list;
+		ResponseResult rr = new ResponseResult();
+		rr.setData(list);
+
+		return rr;
 
 	}
 
