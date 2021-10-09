@@ -33,13 +33,15 @@
 		#{plant},#{subcontract},#{unitRate},#{manhours})
 
 	</select>
-	
+
 	<select id="listAllQuantityInputBasicData"
 
 		parameterType="Integer"
 		resultType="com.wemccm.common.pojo.QuantityInputBasicDataGroupPojo">
 
 		SELECT ci.* ,ig.`name`
+
+		
 		FROM quantityinputbasicdata as ci
 		left join quantityinput as oc
 		on ci.id=oc.quantityInputBasicDataId
@@ -47,18 +49,17 @@
 		left join quantityinputitermgroup as ig
 		on ig.id=ci.quantityInputItermGroupId
 		
-		
 		WHERE
-		oc.projectId =  #{projectId}
+		oc.projectId =#{projectId}
 
 	</select>
-	
-		<select id="deleteQuantityInputBasicData"
+
+	<select id="deleteQuantityInputBasicData"
 
 		parameterType="com.wemccm.common.pojo.IdPojo">
 
-			DELETE FROM quantityinputbasicdata
-WHERE id= #{id}
+		DELETE FROM quantityinputbasicdata
+		WHERE id= #{id}
 
 	</select>
 
@@ -113,27 +114,28 @@ WHERE id= #{id}
 		parameterType="com.wemccm.common.pojo.projectIdPojo"
 		resultType="com.wemccm.common.pojo.QuantityInputDetailPojo">
 
-
-		SELECT qi.*,ibd.*,iig.`name`,iig.`code` as
-		QuantityInputItermGroupCode
-
-		FROM quantityinputbasicdata as ibd
-
+		SELECT
+		t1.*,
+		t3.`name` as groupName
+		FROM
+		quantityinput t1
 		LEFT JOIN
-		quantityinputitermgroup as iig
-		ON
-		ibd.quantityInputItermGroupId=iig.id
+		quantityinputbasicdata t2 ON t1.quantityInputBasicDataId = t2.id
+		LEFT JOIN
+		quantityinputitermgroup t3 ON t2.quantityInputItermGroupId = t3.id
+		WHERE
+		t1.projectId = #{projectId};
 
-		LEFT JOIN quantityinput as qi
-		ON qi.quantityInputBasicDataId=ibd.id
 
-		WHERE projectId=#{projectId}
+		<!-- SELECT qi.*,ibd.*,iig.`name`,iig.`code` as QuantityInputItermGroupCode 
+			FROM quantityinputbasicdata as ibd LEFT JOIN quantityinputitermgroup as iig 
+			ON ibd.quantityInputItermGroupId=iig.id LEFT JOIN quantityinput as qi ON 
+			qi.quantityInputBasicDataId=ibd.id WHERE projectId=#{projectId} -->
 
 	</select>
 
 
-	<select id="getByCode"
-		parameterType="String"
+	<select id="getByCode" parameterType="String"
 		resultType="com.wemccm.common.entity.QuantityInputBasicData">
 		SELECT * FROM quantityinputbasicdata WHERE code=#{code}
 	</select>
