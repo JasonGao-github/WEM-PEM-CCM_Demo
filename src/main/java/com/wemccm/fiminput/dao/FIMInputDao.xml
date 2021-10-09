@@ -77,13 +77,21 @@
 	<select id="listAllFIMinputIterm"
 
 		parameterType="Integer"
-		resultType="com.wemccm.common.entity.FIMinputIterm">
-		SELECT ci.* FROM fiminputiterm as ci
-		left join fiminputitermquantity as oc
-		on ci.id=oc.fIMinputItermId
+		resultType="com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo">
+		SELECT i.*,st.`name` as subtype,t.`name` as typename
+		FROM fiminputiterm as i
+		
+		left join fiminputitermquantity as q
+		on i.id=q.fIMinputItermId
+		
+		left join fiminputsubtype as st
+		on st.id=i.fIMinputSubTypeID
+		
+		left join fiminputtype as t
+		on st.fIMinputTypeID=t.id
 
 		WHERE
-		oc.projectId = #{projectId}
+		q.projectId =#{projectId}
 
 	</select>
 	

@@ -37,12 +37,17 @@
 	<select id="listAllQuantityInputBasicData"
 
 		parameterType="Integer"
-		resultType="com.wemccm.common.entity.QuantityInputBasicData">
+		resultType="com.wemccm.common.pojo.QuantityInputBasicDataGroupPojo">
 
-		SELECT ci.* FROM quantityinputbasicdata as ci
+		SELECT ci.* ,ig.`name`
+		FROM quantityinputbasicdata as ci
 		left join quantityinput as oc
 		on ci.id=oc.quantityInputBasicDataId
 
+		left join quantityinputitermgroup as ig
+		on ig.id=ci.quantityInputItermGroupId
+		
+		
 		WHERE
 		oc.projectId =  #{projectId}
 

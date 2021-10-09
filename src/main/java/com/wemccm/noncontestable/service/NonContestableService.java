@@ -15,7 +15,9 @@ import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
 import com.wemccm.common.pojo.NccItemsPojo;
 import com.wemccm.common.pojo.NccProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
+import com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
+import com.wemccm.common.pojo.NonContestableProjectComponentTypePojo;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.noncontestable.dao.NonContestableDao;
 
@@ -97,8 +99,8 @@ public class NonContestableService {
 
 	}
 
-	public List<NonContestableOtherCostsItem> listAllNonContestableOtherCostsIterm(Integer projectId) {
-		List<NonContestableOtherCostsItem> l = Dao.listAllNonContestableOtherCostsIterm(projectId);
+	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId) {
+		List<NonContestableOtherCostsItemTypePojo> l = Dao.listAllNonContestableOtherCostsIterm(projectId);
 
 		return l;
 	}
@@ -111,6 +113,12 @@ public class NonContestableService {
 	public void deleteNonContestableProjectComponent(IdPojo requestPojo) {
 		Dao.deleteNonContestableProjectComponent(requestPojo);
 		
+	}
+
+	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId) {
+		List<NonContestableProjectComponentTypePojo> l = Dao.listAllNonContestableProjectComponent(projectId);
+
+		return l;
 	}
 
 }

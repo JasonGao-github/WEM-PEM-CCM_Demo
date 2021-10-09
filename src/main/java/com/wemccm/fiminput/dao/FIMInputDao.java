@@ -9,6 +9,7 @@ import com.wemccm.common.entity.FIMinputSubType;
 import com.wemccm.common.entity.FIMinputType;
 import com.wemccm.common.pojo.FIMinputItermPojo;
 import com.wemccm.common.pojo.FIMinputItermQuantityPojo;
+import com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo;
 import com.wemccm.common.pojo.FIMinputSubTypePojo;
 import com.wemccm.common.pojo.IdPojo;
 
@@ -31,6 +32,6 @@ public interface FIMInputDao {
 
 	public void deleteFIMinputIterm(IdPojo requestPojo);
 
-	public List<FIMinputIterm> listAllFIMinputIterm(Integer projectId);
+	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm(Integer projectId);
 
 }

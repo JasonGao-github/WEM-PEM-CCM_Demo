@@ -10,6 +10,7 @@ import com.wemccm.common.entity.FIMinputSubType;
 import com.wemccm.common.entity.FIMinputType;
 import com.wemccm.common.pojo.FIMinputItermPojo;
 import com.wemccm.common.pojo.FIMinputItermQuantityPojo;
+import com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo;
 import com.wemccm.common.pojo.FIMinputSubTypePojo;
 import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.fiminput.dao.FIMInputDao;
@@ -81,8 +82,8 @@ public class FIMInputService {
 		
 	}
 
-	public List<FIMinputIterm> listAllFIMinputIterm(Integer projectId) {
-		List<FIMinputIterm> l = Dao.listAllFIMinputIterm(projectId);
+	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm(Integer projectId) {
+		List<FIMinputItermSubTypeTypePojo> l = Dao.listAllFIMinputIterm(projectId);
 
 		return l;
 	}

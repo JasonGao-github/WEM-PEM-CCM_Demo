@@ -51,11 +51,15 @@ WHERE id= #{id}
 	<select id="listAllNonContestableOtherCostsIterm"
 
 		parameterType="Integer"
-		resultType="com.wemccm.common.entity.NonContestableOtherCostsItem">
-
-		SELECT ci.* FROM noncontestableothercostsiterm as ci
+		resultType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
+		SELECT ci.*,t.name
+		FROM noncontestableothercostsiterm as ci
+		
 		left join noncontestableothercosts as oc
 		on ci.id=oc.nonContestableOtherCostsItemId
+		
+			left join noncontestabletype as t
+		on ci.nonContestableTypeId=t.id
 
 		WHERE
 		oc.projectId = #{projectId}
@@ -159,14 +163,34 @@ WHERE id= #{id}
 		ON
 		ppc.nonContestableProjectComponentId=pc.id
 
-		WHERE ppc.projectId=
-		#{projectId}
+		WHERE ppc.projectId=#{projectId}
 
 	</select>
 
 
 
+	<select id="listAllNonContestableProjectComponent"
 
+		parameterType="Integer"
+		resultType="com.wemccm.common.pojo.NonContestableProjectComponentTypePojo">
+		SELECT pc.cost,pc.description,ppc.*
+
+		FROM
+		noncontestableprojectcomponent as pc
+
+		LEFT JOIN
+		projectnoncontestableprojectcomponent as ppc
+		ON
+		ppc.nonContestableProjectComponentId=pc.id
+		
+		LEFT JOIN
+		noncontestabletype as t
+		ON
+		pc.projectTypeId=t.id
+
+		WHERE ppc.projectId=#{projectId}
+
+	</select>
 
 
 

@@ -13,6 +13,7 @@ import com.wemccm.common.entity.FIMinputSubType;
 import com.wemccm.common.entity.FIMinputType;
 import com.wemccm.common.pojo.FIMinputItermPojo;
 import com.wemccm.common.pojo.FIMinputItermQuantityPojo;
+import com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo;
 import com.wemccm.common.pojo.FIMinputSubTypePojo;
 import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.ResponseResult;
@@ -61,14 +62,14 @@ public class FIMInputController {
 	
 	@RequestMapping(value = "/listAllFIMinputIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<FIMinputIterm> listAllFIMinputIterm() {
+	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm() {
 		Integer projectId=123;
 //		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 //				.getRequest();
 //		HttpSession session = request.getSession();
 //		projectId=(int) session.getAttribute("projectId");
 
-		List<FIMinputIterm> l = serivce.listAllFIMinputIterm(projectId);
+		List<FIMinputItermSubTypeTypePojo> l = serivce.listAllFIMinputIterm(projectId);
 		return l;
 	}
 	

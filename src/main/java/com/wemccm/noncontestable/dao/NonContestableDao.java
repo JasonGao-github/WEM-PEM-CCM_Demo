@@ -14,7 +14,9 @@ import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
 import com.wemccm.common.pojo.NccItemsPojo;
 import com.wemccm.common.pojo.NccProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
+import com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
+import com.wemccm.common.pojo.NonContestableProjectComponentTypePojo;
 import com.wemccm.common.pojo.projectIdPojo;
 
 @Mapper
@@ -45,10 +47,12 @@ public interface NonContestableDao {
 
 	public NonContestableOtherCostsItem getNonContestableOtherCostsItemByDescription(String description);
 
-	public List<NonContestableOtherCostsItem> listAllNonContestableOtherCostsIterm(Integer projectId);
+	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId);
 
 	public void deleteNonContestableOtherCostsIterm(IdPojo requestPojo);
 
 	public void deleteNonContestableProjectComponent(IdPojo requestPojo);
+
+	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId);
 
 }

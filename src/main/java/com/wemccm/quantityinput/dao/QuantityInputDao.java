@@ -8,6 +8,7 @@ import com.wemccm.common.entity.QuantityInputBasicData;
 import com.wemccm.common.entity.QuantityInputItermGroup;
 import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.QIDataPojo;
+import com.wemccm.common.pojo.QuantityInputBasicDataGroupPojo;
 import com.wemccm.common.pojo.QuantityInputDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermGroupIdPojo;
 import com.wemccm.common.pojo.QuantityInputPojo;
@@ -34,6 +35,6 @@ public interface QuantityInputDao {
 
 	void deleteQuantityInputBasicData(IdPojo requestPojo);
 
-	List<QuantityInputBasicData> listAllQuantityInputBasicData(Integer projectId);
+	List<QuantityInputBasicDataGroupPojo> listAllQuantityInputBasicData(Integer projectId);
 
 }

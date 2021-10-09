@@ -18,7 +18,9 @@ import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
 import com.wemccm.common.pojo.NccItemsPojo;
 import com.wemccm.common.pojo.NccProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
+import com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
+import com.wemccm.common.pojo.NonContestableProjectComponentTypePojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.noncontestable.service.NonContestableService;
@@ -70,18 +72,21 @@ public class NonContestableController {
 		return l;
 	}
 	
+	
 	@RequestMapping(value = "/listAllNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<NonContestableOtherCostsItem> listAllNonContestableOtherCostsIterm() {
-		Integer projectId=123;
+	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm() {
+		Integer projectId=456;
 //		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 //				.getRequest();
 //		HttpSession session = request.getSession();
 //		projectId=(int) session.getAttribute("projectId");
 
-		List<NonContestableOtherCostsItem> l = serivce.listAllNonContestableOtherCostsIterm(projectId);
+		List<NonContestableOtherCostsItemTypePojo> l = serivce.listAllNonContestableOtherCostsIterm(projectId);
 		return l;
 	}
+	
+	
 	
 	@RequestMapping(value = "/deleteNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -146,6 +151,22 @@ public class NonContestableController {
 		List<NccProjectComponentPojo> l = serivce.findMultiNonContestableProjectComponent(requestPojo);
 		return l;
 	}
+	
+	@RequestMapping(value = "/listAllNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+
+		List<NonContestableProjectComponentTypePojo> l = serivce.listAllNonContestableProjectComponent(projectId);
+		return l;
+	}
+	
+	
+	
 
 	@RequestMapping(value = "/findMultiNonContestableOtherCosts", produces = "application/json;charset=UTF-8")
 	@ResponseBody
