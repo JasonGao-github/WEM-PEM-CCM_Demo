@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.github.pagehelper.util.StringUtil;
 import com.wemccm.common.entity.User;
 import com.wemccm.common.pojo.ChangePasswordPojo;
 import com.wemccm.common.pojo.DeleteUserPojo;
@@ -58,11 +56,14 @@ public class UserController {
 	// list all users
 	@RequestMapping(value = "/listAllUsers", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<UserListPojo> listAllUsers() {
+	public ResponseResult listAllUsers() {
 
 		List<UserListPojo> list = serivce.listAllUser();
 
-		return list;
+		ResponseResult rr = new ResponseResult();
+		rr.setData(list);
+
+		return rr;
 
 	}
 

@@ -44,12 +44,112 @@ DROP TABLE IF EXISTS `avoidedcosttype`;
 DROP TABLE IF EXISTS `avoidedcostassetreplacementiterm`;
 DROP TABLE IF EXISTS `design`;
 DROP TABLE IF EXISTS `connectionhandover`;
-
+DROP TABLE IF EXISTS `assetrelocation`;
+DROP TABLE IF EXISTS `urd`;
+DROP TABLE IF EXISTS `negotiatedconnection`;
+DROP TABLE IF EXISTS `uplaodedfiles`;
 --  -- -- -- -- -- -- -- -- -
 --  create tables 
 --  -- -- -- -- -- -- -- -- -
+CREATE TABLE `uplaodedfiles`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fileName` varchar(255) ,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `module` varchar(255) ,
+  `localURL` varchar(255) ,
+  `s3URL` varchar(255) ,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+CREATE TABLE `assetrelocation`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inquiryNumber` int(11) NULL DEFAULT NULL,
+  `worksAddress` varchar(255) ,
+  `scopeofWorks` varchar(255) ,
+  `contestableContributionChargesforWorksCompletedbyJemena` varchar(255) ,
+  `nonContestableContributionChargesforWorksCompletedbyJemena` varchar(255) ,
+  `jemenaResponsibleOfficer` varchar(255) ,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `typeofDistributionWork` varchar(255) ,
+  `offerValidityPeriod` varchar(255) ,
+  `plannedConstructionPeriod` varchar(255) ,
+  `commencementofWorksObligations` varchar(255) ,
+  `interestRateforOverduePayment` varchar(255) ,
+  `customerResponsibleOfficer` varchar(255) ,
+  `leaseorEasementifrequired` varchar(255) ,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+
+
+
+
+CREATE TABLE `urd`  (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `subdivision` varchar(255) ,
+  `inquiryNumber` varchar(255) ,
+  `supplyAddress` varchar(255) ,
+  `jemenaResponsibleOfficer` varchar(255) ,
+  `descriptionofConnectionWorkstobeundertakenbyJemena` varchar(255) ,
+  `descriptionofConnectionWorkstobeundertakenbyDeveloper` varchar(255) ,
+  `statutoryandOtherApprovals` varchar(255) ,
+  `supplyCapacityperLot` varchar(255) ,
+  `date` datetime NULL DEFAULT NULL,
+  `numberoflots` varchar(255) ,
+  `lotnumbers` varchar(255) ,
+  `leaseorEasement` varchar(255) ,
+  `validityPeriod` varchar(255) ,
+  `security` varchar(255) ,
+  `plannedConstructionPeriod` varchar(255) ,
+  `connectionAssetsandConnectionPoint` varchar(255) ,
+  `networkExtensionorAugmentationifrequired` varchar(255) ,
+  `premisesConnectionAssetsandPartiesResponsibleforInstallation` varchar(255) ,
+  `costofNetworkExtensionofAugmentation` varchar(255) ,
+  `meterInformation` varchar(255) ,
+  `tenderFeeifapplicable` varchar(255) ,
+  `applicableInterestRate` varchar(255) ,
+  `developerResponsibleOfficer` varchar(255) ,
+  `companyTradingName` varchar(255) ,
+  `ABN` varchar(255) ,
+  `otherJobSpecificRequirements` varchar(255) ,
+  `projectId` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+
+CREATE TABLE `negotiatedconnection`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inquiryNumber` int(11) NULL DEFAULT NULL,
+  `maximumAllocatedCapacity` varchar(255) ,
+  `minimumContractDemandPrimary` varchar(255) ,
+  `scopeofWorksCustomerFunded` varchar(255) ,
+  `scopeofWorksJemenaFunded` varchar(255) ,
+  `exclusions` varchar(255) ,
+  `assumptions` varchar(255) ,
+  `supplyAddress` varchar(255) ,
+  `projectReference` varchar(255) ,
+  `jemenaResponsibleOfficer` varchar(255) ,
+  `date` datetime NULL DEFAULT NULL,
+  `minimumContractDemandReserveFeeder` varchar(255) ,
+  `validityPeriod` varchar(255) ,
+  `plannedConstructionPeriod` varchar(255) ,
+  `nominalSupplyVoltage` varchar(255) ,
+  `supplyPhasing` varchar(255) ,
+  `embeddedNetwork` varchar(255) ,
+  `interestrateforoverduepayment` varchar(255) ,
+  `Security` varchar(255) ,
+  `connectionAssetandConnectionPointLocation` varchar(255) ,
+  `premisesConnectionAssetsandPartiesResponsibleforInstallation` varchar(255) ,
+  `statutoryorOtherApprovalstobeobtainedbyJemena` varchar(255) ,
+  `leaseorEasementRequired` varchar(255) ,
+  `customerResponsibleOfficer` varchar(255) ,
+  `companyTradingName` varchar(255) ,
+  `ABN` varchar(255) ,
+  `networkExtensionorAugmentation` varchar(255) ,
+  `projectId` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) 
+
 CREATE TABLE `connectionhandover`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
   `projectRef` varchar(255) ,
   `portalNo` int(11) NULL DEFAULT NULL,
   `date` datetime NULL DEFAULT NULL,
@@ -77,6 +177,7 @@ CREATE TABLE `connectionhandover`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ;
 CREATE TABLE `design`  (
+ `projectId` int(11) NULL DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `WBSElement` varchar(32) ,
   `worksDescription` varchar(255) ,

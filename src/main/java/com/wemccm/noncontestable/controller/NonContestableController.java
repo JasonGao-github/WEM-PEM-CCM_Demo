@@ -13,11 +13,14 @@ import com.wemccm.common.entity.NonContestableOtherCostsItem;
 import com.wemccm.common.entity.NonContestableProjectComponent;
 import com.wemccm.common.entity.NonContestableType;
 import com.wemccm.common.entity.ProjectNonContestableProjectComponent;
+import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
 import com.wemccm.common.pojo.NccItemsPojo;
 import com.wemccm.common.pojo.NccProjectComponentPojo;
 import com.wemccm.common.pojo.NonContestableOtherCostsItemPojo;
+import com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo;
 import com.wemccm.common.pojo.NonContestableProjectComponentPojo;
+import com.wemccm.common.pojo.NonContestableProjectComponentTypePojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 import com.wemccm.noncontestable.service.NonContestableService;
@@ -47,7 +50,17 @@ public class NonContestableController {
 		List<NonContestableProjectComponent> l = serivce.findNonContestableProjectComponent(requestPojo);
 		return l;
 	}
+	@RequestMapping(value = "/deleteNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult deleteNonContestableProjectComponent(
+			@RequestBody IdPojo requestPojo) {
+		// find by nonContestableTypeId
 
+		 serivce.deleteNonContestableProjectComponent(requestPojo);
+		return new ResponseResult();
+	}
+	
+	
 	// list items under each blue line.
 	@RequestMapping(value = "/findNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -58,6 +71,35 @@ public class NonContestableController {
 		List<NonContestableOtherCostsItem> l = serivce.findNonContestableOtherCostsItem(requestPojo);
 		return l;
 	}
+	
+	
+	@RequestMapping(value = "/listAllNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm() {
+		Integer projectId=456;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+
+		List<NonContestableOtherCostsItemTypePojo> l = serivce.listAllNonContestableOtherCostsIterm(projectId);
+		return l;
+	}
+	
+	
+	
+	@RequestMapping(value = "/deleteNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult deleteNonContestableOtherCostsIterm(
+			@RequestBody IdPojo requestPojo) {
+		// find by nonContestableTypeId
+
+		 serivce.deleteNonContestableOtherCostsIterm(requestPojo);
+		return new ResponseResult();
+	}
+	
+	
+	
 
 	// save the data of Project Component part of ncc.
 	@RequestMapping(value = "/insertProjectNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
@@ -109,6 +151,22 @@ public class NonContestableController {
 		List<NccProjectComponentPojo> l = serivce.findMultiNonContestableProjectComponent(requestPojo);
 		return l;
 	}
+	
+	@RequestMapping(value = "/listAllNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+
+		List<NonContestableProjectComponentTypePojo> l = serivce.listAllNonContestableProjectComponent(projectId);
+		return l;
+	}
+	
+	
+	
 
 	@RequestMapping(value = "/findMultiNonContestableOtherCosts", produces = "application/json;charset=UTF-8")
 	@ResponseBody

@@ -13,6 +13,7 @@ import com.wemccm.common.entity.AvoidedCostAssetReplacementCosts;
 import com.wemccm.common.entity.AvoidedCostESCGuideline;
 import com.wemccm.common.entity.AvoidedCostassetReplacementIterm;
 import com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo;
+import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectIdPojo;
 
@@ -43,7 +44,15 @@ public class AvoidedCostController {
 		
 
 	}
+	@RequestMapping(value = "/deleteAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult deleteAvoidedCostassetReplacementIterm(
+			@RequestBody IdPojo requestPojo) {
+		// find by nonContestableTypeId
 
+		 serivce.deleteAvoidedCostassetReplacementIterm(requestPojo);
+		return new ResponseResult();
+	}
 	
 	
 	

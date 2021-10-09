@@ -15,7 +15,16 @@
 		projectTypeId = #{projectTypeId}
 
 	</select>
+	
+	
+		<select id="deleteNonContestableProjectComponent"
 
+		parameterType="com.wemccm.common.pojo.IdPojo">
+
+			DELETE FROM noncontestableprojectcomponent
+WHERE id= #{id}
+
+	</select>
 
 	<select id="selectAllNonContestableType"
 
@@ -39,6 +48,39 @@
 	</select>
 
 
+	<select id="listAllNonContestableOtherCostsIterm"
+
+		parameterType="Integer"
+		resultType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
+		SELECT ci.*,t.name
+		FROM noncontestableothercostsiterm as ci
+		
+		left join noncontestableothercosts as oc
+		on ci.id=oc.nonContestableOtherCostsItemId
+		
+			left join noncontestabletype as t
+		on ci.nonContestableTypeId=t.id
+
+		WHERE
+		oc.projectId = #{projectId}
+
+	</select>
+
+	
+		<select id="deleteNonContestableOtherCostsIterm"
+
+		parameterType="com.wemccm.common.pojo.IdPojo">
+
+			DELETE FROM noncontestableothercostsiterm
+WHERE id= #{id}
+
+	</select>
+	
+	
+	
+	
+	
+	
 	<select id="insertProjectNonContestableProjectComponent"
 		parameterType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
 
@@ -121,14 +163,34 @@
 		ON
 		ppc.nonContestableProjectComponentId=pc.id
 
-		WHERE ppc.projectId=
-		#{projectId}
+		WHERE ppc.projectId=#{projectId}
 
 	</select>
 
 
 
+	<select id="listAllNonContestableProjectComponent"
 
+		parameterType="Integer"
+		resultType="com.wemccm.common.pojo.NonContestableProjectComponentTypePojo">
+		SELECT pc.cost,pc.description,ppc.*
+
+		FROM
+		noncontestableprojectcomponent as pc
+
+		LEFT JOIN
+		projectnoncontestableprojectcomponent as ppc
+		ON
+		ppc.nonContestableProjectComponentId=pc.id
+		
+		LEFT JOIN
+		noncontestabletype as t
+		ON
+		pc.projectTypeId=t.id
+
+		WHERE ppc.projectId=#{projectId}
+
+	</select>
 
 
 

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wemccm.common.entity.QuantityInputBasicData;
 import com.wemccm.common.entity.QuantityInputItermGroup;
+import com.wemccm.common.pojo.IdPojo;
+import com.wemccm.common.pojo.QuantityInputBasicDataGroupPojo;
 import com.wemccm.common.pojo.QuantityInputDetailPojo;
 import com.wemccm.common.pojo.QuantityInputItermGroupIdPojo;
 import com.wemccm.common.pojo.QuantityInputPojo;
@@ -43,6 +45,45 @@ public class QuantityInputController {
 		}
 		return new ResponseResult();
 	}
+	
+	
+	
+	@RequestMapping(value = "/listAllQuantityInputBasicData", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<QuantityInputBasicDataGroupPojo> listAllQuantityInputBasicData() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+
+		List<QuantityInputBasicDataGroupPojo> l = serivce.listAllQuantityInputBasicData(projectId);
+		return l;
+	}
+	
+	@RequestMapping(value = "/deleteQuantityInputBasicData", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult deleteQuantityInputBasicData(
+			@RequestBody IdPojo requestPojo) {
+		// find by nonContestableTypeId
+
+		 serivce.deleteQuantityInputBasicData(requestPojo);
+		return new ResponseResult();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// insert
 	@RequestMapping(value = "/insertQuantityInput", produces = "application/json;charset=UTF-8")

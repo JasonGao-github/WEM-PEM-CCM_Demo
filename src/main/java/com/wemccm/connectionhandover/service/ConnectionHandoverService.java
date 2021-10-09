@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.ConnectionHandover;
+import com.wemccm.common.entity.UplaodedFiles;
 import com.wemccm.common.pojo.ConnectionHandoverPojo;
 import com.wemccm.connectionhandover.dao.ConnectionHandoverDao;
 
@@ -25,6 +26,21 @@ public class ConnectionHandoverService {
 
 	public ConnectionHandoverPojo findConnectionHandover(Integer projectId) {
 		ConnectionHandoverPojo p=Dao.findConnectionHandover(projectId);
+		
+		return p;
+	}
+
+
+
+	public void uplaodedFiles(UplaodedFiles pojo) {
+		Dao.uplaodedFiles(pojo);
+		
+	}
+
+
+
+	public UplaodedFiles downlaodedFiles(Integer projectId) {
+		UplaodedFiles p=Dao.downlaodedFiles(projectId);
 		
 		return p;
 	}

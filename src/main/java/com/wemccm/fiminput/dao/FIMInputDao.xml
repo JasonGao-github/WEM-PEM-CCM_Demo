@@ -71,6 +71,54 @@
 
 	</select>
 
+
+
+
+	<select id="listAllFIMinputIterm"
+
+		parameterType="Integer"
+		resultType="com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo">
+		SELECT i.*,st.`name` as subtype,t.`name` as typename
+		FROM fiminputiterm as i
+		
+		left join fiminputitermquantity as q
+		on i.id=q.fIMinputItermId
+		
+		left join fiminputsubtype as st
+		on st.id=i.fIMinputSubTypeID
+		
+		left join fiminputtype as t
+		on st.fIMinputTypeID=t.id
+
+		WHERE
+		q.projectId =#{projectId}
+
+	</select>
+	
+	
+	
+	
+		<select id="deleteFIMinputIterm"
+
+		parameterType="com.wemccm.common.pojo.IdPojo">
+
+			DELETE FROM fiminputiterm
+WHERE id= #{id}
+
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<select id="getByfIMinputSubTypeID"
 		parameterType="Integer"
 		resultType="com.wemccm.common.entity.FIMinputIterm">

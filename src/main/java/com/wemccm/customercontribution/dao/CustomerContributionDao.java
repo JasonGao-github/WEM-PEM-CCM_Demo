@@ -28,4 +28,30 @@ public interface CustomerContributionDao {
 
 	public List<CustomerContributionPricePojo> findCustomerContributionPricePojo(Integer customerContributionId);
 
+	public Boolean JENOverheadsBuildUpB23(Integer projectId);
+
+	public Integer FIMacturalQuantity(Integer projectId);
+
+	
+	
+	public Integer FIMHVunderground(Integer projectId);
+
+	public Integer FIMLVunderground(Integer projectId);
+
+	public Integer FIMHVcableheadpole(Integer projectId);
+	
+	
+
+	public Integer FIMHVstraightjoints(Integer projectId);
+
+	public Integer FIMLVmainsjoints(Integer projectId);
+
+	public Integer FIMLVservicetjoints(Integer projectId);
+	
+	
+
+	public Integer FIMpubliclights(Integer projectId);
+
+	public Integer FIMservicepits(Integer projectId);
+
 }

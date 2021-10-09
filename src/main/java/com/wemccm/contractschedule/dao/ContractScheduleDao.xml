@@ -80,7 +80,34 @@
 	
 	
 	
+	 <select id="findARinCC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.pojo.AssetRelocationPojo">
+		
+		SELECT 
+		inquiryNumber,
+		supplyAddress as worksAddress,
+		customerScopeOfWork as scopeofWorks
+		
+		
+		FROM customercontribution
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
 	
+	
+	
+	<select id="insertAssetRelocation" 
+ 	parameterType="com.wemccm.common.entity.AssetRelocation">
+		
+		INSERT INTO assetrelocation (
+		inquiryNumber,worksAddress,scopeofWorks,contestableContributionChargesforWorksCompletedbyJemena,nonContestableContributionChargesforWorksCompletedbyJemena,jemenaResponsibleOfficer,projectId,typeofDistributionWork,offerValidityPeriod,plannedConstructionPeriod,commencementofWorksObligations,interestRateforOverduePayment,customerResponsibleOfficer,leaseorEasementifrequired
+		)
+		VALUES (
+		#{inquiryNumber},#{worksAddress},#{scopeofWorks},#{contestableContributionChargesforWorksCompletedbyJemena},#{nonContestableContributionChargesforWorksCompletedbyJemena},#{jemenaResponsibleOfficer},#{projectId},#{typeofDistributionWork},#{offerValidityPeriod},#{plannedConstructionPeriod},#{commencementofWorksObligations},#{interestRateforOverduePayment},#{customerResponsibleOfficer},#{leaseorEasementifrequired}
+		)
+		</select>
 	
 	
 	

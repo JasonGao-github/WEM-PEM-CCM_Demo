@@ -13,7 +13,9 @@ import com.wemccm.common.entity.FIMinputSubType;
 import com.wemccm.common.entity.FIMinputType;
 import com.wemccm.common.pojo.FIMinputItermPojo;
 import com.wemccm.common.pojo.FIMinputItermQuantityPojo;
+import com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo;
 import com.wemccm.common.pojo.FIMinputSubTypePojo;
+import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.fiminput.serivce.FIMInputService;
 
@@ -51,7 +53,47 @@ public class FIMInputController {
 		List<FIMinputIterm> l = serivce.findFIMinputIterm(requestPojo);
 		return l;
 	}
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/listAllFIMinputIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
 
+		List<FIMinputItermSubTypeTypePojo> l = serivce.listAllFIMinputIterm(projectId);
+		return l;
+	}
+	
+	@RequestMapping(value = "/deleteFIMinputIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult deleteFIMinputIterm(
+			@RequestBody IdPojo requestPojo) {
+		// find by nonContestableTypeId
+
+		 serivce.deleteFIMinputIterm(requestPojo);
+		return new ResponseResult();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	@RequestMapping(value = "/selectAllFIMinputItermQuantityType", produces = "application/json;charset=UTF-8")
 //	@ResponseBody
 //	public List<FIMinputItermQuantityType> selectAllFIMinputItermQuantityType() {
@@ -73,9 +115,6 @@ public class FIMInputController {
 	@ResponseBody
 	public ResponseResult insertFIMinputIterm(@RequestBody FIMinputIterm pojo) {
 
-
-		
-		
 		String result = serivce.insertFIMinputIterm(pojo);
 		if ("-1".equals(result)) {
 			return new ResponseResult("false", "the code has already exist in our system!");
