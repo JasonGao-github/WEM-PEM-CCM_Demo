@@ -157,15 +157,17 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-lg-4"><input type="checkbox" id="LCTA"> <label
-                                                for="LCTA">LCTA</label></div>
-                                        <div class="col-lg-4">
-                                            <input type="checkbox" id="non-contestable" class="form-control"> <label
-                                                for="non-contestable">Non-Contestable</label>
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                                            <input type="checkbox" id="LCTA"> <label class="ml-2 mb-0"
+                                                                                     for="LCTA">LCTA</label></div>
+                                        <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                                            <input type="checkbox" id="non-contestable"> <label class="ml-2 mb-0"
+                                                                                                for="non-contestable">Non-Contestable</label>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <input type="checkbox" id="avoidid-costs" class="form-control"> <label
+                                        <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                                            <input type="checkbox" id="avoidid-costs"> <label
+                                                class="ml-2 mb-0"
                                                 for="avoidid-costs">Avoided-Costs</label>
                                         </div>
                                     </div>
