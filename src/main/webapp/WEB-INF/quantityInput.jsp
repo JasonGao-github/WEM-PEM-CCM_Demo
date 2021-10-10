@@ -259,34 +259,41 @@
                                     <th scope="col">Recoverable Quantity</th>
                                     <th scope="col">Jemena Quantity</th>
                                     <th scope="col">LCTA Quantity</th>
-                                    <th scope="col">Unit</th>
-                                    <th scope="col">Labour</th>
-                                    <th scope="col">Material</th>
-                                    <th scope="col">Plant</th>
-                                    <th scope="col">Subcontract</th>
-                                    <th scope="col">Unit Rate</th>
+                                    <th scope="col">Unit ($)</th>
+                                    <th scope="col">Labour ($)</th>
+                                    <th scope="col">Material ($)</th>
+                                    <th scope="col">Plant ($)</th>
+                                    <th scope="col">Subcontract ($)</th>
+                                    <th scope="col">Unit Rate ($)</th>
                                     <th scope="col">Manhours</th>
-                                    <th scope="col">Actuals Subtotal</th>
-                                    <th scope="col">Recoverable Subtotal</th>
-                                    <th scope="col">Jemena Subtotal</th>
-                                    <th scope="col">LCTA Subtotal</th>
+                                    <th scope="col">Actuals Subtotal ($)</th>
+                                    <th scope="col">Recoverable Subtotal ($)</th>
+                                    <th scope="col">Jemena Subtotal ($)</th>
+                                    <th scope="col">LCTA Subtotal ($)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="kV_data in kV_data_all track by $index">
                                     <td>{{kV_data['code']}}</td>
                                     <td>{{kV_data['description']}}</td>
-                                    <td ng-if="kV_data['actualsQty'] === null"><input type="number"
-                                                                                      ng-model="actualsQty_kv"
-                                                                                      ng-change="qi_update_kv(actualsQty_kv, $index)"
-                                                                                      class="form-control">
+                                    <td><input type="text"
+                                               ng-model="kV_data['actualsQty']"
+                                               ng-change="qi_update_row(kV_data['actualsQty'], $index, 'kV_data_all', 'actualsQty')"
+                                               class="form-control"
+                                               value="{{kV_data['actualsQty']}}">
                                     </td>
-                                    <td ng-if="kV_data['actualsQty'] != null"><input type="number"
-                                                                                     class="form-control">{{kV_data['actualsQty']}}
-                                    </td>
-                                    <td><input type="number" class="form-control"></td>
-                                    <td><input type="number" class="form-control"></td>
-                                    <td><input type="number" class="form-control"></td>
+                                    <td><input type="text" ng-model="kV_data['recouverableQty']"
+                                               ng-change="qi_update_row(kV_data['recouverableQty'], $index, 'kV_data_all', 'recouverableQty')"
+                                               class="form-control"
+                                               value="{{kV_data['recouverableQty']}}"></td>
+                                    <td><input type="text" ng-model="kV_data['jemenaQty']"
+                                               ng-change="qi_update_row(kV_data['jemenaQty'], $index, 'kV_data_all', 'jemenaQty')"
+                                               class="form-control"
+                                               value="{{kV_data['jemenaQty']}}"></td>
+                                    <td><input type="text" ng-model="kV_data['lcatQty']"
+                                               ng-change="qi_update_row(kV_data['lcatQty'], $index, 'kV_data_all', 'lcatQty')"
+                                               class="form-control"
+                                               value="{{kV_data['lcatQty']}}"></td>
                                     <td>{{kV_data['unit']}}</td>
                                     <td>{{kV_data['labour']}}</td>
                                     <td>{{kV_data['material']}}</td>
@@ -294,12 +301,10 @@
                                     <td>{{kV_data['subcontract']}}</td>
                                     <td>{{kV_data['unitRate']}}</td>
                                     <td>{{kV_data['manhours']}}</td>
-                                    <td ng-if="kV_data['actualsSubTotal'] === null" ng-model="actualsSubTotal_kv">
-                                    </td>
-                                    <td ng-if="kV_data['actualsSubTotal'] != null">{{kV_data['actualsSubTotal']}}</td>
-                                    <td>{{kV_data['recouverableSubTotal']}}</td>
-                                    <td>{{kV_data['jemenaSubTotal']}}</td>
-                                    <td>{{kV_data['lcatSubTotal']}}</td>
+                                    <td>{{kV_data['actualsSubTotal'] | number: 2 }}</td>
+                                    <td>{{kV_data['recouverableSubTotal'] | number: 2 }}</td>
+                                    <td>{{kV_data['jemenaSubTotal'] | number: 2 }}</td>
+                                    <td>{{kV_data['lcatSubTotal'] | number: 2 }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -5158,8 +5163,6 @@
                     </div>
                 </div>
             </div>
-            <% int curr_page = 2; %>
-            <%@ include file="common/pagesBar.jspf" %>
         </div>
     </div>
     <%--    <script>--%>

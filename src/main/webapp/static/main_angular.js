@@ -914,21 +914,35 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             if (response_payload['projectStatus'].toString() === 'new') {
                 console.log("New Project - QI")
                 $scope.kV_data_all = project_data[0]['groupData']
+                $scope.hV_data_all = project_data[1]['groupData']
+                $scope.lV_data_all = project_data[2]['groupData']
+                $scope.hV_line_data_all = project_data[3]['groupData']
+                $scope.sub_assemblies_data_all = project_data[4]['groupData']
+                $scope.string_bare_conductors_data_all = project_data[5]['groupData']
             } else {
 
             }
         })
     }
 
-    $scope.actualsQty_kv = 0
-    $scope.actualsSubTotal_kv = 0
+    $scope.qi_update_row = function (value, id, dataSetName, quantityInputType) {
 
-    $scope.qi_update_kv = function (value, id) {
-        console.log(value)
-        console.log(id)
-        $scope.actualsSubTotal_kv = value * $scope.kV_data_all[id]['unitRate']
-        console.log($scope.actualsSubTotal_kv)
-        // console.log($scope.kV_data_all[id]['actualsQty'])
+        if (quantityInputType.toString() === 'actualsQty') {
+            $scope[dataSetName][id]['actualsSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            // console.log($scope[dataSetName][id]['actualsSubTotal'])
+
+        } else if (quantityInputType.toString() === 'recouverableQty') {
+            $scope[dataSetName][id]['recouverableSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            // console.log($scope[dataSetName][id]['recouverableSubTotal'])
+
+        } else if (quantityInputType.toString() === 'jemenaQty') {
+            $scope[dataSetName][id]['jemenaSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            // console.log($scope[dataSetName][id]['jemenaSubTotal'])
+
+        } else if (quantityInputType.toString() === 'lcatQty') {
+            $scope[dataSetName][id]['lcatSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            // console.log($scope[dataSetName][id]['lcatSubTotal'])
+        }
     }
 
 }])
