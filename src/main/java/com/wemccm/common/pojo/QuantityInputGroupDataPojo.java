@@ -7,12 +7,12 @@ public class QuantityInputGroupDataPojo {
 	private Integer quantityInputBasicDataId;
 
 	private String unit;
-	private double labour;
-	private double material;
-	private double plant;
-	private double subcontract;
-	private double unitRate;
-	private double manhours;
+	private Double labour;
+	private Double material;
+	private Double plant;
+	private Double subcontract;
+	private Double unitRate;
+	private Double manhours;
 
 	private Integer actualsQty;
 	private Integer recouverableQty;
@@ -44,10 +44,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setQuantityInputBasicDataId(Integer quantityInputBasicDataId) {
-		if (null == quantityInputBasicDataId) {
-			quantityInputBasicDataId = 0;
-		}
-
 		this.quantityInputBasicDataId = quantityInputBasicDataId;
 	}
 
@@ -59,75 +55,51 @@ public class QuantityInputGroupDataPojo {
 		this.unit = unit;
 	}
 
-	public double getLabour() {
+	public Double getLabour() {
 		return labour;
 	}
 
 	public void setLabour(Double labour) {
-		if (null == labour) {
-			labour = 0d;
-		}
-
 		this.labour = labour;
 	}
 
-	public double getMaterial() {
+	public Double getMaterial() {
 		return material;
 	}
 
 	public void setMaterial(Double material) {
-		if (null == material) {
-			material = 0d;
-		}
-
 		this.material = material;
 	}
 
-	public double getPlant() {
+	public Double getPlant() {
 		return plant;
 	}
 
 	public void setPlant(Double plant) {
-		if (null == plant) {
-			plant = 0d;
-		}
-
 		this.plant = plant;
 	}
 
-	public double getSubcontract() {
+	public Double getSubcontract() {
 		return subcontract;
 	}
 
 	public void setSubcontract(Double subcontract) {
-		if (null == subcontract) {
-			subcontract = 0d;
-		}
-
 		this.subcontract = subcontract;
 	}
 
-	public double getUnitRate() {
+	public Double getUnitRate() {
 		return unitRate;
 	}
 
 	public void setUnitRate(Double unitRate) {
-		if (null == unitRate) {
-			unitRate = 0d;
-		}
-
 		this.unitRate = unitRate;
 	}
 
-	public double getManhours() {
+	public Double getManhours() {
 		return manhours;
 	}
 
 	public void setManhours(Double manhours) {
-		if (null == manhours) {
-			manhours = 0d;
-		}
-
 		this.manhours = manhours;
 	}
 
@@ -136,10 +108,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setActualsQty(Integer actualsQty) {
-		if (null == actualsQty) {
-			actualsQty = 0;
-		}
-
 		this.actualsQty = actualsQty;
 	}
 
@@ -148,10 +116,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setRecouverableQty(Integer recouverableQty) {
-		if (null == recouverableQty) {
-			recouverableQty = 0;
-		}
-
 		this.recouverableQty = recouverableQty;
 	}
 
@@ -160,10 +124,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setJemenaQty(Integer jemenaQty) {
-		if (null == jemenaQty) {
-			jemenaQty = 0;
-		}
-
 		this.jemenaQty = jemenaQty;
 	}
 
@@ -172,10 +132,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setLcatQty(Integer lcatQty) {
-		if (null == lcatQty) {
-			lcatQty = 0;
-		}
-
 		this.lcatQty = lcatQty;
 	}
 
@@ -184,10 +140,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setActualsSubTotal(Double actualsSubTotal) {
-		if (null == actualsSubTotal) {
-			actualsSubTotal = 0d;
-		}
-
 		this.actualsSubTotal = actualsSubTotal;
 	}
 
@@ -196,10 +148,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setRecouverableSubTotal(Double recouverableSubTotal) {
-		if (null == recouverableSubTotal) {
-			recouverableSubTotal = 0d;
-		}
-
 		this.recouverableSubTotal = recouverableSubTotal;
 	}
 
@@ -208,9 +156,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setJemenaSubTotal(Double jemenaSubTotal) {
-		if (null == jemenaSubTotal) {
-			lcatSubTotal = 0d;
-		}
 		this.jemenaSubTotal = jemenaSubTotal;
 	}
 
@@ -219,9 +164,6 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setLcatSubTotal(Double lcatSubTotal) {
-		if (null == lcatSubTotal) {
-			lcatSubTotal = 0d;
-		}
 		this.lcatSubTotal = lcatSubTotal;
 	}
 
