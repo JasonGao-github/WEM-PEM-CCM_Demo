@@ -892,11 +892,30 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
-
     $("#nav-tab-66kVConstruction").click(function () {
         var val = $(this).data("value");
         console.log(val)
     })
+
+    $scope.getQuantityInputData = function (){
+        console.log("clicked getQuantityInputData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/addAssumptionItem',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'new') {
+                $scope.scopeAssumptionItemDescriptionDataSuccess = true
+                $scope.scopeAssumptionItemDescriptionDataError = false
+            } else {
+                $scope.scopeAssumptionItemDescriptionDataSuccess = false
+                $scope.scopeAssumptionItemDescriptionDataError = true
+            }
+        })
+    }
 
 }])
 

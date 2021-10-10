@@ -16,7 +16,7 @@
 
 <body ng-app="main_app" id="main" ng-controller="controller">
 <%@ include file="common/sidebar.jspf" %>
-<section class="home_section">
+<section class="home_section" ng-init="getQuantityInputData()">
     <div class="container-fluid contentWrapper">
         <div class="container content">
             <div class="row">
@@ -75,7 +75,7 @@
                            role="tab" aria-controls="nav-LVConstruction" aria-selected="false">LV Construction</a>
                         <a class="nav-link" id="nav-tab-HVlineSwitchesIsolation" data-toggle="tab"
                            href="#nav-HVlineSwitchesIsolation" role="tab" aria-controls="nav-HVlineSwitchesIsolation"
-                           aria-selected="false">HV line Switches, Isolation</a>
+                           aria-selected="false">HV Line Switches, Isolators & Fuses</a>
                         <a class="nav-link" id="nav-tab-SubAssemblies" data-toggle="tab" href="#nav-SubAssemblies"
                            role="tab" aria-controls="nav-SubAssemblies" aria-selected="false">Sub Assemblies</a>
                         <a class="nav-link" id="nav-tab-StringBareConductor" data-toggle="tab"
@@ -242,8 +242,8 @@
                         <%--              <span class="Group">--%>
                         <%--                Group--%>
                         <%--              </span>--%>
-<%--                        <i class='bx bx-chevrons-right'></i>--%>
-                            <%--                        <div class="group"></div>--%>
+                        <%--                        <i class='bx bx-chevrons-right'></i>--%>
+                        <%--                        <div class="group"></div>--%>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -253,6 +253,7 @@
                             <table class="table table-striped">
                                 <thead id="title">
                                 <tr>
+                                    <th scope="col">Item Code</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Actuals Qty</th>
                                     <th scope="col">Recoverable Qty</th>
@@ -272,41 +273,35 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">66kV SC Intermediate, AT1A SL24</th>
-                                    <td><input id="firstName" type="text" class="form-control" placeholder="First name"
-                                               ng-model="new_user_fname"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                <tr ng-repeat="kV_data in kV_data_all track by $index">
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td><input type="text" class="form-control" placeholder="Actuals Qty"></td>
+                                    <td><input type="text" class="form-control" placeholder="Recoverable Qty"></td>
+                                    <td><input type="text" class="form-control" placeholder="Jemena Qty"></td>
+                                    <td><input type="text" class="form-control" placeholder="LCTA Qty"></td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['firstName']}}</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div>
-                  <span class="Total">
-                    Total
-                  </span>
-                            <div class="total">
+                        <div class="row">
+                            <div class="col-2">
+                                <h4>Total</h4>
                             </div>
-
-                            <button class="savebtn">
-                                pagination Save
-                            </button>
-                            <button class="draft">
-                                Save as draft
-                            </button>
+                            <div class="col-2">
+                                <h4>12345</h4>
+                            </div>
                         </div>
                     </div>
 
