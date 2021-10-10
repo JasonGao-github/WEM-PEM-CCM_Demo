@@ -23,11 +23,31 @@ public class QuantityInputGroupDataPojo {
 	private Double jemenaSubTotal;
 	private Double lcatSubTotal;
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Integer getQuantityInputBasicDataId() {
 		return quantityInputBasicDataId;
 	}
 
 	public void setQuantityInputBasicDataId(Integer quantityInputBasicDataId) {
+		if (null == quantityInputBasicDataId) {
+			quantityInputBasicDataId = 0;
+		}
+
 		this.quantityInputBasicDataId = quantityInputBasicDataId;
 	}
 
@@ -43,7 +63,11 @@ public class QuantityInputGroupDataPojo {
 		return labour;
 	}
 
-	public void setLabour(double labour) {
+	public void setLabour(Double labour) {
+		if (null == labour) {
+			labour = 0d;
+		}
+
 		this.labour = labour;
 	}
 
@@ -51,7 +75,11 @@ public class QuantityInputGroupDataPojo {
 		return material;
 	}
 
-	public void setMaterial(double material) {
+	public void setMaterial(Double material) {
+		if (null == material) {
+			material = 0d;
+		}
+
 		this.material = material;
 	}
 
@@ -59,7 +87,11 @@ public class QuantityInputGroupDataPojo {
 		return plant;
 	}
 
-	public void setPlant(double plant) {
+	public void setPlant(Double plant) {
+		if (null == plant) {
+			plant = 0d;
+		}
+
 		this.plant = plant;
 	}
 
@@ -67,7 +99,11 @@ public class QuantityInputGroupDataPojo {
 		return subcontract;
 	}
 
-	public void setSubcontract(double subcontract) {
+	public void setSubcontract(Double subcontract) {
+		if (null == subcontract) {
+			subcontract = 0d;
+		}
+
 		this.subcontract = subcontract;
 	}
 
@@ -75,7 +111,11 @@ public class QuantityInputGroupDataPojo {
 		return unitRate;
 	}
 
-	public void setUnitRate(double unitRate) {
+	public void setUnitRate(Double unitRate) {
+		if (null == unitRate) {
+			unitRate = 0d;
+		}
+
 		this.unitRate = unitRate;
 	}
 
@@ -83,7 +123,11 @@ public class QuantityInputGroupDataPojo {
 		return manhours;
 	}
 
-	public void setManhours(double manhours) {
+	public void setManhours(Double manhours) {
+		if (null == manhours) {
+			manhours = 0d;
+		}
+
 		this.manhours = manhours;
 	}
 
@@ -92,6 +136,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setActualsQty(Integer actualsQty) {
+		if (null == actualsQty) {
+			actualsQty = 0;
+		}
+
 		this.actualsQty = actualsQty;
 	}
 
@@ -100,6 +148,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setRecouverableQty(Integer recouverableQty) {
+		if (null == recouverableQty) {
+			recouverableQty = 0;
+		}
+
 		this.recouverableQty = recouverableQty;
 	}
 
@@ -108,6 +160,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setJemenaQty(Integer jemenaQty) {
+		if (null == jemenaQty) {
+			jemenaQty = 0;
+		}
+
 		this.jemenaQty = jemenaQty;
 	}
 
@@ -116,6 +172,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setLcatQty(Integer lcatQty) {
+		if (null == lcatQty) {
+			lcatQty = 0;
+		}
+
 		this.lcatQty = lcatQty;
 	}
 
@@ -124,6 +184,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setActualsSubTotal(Double actualsSubTotal) {
+		if (null == actualsSubTotal) {
+			actualsSubTotal = 0d;
+		}
+
 		this.actualsSubTotal = actualsSubTotal;
 	}
 
@@ -132,6 +196,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setRecouverableSubTotal(Double recouverableSubTotal) {
+		if (null == recouverableSubTotal) {
+			recouverableSubTotal = 0d;
+		}
+
 		this.recouverableSubTotal = recouverableSubTotal;
 	}
 
@@ -140,6 +208,9 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setJemenaSubTotal(Double jemenaSubTotal) {
+		if (null == jemenaSubTotal) {
+			lcatSubTotal = 0d;
+		}
 		this.jemenaSubTotal = jemenaSubTotal;
 	}
 
@@ -148,23 +219,10 @@ public class QuantityInputGroupDataPojo {
 	}
 
 	public void setLcatSubTotal(Double lcatSubTotal) {
+		if (null == lcatSubTotal) {
+			lcatSubTotal = 0d;
+		}
 		this.lcatSubTotal = lcatSubTotal;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 }
