@@ -471,12 +471,12 @@ CREATE TABLE `quantityinputbasicdata`  (
   `code` varchar(32) ,
   `description` varchar(32) ,
   `unit` varchar(32) ,
-  `labour` double(10, 2) ,
-  `material` double(10, 2) ,
-  `plant` double(10, 2) ,
-  `subcontract` double(10, 2) ,
-  `unitRate` double(10, 2) ,
-  `manhours` double(10, 2) ,
+  `labour` double(10, 2) NULL DEFAULT 0,
+  `material` double(10, 2) NULL DEFAULT 0,
+  `plant` double(10, 2) NULL DEFAULT 0,
+  `subcontract` double(10, 2) NULL DEFAULT 0,
+  `unitRate` double(10, 2) NULL DEFAULT 0,
+  `manhours` double(10, 2) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ;
 CREATE TABLE `quantityinputitermgroup`  (
