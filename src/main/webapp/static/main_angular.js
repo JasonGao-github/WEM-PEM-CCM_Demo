@@ -897,22 +897,25 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         console.log(val)
     })
 
-    $scope.getQuantityInputData = function (){
+    $scope.getQuantityInputData = function () {
         console.log("clicked getQuantityInputData function")
 
         $http({
             method: 'GET',
-            url: url + '/addAssumptionItem',
+            url: url + '/quantity_input/getData',
         }).then(function mySuccess(response) {
             console.log(response)
-            var status = response.data['result']
-            console.log(status)
-            if (status.toString() === 'new') {
-                $scope.scopeAssumptionItemDescriptionDataSuccess = true
-                $scope.scopeAssumptionItemDescriptionDataError = false
+            var response_payload = response['data']
+            console.log(response_payload)
+
+            var project_data = response_payload['projectData']
+            console.log(project_data)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                console.log("New Project - QI")
+                $scope.kV_data_all = project_data[0]['groupData']
             } else {
-                $scope.scopeAssumptionItemDescriptionDataSuccess = false
-                $scope.scopeAssumptionItemDescriptionDataError = true
+
             }
         })
     }

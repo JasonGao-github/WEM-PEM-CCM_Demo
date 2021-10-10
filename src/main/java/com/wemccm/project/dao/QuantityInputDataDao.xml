@@ -3,43 +3,39 @@
 <mapper namespace="com.wemccm.project.dao.QuantityInputDataDao">
 
 
-	<select id="listAllGroup"
-		resultType="com.wemccm.common.entity.QuantityInputItermGroup">
-		SELECT * FROM quantityinputitermgroup
-	</select>
-	<select id="listQuantityInputGroupDataPojo"
-		resultType="com.wemccm.common.pojo.QuantityInputGroupDataPojo">
+    <select id="listAllGroup"
+            resultType="com.wemccm.common.entity.QuantityInputItermGroup">
+        SELECT *
+        FROM quantityinputitermgroup
+    </select>
+    <select id="listQuantityInputGroupDataPojo"
+            resultType="com.wemccm.common.pojo.QuantityInputGroupDataPojo">
 
-		SELECT
-		*,
-		t1.actuals as actualsQty,
-		t1.recouverable as recouverableQty,
-		t1.jemena as jemenaQty,
-		t1.lcat as lcatQty
-		FROM
-		quantityinput t1
-		LEFT JOIN
-		quantityinputbasicdata t2 ON t1.quantityInputBasicDataId =
-		t2.id
-		LEFT JOIN
-		quantityinputitermgroup t3 ON
-		t2.quantityInputItermGroupId = t3.id
-		WHERE
-		t1.projectId = #{arg0} AND t3.id
-		= #{arg1}
-	</select>
+        SELECT *,
+               t1.actuals      as actualsQty,
+               t1.recouverable as recouverableQty,
+               t1.jemena       as jemenaQty,
+               t1.lcat         as lcatQty
+        FROM quantityinput t1
+                 LEFT JOIN
+             quantityinputbasicdata t2 ON t1.quantityInputBasicDataId =
+                                          t2.id
+                 LEFT JOIN
+             quantityinputitermgroup t3 ON
+                 t2.quantityInputItermGroupId = t3.id
+        WHERE t1.projectId = #{arg0}
+          AND t3.id
+            = #{arg1}
+    </select>
 
 
-	<select id="listBasicDatabyGroup"
-		resultType="com.wemccm.common.pojo.QuantityInputGroupDataPojo">
+    <select id="listBasicDatabyGroup"
+            resultType="com.wemccm.common.pojo.QuantityInputGroupDataPojo">
 
-		SELECT
-		t1.id as quantityInputBasicDataId,
-		t1.*
-		FROM
-		quantityinputbasicdata t1
-		WHERE
-		t1.quantityInputItermGroupId = #{0};
-	</select>
+        SELECT t1.id as quantityInputBasicDataId,
+               t1.*
+        FROM quantityinputbasicdata t1
+        WHERE t1.quantityInputItermGroupId = #{0};
+    </select>
 
 </mapper>

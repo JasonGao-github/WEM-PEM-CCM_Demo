@@ -250,15 +250,15 @@
                     <div class="tab-pane fade show active" id="nav-66kVConstruction" role="tabpanel"
                          aria-labelledby="nav-tab-66kVConstruction">
                         <div class="test">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-bordered">
                                 <thead id="title">
                                 <tr>
                                     <th scope="col">Item Code</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Actuals Qty</th>
-                                    <th scope="col">Recoverable Qty</th>
-                                    <th scope="col">Jemena Qty</th>
-                                    <th scope="col">LCTA Qty</th>
+                                    <th scope="col">Actuals Quantity</th>
+                                    <th scope="col">Recoverable Quantity</th>
+                                    <th scope="col">Jemena Quantity</th>
+                                    <th scope="col">LCTA Quantity</th>
                                     <th scope="col">Unit</th>
                                     <th scope="col">Labour</th>
                                     <th scope="col">Material</th>
@@ -274,23 +274,23 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="kV_data in kV_data_all track by $index">
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td><input type="text" class="form-control" placeholder="Actuals Qty"></td>
-                                    <td><input type="text" class="form-control" placeholder="Recoverable Qty"></td>
-                                    <td><input type="text" class="form-control" placeholder="Jemena Qty"></td>
-                                    <td><input type="text" class="form-control" placeholder="LCTA Qty"></td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
-                                    <td>{{kV_data['firstName']}}</td>
+                                    <td>{{kV_data['code']}}</td>
+                                    <td>{{kV_data['description']}}</td>
+                                    <td><input type="number" class="form-control"></td>
+                                    <td><input type="number" class="form-control"></td>
+                                    <td><input type="number" class="form-control"></td>
+                                    <td><input type="number" class="form-control"></td>
+                                    <td>{{kV_data['unit']}}</td>
+                                    <td>{{kV_data['labour']}}</td>
+                                    <td>{{kV_data['material']}}</td>
+                                    <td>{{kV_data['plant']}}</td>
+                                    <td>{{kV_data['subcontract']}}</td>
+                                    <td>{{kV_data['unitRate']}}</td>
+                                    <td>{{kV_data['manhours']}}</td>
+                                    <td>{{kV_data['actualsSubTotal']}}</td>
+                                    <td>{{kV_data['recouverableSubTotal']}}</td>
+                                    <td>{{kV_data['jemenaSubTotal']}}</td>
+                                    <td>{{kV_data['lcatSubTotal']}}</td>
                                 </tr>
                                 </tbody>
                             </table>
