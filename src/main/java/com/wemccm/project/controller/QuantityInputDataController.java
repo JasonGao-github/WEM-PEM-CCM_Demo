@@ -31,8 +31,8 @@ public class QuantityInputDataController {
 		String projectStatus = (String) session.getAttribute("projectStatus");
 
 //		int projectId = 1;
-//		String projectStatus = "exist";
-		
+//		String projectStatus = "new";
+
 		QuantityInputGetdataPojo resultPojo = qiService.getData(projectId, projectStatus);
 
 		return resultPojo;
