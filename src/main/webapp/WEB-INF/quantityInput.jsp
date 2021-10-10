@@ -276,7 +276,14 @@
                                 <tr ng-repeat="kV_data in kV_data_all track by $index">
                                     <td>{{kV_data['code']}}</td>
                                     <td>{{kV_data['description']}}</td>
-                                    <td><input type="number" class="form-control"></td>
+                                    <td ng-if="kV_data['actualsQty'] === null"><input type="number"
+                                                                                      ng-model="actualsQty_kv"
+                                                                                      ng-change="qi_update_kv(actualsQty_kv, $index)"
+                                                                                      class="form-control">
+                                    </td>
+                                    <td ng-if="kV_data['actualsQty'] != null"><input type="number"
+                                                                                     class="form-control">{{kV_data['actualsQty']}}
+                                    </td>
                                     <td><input type="number" class="form-control"></td>
                                     <td><input type="number" class="form-control"></td>
                                     <td><input type="number" class="form-control"></td>
@@ -287,7 +294,9 @@
                                     <td>{{kV_data['subcontract']}}</td>
                                     <td>{{kV_data['unitRate']}}</td>
                                     <td>{{kV_data['manhours']}}</td>
-                                    <td>{{kV_data['actualsSubTotal']}}</td>
+                                    <td ng-if="kV_data['actualsSubTotal'] === null" ng-model="actualsSubTotal_kv">
+                                    </td>
+                                    <td ng-if="kV_data['actualsSubTotal'] != null">{{kV_data['actualsSubTotal']}}</td>
                                     <td>{{kV_data['recouverableSubTotal']}}</td>
                                     <td>{{kV_data['jemenaSubTotal']}}</td>
                                     <td>{{kV_data['lcatSubTotal']}}</td>

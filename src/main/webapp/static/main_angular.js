@@ -920,6 +920,17 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
+    $scope.actualsQty_kv = 0
+    $scope.actualsSubTotal_kv = 0
+
+    $scope.qi_update_kv = function (value, id) {
+        console.log(value)
+        console.log(id)
+        $scope.actualsSubTotal_kv = value * $scope.kV_data_all[id]['unitRate']
+        console.log($scope.actualsSubTotal_kv)
+        // console.log($scope.kV_data_all[id]['actualsQty'])
+    }
+
 }])
 
 
