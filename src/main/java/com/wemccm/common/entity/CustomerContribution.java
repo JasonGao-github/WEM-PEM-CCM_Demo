@@ -17,6 +17,34 @@ public class CustomerContribution extends BaseEntity {
 	private String jemenaScopeExclusions;
 	private String assumption;
 
+	private String isLCTA;
+	private String isNonConstestable;
+	private String isAvoidCosts;
+
+	public String getIsLCTA() {
+		return isLCTA;
+	}
+
+	public void setIsLCTA(String isLCTA) {
+		this.isLCTA = isLCTA;
+	}
+
+	public String getIsNonConstestable() {
+		return isNonConstestable;
+	}
+
+	public void setIsNonConstestable(String isNonConstestable) {
+		this.isNonConstestable = isNonConstestable;
+	}
+
+	public String getIsAvoidCosts() {
+		return isAvoidCosts;
+	}
+
+	public void setIsAvoidCosts(String isAvoidCosts) {
+		this.isAvoidCosts = isAvoidCosts;
+	}
+
 	public Integer getProjectId() {
 		return projectId;
 	}
