@@ -646,6 +646,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     }
 
+	//connection handover get attachment
+	$scope.conn_handover_getAllAttachments = function() {
+		$http.get('/downlaodedFiles').then(function(response) {
+			console.log(response.data)
+			$scope.conn_handover_attachment_list = response.data;
+		});
+	}
+
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
     //     // your statements;
