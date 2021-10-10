@@ -16,15 +16,17 @@ import com.wemccm.common.pojo.ResponseResult;
 @RestController
 public class SessionController {
 
-	@RequestMapping(value = "/listFIMinputSubType", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/updateSession", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseResult findFIMinputSubType(@RequestBody UpdateSessionPojo pojo) {
+	public ResponseResult updateSession(@RequestBody UpdateSessionPojo pojo) {
 
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
 
 		session.setAttribute("projectId", pojo.getProjectId());
+
+		session.setAttribute("projectStatus", pojo.getProjectStatus());
 
 		return new ResponseResult();
 
