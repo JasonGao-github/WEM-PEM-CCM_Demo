@@ -66,7 +66,7 @@
             <div class="container-fluid">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-link active" id="nav-tab-66kVConstruction" data-toggle="tab"
+                        <a class="nav-link active" id="nav-tab-66kVConstruction" data-toggle="tab" data-value="1"
                            href="#nav-66kVConstruction" role="tab" aria-controls="nav-66kVConstruction"
                            aria-selected="true">66kV Construction</a>
                         <a class="nav-link" id="nav-tab-HVConstruction" data-toggle="tab" href="#nav-HVConstruction"
@@ -239,11 +239,11 @@
                         </li>
                     </div>
                     <div>
-              <span class="Group">
-                Group
-              </span>
-                        <i class='bx bx-chevrons-right'></i>
-                        <div class="group"></div>
+                        <%--              <span class="Group">--%>
+                        <%--                Group--%>
+                        <%--              </span>--%>
+<%--                        <i class='bx bx-chevrons-right'></i>--%>
+                            <%--                        <div class="group"></div>--%>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -254,10 +254,10 @@
                                 <thead id="title">
                                 <tr>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Actuals</th>
-                                    <th scope="col">Recoverable</th>
-                                    <th scope="col">Jemena</th>
-                                    <th scope="col">LCTA</th>
+                                    <th scope="col">Actuals Qty</th>
+                                    <th scope="col">Recoverable Qty</th>
+                                    <th scope="col">Jemena Qty</th>
+                                    <th scope="col">LCTA Qty</th>
                                     <th scope="col">Unit</th>
                                     <th scope="col">Labour</th>
                                     <th scope="col">Material</th>
@@ -274,43 +274,8 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">66kV SC Intermediate, AT1A SL24</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">66kV SC Intermediate, AT1A SL26</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">66kV SC Intermediate, AT1A 8kN Concrete</th>
-                                    <td></td>
+                                    <td><input id="firstName" type="text" class="form-control" placeholder="First name"
+                                               ng-model="new_user_fname"></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

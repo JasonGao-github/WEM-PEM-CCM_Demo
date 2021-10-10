@@ -713,13 +713,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             method: 'GET',
             url: url + '/listAllUsers',
         }).then(function mySuccess(response) {
-            console.log(response)
-            // var data = JSON.parse(response.data);
             console.log(response.data)
-            $scope.all_user_data = response.data
+            $scope.all_user_data = response.data['data']
+            // console.log($scope.all_user_data)
         })
     }
-    $scope.get_all_users()
 
     $scope.delete_user = function (id) {
         console.log("clicked delete_user function")
@@ -894,6 +892,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
+
+    $("#nav-tab-66kVConstruction").click(function () {
+        var val = $(this).data("value");
+        console.log(val)
+    })
 
 }])
 
