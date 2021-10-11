@@ -22,8 +22,30 @@ public class FindPageRequestDto extends PageRequest {
 	private String inquiryNumber;
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
-	private Integer projectTypeId;
+	private Integer projectType;
 	private String supplyAddress;
+	
+	
+	//user
+	private String firstName;
+	private String lastName;
+	
+	
+	
+	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -85,10 +107,10 @@ public class FindPageRequestDto extends PageRequest {
 		this.zinfraWBS = zinfraWBS;
 	}
 	public Integer getProjectTypeId() {
-		return projectTypeId;
+		return projectType;
 	}
-	public void setProjectTypeId(Integer projectTypeId) {
-		this.projectTypeId = projectTypeId;
+	public void setProjectTypeId(Integer projectType) {
+		this.projectType = projectType;
 	}
 	public String getSupplyAddress() {
 		return supplyAddress;
