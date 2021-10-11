@@ -26,8 +26,8 @@ public class QuantityInputDataController {
 	public QuantityInputGetdataPojo getData() {
 
 		int projectId = getProjectIdInSession();
-
 		String projectStatus = getProjectStatusInSession();
+
 //		int projectId = 1;
 //		String projectStatus = "new";
 
@@ -46,6 +46,8 @@ public class QuantityInputDataController {
 
 		qiService.saveAndUpdate(pojo);
 
+		updateSession(projectId);
+
 		ProjectBasicPojo result = new ProjectBasicPojo();
 		result.setResult("success");
 		return result;
@@ -56,7 +58,11 @@ public class QuantityInputDataController {
 
 		HttpSession session = getSession();
 
-		return Integer.valueOf((String) session.getAttribute("projectId"));
+		int projectId = (int) session.getAttribute("projectId");
+
+		System.out.println("project..." + projectId);
+
+		return projectId;
 
 	}
 
@@ -65,6 +71,14 @@ public class QuantityInputDataController {
 		HttpSession session = getSession();
 
 		return (String) session.getAttribute("projectStatus");
+	}
+
+	private void updateSession(int projectId) {
+
+		HttpSession session = getSession();
+		session.setAttribute("projectId", projectId);
+		session.setAttribute("projectStatus", "exist");
+
 	}
 
 	private HttpSession getSession() {

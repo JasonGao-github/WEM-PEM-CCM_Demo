@@ -43,7 +43,7 @@ public class ProjectController {
 				.getRequest();
 		HttpSession session = request.getSession();
 		session.setAttribute("projectId", projectId);
-
+		session.setAttribute("projectStatus", "new");
 		return new ResponseResult();
 	}
 
