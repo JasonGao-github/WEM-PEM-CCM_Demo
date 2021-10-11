@@ -17,4 +17,8 @@ public interface QuantityInputDataDao {
 
 	public List<QuantityInputGroupDataPojo> listBasicDatabyGroup(int groupId);
 
+	public void saveToQantityInput(QuantityInputGroupDataPojo pojo);
+
+	public void updateQuantityInput(QuantityInputGroupDataPojo pojo);
+
 }

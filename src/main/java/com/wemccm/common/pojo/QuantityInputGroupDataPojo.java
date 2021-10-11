@@ -2,6 +2,8 @@ package com.wemccm.common.pojo;
 
 public class QuantityInputGroupDataPojo {
 
+	private Integer projectId;// easy to save.
+	private Integer quantityInputId;
 	private String code;
 	private String description;
 	private Integer quantityInputBasicDataId;
@@ -22,6 +24,22 @@ public class QuantityInputGroupDataPojo {
 	private Double recouverableSubTotal;
 	private Double jemenaSubTotal;
 	private Double lcatSubTotal;
+
+	public Integer getQuantityInputId() {
+		return quantityInputId;
+	}
+
+	public void setQuantityInputId(Integer quantityInputId) {
+		this.quantityInputId = quantityInputId;
+	}
+
+	public Integer getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
 
 	public String getCode() {
 		return code;
