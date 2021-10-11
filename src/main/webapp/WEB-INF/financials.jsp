@@ -76,41 +76,232 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
+                            <div class="row" style="margin-left: -8px; margin-right: -8px">
+                                <div class="col-12 d-flex justify-content-center"
+                                     style="border: 1px solid rgba(0,0,0,.125); padding: 5px">
+                                    CIC Project Estimate
+                                </div>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
                                        style="text-align: center; margin: 0">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Action</th>
+                                        <th>Task</th>
+                                        <th>Labour ($)</th>
+                                        <th>Materials ($)</th>
+                                        <th>Plant ($)</th>
+                                        <th>Contracts ($)</th>
+                                        <th>Total ($)</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" colspan="6">ZINFRA CIC TEMPLATE RATES (FIXED PRICE)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="data in all_user_data track by $index">
+                                    <tr>
                                         <td>
-                                            {{data['firstName']}}
+                                            Test 1
                                         </td>
                                         <td>
-                                            {{data['lastName']}}
+                                            Test 1
                                         </td>
                                         <td>
-                                            {{data['email']}}
+                                            Test 1
                                         </td>
                                         <td>
-                                            {{data['userType']}}
+                                            Test 1
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-danger" ng-click="delete_user($index)">
-                                                Delete User
-                                            </button>
+                                            Test 1
+                                        </td>
+                                        <td>
+                                            Test 1
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            CUSTOMER SUB TOTAL
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            JEMENA Funded Additional Works
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                        <td>
+                                            123
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="col" colspan="5">
+                                            Total Zinfra Direct Costs (Zinfra Budget)
+                                        </td>
+                                        <td>
+                                            $7,819.52
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="col" colspan="5">
+                                            Zinfra Margin
+                                        </td>
+                                        <td>
+                                            $7,819.52
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="col" colspan="5">
+                                            Total Zinfra Template Fixed Price
+                                        </td>
+                                        <td>
+                                            $7,819.52
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 </table>
+                            </div>
+                            <div class="row" style="margin-left: -8px; margin-right: -8px">
+                                <div class="col-12 d-flex justify-content-center"
+                                     style="border: 1px solid rgba(0,0,0,.125); padding: 5px">
+                                    FINANCIAL DISTRIBUTION
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                   style="text-align: center; margin: 0">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col" colspan="2">CUSTOMER CONTRIBUTION</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Customer Project Subtotal</td>
+                                                    <td>$6,197.10</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                   style="text-align: center; margin: 0">
+                                                <tbody>
+                                                <tr>
+                                                    <td>LCTA Cost</td>
+                                                    <td>$0.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Customer Contribution (Exc GST)</td>
+                                                    <td>$7,684.40</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                   style="text-align: center; margin: 0">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Project Fee Category</td>
+                                                    <td><select class="form-select form-select-sm"
+                                                                aria-label=".form-select-sm example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PROJECT FEE PAID</td>
+                                                    <td>$2,000.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Customer Contribution Balance</td>
+                                                    <td>$5,684.40</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                   style="text-align: center; margin: 0">
+                                                <tbody>
+                                                <tr>
+                                                    <td>GST Component</td>
+                                                    <td>$568.44</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                   style="text-align: center; margin: 0">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Customer Contribution (Inc. GST)</td>
+                                                    <td>$6,252.84</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                               style="text-align: center; margin: 0">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col" colspan="2">FINANCIAL DISTRIBUTION</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Jemena Contribution to Customer Project Cost</td>
+                                                <td>$1,930.58</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

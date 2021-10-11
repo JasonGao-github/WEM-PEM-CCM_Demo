@@ -302,14 +302,40 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-2">
-                                <h4>Total</h4>
-                            </div>
-                            <div class="col-2">
-                                <h4>12345</h4>
-                            </div>
-                        </div>
+<%--                        <div class="row">--%>
+<%--                            <table class="table table-striped table-bordered">--%>
+<%--                                <thead id="title">--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col"></th>--%>
+<%--                                    <th scope="col">Actuals Subtotal ($)</th>--%>
+<%--                                    <th scope="col">Recoverable Subtotal ($)</th>--%>
+<%--                                    <th scope="col">Jemena Subtotal ($)</th>--%>
+<%--                                    <th scope="col">LCTA Subtotal ($)</th>--%>
+<%--                                </tr>--%>
+<%--                                </thead>--%>
+<%--                                <tbody>--%>
+<%--                                <tr>--%>
+<%--                                    <td colspan="13"></td>--%>
+<%--                                    <td>Mark</td>--%>
+<%--                                    <td>Mark</td>--%>
+<%--                                    <td>Otto</td>--%>
+<%--                                    <td>@mdo</td>--%>
+<%--                                </tr>--%>
+<%--                                </tbody>--%>
+<%--                            </table>--%>
+<%--                        </div>--%>
                     </div>
 
                     <div class="tab-pane fade" id="nav-HVConstruction" role="tabpanel"
