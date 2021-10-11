@@ -78,9 +78,9 @@
 	</insert>
 
 	<update id="updateQuantityInput" parameterType="com.wemccm.common.pojo.QuantityInputGroupDataPojo">
-	
+
 		UPDATE quantityinput
-		SET 
+		SET
 		unit=#{unit},
 		labour=#{labour},
 		material=#{material},
