@@ -26,6 +26,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult sendMyName(@RequestBody LoginRequestPojo requestPojo) {
+
 		// find by email
 		String email = requestPojo.getEmail();
 		String password = requestPojo.getPassword();

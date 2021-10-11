@@ -44,6 +44,15 @@ public class AvoidedCostController {
 		
 
 	}
+	@RequestMapping(value = "/updateAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult updateAvoidedCostassetReplacementIterm(
+			@RequestBody AvoidedCostassetReplacementIterm requestPojo) {
+
+
+		 serivce.updateAvoidedCostassetReplacementIterm(requestPojo);
+		return new ResponseResult();
+	}
 	@RequestMapping(value = "/deleteAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult deleteAvoidedCostassetReplacementIterm(

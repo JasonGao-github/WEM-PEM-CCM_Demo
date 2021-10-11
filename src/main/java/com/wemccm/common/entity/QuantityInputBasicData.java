@@ -6,10 +6,14 @@ public class QuantityInputBasicData extends BaseEntity {
 	private String code;
 	private String description;
 	private String unit;
+	
+	
 	private double labour;
 	private double material;
 	private double plant;
 	private double subcontract;
+	
+	
 	private double unitRate;
 	private double manhours;
 

@@ -60,7 +60,15 @@ public class QuantityInputController {
 		List<QuantityInputBasicDataGroupPojo> l = serivce.listAllQuantityInputBasicData(projectId);
 		return l;
 	}
-	
+	@RequestMapping(value = "/updateQuantityInputBasicData", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult updateQuantityInputBasicData(
+			@RequestBody QuantityInputBasicDataGroupPojo requestPojo) {
+
+
+		 serivce.updateQuantityInputBasicData(requestPojo);
+		return new ResponseResult();
+	}
 	@RequestMapping(value = "/deleteQuantityInputBasicData", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult deleteQuantityInputBasicData(

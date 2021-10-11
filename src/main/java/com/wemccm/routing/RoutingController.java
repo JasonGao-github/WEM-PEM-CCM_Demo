@@ -2,6 +2,11 @@ package com.wemccm.routing;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class RoutingController {
@@ -44,6 +49,12 @@ public class RoutingController {
 
     @RequestMapping(value = "/project_page")
     public String projectRouting() {
+
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+                .getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("projectId", "-1");
+        session.setAttribute("projectStatus", "new");
 
         return "project";// test.jsp
     }

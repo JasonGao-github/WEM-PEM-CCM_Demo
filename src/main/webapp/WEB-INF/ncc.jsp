@@ -27,6 +27,49 @@ System.out.println(projectId);
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content d-flex flex-column">
+				<div class="row">
+					<div class="col-12">
+						<ul class="nav nav-pills"
+							style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
+							<li class="nav-item">
+								<a class="nav-link" href="project_page">Project Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="ccf_page">Customer Contribution</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="quantity_input_page">Quantity Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="ncc_page">Non-contestable Costs Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="fim_page">FIM Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="avoided_cost_page">Avoided Costs Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="financials_page">Financials</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="design_page">Design</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="conHandover_page">Connection Handover</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="contract_schedule_page">Contract Schedule</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Inputs | Projects</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Approvers</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 				<h2>Non-Contestable Costs</h2>
 				<form class="form container" name="newUser" action="" method="POST"
 					style="justify-content: center">

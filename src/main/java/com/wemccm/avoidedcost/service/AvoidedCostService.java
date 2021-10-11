@@ -97,4 +97,9 @@ public class AvoidedCostService {
 		
 	}
 
+	public void updateAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm requestPojo) {
+		avoidedCostDao.updateAvoidedCostassetReplacementIterm(requestPojo);
+		
+	}
+
 }

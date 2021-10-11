@@ -34,4 +34,6 @@ public interface FIMInputDao {
 
 	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm(Integer projectId);
 
+	public void updateFIMinputIterm(FIMinputItermSubTypeTypePojo requestPojo);
+
 }

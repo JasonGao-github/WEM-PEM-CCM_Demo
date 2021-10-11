@@ -65,7 +65,47 @@
 
 
 
+	<select id="updateQuantityInputBasicData"
+		parameterType="com.wemccm.common.pojo.QuantityInputBasicDataGroupPojo">
+		update quantityinputbasicdata  
+		set  id =#{id}
+		<if test="quantityInputItermGroupId!=null and quantityInputItermGroupId!=''">
+			,quantityInputItermGroupId=#{quantityInputItermGroupId}
+		</if>
+		<if test="code!=null and code!=''">
+			,code=#{code}
+		</if>
+		<if test="description!=null and description!=''">
+			,description=#{description}
+		</if>
+		<if test="unit!=null and unit!=''">
+			,unit=#{unit}
+		</if>
+		
+		<if test="labour!=null and labour!=''">
+			,labour=#{labour}
+		</if>
+		<if test="material!=null and material!=''">
+			,material=#{material}
+		</if>
+		<if test="plant!=null and plant!=''">
+			,plant=#{plant}
+		</if>
+		<if test="subcontract!=null and subcontract!=''">
+			,subcontract=#{subcontract}
+		</if>
 
+		<if test="unitRate!=null and unitRate!=''">
+			,unitRate=#{unitRate}
+		</if>
+		<if test="manhours!=null and manhours!=''">
+			,manhours=#{manhours} 
+		</if>
+
+
+		where id =#{id}
+
+	</select>
 
 
 

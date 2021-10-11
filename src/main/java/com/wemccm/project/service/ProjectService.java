@@ -54,6 +54,10 @@ public class ProjectService {
 			dp.setLastName(u.getFirstName());
 			dp.setFirstName(u.getLastName());
 			
+			Integer TypeId=dp.getProjectTypeId();
+			dp.setProjectTypeName(projectDao.getTypeName(TypeId));
+			
+			
 		}
 		
 		

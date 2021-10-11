@@ -158,7 +158,12 @@
            
     </select>
 
-
+    <select id="getTypeName"
+            resultType="String"
+            parameterType="Integer">
+       SELECT projecttype.name from projecttype where projecttype.id=#{id};
+           
+    </select>
 
 
 </mapper>

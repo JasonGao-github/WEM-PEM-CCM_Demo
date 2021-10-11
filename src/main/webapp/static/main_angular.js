@@ -721,13 +721,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             method: 'GET',
             url: url + '/listAllUsers',
         }).then(function mySuccess(response) {
-            console.log(response)
-            // var data = JSON.parse(response.data);
             console.log(response.data)
-            $scope.all_user_data = response.data
+            $scope.all_user_data = response.data['data']
+            // console.log($scope.all_user_data)
         })
     }
-    $scope.get_all_users()
 
     $scope.delete_user = function (id) {
         console.log("clicked delete_user function")
@@ -901,6 +899,93 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             }
         })
     }
+
+    $("#nav-tab-66kVConstruction").click(function () {
+        var val = $(this).data("value");
+        console.log(val)
+    })
+
+    $scope.getQuantityInputData = function () {
+        console.log("clicked getQuantityInputData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/quantity_input/getData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+
+            $scope.qi_project_data = response_payload['projectData']
+            $scope.project_id_qi = response_payload['projectId']
+            $scope.project_status_qi = response_payload['projectStatus']
+            console.log($scope.qi_project_data)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                console.log("New Project - QI")
+                $scope.kV_data_all = $scope.qi_project_data[0]['groupData']
+                $scope.hV_data_all = $scope.qi_project_data[1]['groupData']
+                $scope.lV_data_all = $scope.qi_project_data[2]['groupData']
+                $scope.hV_line_data_all = $scope.qi_project_data[3]['groupData']
+                $scope.sub_assemblies_data_all = $scope.qi_project_data[4]['groupData']
+                $scope.string_bare_conductors_data_all = $scope.qi_project_data[5]['groupData']
+            } else {
+                console.log("Old Project - QI")
+                $scope.kV_data_all = $scope.qi_project_data[0]['groupData']
+                $scope.hV_data_all = $scope.qi_project_data[1]['groupData']
+                $scope.lV_data_all = $scope.qi_project_data[2]['groupData']
+                $scope.hV_line_data_all = $scope.qi_project_data[3]['groupData']
+                $scope.sub_assemblies_data_all = $scope.qi_project_data[4]['groupData']
+                $scope.string_bare_conductors_data_all = $scope.qi_project_data[5]['groupData']
+            }
+        })
+    }
+
+    $scope.qi_update_row = function (value, id, dataSetName, quantityInputType) {
+
+        if (quantityInputType.toString() === 'actualsQty') {
+            $scope[dataSetName][id]['actualsSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['actualsQty'] = parseInt(value)
+            // console.log($scope[dataSetName][id]['actualsSubTotal'])
+
+        } else if (quantityInputType.toString() === 'recouverableQty') {
+            $scope[dataSetName][id]['recouverableSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['recouverableQty'] = parseInt(value)
+            // console.log($scope[dataSetName][id]['recouverableSubTotal'])
+
+        } else if (quantityInputType.toString() === 'jemenaQty') {
+            $scope[dataSetName][id]['jemenaSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['jemenaQty'] = parseInt(value)
+            // console.log($scope[dataSetName][id]['jemenaSubTotal'])
+
+        } else if (quantityInputType.toString() === 'lcatQty') {
+            $scope[dataSetName][id]['lcatSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['lcatQty'] = parseInt(value)
+            // console.log($scope[dataSetName][id]['lcatSubTotal'])
+        }
+        // console.log($scope.qi_project_data)
+    }
+
+    $scope.save_quantity_input_data = function () {
+        console.log("clicked save_quantity_input_data function")
+        var obj = JSON.stringify({
+            "projectId": $scope.project_id_qi,
+            "projectStatus": $scope.project_status_qi,
+            "result": "",
+            "massage": "",
+            "projectData": $scope.qi_project_data,
+        })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/quantity_input/saveAndUpdate',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+
+        })
+    }
+
 	
 	//project list
 	$scope.get_all_projects = function(){

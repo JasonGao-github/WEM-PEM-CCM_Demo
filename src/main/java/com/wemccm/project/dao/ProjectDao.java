@@ -28,6 +28,8 @@ public interface ProjectDao {
 
 	public User getUser(Integer id);
 
+	public String getTypeName(Integer typeId);
+
 //	List<FindPageRequestDto> selectPage(List<FindPageRequestDto> dto);
 
 }

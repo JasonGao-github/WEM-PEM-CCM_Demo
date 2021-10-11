@@ -23,6 +23,32 @@
 	</select>
 
 
+	<select id="updateAvoidedCostassetReplacementIterm"
+		parameterType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
+		update avoidedcostassetreplacementiterm 
+		set id =#{id} 
+		<if test="name!=null and name!=''">
+			,name=#{name}
+		</if>
+		<if test="stdLife!=null and stdLife!=''">
+			,stdLife=#{stdLife}
+		</if>
+		<if test="unit!=null and unit!=''">
+			,unit=#{unit}
+		</if>
+		<if test="unitCost!=null and unitCost!=''">
+			,unitCost=#{unitCost}
+		</if>
+		<if test="maintenanceCost!=null and maintenanceCost!=''">
+			,maintenanceCost=#{maintenanceCost}
+		</if>
+		<if test="vegetationManagementCost!=null and vegetationManagementCost!=''">
+			,vegetationManagementCost=#{vegetationManagementCost} 
+		</if>
+		where id =#{id} 
+
+	</select>
+	
 
 		<select id="deleteAvoidedCostassetReplacementIterm"
 
