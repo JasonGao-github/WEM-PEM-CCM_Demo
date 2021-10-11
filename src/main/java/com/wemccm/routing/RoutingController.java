@@ -47,6 +47,13 @@ public class RoutingController {
 
         return "project";// test.jsp
     }
+    
+
+    @RequestMapping(value = "/view_project_page")
+    public String viewProjectRouting() {
+
+        return "project";// test.jsp
+    }
 
     @RequestMapping(value = "/ccf_page")
     public String ccfRouting() {

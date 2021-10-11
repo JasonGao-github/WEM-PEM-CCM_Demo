@@ -73,13 +73,13 @@
               <tr ng-repeat="project in project_list">
                 <th scope="row">{{project.inquiryNumber}}</th>
                 <td>{{project.projectTitle}}</td>
-                <td>{{project_types[project.projectTypeId - 1].name}}</td>
+                <td>{{project.projectType}}</td>
                 <td>{{project.firstName + project.lastName}}</td>
                 <td>{{project.statues}}</td>
                 <td>{{project.jemenaWBS}}</td>
                 <td>{{project.zinfraWBS}}</td>
                 <td>{{project.createDate}}</td>
-                <td><button class="share">View</button></td>
+                <td><button class="share" ng-click="view_project(project.projectId)" >View</button></td>
               </tr>
             </tbody>
           </table>

@@ -958,6 +958,22 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	  var time = date + ' ' + month + ' ' + year;
 	  return time;
 	}
+	
+	$scope.view_project = function(id){
+		var obj = JSON.stringify({
+			projectStatus: "working",
+			projectId: id
+		})
+		$http({
+            method: 'POST',
+            url: url + '/updateSession',
+            data: obj
+        }).then(function mySuccess(response) {
+            $window.location.href = '/view_project_page';
+			console.log(response.data)
+        })
+		
+	}
 }])
 
 
