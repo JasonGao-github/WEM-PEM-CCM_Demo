@@ -914,6 +914,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			})
         }).then(function mySuccess(response) {
 			$scope.project_list = response.data.content
+			change_projects_date_format();
         })
 		
 		 $http.get('/selectAllProjectType').then(function (response) {
@@ -922,7 +923,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	}
 	
 	$scope.search_project = function(){
-		var obj = json.stringify({
+		var obj = JSON.stringify({
 			projectTitle: $scope.projectTitle,
 			jemenaWBS: $scope.jemenaWBS,
 			inquiryNumber: $scope.inquiryNumber,
@@ -934,12 +935,28 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		$http({
             method: 'POST',
             url: url + '/findPage',
-            data: JSON.stringify({})
+            data: obj
         }).then(function mySuccess(response) {
-			$scope.project_list = response.data
+			$scope.project_list = response.data.content
+			change_projects_date_format();
         })
 	}
-
+	
+	function change_projects_date_format(){
+		for(let i = 0; i < $scope.project_list.length; i++){
+			$scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
+		}
+	}
+	
+	function timeConverter(UNIX_timestamp){
+	  var a = new Date(UNIX_timestamp);
+	  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+	  var year = a.getFullYear();
+	  var month = months[a.getMonth()];
+	  var date = a.getDate();
+	  var time = date + ' ' + month + ' ' + year;
+	  return time;
+	}
 }])
 
 
