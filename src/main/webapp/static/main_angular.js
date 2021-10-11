@@ -910,6 +910,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
             $scope.qi_project_data = response_payload['projectData']
             $scope.project_id_qi = response_payload['projectId']
+            $scope.project_status_qi = response_payload['projectStatus']
             console.log($scope.qi_project_data)
 
             if (response_payload['projectStatus'].toString() === 'new') {
@@ -921,7 +922,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                 $scope.sub_assemblies_data_all = $scope.qi_project_data[4]['groupData']
                 $scope.string_bare_conductors_data_all = $scope.qi_project_data[5]['groupData']
             } else {
-
+                console.log("Old Project - QI")
+                $scope.kV_data_all = $scope.qi_project_data[0]['groupData']
+                $scope.hV_data_all = $scope.qi_project_data[1]['groupData']
+                $scope.lV_data_all = $scope.qi_project_data[2]['groupData']
+                $scope.hV_line_data_all = $scope.qi_project_data[3]['groupData']
+                $scope.sub_assemblies_data_all = $scope.qi_project_data[4]['groupData']
+                $scope.string_bare_conductors_data_all = $scope.qi_project_data[5]['groupData']
             }
         })
     }
@@ -955,27 +962,20 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         console.log("clicked save_quantity_input_data function")
         var obj = JSON.stringify({
             "projectId": $scope.project_id_qi,
-            "projectStatus": "",
+            "projectStatus": $scope.project_status_qi,
             "result": "",
             "massage": "",
             "projectData": $scope.qi_project_data,
         })
-        // $http({
-        //     method: 'POST',
-        //     url: url + '/insertQuantityInput',
-        //     data: obj
-        // }).then(function mySuccess(response) {
-        //     console.log(response)
-        //     var status = response.data['result']
-        //     console.log(status)
-        //     if (status.toString() === 'success') {
-        //         $scope.scopeAssumptionItemDescriptionDataSuccess = true
-        //         $scope.scopeAssumptionItemDescriptionDataError = false
-        //     } else {
-        //         $scope.scopeAssumptionItemDescriptionDataSuccess = false
-        //         $scope.scopeAssumptionItemDescriptionDataError = true
-        //     }
-        // })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/quantity_input/saveAndUpdate',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+
+        })
     }
 
 }])
