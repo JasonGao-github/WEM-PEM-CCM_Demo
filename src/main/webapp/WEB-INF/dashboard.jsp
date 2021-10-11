@@ -74,7 +74,7 @@
                 <th scope="row">{{project.inquiryNumber}}</th>
                 <td>{{project.projectTitle}}</td>
                 <td>{{project_types[project.projectTypeId - 1].name}}</td>
-                <td>{{project.userId}}</td>
+                <td>{{project.firstName + project.lastName}}</td>
                 <td>{{project.statues}}</td>
                 <td>{{project.jemenaWBS}}</td>
                 <td>{{project.zinfraWBS}}</td>
