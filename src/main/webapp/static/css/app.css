@@ -302,3 +302,11 @@ ul.pagination li a.active {
 .modal-backdrop {
 	z-index: -1 !important;
 }
+
+@media print{ 
+    body, html, #page-container, .scrollable-page, .ps, .panel {
+        height: 100% !important;
+        width: 100% !important;
+        display: inline-block;
+    }
+}

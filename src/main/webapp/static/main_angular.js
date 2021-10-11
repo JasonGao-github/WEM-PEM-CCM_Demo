@@ -901,7 +901,44 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             }
         })
     }
-
+	
+	//project list
+	$scope.get_all_projects = function(){
+		
+		$http({
+            method: 'POST',
+            url: url + '/findPage',
+            data: JSON.stringify({
+				pageNum : 1,
+				pageSize: 6
+			})
+        }).then(function mySuccess(response) {
+			$scope.project_list = response.data.content
+        })
+		
+		 $http.get('/selectAllProjectType').then(function (response) {
+            $scope.project_types = response.data;
+        });
+	}
+	
+	$scope.search_project = function(){
+		var obj = json.stringify({
+			projectTitle: $scope.projectTitle,
+			jemenaWBS: $scope.jemenaWBS,
+			inquiryNumber: $scope.inquiryNumber,
+			jemenaSapPmOrder: $scope.jemenaSapPmOrder,
+			zinfraWBS: $scope.zinfraWBS,
+			projectTypeId: $scope.projectTypeId,
+			supplyAddress: $scope.supplyAddress
+		})
+		$http({
+            method: 'POST',
+            url: url + '/findPage',
+            data: JSON.stringify({})
+        }).then(function mySuccess(response) {
+			$scope.project_list = response.data
+        })
+	}
 
 }])
 

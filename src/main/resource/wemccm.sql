@@ -59,7 +59,7 @@ CREATE TABLE `uplaodedfiles`  (
   `localURL` varchar(255) ,
   `s3URL` varchar(255) ,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 CREATE TABLE `assetrelocation`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inquiryNumber` int(11) NULL DEFAULT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE `assetrelocation`  (
   `customerResponsibleOfficer` varchar(255) ,
   `leaseorEasementifrequired` varchar(255) ,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 
 
@@ -112,7 +112,7 @@ CREATE TABLE `urd`  (
   `otherJobSpecificRequirements` varchar(255) ,
   `projectId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 CREATE TABLE `negotiatedconnection`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -145,7 +145,7 @@ CREATE TABLE `negotiatedconnection`  (
   `networkExtensionorAugmentation` varchar(255) ,
   `projectId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) 
+) ;
 
 CREATE TABLE `connectionhandover`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
