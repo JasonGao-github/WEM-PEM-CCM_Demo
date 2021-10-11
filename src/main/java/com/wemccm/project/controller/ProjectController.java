@@ -15,7 +15,6 @@ import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectPojo;
-import com.wemccm.common.pojo.wholeUserPojo;
 import com.wemccm.project.service.ProjectService;
 
 @RestController

@@ -308,6 +308,9 @@ CREATE TABLE `customercontribution`  (
   `jemenaScopeOfWork` varchar(32)  NULL DEFAULT NULL,
   `jemenaScopeExclusions` varchar(32)  NULL DEFAULT NULL,
   `assumption` varchar(32)  NULL DEFAULT NULL,
+  `isLCTA` varchar(32)  NULL DEFAULT NULL,
+  `isNonConstestable` varchar(32)  NULL DEFAULT NULL,
+  `isAvoidCosts` varchar(32)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `customercontributionauthoris`  (
@@ -446,20 +449,20 @@ CREATE TABLE `quantityinput`  (
   `projectId` int(11) NULL DEFAULT NULL,
   `quantityInputBasicDataId` int(11) NULL DEFAULT NULL,
   `unit` varchar(32) NULL DEFAULT NULL,
-  `labour` double(10, 2) NULL DEFAULT NULL,
-  `material` double(10, 2) NULL DEFAULT NULL,
-  `plant` double(10, 2) NULL DEFAULT NULL,
-  `subcontract` double(10, 2) NULL DEFAULT NULL,
-  `unitRate` double(10, 2) NULL DEFAULT NULL,
-  `manhours` double(10, 2) NULL DEFAULT NULL,
-  `actuals` int(11) NULL DEFAULT NULL,
-  `recouverable` int(11) NULL DEFAULT NULL,
-  `jemena` int(11) NULL DEFAULT NULL,
-  `lcat` int(11) NULL DEFAULT NULL,
-  `actualsSubTotal` double(10, 2) NULL DEFAULT NULL,
-  `recouverableSubTotal` double(10, 2) NULL DEFAULT NULL,
-  `jemenaSubTotal` double(10, 2) NULL DEFAULT NULL,
-  `lcatSubTotal` double(10, 2) NULL DEFAULT NULL,
+  `labour` double(10, 2) NULL DEFAULT 0,
+  `material` double(10, 2) NULL DEFAULT 0,
+  `plant` double(10, 2) NULL DEFAULT 0,
+  `subcontract` double(10, 2) NULL DEFAULT 0,
+  `unitRate` double(10, 2) NULL DEFAULT 0,
+  `manhours` double(10, 2) NULL DEFAULT 0,
+  `actuals` int(11) NULL DEFAULT 0,
+  `recouverable` int(11) NULL DEFAULT 0,
+  `jemena` int(11) NULL DEFAULT 0,
+  `lcat` int(11) NULL DEFAULT 0,
+  `actualsSubTotal` double(10, 2) NULL DEFAULT 0,
+  `recouverableSubTotal` double(10, 2) NULL DEFAULT 0,
+  `jemenaSubTotal` double(10, 2) NULL DEFAULT 0,
+  `lcatSubTotal` double(10, 2) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `quantityinputbasicdata`  (
@@ -468,12 +471,12 @@ CREATE TABLE `quantityinputbasicdata`  (
   `code` varchar(32) ,
   `description` varchar(32) ,
   `unit` varchar(32) ,
-  `labour` double(10, 2) ,
-  `material` double(10, 2) ,
-  `plant` double(10, 2) ,
-  `subcontract` double(10, 2) ,
-  `unitRate` double(10, 2) ,
-  `manhours` double(10, 2) ,
+  `labour` double(10, 2) NULL DEFAULT 0,
+  `material` double(10, 2) NULL DEFAULT 0,
+  `plant` double(10, 2) NULL DEFAULT 0,
+  `subcontract` double(10, 2) NULL DEFAULT 0,
+  `unitRate` double(10, 2) NULL DEFAULT 0,
+  `manhours` double(10, 2) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ;
 CREATE TABLE `quantityinputitermgroup`  (

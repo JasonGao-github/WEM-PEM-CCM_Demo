@@ -7,34 +7,68 @@ import com.wemccm.common.entity.CustomerContributionAuthoris;
 
 public class CustomerContributionDetailPojo {
 
-
-	
 	// from project
 	private String statues;
 	private Date createDate;
 	private String version;
-	
+
 	// from cc
-	private Integer id;   //customerContributionId
+	private Integer id; // customerContributionId
 	private Integer projectId;
 	private String jemenaWBS;
 	private String inquiryNumber;
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
 	private String projectTitle;
-	
+
 	private String projectType;
 	private String supplyAddress;
 	private String customerReasonForWorks;
 	private String customerScopeOfWork;
 	private String jemenaScopeOfWork;
-	
+
 	private String jemenaScopeExclusions;
 	private String assumption;
+
+	private String isLCTA;
+	private String isNonConstestable;
+	private String isAvoidCosts;
 
 	List<CustomerContributionPricePojo> priceList;
 
 	List<CustomerContributionAuthoris> authorList;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getIsLCTA() {
+		return isLCTA;
+	}
+
+	public void setIsLCTA(String isLCTA) {
+		this.isLCTA = isLCTA;
+	}
+
+	public String getIsNonConstestable() {
+		return isNonConstestable;
+	}
+
+	public void setIsNonConstestable(String isNonConstestable) {
+		this.isNonConstestable = isNonConstestable;
+	}
+
+	public String getIsAvoidCosts() {
+		return isAvoidCosts;
+	}
+
+	public void setIsAvoidCosts(String isAvoidCosts) {
+		this.isAvoidCosts = isAvoidCosts;
+	}
 
 	public List<CustomerContributionPricePojo> getPriceList() {
 		return priceList;
@@ -51,12 +85,7 @@ public class CustomerContributionDetailPojo {
 	public void setAuthorList(List<CustomerContributionAuthoris> authorList) {
 		this.authorList = authorList;
 	}
-	
-	
-	
-	
-	
-	
+
 	public Integer getProjectId() {
 		return projectId;
 	}
@@ -192,7 +221,5 @@ public class CustomerContributionDetailPojo {
 	public void setAssumption(String assumption) {
 		this.assumption = assumption;
 	}
-
-
 
 }

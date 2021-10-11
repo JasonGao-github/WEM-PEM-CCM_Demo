@@ -39,13 +39,13 @@ public class S3Utils {
 		return null;
 	}
 
-	// for test
-	public static void main(String[] args) throws IOException {
-		S3Utils s = new S3Utils();
-		File uploadFile = new File("/Users/gaoxiang/Desktop/1.docx");
-		String uploadKey = "12";
-		String ss = s.uploadToS3(uploadFile, uploadKey);
-		System.out.println(">>>" + ss);
-	}
+//	// for test
+//	public static void main(String[] args) throws IOException {
+//		S3Utils s = new S3Utils();
+//		File uploadFile = new File("/Users/gaoxiang/Desktop/1.docx");
+//		String uploadKey = "12";
+//		String ss = s.uploadToS3(uploadFile, uploadKey);
+//		System.out.println(">>>" + ss);
+//	}
 
 }
