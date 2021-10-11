@@ -146,7 +146,13 @@ CurrentOccupyPojo放到pojo包里，之前所在的包删掉。另外注意包�
 （上传和下载文件还需要AWS的S3，这个等我调试完了再加。）
 
 ---------------------------------------------------------------------------
-1.UML图里红色表示的表格，增加一个listAll和一个DeleteById接口。测试完成之后，把接口写到api文档里。
+UML图里红色表示的表格，增加updata接口
+
+/findPage 添加user name     FN 和LN
+
+add everything to API.doc
+
+
 
 
 

@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.wemccm.common.entity.CustomerContributionPrice;
 import com.wemccm.common.entity.CustomerContributionPriceType;
 import com.wemccm.common.entity.Project;
+import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
@@ -47,6 +48,19 @@ public class ProjectService {
 		PageHelper.startPage(pageNum, pageSize);
 		List<FindPageRequestDto> dprdto = projectDao.selectPage(dto);
 
+		for(FindPageRequestDto dp:dprdto) {
+			Integer id=dp.getUserId();
+			User u=projectDao.getUser(id);
+			dp.setLastName(u.getFirstName());
+			dp.setFirstName(u.getLastName());
+			
+		}
+		
+		
+		
+		
+		
+		
 //		System.out.println(dprdto.get(0).getId());
 //		pageResult.setPageNum(pageInfo.getPageNum());
 //		pageResult.setPageSize(pageInfo.getPageSize());

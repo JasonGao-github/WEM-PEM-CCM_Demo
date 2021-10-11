@@ -148,6 +148,17 @@
 
 
     </select>
+    
+    
+    
+    <select id="getUser"
+            resultType="com.wemccm.common.entity.User"
+            parameterType="Integer">
+       SELECT * from user where user.id=#{userId};
+           
+    </select>
+
+
 
 
 </mapper>
