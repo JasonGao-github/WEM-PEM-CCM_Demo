@@ -7,7 +7,7 @@ public class FindPageRequestDtoPojo extends PageRequest {
 	private String inquiryNumber;
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
-	private Integer projectTypeId;
+	private String projectType;
 	private String supplyAddress;
 	public String getProjectTitle() {
 		return projectTitle;
@@ -39,11 +39,11 @@ public class FindPageRequestDtoPojo extends PageRequest {
 	public void setZinfraWBS(String zinfraWBS) {
 		this.zinfraWBS = zinfraWBS;
 	}
-	public Integer getProjectTypeId() {
-		return projectTypeId;
+	public String getProjectType() {
+		return projectType;
 	}
-	public void setProjectTypeId(Integer projectTypeId) {
-		this.projectTypeId = projectTypeId;
+	public void setProjectType(String projectType) {
+		this.projectType = projectType;
 	}
 	public String getSupplyAddress() {
 		return supplyAddress;

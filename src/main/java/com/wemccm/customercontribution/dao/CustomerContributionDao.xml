@@ -32,8 +32,8 @@
 		<if test="projectTitle!=null and projectTitle!=''">
 			,projectTitle = #{projectTitle}
 		</if>
-		<if test="projectTypeId!=null and projectTypeId!=''">
-			,projectTypeId = #{projectTypeId}
+		<if test="projectType!=null and projectType!=''">
+			,projectType = #{projectType}
 		</if>
 		<if test="supplyAddress!=null and supplyAddress!=''">
 			,supplyAddress = #{supplyAddress}
