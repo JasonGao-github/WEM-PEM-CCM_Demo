@@ -43,6 +43,8 @@ public interface AvoidedCostDao {
 
 	public void deleteAvoidedCostassetReplacementIterm(IdPojo requestPojo);
 
+	public void updateAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm requestPojo);
+
 	
 	
 	

@@ -88,6 +88,11 @@ public class FIMInputService {
 		return l;
 	}
 
+	public void updateFIMinputIterm(FIMinputItermSubTypeTypePojo requestPojo) {
+		Dao.updateFIMinputIterm(requestPojo);
+		
+	}
+
 //	public void insertFIMinputIterm(List<FIMinputIterm> pojoList) {
 //		for (FIMinputIterm pojo : pojoList) {
 //			Dao.insertFIMinputIterm(pojo);

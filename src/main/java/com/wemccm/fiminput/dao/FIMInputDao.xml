@@ -96,6 +96,25 @@
 	</select>
 	
 	
+	<select id="updateFIMinputIterm"
+		parameterType="com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo">
+		update fiminputiterm  
+		set  id = #{id} 
+		<if test="fIMinputSubTypeID!=null and fIMinputSubTypeID!=''">
+			,fIMinputSubTypeID=#{fIMinputSubTypeID}
+		</if>
+		<if test="currency!=null and currency!=''">
+			,currency=#{currency}
+		</if>
+		<if test="description!=null and description!=''">
+			,description=#{description}
+		</if>
+		<if test="unitCost!=null and unitCost!=''">
+			,unitCost=#{unitCost} 
+		</if>
+		 where id = #{id} 
+
+	</select>
 	
 	
 		<select id="deleteFIMinputIterm"

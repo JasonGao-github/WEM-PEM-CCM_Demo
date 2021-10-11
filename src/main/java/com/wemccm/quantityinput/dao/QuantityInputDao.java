@@ -37,4 +37,6 @@ public interface QuantityInputDao {
 
 	List<QuantityInputBasicDataGroupPojo> listAllQuantityInputBasicData(Integer projectId);
 
+	void updateQuantityInputBasicData(QuantityInputBasicDataGroupPojo requestPojo);
+
 }

@@ -2,9 +2,12 @@ package com.wemccm.common.pojo;
 
 public class NonContestableProjectComponentTypePojo {
 	private Integer id;
+	
 	private Integer projectTypeId;
 	private double cost;
 	private String description;
+	
+	
 	private String name;
 	public Integer getId() {
 		return id;

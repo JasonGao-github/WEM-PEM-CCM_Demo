@@ -73,6 +73,16 @@ public class FIMInputController {
 		return l;
 	}
 	
+	@RequestMapping(value = "/updateFIMinputIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult updateFIMinputIterm(
+			@RequestBody FIMinputItermSubTypeTypePojo requestPojo) {
+
+
+		 serivce.updateFIMinputIterm(requestPojo);
+		return new ResponseResult();
+	}
+	
 	@RequestMapping(value = "/deleteFIMinputIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult deleteFIMinputIterm(

@@ -98,6 +98,10 @@ public class NonContestableService {
 		return "00";
 
 	}
+	
+	
+	
+	
 
 	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId) {
 		List<NonContestableOtherCostsItemTypePojo> l = Dao.listAllNonContestableOtherCostsIterm(projectId);
@@ -109,7 +113,28 @@ public class NonContestableService {
 		Dao.deleteNonContestableOtherCostsIterm(requestPojo);
 		
 	}
-
+	
+	
+	public void updateNonContestableOtherCostsIterm(NonContestableOtherCostsItemTypePojo requestPojo) {
+//		IdPojo  pojo=new IdPojo();
+//		pojo.setId(requestPojo.getId());
+//		Dao.deleteNonContestableOtherCostsIterm(pojo);
+		
+		Dao.updateNonContestableOtherCostsIterm(requestPojo);
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public void deleteNonContestableProjectComponent(IdPojo requestPojo) {
 		Dao.deleteNonContestableProjectComponent(requestPojo);
 		
@@ -120,5 +145,12 @@ public class NonContestableService {
 
 		return l;
 	}
+
+	public void updateNonContestableProjectComponent(NonContestableProjectComponentTypePojo requestPojo) {
+		Dao.updateNonContestableProjectComponent(requestPojo);
+		
+	}
+
+
 
 }

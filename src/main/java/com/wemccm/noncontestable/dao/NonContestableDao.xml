@@ -15,14 +15,14 @@
 		projectTypeId = #{projectTypeId}
 
 	</select>
-	
-	
-		<select id="deleteNonContestableProjectComponent"
+
+
+	<select id="deleteNonContestableProjectComponent"
 
 		parameterType="com.wemccm.common.pojo.IdPojo">
 
-			DELETE FROM noncontestableprojectcomponent
-WHERE id= #{id}
+		DELETE FROM noncontestableprojectcomponent
+		WHERE id= #{id}
 
 	</select>
 
@@ -54,11 +54,12 @@ WHERE id= #{id}
 		resultType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
 		SELECT ci.*,t.name
 		FROM noncontestableothercostsiterm as ci
-		
+
 		left join noncontestableothercosts as oc
-		on ci.id=oc.nonContestableOtherCostsItemId
-		
-			left join noncontestabletype as t
+		on
+		ci.id=oc.nonContestableOtherCostsItemId
+
+		left join noncontestabletype as t
 		on ci.nonContestableTypeId=t.id
 
 		WHERE
@@ -66,21 +67,21 @@ WHERE id= #{id}
 
 	</select>
 
-	
-		<select id="deleteNonContestableOtherCostsIterm"
+
+	<select id="deleteNonContestableOtherCostsIterm"
 
 		parameterType="com.wemccm.common.pojo.IdPojo">
 
-			DELETE FROM noncontestableothercostsiterm
-WHERE id= #{id}
+		DELETE FROM noncontestableothercostsiterm
+		WHERE id= #{id}
 
 	</select>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	<select id="insertProjectNonContestableProjectComponent"
 		parameterType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
 
@@ -113,7 +114,7 @@ WHERE id= #{id}
 		description =#{description}
 
 	</select>
-	
+
 	<select id="getNonContestableOtherCostsItemByDescription"
 		parameterType="String"
 		resultType="com.wemccm.common.entity.NonContestableOtherCostsItem">
@@ -163,7 +164,8 @@ WHERE id= #{id}
 		ON
 		ppc.nonContestableProjectComponentId=pc.id
 
-		WHERE ppc.projectId=#{projectId}
+		WHERE
+		ppc.projectId=#{projectId}
 
 	</select>
 
@@ -182,13 +184,14 @@ WHERE id= #{id}
 		projectnoncontestableprojectcomponent as ppc
 		ON
 		ppc.nonContestableProjectComponentId=pc.id
-		
+
 		LEFT JOIN
 		noncontestabletype as t
 		ON
 		pc.projectTypeId=t.id
 
-		WHERE ppc.projectId=#{projectId}
+		WHERE
+		ppc.projectId=#{projectId}
 
 	</select>
 
@@ -229,8 +232,46 @@ WHERE id= #{id}
 
 
 
+	<select id="updateNonContestableOtherCostsIterm"
+		parameterType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
+		update noncontestableothercostsiterm
+		set id =#{id} 
+		<if test="unit!=null and unit!=''">
+			,unit=#{unit}
+		</if>
+		<if test="rate!=null and rate!=''">
+			,rate=#{rate}
+		</if>
+		<if test="nonContestableTypeId!=null and nonContestableTypeId!=''">
+			,nonContestableTypeId=#{nonContestableTypeId}
+		</if>
+		<if test="description!=null and description!=''">
+			,description=#{description}
+		</if>
+
+		where id =#{id}
+
+	</select>
 
 
+
+	<select id="updateNonContestableProjectComponent"
+		parameterType="com.wemccm.common.pojo.NonContestableProjectComponentTypePojo">
+		update noncontestableprojectcomponent
+		set id =#{id} 
+		<if test="projectTypeId!=null and projectTypeId!=''">
+			,projectTypeId=#{projectTypeId}
+		</if>
+		<if test="cost!=null and cost!=''">
+			,cost=#{cost}
+		</if>
+		<if test="description!=null and description!=''">
+			,description=#{description}
+		</if>
+
+		where id =#{id}
+
+	</select>
 
 
 

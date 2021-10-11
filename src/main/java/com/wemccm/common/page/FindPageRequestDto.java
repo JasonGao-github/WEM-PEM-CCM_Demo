@@ -31,6 +31,10 @@ public class FindPageRequestDto extends PageRequest {
 	private String lastName;
 	
 	
+	//projectType
+	private String projectTypeName;
+	
+	
 	
 	
 	
@@ -117,6 +121,12 @@ public class FindPageRequestDto extends PageRequest {
 	}
 	public void setSupplyAddress(String supplyAddress) {
 		this.supplyAddress = supplyAddress;
+	}
+	public String getProjectTypeName() {
+		return projectTypeName;
+	}
+	public void setProjectTypeName(String projectTypeName) {
+		this.projectTypeName = projectTypeName;
 	}
 
 	

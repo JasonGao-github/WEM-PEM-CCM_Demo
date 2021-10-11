@@ -46,13 +46,26 @@ public interface NonContestableDao {
 	public NonContestableProjectComponent getNonContestableProjectComponentByDescription(String description);
 
 	public NonContestableOtherCostsItem getNonContestableOtherCostsItemByDescription(String description);
+	
+	
 
 	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId);
 
 	public void deleteNonContestableOtherCostsIterm(IdPojo requestPojo);
 
+	public void updateNonContestableOtherCostsIterm(NonContestableOtherCostsItemTypePojo requestPojo);
+	
+	
+	
+	
+	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId);
+
 	public void deleteNonContestableProjectComponent(IdPojo requestPojo);
 
-	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId);
+	public void updateNonContestableProjectComponent(NonContestableProjectComponentTypePojo requestPojo);
+
+
+
+
 
 }

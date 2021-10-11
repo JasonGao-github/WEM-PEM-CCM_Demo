@@ -96,4 +96,9 @@ public class QuantityInputService {
 		return l;
 	}
 
+	public void updateQuantityInputBasicData(QuantityInputBasicDataGroupPojo requestPojo) {
+		qiDao.updateQuantityInputBasicData(requestPojo);
+		
+	}
+
 }

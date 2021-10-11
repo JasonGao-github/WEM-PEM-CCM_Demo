@@ -7,6 +7,9 @@ public class NonContestableOtherCostsItemTypePojo {
 	private Double rate;
 	private String description;
 	private String name;
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}
