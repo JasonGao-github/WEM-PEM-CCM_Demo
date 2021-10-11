@@ -11,6 +11,7 @@ import com.wemccm.common.entity.QuantityInputItermGroup;
 import com.wemccm.common.pojo.QuantityInputDetailsPojo;
 import com.wemccm.common.pojo.QuantityInputGetdataPojo;
 import com.wemccm.common.pojo.QuantityInputGroupDataPojo;
+import com.wemccm.common.pojo.QuantityInputSaveAndUpdatePojo;
 import com.wemccm.project.dao.QuantityInputDataDao;
 
 @Service
@@ -67,28 +68,28 @@ public class QuantityInputDataService {
 					if (null == pojo.getLcatQty()) {
 						pojo.setLcatQty(0);
 					}
-					if(null == pojo.getLcatSubTotal()) {
+					if (null == pojo.getLcatSubTotal()) {
 						pojo.setLcatSubTotal(0d);
 					}
-					if(null == pojo.getManhours()) {
+					if (null == pojo.getManhours()) {
 						pojo.setManhours(0d);
 					}
-					if(null == pojo.getMaterial()) {
+					if (null == pojo.getMaterial()) {
 						pojo.setMaterial(0d);
 					}
-					if(null == pojo.getPlant()) {
+					if (null == pojo.getPlant()) {
 						pojo.setPlant(0d);
 					}
-					if(null == pojo.getRecouverableQty()) {
+					if (null == pojo.getRecouverableQty()) {
 						pojo.setRecouverableQty(0);
 					}
-					if(null == pojo.getRecouverableSubTotal()) {
+					if (null == pojo.getRecouverableSubTotal()) {
 						pojo.setRecouverableSubTotal(0d);
 					}
-					if(null == pojo.getSubcontract()) {
+					if (null == pojo.getSubcontract()) {
 						pojo.setSubcontract(0d);
 					}
-					if(null == pojo.getUnitRate()) {
+					if (null == pojo.getUnitRate()) {
 						pojo.setUnitRate(0d);
 					}
 				}
@@ -102,6 +103,55 @@ public class QuantityInputDataService {
 		result.setProjectData(projectDataList);
 
 		return result;
+
+	}
+
+	public void saveAndUpdate(QuantityInputSaveAndUpdatePojo pojo) {
+
+		if ("new".equals(pojo.getProjectStatus())) {
+
+			List<QuantityInputDetailsPojo> projectDataList = pojo.getProjectData();
+			for (QuantityInputDetailsPojo quantityInputDetailsPojo : projectDataList) {
+
+				List<QuantityInputGroupDataPojo> groupDataList = quantityInputDetailsPojo.getGroupData();
+
+				for (QuantityInputGroupDataPojo groupDataPojo : groupDataList) {
+
+					groupDataPojo.setProjectId(pojo.getProjectId());
+					dao.saveToQantityInput(groupDataPojo);
+
+				}
+
+			}
+
+		}
+
+		if ("exist".equals(pojo.getProjectStatus())) {
+
+			List<QuantityInputDetailsPojo> projectDataList = pojo.getProjectData();
+			for (QuantityInputDetailsPojo quantityInputDetailsPojo : projectDataList) {
+
+				List<QuantityInputGroupDataPojo> groupDataList = quantityInputDetailsPojo.getGroupData();
+
+				for (QuantityInputGroupDataPojo groupDataPojo : groupDataList) {
+
+					// existing data
+					if (null != groupDataPojo.getQuantityInputId()) {
+
+						dao.updateQuantityInput(groupDataPojo);
+						// new data
+					} else {
+
+						groupDataPojo.setProjectId(pojo.getProjectId());
+						dao.saveToQantityInput(groupDataPojo);
+
+					}
+
+				}
+
+			}
+
+		}
 
 	}
 
