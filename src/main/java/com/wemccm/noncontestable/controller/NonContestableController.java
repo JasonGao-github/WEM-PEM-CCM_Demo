@@ -86,13 +86,21 @@ public class NonContestableController {
 		return l;
 	}
 	
-	
+//	@RequestMapping(value = "/updateNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public ResponseResult updateNonContestableOtherCostsIterm(
+//			@RequestBody NonContestableOtherCostsItemTypePojo requestPojo) {
+//
+//
+//		 serivce.updateNonContestableOtherCostsIterm(requestPojo);
+//		return new ResponseResult();
+//	}
 	
 	@RequestMapping(value = "/deleteNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult deleteNonContestableOtherCostsIterm(
 			@RequestBody IdPojo requestPojo) {
-		// find by nonContestableTypeId
+
 
 		 serivce.deleteNonContestableOtherCostsIterm(requestPojo);
 		return new ResponseResult();

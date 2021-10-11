@@ -22,7 +22,7 @@ public class FindPageRequestDto extends PageRequest {
 	private String inquiryNumber;
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
-	private Integer projectTypeId;
+	private Integer projectType;
 	private String supplyAddress;
 	
 	
@@ -107,10 +107,10 @@ public class FindPageRequestDto extends PageRequest {
 		this.zinfraWBS = zinfraWBS;
 	}
 	public Integer getProjectTypeId() {
-		return projectTypeId;
+		return projectType;
 	}
-	public void setProjectTypeId(Integer projectTypeId) {
-		this.projectTypeId = projectTypeId;
+	public void setProjectTypeId(Integer projectType) {
+		this.projectType = projectType;
 	}
 	public String getSupplyAddress() {
 		return supplyAddress;
