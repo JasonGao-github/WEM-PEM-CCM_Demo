@@ -32,8 +32,12 @@
             <span class="Jemena-WBS">
               Project Type
             </span>
-            <select class="form-select form-select-sm" aria-label=".form-select-sm " ng-model="projectTypeId">
-              <option ng-repeat="type in project_types" value="{{type.id}}">{{type.name}}</option>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm " ng-model="projectType">
+		        <option value="" selected disabled hidden>Select
+		            Project Type
+		        </option>
+		        <option value="NG">Negotiated Connection</option>
+		        <option value="URD">URD</option>
             </select>
           </div>
           <div>
