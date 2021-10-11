@@ -238,13 +238,6 @@
                             </div>
                         </li>
                     </div>
-                    <div>
-                        <%--              <span class="Group">--%>
-                        <%--                Group--%>
-                        <%--              </span>--%>
-                        <%--                        <i class='bx bx-chevrons-right'></i>--%>
-                        <%--                        <div class="group"></div>--%>
-                    </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-66kVConstruction" role="tabpanel"
@@ -322,111 +315,72 @@
                     <div class="tab-pane fade" id="nav-HVConstruction" role="tabpanel"
                          aria-labelledby="nav-tab-HVConstruction">
                         <div class="test">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-bordered">
                                 <thead id="title">
                                 <tr>
+                                    <th scope="col">Item Code</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Actuals</th>
-                                    <th scope="col">Recoverable</th>
-                                    <th scope="col">Jemena</th>
-                                    <th scope="col">LCTA</th>
-                                    <th scope="col">Unit</th>
-                                    <th scope="col">Labour</th>
-                                    <th scope="col">Material</th>
-                                    <th scope="col">Plant</th>
-                                    <th scope="col">Subcontract</th>
-                                    <th scope="col">Unit Rate</th>
+                                    <th scope="col">Actuals Quantity</th>
+                                    <th scope="col">Recoverable Quantity</th>
+                                    <th scope="col">Jemena Quantity</th>
+                                    <th scope="col">LCTA Quantity</th>
+                                    <th scope="col">Unit ($)</th>
+                                    <th scope="col">Labour ($)</th>
+                                    <th scope="col">Material ($)</th>
+                                    <th scope="col">Plant ($)</th>
+                                    <th scope="col">Subcontract ($)</th>
+                                    <th scope="col">Unit Rate ($)</th>
                                     <th scope="col">Manhours</th>
-                                    <th scope="col">Actuals Subtotal</th>
-                                    <th scope="col">Recoverable Subtotal</th>
-                                    <th scope="col">Jemena Subtotal</th>
-                                    <th scope="col">LCTA Subtotal</th>
+                                    <th scope="col">Actuals Subtotal ($)</th>
+                                    <th scope="col">Recoverable Subtotal ($)</th>
+                                    <th scope="col">Jemena Subtotal ($)</th>
+                                    <th scope="col">LCTA Subtotal ($)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                <tr ng-repeat="hV_data in hV_data_all track by $index">
+                                    <td>{{hV_data['code']}}</td>
+                                    <td>{{hV_data['description']}}</td>
+                                    <td><input type="text"
+                                               ng-model="hV_data['actualsQty']"
+                                               ng-change="qi_update_row(hV_data['actualsQty'], $index, 'hV_data_all', 'actualsQty')"
+                                               class="form-control"
+                                               value="{{hV_data['actualsQty']}}">
+                                    </td>
+                                    <td><input type="text" ng-model="hV_data['recouverableQty']"
+                                               ng-change="qi_update_row(hV_data['recouverableQty'], $index, 'hV_data_all', 'recouverableQty')"
+                                               class="form-control"
+                                               value="{{hV_data['recouverableQty']}}"></td>
+                                    <td><input type="text" ng-model="hV_data['jemenaQty']"
+                                               ng-change="qi_update_row(hV_data['jemenaQty'], $index, 'hV_data_all', 'jemenaQty')"
+                                               class="form-control"
+                                               value="{{hV_data['jemenaQty']}}"></td>
+                                    <td><input type="text" ng-model="hV_data['lcatQty']"
+                                               ng-change="qi_update_row(hV_data['lcatQty'], $index, 'hV_data_all', 'lcatQty')"
+                                               class="form-control"
+                                               value="{{hV_data['lcatQty']}}"></td>
+                                    <td>{{hV_data['unit']}}</td>
+                                    <td>{{hV_data['labour']}}</td>
+                                    <td>{{hV_data['material']}}</td>
+                                    <td>{{hV_data['plant']}}</td>
+                                    <td>{{hV_data['subcontract']}}</td>
+                                    <td>{{hV_data['unitRate']}}</td>
+                                    <td>{{hV_data['manhours']}}</td>
+                                    <td>{{hV_data['actualsSubTotal'] | number: 2 }}</td>
+                                    <td>{{hV_data['recouverableSubTotal'] | number: 2 }}</td>
+                                    <td>{{hV_data['jemenaSubTotal'] | number: 2 }}</td>
+                                    <td>{{hV_data['lcatSubTotal'] | number: 2 }}</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div>
-                  <span class="Total">
-                    Total
-                  </span>
-                            <div class="total">
+                        <div class="row">
+                            <div class="col-2">
+                                <h4>Total</h4>
                             </div>
-
-                            <button class="savebtn">
-                                Save
-                            </button>
-                            <button class="draft">
-                                Save as draft
-                            </button>
-                        </div>
-                        <div>
-                            <ul class="pagination">
-                                <li><a href="#">«</a></li>
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
+                            <div class="col-2">
+                                <h4>12345</h4>
+                            </div>
                         </div>
                     </div>
 
@@ -5160,6 +5114,13 @@
                                 <li><a href="#">»</a></li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <div class="row d-flex flex-row-reverse">
+                    <div class="col-lg-1 d-flex justify-content-end">
+                        <button type="button" class="btn btn-success"
+                                ng-click="save_quantity_input_data()">Save data
+                        </button>
                     </div>
                 </div>
             </div>

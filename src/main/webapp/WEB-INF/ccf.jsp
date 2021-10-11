@@ -312,11 +312,10 @@
                                 <div class="row d-flex flex-row-reverse">
                                     <div class="col-lg-1 d-flex justify-content-end">
 
-                                        <button type="button" class="btn btn-primary"
+                                        <button type="button" class="btn btn-success"
                                                 ng-click="create_customer_contribution()">Go to
                                             Quantity Input
                                         </button>
-
                                     </div>
                                 </div>
                             </form>
@@ -324,8 +323,6 @@
                     </div>
                 </div>
             </div>
-            <% int curr_page = 1; %>
-            <%@ include file="common/pagesBar.jspf" %>
         </div>
     </div>
 </section>

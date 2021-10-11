@@ -908,17 +908,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             var response_payload = response['data']
             console.log(response_payload)
 
-            var project_data = response_payload['projectData']
-            console.log(project_data)
+            $scope.qi_project_data = response_payload['projectData']
+            $scope.project_id_qi = response_payload['projectId']
+            console.log($scope.qi_project_data)
 
             if (response_payload['projectStatus'].toString() === 'new') {
                 console.log("New Project - QI")
-                $scope.kV_data_all = project_data[0]['groupData']
-                $scope.hV_data_all = project_data[1]['groupData']
-                $scope.lV_data_all = project_data[2]['groupData']
-                $scope.hV_line_data_all = project_data[3]['groupData']
-                $scope.sub_assemblies_data_all = project_data[4]['groupData']
-                $scope.string_bare_conductors_data_all = project_data[5]['groupData']
+                $scope.kV_data_all = $scope.qi_project_data[0]['groupData']
+                $scope.hV_data_all = $scope.qi_project_data[1]['groupData']
+                $scope.lV_data_all = $scope.qi_project_data[2]['groupData']
+                $scope.hV_line_data_all = $scope.qi_project_data[3]['groupData']
+                $scope.sub_assemblies_data_all = $scope.qi_project_data[4]['groupData']
+                $scope.string_bare_conductors_data_all = $scope.qi_project_data[5]['groupData']
             } else {
 
             }
@@ -929,20 +930,52 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         if (quantityInputType.toString() === 'actualsQty') {
             $scope[dataSetName][id]['actualsSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['actualsQty'] = parseInt(value)
             // console.log($scope[dataSetName][id]['actualsSubTotal'])
 
         } else if (quantityInputType.toString() === 'recouverableQty') {
             $scope[dataSetName][id]['recouverableSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['recouverableQty'] = parseInt(value)
             // console.log($scope[dataSetName][id]['recouverableSubTotal'])
 
         } else if (quantityInputType.toString() === 'jemenaQty') {
             $scope[dataSetName][id]['jemenaSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['jemenaQty'] = parseInt(value)
             // console.log($scope[dataSetName][id]['jemenaSubTotal'])
 
         } else if (quantityInputType.toString() === 'lcatQty') {
             $scope[dataSetName][id]['lcatSubTotal'] = parseInt(value) * $scope[dataSetName][id]['unitRate']
+            $scope[dataSetName][id]['lcatQty'] = parseInt(value)
             // console.log($scope[dataSetName][id]['lcatSubTotal'])
         }
+        // console.log($scope.qi_project_data)
+    }
+
+    $scope.save_quantity_input_data = function () {
+        console.log("clicked save_quantity_input_data function")
+        var obj = JSON.stringify({
+            "projectId": $scope.project_id_qi,
+            "projectStatus": "",
+            "result": "",
+            "massage": "",
+            "projectData": $scope.qi_project_data,
+        })
+        // $http({
+        //     method: 'POST',
+        //     url: url + '/insertQuantityInput',
+        //     data: obj
+        // }).then(function mySuccess(response) {
+        //     console.log(response)
+        //     var status = response.data['result']
+        //     console.log(status)
+        //     if (status.toString() === 'success') {
+        //         $scope.scopeAssumptionItemDescriptionDataSuccess = true
+        //         $scope.scopeAssumptionItemDescriptionDataError = false
+        //     } else {
+        //         $scope.scopeAssumptionItemDescriptionDataSuccess = false
+        //         $scope.scopeAssumptionItemDescriptionDataError = true
+        //     }
+        // })
     }
 
 }])
