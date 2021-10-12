@@ -17,6 +17,7 @@ import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.page.PageUtils;
+import com.wemccm.common.pojo.AddCurrentoccupyPojo;
 import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.common.util.SR;
 import com.wemccm.customercontribution.dao.CustomerContributionDao;
@@ -97,5 +98,12 @@ public class ProjectService {
 		return projectId;
 
 	}
+
+	public void addCurrentoccupy(AddCurrentoccupyPojo addCurrentoccupyPojo) {
+		// TODO Auto-generated method stub
+		projectDao.addCurrentoccupy(addCurrentoccupyPojo);
+	}
+
+
 
 }

@@ -9,6 +9,7 @@ import com.wemccm.common.entity.Project;
 import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
+import com.wemccm.common.pojo.AddCurrentoccupyPojo;
 import com.wemccm.common.pojo.projectPojo;
 
 @Mapper
@@ -29,6 +30,9 @@ public interface ProjectDao {
 	public User getUser(Integer id);
 
 	public String getTypeName(Integer typeId);
+
+	public void addCurrentoccupy(AddCurrentoccupyPojo addCurrentoccupyPojo);
+
 
 //	List<FindPageRequestDto> selectPage(List<FindPageRequestDto> dto);
 
