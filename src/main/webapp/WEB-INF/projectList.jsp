@@ -18,74 +18,117 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h1>Project List Page</h1>
-
+				<h3 style="margin: 1vh;">View all projects</h3>
 				<nav>
-					<div class="search_wrap search_wrap_1">
-						<div class="search_box">
-							<input type="text" class="input" placeholder="search...">
-							<div class="btn btn_common">
-								<i class='bx bx-search'></i>
-							</div>
-						</div>
+					<div>
+						<span class="Jemena-WBS"> Jemena WBS </span> <input class="try"
+							type="text"> <span class="Jemena-WBS"> Project
+							Title </span> <input class="try" type="text"> <span
+							class="Jemena-WBS"> Project Type </span> <select
+							class="form-select form-select-sm" aria-label=".form-select-sm ">
+							<option selected></option>
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+						</select>
+					</div>
+					<div>
+						<span class="Jemena-WBS"> Zinfra WBS </span> <input class="try"
+							type="text"> <span class="Jemena-WBS"> Inquiry
+							Number </span> <input class="try" type="text"> <span
+							class="Jemena-WBS"> Jemena SAP PM Order </span> <input
+							class="try" type="text">
 					</div>
 				</nav>
+				<div>
+					<button class="search">Search</button>
+				</div>
+				<div class="test">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Inquiry Number</th>
+								<th scope="col">Project Title</th>
+								<th scope="col">Project Type</th>
+								<th scope="col">User Created</th>
+								<th scope="col">Status</th>
+								<th scope="col">Jemena WBS</th>
+								<th scope="col">Zinfra WBS</th>
+								<th scope="col">Date</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">#1</th>
+								<td>Test</td>
+								<td>Type A</td>
+								<td>Yun</td>
+								<td>Working</td>
+								<td>test</td>
+								<td>test</td>
+								<td>4 Oct 2021</td>
+								<td><button class="share">View</button></td>
+							</tr>
+							<tr>
+								<th scope="row">#1</th>
+								<td>Test</td>
+								<td>Type A</td>
+								<td>Yun</td>
+								<td>Working</td>
+								<td>test</td>
+								<td>test</td>
+								<td>4 Oct 2021</td>
+								<td><button class="share">View</button></td>
+							</tr>
+							<tr>
+								<th scope="row">#1</th>
+								<td>Test</td>
+								<td>Type A</td>
+								<td>Yun</td>
+								<td>Working</td>
+								<td>test</td>
+								<td>test</td>
+								<td>4 Oct 2021</td>
+								<td><button class="share">View</button></td>
+							</tr>
+							<tr>
+								<th scope="row">#1</th>
+								<td>Test</td>
+								<td>Type A</td>
+								<td>Yun</td>
+								<td>Working</td>
+								<td>test</td>
+								<td>test</td>
+								<td>4 Oct 2021</td>
+								<td><button class="share">View</button></td>
+							</tr>
+							<tr>
+								<th scope="row">#1</th>
+								<td>Test</td>
+								<td>Type A</td>
+								<td>Yun</td>
+								<td>Working</td>
+								<td>test</td>
+								<td>test</td>
+								<td>4 Oct 2021</td>
+								<td><button class="share">View</button></td>
+							</tr>
+							<tr>
+								<th scope="row">#1</th>
+								<td>Test</td>
+								<td>Type A</td>
+								<td>Yun</td>
+								<td>Working</td>
+								<td>test</td>
+								<td>test</td>
+								<td>4 Oct 2021</td>
+								<td><button class="share">View</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Project Title</th>
-							<th scope="col">User</th>
-							<th scope="col">Status</th>
-							<th scope="col">Date</th>
-							<th scope="col">Share</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">Test</th>
-							<td>Yun-Tung</td>
-							<td>Working</td>
-							<td>4 Oct 2021</td>
-							<td><button class="share">Share</button></td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Working</td>
-							<td>4 Oct 2021</td>
-							<td><button class="share">Share</button></td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Jacob</td>
-							<td>Working</td>
-							<td>4 Oct 2021</td>
-							<td><button class="share">Share</button></td>
-						</tr>
-						<tr>
-							<th scope="row">4</th>
-							<td>Jacob</td>
-							<td>Working</td>
-							<td>4 Oct 2021</td>
-							<td><button class="share">Share</button></td>
-						</tr>
-						<tr>
-							<th scope="row">5</th>
-							<td>Jacob</td>
-							<td>Working</td>
-							<td>4 Oct 2021</td>
-							<td><button class="share">Share</button></td>
-						</tr>
-						<tr>
-							<th scope="row">6</th>
-							<td>Jacob</td>
-							<td>Working</td>
-							<td>4 Oct 2021</td>
-							<td><button class="share">Share</button></td>
-						</tr>
-					</tbody>
-				</table>
 
 				<nav aria-label="Page navigation">
 					<ul class="pagination">
@@ -100,6 +143,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						</a></li>
 					</ul>
 				</nav>
+
+
+
+
+
+
 
 
 			</div>
