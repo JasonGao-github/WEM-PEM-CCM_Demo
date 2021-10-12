@@ -157,8 +157,17 @@
        SELECT * from user where user.id=#{userId};
            
     </select>
+    
+    
+    
 
+    <select id="addCurrentoccupy"
+            parameterType="com.wemccm.common.pojo.AddCurrentoccupyPojo">
 
+        INSERT INTO currentoccupy (userId, projectId)
+        VALUES (#{userId}, #{projectId})
+
+    </select>
 
 
 </mapper>
