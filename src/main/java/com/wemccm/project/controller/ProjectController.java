@@ -46,7 +46,7 @@ public class ProjectController {
 		session.setAttribute("projectId", projectId);
 		session.setAttribute("projectStatus", "new");
 		
-		Integer userId=(Integer) session.getAttribute("userId");
+		String userId=(String) session.getAttribute("userId");
 		
 		AddCurrentoccupyPojo addCurrentoccupyPojo=new AddCurrentoccupyPojo();
 		addCurrentoccupyPojo.setProjectId(projectId);
