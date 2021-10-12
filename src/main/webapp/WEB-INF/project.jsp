@@ -3,6 +3,11 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    
+    /*
+    String projectId = (String) session.getAttribute("projectId").toString();
+	System.out.println("project id: " + projectId);
+	*/
 %>
 <%@ include file="common/checkSessionExist.jspf" %>
 
