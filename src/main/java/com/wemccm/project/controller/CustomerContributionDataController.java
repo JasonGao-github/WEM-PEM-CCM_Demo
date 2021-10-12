@@ -49,9 +49,9 @@ public class CustomerContributionDataController {
 
 		pojo.setProjectId(projectId);
 
-		service.saveAndupdate(pojo, projectStatus, projectId);
+		int newProjectId = service.saveAndupdate(pojo, projectStatus, projectId);
 
-		updateSession(projectId);
+		updateSession(newProjectId);
 
 		ProjectBasicPojo result = new ProjectBasicPojo();
 		result.setProjectId(projectId);
