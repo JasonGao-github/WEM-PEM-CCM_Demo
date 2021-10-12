@@ -24,11 +24,11 @@ public class CustomerContributionDataController {
 	@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
 	public CustomerControllerDatePojo getData() {
 
-//		int projectId = getProjectIdInSession();
-//		String projectStatus = getProjectStatusInSession();
+		int projectId = getProjectIdInSession();
+		String projectStatus = getProjectStatusInSession();
 
-		int projectId = 1;
-		String projectStatus = "exist";
+//		int projectId = 1;
+//		String projectStatus = "exist";
 
 		CustomerControllerDatePojo pojo = service.getData(projectId, projectStatus);
 
@@ -40,12 +40,12 @@ public class CustomerContributionDataController {
 	@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
 	public ProjectBasicPojo saveAndUpdate(@RequestBody CustomerControllerDatePojo pojo) {
 
-//		int projectId = getProjectIdInSession();
-//
-//		String projectStatus = getProjectStatusInSession();
+		int projectId = getProjectIdInSession();
 
-		int projectId = 1;
-		String projectStatus = "new";
+		String projectStatus = getProjectStatusInSession();
+
+//		int projectId = 1;
+//		String projectStatus = "new";
 
 		pojo.setProjectId(projectId);
 
