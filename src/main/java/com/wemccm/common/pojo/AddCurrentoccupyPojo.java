@@ -2,17 +2,17 @@ package com.wemccm.common.pojo;
 
 public class AddCurrentoccupyPojo {
 	private Integer projectId;
-	private String userId;
+	private Integer userId;
 	public Integer getProjectId() {
 		return projectId;
 	}
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	
