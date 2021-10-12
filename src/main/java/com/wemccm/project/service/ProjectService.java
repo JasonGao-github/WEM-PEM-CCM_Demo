@@ -50,11 +50,12 @@ public class ProjectService {
 		List<FindPageRequestDto> dprdto = projectDao.selectPage(dto);
 
 		for(FindPageRequestDto dp:dprdto) {
+			if(dp!=null) {
 			Integer id=dp.getUserId();
 			User u=projectDao.getUser(id);
 			dp.setLastName(u.getFirstName());
 			dp.setFirstName(u.getLastName());
-			
+			}
 		}
 		
 		
