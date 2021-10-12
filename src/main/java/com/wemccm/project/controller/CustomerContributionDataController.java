@@ -3,29 +3,62 @@ package com.wemccm.project.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.wemccm.common.pojo.CustomerControllerDatePojo;
 import com.wemccm.common.pojo.ProjectBasicPojo;
-import com.wemccm.common.pojo.QuantityInputGetdataPojo;
-import com.wemccm.common.pojo.QuantityInputSaveAndUpdatePojo;
+import com.wemccm.project.service.CustomerContributionDataService;
 
 @RestController
 @RequestMapping("/customer_contribution")
 public class CustomerContributionDataController {
 
-//	@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
-//	public QuantityInputGetdataPojo getData() {
+	@Autowired
+	private CustomerContributionDataService service;
+
+	@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
+	public CustomerControllerDatePojo getData() {
+
+		int projectId = getProjectIdInSession();
+		String projectStatus = getProjectStatusInSession();
+
+//		int projectId = 1;
+//		String projectStatus = "exist";
+
+		CustomerControllerDatePojo pojo = service.getData(projectId, projectStatus);
+
+		return pojo;
+
+	}
+
 //
-//	}
-//
-//	@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
-//	public ProjectBasicPojo saveAndUpdate(@RequestBody QuantityInputSaveAndUpdatePojo pojo) {
-//
-//	}
+	@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
+	public ProjectBasicPojo saveAndUpdate(@RequestBody CustomerControllerDatePojo pojo) {
+
+		int projectId = getProjectIdInSession();
+
+		String projectStatus = getProjectStatusInSession();
+
+//		int projectId = 1;
+//		String projectStatus = "new";
+
+		pojo.setProjectId(projectId);
+
+		service.saveAndupdate(pojo, projectStatus, projectId);
+
+		updateSession(projectId);
+
+		ProjectBasicPojo result = new ProjectBasicPojo();
+		result.setProjectId(projectId);
+		result.setResult("success");
+		return result;
+
+	}
 
 	private int getProjectIdInSession() {
 
@@ -40,6 +73,14 @@ public class CustomerContributionDataController {
 		HttpSession session = getSession();
 
 		return (String) session.getAttribute("projectStatus");
+	}
+
+	private void updateSession(int projectId) {
+
+		HttpSession session = getSession();
+		session.setAttribute("projectId", projectId);
+		session.setAttribute("projectStatus", "exist");
+
 	}
 
 	private HttpSession getSession() {

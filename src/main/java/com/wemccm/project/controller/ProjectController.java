@@ -13,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
+import com.wemccm.common.pojo.AddCurrentoccupyPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.project.service.ProjectService;
@@ -37,13 +38,21 @@ public class ProjectController {
 	@ResponseBody
 	public ResponseResult addProject(@RequestBody projectPojo pojo) {
 		// insert to table project and customercontribution
-		int projectId = service.addProject(pojo);
+		Integer projectId = service.addProject(pojo);
 
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
 		session.setAttribute("projectId", projectId);
 		session.setAttribute("projectStatus", "new");
+		
+		Integer userId=Integer.valueOf((String) session.getAttribute("userId"));
+		
+		AddCurrentoccupyPojo addCurrentoccupyPojo=new AddCurrentoccupyPojo();
+		addCurrentoccupyPojo.setProjectId(projectId);
+		addCurrentoccupyPojo.setUserId(userId);
+		service.addCurrentoccupy(addCurrentoccupyPojo);
+		
 		return new ResponseResult();
 	}
 
