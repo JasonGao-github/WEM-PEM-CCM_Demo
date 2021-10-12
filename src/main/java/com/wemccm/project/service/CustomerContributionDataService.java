@@ -53,7 +53,7 @@ public class CustomerContributionDataService {
 			project.setVersion("0");
 			pDao.addProject(project);
 			int newProjectId = pDao.getNewestId();
-			pojo.setProjectId(newProjectId);
+			pojo.getProjectData().setProjectId(newProjectId);
 			ccDao.saveCustomerContribution(pojo.getProjectData());
 			return newProjectId;
 		}
