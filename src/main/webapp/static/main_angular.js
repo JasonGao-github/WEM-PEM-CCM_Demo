@@ -995,7 +995,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             url: url + '/findPage',
             data: JSON.stringify({
 				pageNum : 1,
-				pageSize: 10
+				pageSize: 6
 			})
         }).then(function mySuccess(response) {
 			$scope.project_list = response.data.content
@@ -1015,7 +1015,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			inquiryNumber: $scope.inquiryNumber,
 			jemenaSapPmOrder: $scope.jemenaSapPmOrder,
 			zinfraWBS: $scope.zinfraWBS,
-			projectTypeId: $scope.projectTypeId,
+			projectType: $scope.projectType,
 			supplyAddress: $scope.supplyAddress
 		})
 		$http({
