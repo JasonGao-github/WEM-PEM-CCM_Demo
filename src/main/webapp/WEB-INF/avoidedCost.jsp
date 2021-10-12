@@ -62,7 +62,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						</ul>
 					</div>
 				</div>
-				<h1 style="margin: 2vh;">Avoided Cost Page</h1>
+				<h2 style="margin: 2vh; text-align: center; font-weight: 600;">Avoided Costs</h2>
 				<table class="table" ng-init="get_ac()">
 					<thead>
 						<tr>
@@ -198,10 +198,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				</table>
 				<button type="button" class="btn btn-primary"
 					ng-click="ac_submit_input()">submit</button>
-				<%
-					int curr_page = 5;
-				%>
-				<%@ include file="common/pagesBar.jspf"%>
+<%--				<%--%>
+<%--					int curr_page = 5;--%>
+<%--				%>--%>
+<%--				<%@ include file="common/pagesBar.jspf"%>--%>
 			</div>
 		</div>
 	</section>

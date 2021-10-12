@@ -62,7 +62,7 @@
                     </ul>
                 </div>
             </div>
-            <h2 style="margin: 2vh; text-align: center; font-weight: 600;">Financials Page</h2>
+            <h2 style="margin: 2vh; text-align: center; font-weight: 600;">Financials</h2>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="card shadow mt-5 mb-4">
