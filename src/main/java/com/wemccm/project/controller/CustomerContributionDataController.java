@@ -66,7 +66,7 @@ public class CustomerContributionDataController {
 
 		return (int) session.getAttribute("projectId");
 
-	}
+	}//
 
 	private String getProjectStatusInSession() {
 
