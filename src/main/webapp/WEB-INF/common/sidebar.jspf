@@ -14,6 +14,12 @@
         userType = (String) session.getAttribute("userType").toString();
         userId = (String) session.getAttribute("userId").toString();
     }
+    /*
+    if((String) session.getAttribute("projectId").toString() != null){
+        String pjId = (String) session.getAttribute("projectId").toString();
+        System.out.println("pjId: " + pjId);
+    }
+    */
 %>
 
 
