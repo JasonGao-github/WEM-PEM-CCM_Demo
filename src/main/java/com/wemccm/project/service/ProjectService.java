@@ -52,9 +52,14 @@ public class ProjectService {
 		for(FindPageRequestDto dp:dprdto) {
 			if(dp!=null) {
 			Integer id=dp.getUserId();
+			
+		System.out.println("id"+id);
 			User u=projectDao.getUser(id);
+			System.out.println("user"+u);
+			if(u!=null) {
 			dp.setLastName(u.getFirstName());
 			dp.setFirstName(u.getLastName());
+			}
 			}
 		}
 		
