@@ -646,13 +646,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     }
 
-	//connection handover get attachment
-	$scope.conn_handover_getAllAttachments = function() {
-		$http.get('/downlaodedFiles').then(function(response) {
-			console.log(response.data)
-			$scope.conn_handover_attachment_list = response.data;
-		});
-	}
+    //connection handover get attachment
+    $scope.conn_handover_getAllAttachments = function () {
+        $http.get('/downlaodedFiles').then(function (response) {
+            console.log(response.data)
+            $scope.conn_handover_attachment_list = response.data;
+        });
+    }
 
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
@@ -1014,13 +1014,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
 
     //project list
-    $scope.get_all_projects = function(){
+    $scope.get_all_projects = function () {
 
         $http({
             method: 'POST',
             url: url + '/findPage',
             data: JSON.stringify({
-                pageNum : 1,
+                pageNum: 1,
                 pageSize: 100
             })
         }).then(function mySuccess(response) {
@@ -1034,7 +1034,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         });
     }
 
-    $scope.search_project = function(){
+    $scope.search_project = function () {
         var obj = JSON.stringify({
             projectTitle: $scope.projectTitle,
             jemenaWBS: $scope.jemenaWBS,
@@ -1054,15 +1054,15 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
-    function change_projects_date_format(){
-        for(let i = 0; i < $scope.project_list.length; i++){
+    function change_projects_date_format() {
+        for (let i = 0; i < $scope.project_list.length; i++) {
             $scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
         }
     }
 
-    function timeConverter(UNIX_timestamp){
+    function timeConverter(UNIX_timestamp) {
         var a = new Date(UNIX_timestamp);
-        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var year = a.getFullYear();
         var month = months[a.getMonth()];
         var date = a.getDate();
@@ -1070,10 +1070,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         return time;
     }
 
-    $scope.view_project = function(id){
+    $scope.view_project = function (id) {
         //console.log(parseInt(id))
         var obj = JSON.stringify({
-            projectStatus: "working",
+            projectStatus: "exist",
             projectId: id
         })
         $http({
