@@ -17,6 +17,7 @@ import com.wemccm.project.service.CustomerContributionDataService;
 @RestController
 @RequestMapping("/customer_contribution")
 public class CustomerContributionDataController {
+	//
 
 	@Autowired
 	private CustomerContributionDataService service;
@@ -49,9 +50,9 @@ public class CustomerContributionDataController {
 
 		pojo.setProjectId(projectId);
 
-		service.saveAndupdate(pojo, projectStatus, projectId);
+		int newProjectId = service.saveAndupdate(pojo, projectStatus, projectId);
 
-		updateSession(projectId);
+		updateSession(newProjectId);
 
 		ProjectBasicPojo result = new ProjectBasicPojo();
 		result.setProjectId(projectId);
