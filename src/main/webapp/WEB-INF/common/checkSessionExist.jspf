@@ -1,9 +1,9 @@
 
 <%
-	/*
-	String username = (String) session.getAttribute("username");
-	if(username == null){
+	
+	String sessionUserId = (String) session.getAttribute("userId");
+	if(sessionUserId == null || sessionUserId.equals("")){
 		response.sendRedirect("login_page");
 	}
-	*/
+	
 %>

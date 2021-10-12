@@ -646,6 +646,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     }
 
+	//connection handover get attachment
+	$scope.conn_handover_getAllAttachments = function() {
+		$http.get('/downlaodedFiles').then(function(response) {
+			console.log(response.data)
+			$scope.conn_handover_attachment_list = response.data;
+		});
+	}
+
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
     //     // your statements;
@@ -1002,6 +1010,81 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.cc_jemena_scope_of_exclusions = ''
             $scope.cc_assumptions = ''
         })
+    }
+
+
+    //project list
+    $scope.get_all_projects = function(){
+
+        $http({
+            method: 'POST',
+            url: url + '/findPage',
+            data: JSON.stringify({
+                pageNum : 1,
+                pageSize: 100
+            })
+        }).then(function mySuccess(response) {
+            $scope.project_list = response.data.content
+            change_projects_date_format();
+            console.log($scope.project_list)
+        })
+
+        $http.get('/selectAllProjectType').then(function (response) {
+            $scope.project_types = response.data;
+        });
+    }
+
+    $scope.search_project = function(){
+        var obj = JSON.stringify({
+            projectTitle: $scope.projectTitle,
+            jemenaWBS: $scope.jemenaWBS,
+            inquiryNumber: $scope.inquiryNumber,
+            jemenaSapPmOrder: $scope.jemenaSapPmOrder,
+            zinfraWBS: $scope.zinfraWBS,
+            projectType: $scope.projectType,
+            supplyAddress: $scope.supplyAddress
+        })
+        $http({
+            method: 'POST',
+            url: url + '/findPage',
+            data: obj
+        }).then(function mySuccess(response) {
+            $scope.project_list = response.data.content
+            change_projects_date_format();
+        })
+    }
+
+    function change_projects_date_format(){
+        for(let i = 0; i < $scope.project_list.length; i++){
+            $scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
+        }
+    }
+
+    function timeConverter(UNIX_timestamp){
+        var a = new Date(UNIX_timestamp);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var time = date + ' ' + month + ' ' + year;
+        return time;
+    }
+
+    $scope.view_project = function(id){
+        //console.log(parseInt(id))
+        var obj = JSON.stringify({
+            projectStatus: "working",
+            projectId: id
+        })
+        $http({
+            method: 'POST',
+            url: url + '/updateSession',
+            data: obj
+        }).then(function mySuccess(response) {
+            $window.location.href = '/view_project_page';
+            console.log(response.data)
+        })
+
     }
 
 }])
