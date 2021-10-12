@@ -64,7 +64,7 @@ public class CustomerContributionDataController {
 
 		HttpSession session = getSession();
 
-		return Integer.valueOf((String) session.getAttribute("projectId"));
+		return Integer.parseInt((String) session.getAttribute("projectId"));
 
 	}
 

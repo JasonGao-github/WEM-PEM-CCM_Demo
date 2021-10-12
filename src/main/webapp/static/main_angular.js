@@ -978,6 +978,32 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
+    $scope.getCustomerContributionData = function () {
+        console.log("clicked getCustomerContributionData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/customer_contribution/getData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+
+            $scope.cc_wbs = ''
+            $scope.cc_inquiryNumber = ''
+            $scope.cc_SAPPM_order = ''
+            $scope.cc_zinfraWBS = ''
+            $scope.cc_project_title = ''
+            // $scope.cc_project_type = ''
+            $scope.cc_supply_address = ''
+            $scope.cc_reason_of_work = ''
+            $scope.cc_customer_scope_of_work = ''
+            $scope.cc_jemena_scope_of_work = ''
+            $scope.cc_jemena_scope_of_exclusions = ''
+            $scope.cc_assumptions = ''
+        })
+    }
+
 }])
 
 
