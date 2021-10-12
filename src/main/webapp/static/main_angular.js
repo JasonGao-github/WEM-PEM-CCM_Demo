@@ -995,7 +995,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             url: url + '/findPage',
             data: JSON.stringify({
 				pageNum : 1,
-				pageSize: 6
+				pageSize: 100
 			})
         }).then(function mySuccess(response) {
 			$scope.project_list = response.data.content
