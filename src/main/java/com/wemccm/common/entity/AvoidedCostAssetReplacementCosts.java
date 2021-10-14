@@ -3,6 +3,7 @@ package com.wemccm.common.entity;
 public class AvoidedCostAssetReplacementCosts extends BaseEntity {
 
 	private Integer projectId;
+	private String type;
 	private String name;
 	private String source;
 	private Double unitCost;
@@ -14,6 +15,14 @@ public class AvoidedCostAssetReplacementCosts extends BaseEntity {
 	private Double remLife;
 	private Double presentValueRC;
 	private Integer avoidedCostassetReplacementItermId;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getName() {
 		return name;
