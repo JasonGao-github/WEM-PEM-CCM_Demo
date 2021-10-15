@@ -24,13 +24,17 @@ public class AvoidedCostController {
 	private AvoidedCostService serivce;
 
 	// select All basic data
-	@RequestMapping(value = "/selectAllAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
-		// get all table avoidedcostassetreplacementiterm
-		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm();
-		return l;
-	}
+//	@RequestMapping(value = "/selectAllAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
+//		Integer projectId=123;
+////		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+////				.getRequest();
+////		HttpSession session = request.getSession();
+////		projectId=(int) session.getAttribute("projectId");
+//		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm(projectId);
+//		return l;
+//	}
 
 	// insert basic data
 	@RequestMapping(value = "/insertAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
@@ -44,15 +48,15 @@ public class AvoidedCostController {
 		
 
 	}
-	@RequestMapping(value = "/updateAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public ResponseResult updateAvoidedCostassetReplacementIterm(
-			@RequestBody AvoidedCostassetReplacementIterm requestPojo) {
-
-
-		 serivce.updateAvoidedCostassetReplacementIterm(requestPojo);
-		return new ResponseResult();
-	}
+//	@RequestMapping(value = "/updateAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public ResponseResult updateAvoidedCostassetReplacementIterm(
+//			@RequestBody AvoidedCostassetReplacementIterm requestPojo) {
+//
+//
+//		 serivce.updateAvoidedCostassetReplacementIterm(requestPojo);
+//		return new ResponseResult();
+//	}
 	@RequestMapping(value = "/deleteAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult deleteAvoidedCostassetReplacementIterm(

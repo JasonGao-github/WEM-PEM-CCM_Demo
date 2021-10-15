@@ -43,8 +43,24 @@
 
 	</select>
 
+	<select id="insertFIMAllPojo"
+		parameterType="com.wemccm.common.pojo.FIMAllPojo">
 
+		INSERT INTO fiminputitermquantity (projectId,
+		fIMinputItermId,currency,unitCost,acturalQuantity,jenFoundedQuantity,lctaQuantity,acturalSubTotal,jenFoundedTotal,lctaTotal)
+		VALUES
+		(#{projectId},#{fIMinputItermId},#{currency},#{unitCost},#{acturalQuantity},#{jenFoundedQuantity},#{lctaQuantity},#{acturalSubTotal},#{jenFoundedTotal},#{lctaTotal})
 
+	</select>
+
+	<select id="getFIMAllPojoId"
+		parameterType="Integer"
+		resultType="com.wemccm.common.pojo.FIMAllPojo">
+
+		SELECT * FROM fiminputitermquantity WHERE
+		id =#{id}
+
+	</select>
 
 	<select id="insertFIMinputIterm"
 		parameterType="com.wemccm.common.entity.FIMinputIterm">
@@ -77,8 +93,11 @@
 	<select id="listAllFIMinputIterm"
 
 		parameterType="Integer"
-		resultType="com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo">
-		SELECT i.*,st.`name` as subtype,t.`name` as typename
+		resultType="com.wemccm.common.pojo.FIMAllPojo">
+	SELECT q.*,i.description,st.`name` as subtype,t.`name` as typename
+	
+	
+	
 		FROM fiminputiterm as i
 		
 		left join fiminputitermquantity as q
@@ -96,8 +115,69 @@
 	</select>
 	
 	
+	<select id="listAllAllFIMinputIterm"
+		resultType="com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo">
+		SELECT i.*,st.`name` as subtype,t.`name` as typename
+		FROM fiminputiterm as i
+		
+		left join fiminputitermquantity as q
+		on i.id=q.fIMinputItermId
+		
+		left join fiminputsubtype as st
+		on st.id=i.fIMinputSubTypeID
+		
+		left join fiminputtype as t
+		on st.fIMinputTypeID=t.id
+
+
+	</select>
+	
+	
+	
+		<select id="updateFIMAllPojo"
+		parameterType="com.wemccm.common.pojo.FIMAllPojo">
+		update fiminputitermquantity  
+		set  id = #{id} 
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
+		</if>
+		<if test="fIMinputItermId!=null and fIMinputItermId!=''">
+			,fIMinputItermId=#{fIMinputItermId}
+		</if>
+		<if test="currency!=null and currency!=''">
+			,currency=#{currency}
+		</if>
+		<if test="acturalQuantity!=null and acturalQuantity!=''">
+			,acturalQuantity=#{acturalQuantity}
+		</if>
+		<if test="unitCost!=null and unitCost!=''">
+			,unitCost=#{unitCost} 
+		</if>
+		
+		<if test="jenFoundedQuantity!=null and jenFoundedQuantity!=''">
+			,jenFoundedQuantity=#{jenFoundedQuantity}
+		</if>
+		<if test="lctaQuantity!=null and lctaQuantity!=''">
+			,lctaQuantity=#{lctaQuantity}
+		</if>
+		<if test="acturalSubTotal!=null and acturalSubTotal!=''">
+			,acturalSubTotal=#{acturalSubTotal}
+		</if>
+		<if test="jenFoundedTotal!=null and jenFoundedTotal!=''">
+			,jenFoundedTotal=#{jenFoundedTotal} 
+		</if>
+		
+		<if test="lctaTotal!=null and lctaTotal!=''">
+			,lctaTotal=#{lctaTotal} 
+		</if>
+		
+		 where id = #{id} 
+
+	</select>
+	
+	
 	<select id="updateFIMinputIterm"
-		parameterType="com.wemccm.common.pojo.FIMinputItermSubTypeTypePojo">
+		parameterType="com.wemccm.common.pojo.FIMAllPojo">
 		update fiminputiterm  
 		set  id = #{id} 
 		<if test="fIMinputSubTypeID!=null and fIMinputSubTypeID!=''">
@@ -128,7 +208,14 @@ WHERE id= #{id}
 
 
 
+	<select id="insertFIMinputItermId"
+		parameterType="Integer">
 
+		INSERT INTO fiminputiterm (id)
+		VALUES
+		(#{id})
+
+	</select>
 
 
 

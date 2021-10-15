@@ -59,27 +59,27 @@ public class NonContestableController {
 		 serivce.deleteNonContestableProjectComponent(requestPojo);
 		return new ResponseResult();
 	}
-	@RequestMapping(value = "/listAllNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent() {
-		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
-
-		List<NonContestableProjectComponentTypePojo> l = serivce.listAllNonContestableProjectComponent(projectId);
-		return l;
-	}
-	@RequestMapping(value = "/updateNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public ResponseResult updateNonContestableProjectComponent(
-			@RequestBody NonContestableProjectComponentTypePojo requestPojo) {
-
-
-		 serivce.updateNonContestableProjectComponent(requestPojo);
-		return new ResponseResult();
-	}
+//	@RequestMapping(value = "/listAllNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent() {
+//		Integer projectId=123;
+////		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+////				.getRequest();
+////		HttpSession session = request.getSession();
+////		projectId=(int) session.getAttribute("projectId");
+//
+//		List<NonContestableProjectComponentTypePojo> l = serivce.listAllNonContestableProjectComponent(projectId);
+//		return l;
+//	}
+//	@RequestMapping(value = "/updateNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public ResponseResult updateNonContestableProjectComponent(
+//			@RequestBody NonContestableProjectComponentTypePojo requestPojo) {
+//
+//
+//		 serivce.updateNonContestableProjectComponent(requestPojo);
+//		return new ResponseResult();
+//	}
 	
 	
 	
@@ -97,28 +97,28 @@ public class NonContestableController {
 	}
 	
 	
-	@RequestMapping(value = "/listAllNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm() {
-		Integer projectId=456;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
-
-		List<NonContestableOtherCostsItemTypePojo> l = serivce.listAllNonContestableOtherCostsIterm(projectId);
-		return l;
-	}
-	
-	@RequestMapping(value = "/updateNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public ResponseResult updateNonContestableOtherCostsIterm(
-			@RequestBody NonContestableOtherCostsItemTypePojo requestPojo) {
-
-
-		 serivce.updateNonContestableOtherCostsIterm(requestPojo);
-		return new ResponseResult();
-	}
+//	@RequestMapping(value = "/listAllNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm() {
+//		Integer projectId=456;
+////		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+////				.getRequest();
+////		HttpSession session = request.getSession();
+////		projectId=(int) session.getAttribute("projectId");
+//
+//		List<NonContestableOtherCostsItemTypePojo> l = serivce.listAllNonContestableOtherCostsIterm(projectId);
+//		return l;
+//	}
+//	
+//	@RequestMapping(value = "/updateNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public ResponseResult updateNonContestableOtherCostsIterm(
+//			@RequestBody NonContestableOtherCostsItemTypePojo requestPojo) {
+//
+//
+//		 serivce.updateNonContestableOtherCostsIterm(requestPojo);
+//		return new ResponseResult();
+//	}
 	
 	@RequestMapping(value = "/deleteNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
