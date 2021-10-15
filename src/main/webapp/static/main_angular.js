@@ -97,6 +97,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.selected_type = $scope.project_types[1].projectTypeId;
         });
 
+
+        $http.get('/listAllNonContestableProjectComponent').then(function (response) {
+            console.log(response.data)
+        });
+        $http.get('/findNonContestableOtherCostsIterm').then(function (response) {
+            console.log(response.data)
+        });
+
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
             get_item();
@@ -290,6 +298,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                                 $scope.fim_types[i].sub_types[j].items[k].jen = '';
                                 $scope.fim_types[i].sub_types[j].items[k].lcta = '';
                             }
+							console.log($scope.fim_types)
                         })
                     }
                 })
@@ -415,7 +424,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         remLife: '',
         totalCost: '',
         presentValueRC: '',
-        source: 'Jemena'
+        source: 'Jemena',
+		type: ''
     };
     $scope.exist_asset_data = []
     $scope.repl_asset_data = []
@@ -424,12 +434,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         let new_data = Object.assign({}, data);
         avoidedCostassetReplacementItermId = $scope.exist_asset_data.length
         new_data.id = avoidedCostassetReplacementItermId
+		new_data.type = 'existing'
         $scope.exist_asset_data.push(new_data)
         console.log($scope.exist_asset_data)
     }
     $scope.add_repl_asset = function () {
         let new_data = Object.assign({}, data);
         new_data.id = $scope.repl_asset_data.length
+		new_data.type = 'new'
         $scope.repl_asset_data.push(new_data)
     }
 
@@ -1047,7 +1059,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.view_project = function(id){
 		//console.log(parseInt(id))
 		var obj = JSON.stringify({
-			projectStatus: "working",
+			projectStatus: "existing",
 			projectId: id
 		})
 		$http({
