@@ -94,8 +94,8 @@ System.out.println(projectId);
 							<h4 class="col-2">Hour</h4>
 							<input class="col-2" type="number" ng-model="comp.quantity"
 								ng-change="ncc_projCompChanged(comp.id, comp.quantity, comp.quantity * comp.cost)">
-							<h4 class="col-2">{{comp.cost}}</h4>
-							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
+							<h4 class="col-2">{{comp.cost | number: 2 }}</h4>
+							<h4 class="col-2">{{comp.quantity * comp.cost | number: 2 }}</h4>
 						</div>
 
 					</div>
@@ -126,8 +126,8 @@ System.out.println(projectId);
 								<input class="currency col-2" type="number"
 									ng-model="item.quantity"
 									ng-change="ncc_otherChanged(item.id, item.quantity, item.rate * item.quantity)">
-								<h4 class="col-2">{{item.rate}}</h4>
-								<h4 class="col-2">{{item.rate * item.quantity}}</h4>
+								<h4 class="col-2">{{item.rate | number: 2 }}</h4>
+								<h4 class="col-2">{{item.rate * item.quantity | number: 2 }}</h4>
 							</div>
 						</div>
 
