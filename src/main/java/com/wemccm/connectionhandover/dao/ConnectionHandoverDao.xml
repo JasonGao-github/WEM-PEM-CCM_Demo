@@ -53,8 +53,11 @@ where nc.projectId=#{projectId}
 		<select id="updateConnectionHandover" 
 	parameterType="com.wemccm.common.entity.ConnectionHandover">
 
-		update avoidedcostassetreplacementcosts 
+		update connectionhandover 
 		set id =#{id} 
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
+		</if>
 		<if test="coustomerBusinesName!=null and coustomerBusinesName!=''">
 			,coustomerBusinesName=#{coustomerBusinesName}
 		</if>
@@ -69,9 +72,7 @@ where nc.projectId=#{projectId}
 		</if>
 		
 		
-		<if test="coustomerBusinesName!=null and coustomerBusinesName!=''">
-			,coustomerBusinesName=#{coustomerBusinesName}
-		</if>
+		
 		<if test="projectAddress!=null and projectAddress!=''">
 			,projectAddress=#{projectAddress}
 		</if>
@@ -111,8 +112,8 @@ where nc.projectId=#{projectId}
 		<if test="reCadvisedofCTarrangement!=null and reCadvisedofCTarrangement!=''">
 			,reCadvisedofCTarrangement=#{reCadvisedofCTarrangement}
 		</if>
-			<if test="projectManagerprojectManagerName!=null and projectManagerprojectManagerName!=''">
-			,projectManagerprojectManagerName=#{projectManagerprojectManagerName}
+			<if test="projectManagerName and projectManagerName!=''">
+			,projectManagerName=#{projectManagerName}
 		</if>
 		<if test="projectManagerPhone!=null and projectManagerPhone!=''">
 			,projectManagerPhone=#{projectManagerPhone}
@@ -147,6 +148,18 @@ where nc.projectId=#{projectId}
 
 
 	</select> 
+	
+	
+	<select id="getConnectionHandoverId"
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.ConnectionHandover">
+
+		SELECT * FROM connectionhandover WHERE
+		id =#{id}
+
+	</select>
+	
+	
 	
 	<select id="uplaodedFiles" 
 	parameterType="com.wemccm.common.entity.UplaodedFiles">

@@ -25,4 +25,6 @@ public interface ConnectionHandoverDao {
 
 	public void updateConnectionHandover(ConnectionHandover pojo);
 
+	public ConnectionHandover getConnectionHandoverId(Integer id);
+
 }

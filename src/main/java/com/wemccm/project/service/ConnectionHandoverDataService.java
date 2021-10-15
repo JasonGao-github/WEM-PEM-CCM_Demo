@@ -66,7 +66,16 @@ import com.wemccm.fiminput.dao.FIMInputDao;
 				List<ConnectionHandover> projectDataList = pojo.getProjectData();
 				for (ConnectionHandover Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					dao.updateConnectionHandover(Pojo);
+					ConnectionHandover ncoc=dao.getConnectionHandoverId(Pojo.getId());
+					
+					if(ncoc!=null) {
+						dao.updateConnectionHandover(Pojo);
+						//??????????????????????????????????????
+					}else {
+						dao.insertConnectionHandover(Pojo);
+					}
+
+				
 					
 
 				}
