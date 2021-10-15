@@ -51,8 +51,8 @@
 	<select id="listAllNonContestableOtherCostsIterm"
 
 		parameterType="Integer"
-		resultType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
-		SELECT ci.*,t.name
+		resultType="com.wemccm.common.pojo.AllNonContestableOtherCostsPojo">
+		SELECT oc.*,ci.description,ci.nonContestableTypeId,t.name
 		FROM noncontestableothercostsiterm as ci
 
 		left join noncontestableothercosts as oc
@@ -66,7 +66,20 @@
 		oc.projectId = #{projectId}
 
 	</select>
+	<select id="listAllAllNonContestableOtherCostsIterm"
+		resultType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
+		SELECT ci.*,t.name
+		FROM noncontestableothercostsiterm as ci
 
+		left join noncontestableothercosts as oc
+		on
+		ci.id=oc.nonContestableOtherCostsItemId
+
+		left join noncontestabletype as t
+		on ci.nonContestableTypeId=t.id
+
+
+	</select>
 
 	<select id="deleteNonContestableOtherCostsIterm"
 
@@ -76,6 +89,11 @@
 		WHERE id= #{id}
 
 	</select>
+
+
+
+
+
 
 
 
@@ -174,8 +192,8 @@
 	<select id="listAllNonContestableProjectComponent"
 
 		parameterType="Integer"
-		resultType="com.wemccm.common.pojo.NonContestableProjectComponentTypePojo">
-		SELECT pc.cost,pc.description,ppc.*
+		resultType="com.wemccm.common.pojo.AllNonContestableProjectComponentPojo">
+		SELECT pc.projectTypeId,pc.description,ppc.*,t.name,t.projectManagement,t.design
 
 		FROM
 		noncontestableprojectcomponent as pc
@@ -186,7 +204,7 @@
 		ppc.nonContestableProjectComponentId=pc.id
 
 		LEFT JOIN
-		noncontestabletype as t
+		projecttype as t
 		ON
 		pc.projectTypeId=t.id
 
@@ -233,47 +251,110 @@
 
 
 	<select id="updateNonContestableOtherCostsIterm"
-		parameterType="com.wemccm.common.pojo.NonContestableOtherCostsItemTypePojo">
-		update noncontestableothercostsiterm
+		parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
+		update noncontestableothercosts
 		set id =#{id} 
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
+		</if>
 		<if test="unit!=null and unit!=''">
 			,unit=#{unit}
 		</if>
 		<if test="rate!=null and rate!=''">
 			,rate=#{rate}
 		</if>
-		<if test="nonContestableTypeId!=null and nonContestableTypeId!=''">
-			,nonContestableTypeId=#{nonContestableTypeId}
+		<if test="nonContestableOtherCostsItemId!=null and nonContestableOtherCostsItemId!=''">
+			,nonContestableOtherCostsItemId=#{nonContestableOtherCostsItemId}
 		</if>
-		<if test="description!=null and description!=''">
-			,description=#{description}
+		<if test="quantity!=null and quantity!=''">
+			,quantity=#{quantity}
+		</if>
+		<if test="total!=null and total!=''">
+			,total=#{total}
 		</if>
 
 		where id =#{id}
 
 	</select>
 
+	<select id="insertNonContestableOtherCostsItermId"
+		parameterType="Integer">
 
+		INSERT INTO noncontestableothercosts (id)
+		VALUES
+		(#{id})
+
+	</select>
+	
+	
 
 	<select id="updateNonContestableProjectComponent"
-		parameterType="com.wemccm.common.pojo.NonContestableProjectComponentTypePojo">
-		update noncontestableprojectcomponent
+		parameterType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
+		update projectnoncontestableprojectcomponent
 		set id =#{id} 
-		<if test="projectTypeId!=null and projectTypeId!=''">
-			,projectTypeId=#{projectTypeId}
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
+		</if>
+		<if test="nonContestableProjectComponentId!=null and nonContestableProjectComponentId!=''">
+			,nonContestableProjectComponentId=#{nonContestableProjectComponentId}
 		</if>
 		<if test="cost!=null and cost!=''">
 			,cost=#{cost}
 		</if>
-		<if test="description!=null and description!=''">
-			,description=#{description}
+		<if test="hours!=null and hours!=''">
+			,hours=#{hours}
+		</if>
+		<if test="total!=null and total!=''">
+			,total=#{total}
 		</if>
 
 		where id =#{id}
 
 	</select>
+	
+	
+	<select id="listAllALLNonContestableProjectComponent"
+		resultType="com.wemccm.common.pojo.NonContestableProjectComponentTypePojo">
+	SELECT pc.cost,pc.description,ppc.*
+
+		FROM
+		noncontestableprojectcomponent as pc
+
+		LEFT JOIN
+		projectnoncontestableprojectcomponent as ppc
+		ON
+		ppc.nonContestableProjectComponentId=pc.id
 
 
+	</select>
+	
+	
+	<select id="insertNonContestableProjectComponentId"
+		parameterType="Integer">
 
+		INSERT INTO projectnoncontestableprojectcomponent (id)
+		VALUES
+		(#{id})
+
+	</select>
+	
+	
+	<select id="getNonContestableOtherCostsId"
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.NonContestableOtherCosts">
+
+		SELECT * FROM noncontestableothercosts WHERE
+		id =#{id}
+
+	</select>
+
+	<select id="getProjectNonContestableProjectComponentId"
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
+
+		SELECT * FROM projectnoncontestableprojectcomponent WHERE
+		id =#{id}
+
+	</select>
 
 </mapper>

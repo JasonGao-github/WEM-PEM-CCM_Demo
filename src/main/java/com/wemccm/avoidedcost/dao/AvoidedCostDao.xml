@@ -13,20 +13,85 @@
 		SELECT * FROM avoidedcosttype
 
 	</select> -->
+	
+	
+	<select id="getAvoidedCostAssetReplacementCostsId"
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 
-	<select id="selectAllAvoidedCostassetReplacementIterm"
-
-		resultType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
-
-		SELECT * FROM avoidedcostassetreplacementiterm
+		SELECT * FROM avoidedcostassetreplacementcosts WHERE
+		id =#{id}
 
 	</select>
+	
+	
+	<select id="selectAllAvoidedCostassetReplacementIterm"
+			parameterType="Integer"
+		resultType="com.wemccm.common.pojo.AllAvoidedCostassetPojo">
 
+		SELECT arc.*,ari.maintenanceCost,ari.vegetationManagementCost
+
+		FROM avoidedcostassetreplacementcosts as arc
+
+		LEFT JOIN
+		avoidedcostassetreplacementiterm as ari
+		ON
+		arc.avoidedCostassetReplacementItermId=ari.id
+
+
+		WHERE
+		arc.projectId=#{projectId}
+
+	</select>
+	
+		<select id="selectAllALLAvoidedCostassetReplacementIterm"
+		resultType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
+		SELECT ari.*
+
+		FROM avoidedcostassetreplacementcosts as arc
+
+		LEFT JOIN
+		avoidedcostassetreplacementiterm as ari
+		ON
+		arc.avoidedCostassetReplacementItermId=ari.id
+
+
+	</select>
+		<select id="insertAvoidedCostassetReplacementItermId"
+		parameterType="Integer">
+
+		INSERT INTO avoidedcostassetreplacementcosts (id)
+		VALUES
+		(#{id})
+
+	</select>
+	
+	
+	
+	<select id="findAvoidedCostAssetReplacementCosts"
+		parameterType="com.wemccm.common.pojo.projectIdPojo"
+		resultType="com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo">
+		SELECT arc.*,ari.`name` as replacementItermName
+
+		FROM avoidedcostassetreplacementcosts as arc
+
+		LEFT JOIN
+		avoidedcostassetreplacementiterm as ari
+		ON
+		arc.avoidedCostassetReplacementItermId=ari.id
+
+
+		WHERE
+		arc.projectId=#{projectId}
+	</select>
 
 	<select id="updateAvoidedCostassetReplacementIterm"
-		parameterType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
-		update avoidedcostassetreplacementiterm 
+		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
+		update avoidedcostassetreplacementcosts 
 		set id =#{id} 
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
+		</if>
 		<if test="name!=null and name!=''">
 			,name=#{name}
 		</if>
@@ -39,12 +104,39 @@
 		<if test="unitCost!=null and unitCost!=''">
 			,unitCost=#{unitCost}
 		</if>
-		<if test="maintenanceCost!=null and maintenanceCost!=''">
-			,maintenanceCost=#{maintenanceCost}
+		
+		
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
 		</if>
-		<if test="vegetationManagementCost!=null and vegetationManagementCost!=''">
-			,vegetationManagementCost=#{vegetationManagementCost} 
+		<if test="type!=null and type!=''">
+			,type=#{type}
 		</if>
+		<if test="source!=null and source!=''">
+			,source=#{source}
+		</if>
+		<if test="quantity!=null and quantity!=''">
+			,quantity=#{quantity}
+		</if>
+		
+		<if test="totalCost!=null and totalCost!=''">
+			,totalCost=#{totalCost}
+		</if>
+		<if test="assetAge!=null and assetAge!=''">
+			,assetAge=#{assetAge}
+		</if>
+		<if test="remLife!=null and remLife!=''">
+			,remLife=#{remLife}
+		</if>
+		<if test="presentValueRC!=null and presentValueRC!=''">
+			,presentValueRC=#{presentValueRC}
+		</if>
+		
+		
+		<if test="avoidedCostassetReplacementItermId!=null and avoidedCostassetReplacementItermId!=''">
+			,avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId}
+		</if>
+		
 		where id =#{id} 
 
 	</select>
@@ -111,22 +203,7 @@ WHERE id= #{id}
 
 
 
-	<select id="findAvoidedCostAssetReplacementCosts"
-		parameterType="com.wemccm.common.pojo.projectIdPojo"
-		resultType="com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsTypePojo">
-		SELECT arc.*,ari.`name` as replacementItermName
 
-		FROM avoidedcostassetreplacementcosts as arc
-
-		LEFT JOIN
-		avoidedcostassetreplacementiterm as ari
-		ON
-		arc.avoidedCostassetReplacementItermId=ari.id
-
-
-		WHERE
-		arc.projectId=#{projectId}
-	</select>
 
 	<select id="findAvoidedCostMaintenanceCosts"
 		parameterType="com.wemccm.common.pojo.projectIdPojo"

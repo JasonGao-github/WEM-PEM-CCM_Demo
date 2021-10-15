@@ -46,13 +46,7 @@ public class FIMInputService {
 //		return l;
 //	}
 
-	public void insertFIMinputItermQuantity(List<FIMinputItermQuantityPojo> pojoList) {
 
-		for (FIMinputItermQuantityPojo pojo : pojoList) {
-			Dao.insertFIMinputItermQuantity(pojo);
-		}
-
-	}
 
 	public List<FIMinputIterm> findFIMinputIterm(FIMinputItermPojo requestPojo) {
 		List<FIMinputIterm> l = Dao.findFIMinputIterm(requestPojo);
@@ -76,22 +70,28 @@ public class FIMInputService {
 		
 		
 	}
+	public void insertFIMinputItermQuantity(List<FIMinputItermQuantityPojo> pojoList) {
 
+		for (FIMinputItermQuantityPojo pojo : pojoList) {
+			Dao.insertFIMinputItermQuantity(pojo);
+		}
+
+	}
 	public void deleteFIMinputIterm(IdPojo requestPojo) {
 		Dao.deleteFIMinputIterm(requestPojo);
 		
 	}
 
-	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm(Integer projectId) {
-		List<FIMinputItermSubTypeTypePojo> l = Dao.listAllFIMinputIterm(projectId);
-
-		return l;
-	}
-
-	public void updateFIMinputIterm(FIMinputItermSubTypeTypePojo requestPojo) {
-		Dao.updateFIMinputIterm(requestPojo);
-		
-	}
+//	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm(Integer projectId) {
+//		List<FIMinputItermSubTypeTypePojo> l = Dao.listAllFIMinputIterm(projectId);
+//
+//		return l;
+//	}
+//
+//	public void updateFIMinputIterm(FIMinputItermSubTypeTypePojo requestPojo) {
+//		Dao.updateFIMinputIterm(requestPojo);
+//		
+//	}
 
 //	public void insertFIMinputIterm(List<FIMinputIterm> pojoList) {
 //		for (FIMinputIterm pojo : pojoList) {

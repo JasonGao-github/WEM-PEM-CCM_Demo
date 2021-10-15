@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class ConnectionHandover extends BaseEntity{
 	private Integer projectId;
-	
-	
 	private String projectRef;
 	private Integer portalNo;
 	private Date date;

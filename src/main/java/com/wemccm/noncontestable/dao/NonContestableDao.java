@@ -9,6 +9,8 @@ import com.wemccm.common.entity.NonContestableOtherCostsItem;
 import com.wemccm.common.entity.NonContestableProjectComponent;
 import com.wemccm.common.entity.NonContestableType;
 import com.wemccm.common.entity.ProjectNonContestableProjectComponent;
+import com.wemccm.common.pojo.AllNonContestableOtherCostsPojo;
+import com.wemccm.common.pojo.AllNonContestableProjectComponentPojo;
 import com.wemccm.common.pojo.IdPojo;
 import com.wemccm.common.pojo.NccItemsAndProjectIdPojo;
 import com.wemccm.common.pojo.NccItemsPojo;
@@ -49,20 +51,35 @@ public interface NonContestableDao {
 	
 	
 
-	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId);
+	public List<AllNonContestableOtherCostsPojo> listAllNonContestableOtherCostsIterm(Integer projectId);
 
 	public void deleteNonContestableOtherCostsIterm(IdPojo requestPojo);
 
-	public void updateNonContestableOtherCostsIterm(NonContestableOtherCostsItemTypePojo requestPojo);
+	public void updateNonContestableOtherCostsIterm(NonContestableOtherCosts requestPojo);
+
+	public List<NonContestableOtherCostsItemTypePojo> listAllAllNonContestableOtherCostsIterm();
+	
+	public void insertNonContestableOtherCostsItermId(Integer id);
 	
 	
 	
 	
-	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId);
+	public List<AllNonContestableProjectComponentPojo> listAllNonContestableProjectComponent(Integer projectId);
 
 	public void deleteNonContestableProjectComponent(IdPojo requestPojo);
 
-	public void updateNonContestableProjectComponent(NonContestableProjectComponentTypePojo requestPojo);
+	public void updateNonContestableProjectComponent(ProjectNonContestableProjectComponent requestPojo);
+
+	public List<NonContestableProjectComponentTypePojo> listAllALLNonContestableProjectComponent();
+
+	
+	public void insertNonContestableProjectComponentId(Integer id);
+
+	public NonContestableOtherCosts getNonContestableOtherCostsId(Integer id);
+
+	public ProjectNonContestableProjectComponent getProjectNonContestableProjectComponentId(Integer id);
+
+
 
 
 
