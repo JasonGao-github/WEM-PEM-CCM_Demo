@@ -107,7 +107,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         });
 
 		$http.get('/NonContestable/getDataNonContestableOtherCostsIterm').then(function (response) {
-            console.log(response.data)
+            //console.log(response.data)
+            if(response.data.projectStatus == "exist"){
+				existing = true
+			}
 			other_item = response.data.projectData;
         });
 
@@ -115,6 +118,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
             get_item();
+			if(existing){
+				$scope.selected_type = pc_item[0].projectTypeId
+				console.log($scope.selected_type)
+				$scope.ncc_typeChanged()
+			}
         });
 
         //get item of each type and concat to json
@@ -144,6 +152,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                 })
             }
         }
+		
     }
 
     $scope.ncc_typeChanged = function () {
@@ -158,13 +167,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             $scope.proj_comps = response.data;
             for (let j = 0; j < $scope.proj_comps.length; j++) {
-				console.log("basic");
+				//console.log("basic");
                 $scope.proj_comps[j].quantity = '';
-				console.log($scope.proj_comps[j])
+				//console.log($scope.proj_comps[j])
 				if(existing){
-					console.log("item")
+					//console.log("item")
 					pc_item.forEach(item=>{
-						console.log(item)
+						//console.log(item)
 						if($scope.proj_comps[j].id == item.nonContestableProjectComponentId){
 							$scope.proj_comps[j].quantity = item.hours;
 						}
@@ -187,7 +196,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
 				$scope.ncc_data.proj_comp[i].quantity = quantity
 				$scope.ncc_data.proj_comp[i].total = total
-        		console.log($scope.ncc_data)
+        		//console.log($scope.ncc_data)
 				return
             }
         }
@@ -202,7 +211,6 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ncc_otherChanged = function (itemId, quantity, total) {
-        console.log(itemId);
 		//replace null or empty string with 0
 		if (!quantity){
 			quantity = 0
@@ -212,7 +220,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
 				$scope.ncc_data.other[i].quantity = quantity
 				$scope.ncc_data.other[i].total = total
-        		console.log($scope.ncc_data)
+        		//console.log($scope.ncc_data)
 				return
             }
         }
@@ -222,7 +230,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             "quantity": quantity,
             "total": total
         })
-        console.log($scope.ncc_data)
+        //console.log($scope.ncc_data)
     }
 
     $scope.ncc_submit_input = function () {
