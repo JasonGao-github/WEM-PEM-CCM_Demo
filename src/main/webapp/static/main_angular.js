@@ -299,8 +299,16 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //for fim page
     $scope.get_fim = function () {
+		existing = false	
         //get fim type first
         $http.get('/listAllFIMinputType').then(function (response) {
+			$http.get('/FIMInput/getData').then(function (response) {
+	            console.log(response.data);
+				if (response.data.projectStatus == "exist"){
+					existing = true;
+				}
+				fim_item = response.data.projectData;
+	        });
             //console.log(response.data);
             $scope.fim_types = response.data;
             //console.log($scope.fim_types)
@@ -342,6 +350,16 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                                 $scope.fim_types[i].sub_types[j].items[k].actual = '';
                                 $scope.fim_types[i].sub_types[j].items[k].jen = '';
                                 $scope.fim_types[i].sub_types[j].items[k].lcta = '';
+								if(existing){
+									fim_item.forEach(item=>{
+										if ($scope.fim_types[i].sub_types[j].items[k].id == item.fIMinputItermId){
+			                                $scope.fim_types[i].sub_types[j].items[k].actual = item.acturalQuantity;
+			                                $scope.fim_types[i].sub_types[j].items[k].jen = item.jenFoundedQuantity;
+			                                $scope.fim_types[i].sub_types[j].items[k].lcta = item.lctaQuantity;
+        									update_fim_type_total()
+										}
+									})
+								}
                             }
 							console.log($scope.fim_types)
                         })
@@ -356,25 +374,51 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.fim_data = []
     $scope.fim_type_total = {}
     $scope.fim_input_changed = function (itemId, actQ, jenQ, lctaQ, actTotal, jenTotal, lctaTotal, fimTypeId) {
-        for (let i = 0; i < $scope.fim_data.length; i++) {
+		//replace null values with 0
+		if(!actQ){
+			actQ = 0
+		}
+		if(!jenQ){
+			jenQ = 0
+		}
+		if(!lctaQ){
+			lctaQ = 0
+		}
+		if(!actTotal){
+			actTotal = 0
+		}
+		if(!jenTotal){
+			jenTotal = 0
+		}
+		if(!lctaTotal){
+			lctaTotal = 0
+		}
+		//check if existing        
+		for (let i = 0; i < $scope.fim_data.length; i++) {
             if ($scope.fim_data[i].fIMinputItermId == itemId) {
-                $scope.fim_data.splice(i, 1);
+                $scope.fim_data[i].fIMinputItermId = itemId;
+				$scope.fim_data[i].acturalQuantity = actQ;
+				$scope.fim_data[i].jenFoundedQuantity = jenQ;
+				$scope.fim_data[i].lctaQuantity = lctaQ;
+				$scope.fim_data[i].acturalSubTotal = actTotal;
+				$scope.fim_data[i].jenFoundedTotal = jenTotal;
+				$scope.fim_data[i].lctaTotal = lctaTotal;
+				console.log($scope.fim_data);
+				return
             }
         }
 
-        if (actQ || jenQ || lctaQ) {
-            $scope.fim_data.push({
-                fIMinputItermId: itemId,
-                acturalQuantity: actQ,
-                jenFoundedQuantity: jenQ,
-                lctaQuantity: lctaQ,
-                acturalSubTotal: actTotal,
-                jenFoundedTotal: jenTotal,
-                lctaTotal: lctaTotal,
-                fimTypeId: fimTypeId
-            })
-        }
-        update_fim_type_total()
+        $scope.fim_data.push({
+            fIMinputItermId: itemId,
+            acturalQuantity: actQ,
+            jenFoundedQuantity: jenQ,
+            lctaQuantity: lctaQ,
+            acturalSubTotal: actTotal,
+            jenFoundedTotal: jenTotal,
+            lctaTotal: lctaTotal,
+            fimTypeId: fimTypeId
+        })
+		console.log($scope.fim_data);
 
     }
 

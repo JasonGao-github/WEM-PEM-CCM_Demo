@@ -123,11 +123,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
 										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost, fim_type.id)">
 									<h4 class="col-1">{{item.currency}}</h4>
-									<h4 class="col-2">{{item.unitCost}}</h4>
+									<h4 class="col-2">{{item.unitCost| number: 2 }}</h4>
 
-									<h4 class="col-1">{{item.actual * item.unitCost}}</h4>
-									<h4 class="col-1">{{item.jen * item.unitCost}}</h4>
-									<h4 class="col-1">{{item.lcta * item.unitCost}}</h4>
+									<h4 class="col-1">{{item.actual * item.unitCos| number: 2 t}}</h4>
+									<h4 class="col-1">{{item.jen * item.unitCost| number: 2 }}</h4>
+									<h4 class="col-1">{{item.lcta * item.unitCost| number: 2 }}</h4>
 
 								</div>
 							</div>
@@ -136,9 +136,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<div class="row">
 							<h4 class="col-3">{{fim_type.name}}</h4>
 							<h4 class="col-6">Total</h4>
-							<h4 class="col-1">{{fim_type_total[fim_type.id].actTotal}}</h4>
-							<h4 class="col-1">{{fim_type_total[fim_type.id].jenTotal}}</h4>
-							<h4 class="col-1">{{fim_type_total[fim_type.id].lctaTotal}}</h4>
+							<h4 class="col-1">{{fim_type_total[fim_type.id].actTotal| number: 2 }}</h4>
+							<h4 class="col-1">{{fim_type_total[fim_type.id].jenTotal| number: 2 }}</h4>
+							<h4 class="col-1">{{fim_type_total[fim_type.id].lctaTotal| number: 2 }}</h4>
 						</div>
 					</div>
 					<br>
