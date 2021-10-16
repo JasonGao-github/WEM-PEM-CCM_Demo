@@ -96,11 +96,11 @@ public class AvoidedCostService {
 	
 	
 	
-//	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm(Integer projectId) {
-//		List<AvoidedCostassetReplacementIterm> l = avoidedCostDao.selectAllAvoidedCostassetReplacementIterm(projectId);
-//
-//		return l;
-//	}
+	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm(Integer projectId) {
+		List<AvoidedCostassetReplacementIterm> l = avoidedCostDao.oldselectAllAvoidedCostassetReplacementIterm(projectId);
+
+		return l;
+	}
 
 	public void deleteAvoidedCostassetReplacementIterm(IdPojo requestPojo) {
 		avoidedCostDao.deleteAvoidedCostassetReplacementIterm(requestPojo);

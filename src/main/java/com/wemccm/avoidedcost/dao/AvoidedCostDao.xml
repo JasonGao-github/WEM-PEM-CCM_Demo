@@ -24,6 +24,20 @@
 
 	</select>
 	
+		<select id="oldselectAllAvoidedCostassetReplacementIterm"
+			parameterType="Integer"
+		resultType="com.wemccm.common.entity.AvoidedCostassetReplacementIterm">
+
+		SELECT *
+
+		FROM avoidedcostassetreplacementiterm 
+
+
+		WHERE
+		projectId=#{projectId}
+
+	</select>
+	
 	
 	<select id="selectAllAvoidedCostassetReplacementIterm"
 			parameterType="Integer"

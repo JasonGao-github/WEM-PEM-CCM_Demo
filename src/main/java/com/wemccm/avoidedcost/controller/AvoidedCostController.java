@@ -23,18 +23,18 @@ public class AvoidedCostController {
 	@Autowired
 	private AvoidedCostService serivce;
 
-	// select All basic data
-//	@RequestMapping(value = "/selectAllAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
-//	@ResponseBody
-//	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
-//		Integer projectId=123;
-////		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-////				.getRequest();
-////		HttpSession session = request.getSession();
-////		projectId=(int) session.getAttribute("projectId");
-//		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm(projectId);
-//		return l;
-//	}
+	 //select All basic data
+	@RequestMapping(value = "/selectAllAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
+		Integer projectId=123;
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+//				.getRequest();
+//		HttpSession session = request.getSession();
+//		projectId=(int) session.getAttribute("projectId");
+		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm(projectId);
+		return l;
+	}
 
 	// insert basic data
 	@RequestMapping(value = "/insertAvoidedCostassetReplacementIterm", produces = "application/json;charset=UTF-8")
