@@ -32,10 +32,6 @@
 
 		FROM avoidedcostassetreplacementiterm 
 
-
-		WHERE
-		projectId=#{projectId}
-
 	</select>
 	
 	
