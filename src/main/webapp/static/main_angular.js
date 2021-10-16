@@ -103,6 +103,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             if(response.data.projectStatus == "exist"){
 				existing = true
 			}
+			payload_format = response.data;
 			pc_item = response.data.projectData;
         });
 
@@ -234,25 +235,27 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ncc_submit_input = function () {
+        payload_format.projectData = $scope.ncc_data.proj_comp
         var proj_comp = JSON.stringify(
-            $scope.ncc_data.proj_comp
+			payload_format
         );
-        //console.log(proj_comp);
+        console.log(proj_comp);
 
+        payload_format.projectData = $scope.ncc_data.other
         var other = JSON.stringify(
-            $scope.ncc_data.other
+            payload_format
         );
-        //console.log(other);
+        console.log(other);
 
         $http({
             method: 'POST',
-            url: url + '/insertProjectNonContestableProjectComponent',
+            url: url + '/NonContestable/saveAndUpdateNonContestableProjectComponent',
             data: proj_comp
         }).then(function mySuccess(response) {
 
             $http({
                 method: 'POST',
-                url: url + '/insertNonContestableOtherCosts',
+                url: url + '/NonContestable/saveAndUpdateNonContestableOtherCostsIterm',
                 data: other
             }).then(function mySuccess(response) {
                 $window.location.href = '/fim_page'
@@ -308,6 +311,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 					existing = true;
 				}
 				fim_item = response.data.projectData;
+				payload_format = response.data;
 	        });
             //console.log(response.data);
             $scope.fim_types = response.data;
@@ -439,12 +443,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.fim_submit_input = function () {
+		payload_format.projectData = $scope.fim_data;
         var obj = JSON.stringify(
-            $scope.fim_data
+            payload_format
         )
+		console.log(obj)
         $http({
             method: 'POST',
-            url: url + '/insertFIMinputItermQuantity',
+            url: url + '/FIMInput/saveAndUpdate',
             data: obj,
         }).then(function mySuccess(response) {
             $window.location.href = '/avoided_cost_page'
