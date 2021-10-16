@@ -52,6 +52,8 @@ public interface AvoidedCostDao {
 
 	public AvoidedCostAssetReplacementCosts getAvoidedCostAssetReplacementCostsId(Integer id);
 
+	public List<AvoidedCostassetReplacementIterm> oldselectAllAvoidedCostassetReplacementIterm(Integer projectId);
+
 	
 	
 	
