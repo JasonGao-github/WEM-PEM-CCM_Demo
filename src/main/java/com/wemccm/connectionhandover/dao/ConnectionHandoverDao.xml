@@ -54,7 +54,7 @@ where nc.projectId=#{projectId}
 	parameterType="com.wemccm.common.entity.ConnectionHandover">
 
 		update connectionhandover 
-		set id =#{id} 
+		set projectId =#{projectId} 
 		<if test="projectId!=null and projectId!=''">
 			,projectId=#{projectId}
 		</if>
@@ -144,7 +144,7 @@ where nc.projectId=#{projectId}
 		</if>
 		
 		
-		where id =#{id} 
+		where projectId =#{projectId} 
 
 
 	</select> 
@@ -155,7 +155,7 @@ where nc.projectId=#{projectId}
 		resultType="com.wemccm.common.entity.ConnectionHandover">
 
 		SELECT * FROM connectionhandover WHERE
-		id =#{id}
+		projectId =#{projectId}
 
 	</select>
 	

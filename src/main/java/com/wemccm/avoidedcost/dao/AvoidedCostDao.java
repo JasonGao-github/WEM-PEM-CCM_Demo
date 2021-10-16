@@ -3,6 +3,7 @@ package com.wemccm.avoidedcost.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.wemccm.common.entity.AvoidedCostAssetReplacementCosts;
 import com.wemccm.common.entity.AvoidedCostESCGuideline;
@@ -48,9 +49,9 @@ public interface AvoidedCostDao {
 
 	public List<AvoidedCostassetReplacementIterm> selectAllALLAvoidedCostassetReplacementIterm();
 
-	public void insertAvoidedCostassetReplacementItermId(Integer id);
+	public void insertAvoidedCostassetReplacementItermId(@Param("avoidedCostassetReplacementItermId")Integer avoidedCostassetReplacementItermId,@Param("projectId")Integer projectId);
 
-	public AvoidedCostAssetReplacementCosts getAvoidedCostAssetReplacementCostsId(Integer id);
+	public AvoidedCostAssetReplacementCosts getAvoidedCostAssetReplacementCostsId(@Param("avoidedCostassetReplacementItermId")Integer avoidedCostassetReplacementItermId,@Param("projectId")Integer projectId);
 
 	public List<AvoidedCostassetReplacementIterm> oldselectAllAvoidedCostassetReplacementIterm(Integer projectId);
 

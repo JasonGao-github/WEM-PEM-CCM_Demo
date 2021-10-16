@@ -253,7 +253,7 @@
 	<select id="updateNonContestableOtherCostsIterm"
 		parameterType="com.wemccm.common.entity.NonContestableOtherCosts">
 		update noncontestableothercosts
-		set id =#{id} 
+		set projectId=#{projectId}
 		<if test="projectId!=null and projectId!=''">
 			,projectId=#{projectId}
 		</if>
@@ -273,16 +273,17 @@
 			,total=#{total}
 		</if>
 
-		where id =#{id}
+		WHERE nonContestableOtherCostsItemId=#{nonContestableOtherCostsItemId} 
+		and projectId=#{projectId}
 
 	</select>
 
 	<select id="insertNonContestableOtherCostsItermId"
 		parameterType="Integer">
 
-		INSERT INTO noncontestableothercosts (id)
+		INSERT INTO noncontestableothercosts (nonContestableOtherCostsItemId,projectId)
 		VALUES
-		(#{id})
+		(#{nonContestableOtherCostsItemId},#{projectId})
 
 	</select>
 	
@@ -291,7 +292,7 @@
 	<select id="updateNonContestableProjectComponent"
 		parameterType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
 		update projectnoncontestableprojectcomponent
-		set id =#{id} 
+		set projectId =#{projectId} 
 		<if test="projectId!=null and projectId!=''">
 			,projectId=#{projectId}
 		</if>
@@ -308,7 +309,8 @@
 			,total=#{total}
 		</if>
 
-		where id =#{id}
+		where nonContestableProjectComponentId=#{nonContestableProjectComponentId} 
+		and projectId=#{projectId}
 
 	</select>
 	
@@ -332,9 +334,9 @@
 	<select id="insertNonContestableProjectComponentId"
 		parameterType="Integer">
 
-		INSERT INTO projectnoncontestableprojectcomponent (id)
+		INSERT INTO projectnoncontestableprojectcomponent (nonContestableProjectComponentId,projectId)
 		VALUES
-		(#{id})
+		(#{nonContestableProjectComponentId},#{projectId})
 
 	</select>
 	
@@ -343,8 +345,9 @@
 		parameterType="Integer"
 		resultType="com.wemccm.common.entity.NonContestableOtherCosts">
 
-		SELECT * FROM noncontestableothercosts WHERE
-		id =#{id}
+		SELECT * FROM noncontestableothercosts 
+		WHERE nonContestableOtherCostsItemId=#{nonContestableOtherCostsItemId} 
+		and projectId=#{projectId}
 
 	</select>
 
@@ -352,9 +355,9 @@
 		parameterType="Integer"
 		resultType="com.wemccm.common.entity.ProjectNonContestableProjectComponent">
 
-		SELECT * FROM projectnoncontestableprojectcomponent WHERE
-		id =#{id}
-
+		SELECT * FROM projectnoncontestableprojectcomponent 
+		WHERE nonContestableProjectComponentId=#{nonContestableProjectComponentId} 
+		and projectId=#{projectId}
 	</select>
 
 </mapper>

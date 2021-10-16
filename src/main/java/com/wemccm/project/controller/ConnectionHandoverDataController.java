@@ -42,7 +42,7 @@ import com.wemccm.project.service.FIMInputDataService;
 		public ProjectBasicPojo saveAndUpdate(@RequestBody ConnectionHandoverDataPojo pojo) {
 
 //			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = 2;
 			
 			pojo.setProjectId(projectId);
 

@@ -3,6 +3,7 @@ package com.wemccm.fiminput.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.wemccm.common.entity.FIMinputIterm;
 import com.wemccm.common.entity.FIMinputSubType;
@@ -55,5 +56,6 @@ public interface FIMInputDao {
 
 	public void updateFIMinputIterm(FIMAllPojo requestPojo);
 
-	public FIMAllPojo getFIMAllPojoId(Integer id);
+	public FIMAllPojo getFIMAllPojoId(@Param("fIMinputItermId")Integer fIMinputItermId,@Param("projectId")Integer projectId);
+	
 }
