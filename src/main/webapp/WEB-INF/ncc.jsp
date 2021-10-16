@@ -77,8 +77,8 @@ System.out.println(projectId);
 					<div class="row">
 						<h3>Project Type</h3>
 						<select id="position" ng-change="ncc_typeChanged()"
-							ng-model="selected_type">
-							<option ng-repeat="type in project_types" value="{{type.id}}">{{type.name}}</option>
+							ng-model="selected_type" 
+							ng-options="type as type.name for type in project_types track by type.id">
 						</select>
 					</div>
 					<div class="projectComp">

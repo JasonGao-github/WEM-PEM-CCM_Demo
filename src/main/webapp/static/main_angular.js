@@ -108,7 +108,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         });
 
 		$http.get('/NonContestable/getDataNonContestableOtherCostsIterm').then(function (response) {
-            //console.log(response.data)
+            console.log(response.data)
             if(response.data.projectStatus == "exist"){
 				existing = true
 			}
@@ -119,8 +119,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
             get_item();
+			
 			if(existing){
-				$scope.selected_type = pc_item[0].projectTypeId
+				$scope.project_types.forEach(type =>{
+					if (pc_item[0].projectTypeId == type.id)
+					$scope.selected_type = type;
+				})
+				//$scope.selected_type.id = pc_item[0].projectTypeId
 				console.log($scope.selected_type)
 				$scope.ncc_typeChanged()
 			}
@@ -156,9 +161,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		
     }
 
-    $scope.ncc_typeChanged = function () {
+    $scope.ncc_typeChanged = function () {		
         var obj = JSON.stringify({
-            "projectTypeId": $scope.selected_type,
+            "projectTypeId": $scope.selected_type.id,
         });
 
         $http({
@@ -182,6 +187,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 				}
             }
         })
+
 
         //when type changed, reset the content
         $scope.ncc_data.proj_comp = []
@@ -492,6 +498,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //for avoided cost
     $scope.get_ac = function () {
+		$http.get('/AvoidedCost/getData').then(function (response) {
+			console.log(response.data)
+			payload_format = response.data;
+			ac_item = payload_format.projectData;
+		});
+		
         $http.get('/selectAllAvoidedCostassetReplacementIterm').then(function (response) {
             //console.log(response.data);
             $scope.ac_items = response.data;
@@ -560,6 +572,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.exist_asset_data[index].quantity = ''
             $scope.exist_asset_data[index].assetAge = ''
             $scope.exist_asset_data[index].name = ac_item.name
+            $scope.exist_asset_data[index].type = 'existing'
+
         }
         $scope.ac_update_exist_item(index)
     }
@@ -573,6 +587,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.repl_asset_data[index].vegetationManagementCost = ac_item.vegetationManagementCost
             $scope.repl_asset_data[index].quantity = ''
             $scope.repl_asset_data[index].name = ac_item.name
+            $scope.repl_asset_data[index].type = 'new'
         }
         $scope.ac_update_repl_item(index)
     }
@@ -677,21 +692,24 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.ac_submit_input = function () {
         //console.log($scope.exist_asset_data)
         //console.log($scope.repl_asset_data)
+		
         data = $scope.exist_asset_data.concat($scope.repl_asset_data);
-        //console.log(data)
+		payload_format.projectData = data
+
         var obj = JSON.stringify(
-            $scope.exist_asset_data.concat($scope.repl_asset_data)
+            payload_format
         );
-        //console.log(obj)
+        console.log(obj)
 
         $http({
             method: 'POST',
-            url: url + '/insertAvoidedCostAssetReplacementCosts',
+            url: url + '/AvoidedCost/saveAndUpdate',
             data: obj,
         }).then(function mySuccess(response) {
             //console.log(response.data);
             $window.location.href = '/financials_page'
         })
+
 
     }
 
