@@ -56,7 +56,7 @@ import com.wemccm.fiminput.dao.FIMInputDao;
 				List<AvoidedCostAssetReplacementCosts> projectDataList = pojo.getProjectData();
 				for (AvoidedCostAssetReplacementCosts Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					dao.insertAvoidedCostassetReplacementItermId(Pojo.getId());
+					dao.insertAvoidedCostassetReplacementItermId(Pojo.getAvoidedCostassetReplacementItermId(),Pojo.getProjectId());
 					dao.updateAvoidedCostassetReplacementIterm(Pojo);
 				}
 
@@ -67,11 +67,11 @@ import com.wemccm.fiminput.dao.FIMInputDao;
 				List<AvoidedCostAssetReplacementCosts> projectDataList = pojo.getProjectData();
 				for (AvoidedCostAssetReplacementCosts Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					AvoidedCostAssetReplacementCosts ncoc=dao.getAvoidedCostAssetReplacementCostsId(Pojo.getId());
+					AvoidedCostAssetReplacementCosts ncoc=dao.getAvoidedCostAssetReplacementCostsId(Pojo.getAvoidedCostassetReplacementItermId(),Pojo.getProjectId());
 					if(ncoc!=null) {
 						dao.updateAvoidedCostassetReplacementIterm(Pojo);
 					}else {
-						dao.insertAvoidedCostassetReplacementItermId(Pojo.getId());
+						dao.insertAvoidedCostassetReplacementItermId(Pojo.getAvoidedCostassetReplacementItermId(),Pojo.getProjectId());
 						dao.updateAvoidedCostassetReplacementIterm(Pojo);
 					}
 

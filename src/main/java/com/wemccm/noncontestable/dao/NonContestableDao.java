@@ -3,6 +3,7 @@ package com.wemccm.noncontestable.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.wemccm.common.entity.NonContestableOtherCosts;
 import com.wemccm.common.entity.NonContestableOtherCostsItem;
@@ -59,7 +60,7 @@ public interface NonContestableDao {
 
 	public List<NonContestableOtherCostsItemTypePojo> listAllAllNonContestableOtherCostsIterm();
 	
-	public void insertNonContestableOtherCostsItermId(Integer id);
+	public void insertNonContestableOtherCostsItermId(@Param("nonContestableOtherCostsItemId")Integer nonContestableOtherCostsItemId,@Param("projectId")Integer projectId);
 	
 	
 	
@@ -73,13 +74,13 @@ public interface NonContestableDao {
 	public List<NonContestableProjectComponentTypePojo> listAllALLNonContestableProjectComponent();
 
 	
-	public void insertNonContestableProjectComponentId(Integer id);
+	public void insertNonContestableProjectComponentId(@Param("nonContestableProjectComponentId")Integer nonContestableProjectComponentId,@Param("projectId")Integer projectId);
 
-	public NonContestableOtherCosts getNonContestableOtherCostsId(Integer id);
+	public NonContestableOtherCosts getNonContestableOtherCostsId(@Param("nonContestableOtherCostsItemId")Integer nonContestableOtherCostsItemId,@Param("projectId")Integer projectId);
 
-	public ProjectNonContestableProjectComponent getProjectNonContestableProjectComponentId(Integer id);
+	public ProjectNonContestableProjectComponent getProjectNonContestableProjectComponentId(@Param("nonContestableProjectComponentId")Integer nonContestableProjectComponentId,@Param("projectId")Integer projectId);
 
-
+	
 
 
 

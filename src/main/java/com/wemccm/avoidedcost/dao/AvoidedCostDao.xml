@@ -19,8 +19,9 @@
 		parameterType="Integer"
 		resultType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 
-		SELECT * FROM avoidedcostassetreplacementcosts WHERE
-		id =#{id}
+		SELECT * FROM avoidedcostassetreplacementcosts 
+		WHERE avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId} 
+		and projectId=#{projectId}
 
 	</select>
 	
@@ -70,9 +71,10 @@
 		<select id="insertAvoidedCostassetReplacementItermId"
 		parameterType="Integer">
 
-		INSERT INTO avoidedcostassetreplacementcosts (id)
+		INSERT INTO avoidedcostassetreplacementcosts (avoidedCostassetReplacementItermId,projectId)
 		VALUES
-		(#{id})
+		(#{avoidedCostassetReplacementItermId} ,#{projectId})
+		
 
 	</select>
 	
@@ -98,7 +100,7 @@
 	<select id="updateAvoidedCostassetReplacementIterm"
 		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 		update avoidedcostassetreplacementcosts 
-		set id =#{id} 
+		set avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId}
 		<if test="projectId!=null and projectId!=''">
 			,projectId=#{projectId}
 		</if>
@@ -147,7 +149,8 @@
 			,avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId}
 		</if>
 		
-		where id =#{id} 
+		where avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId} 
+		and projectId=#{projectId}
 
 	</select>
 	

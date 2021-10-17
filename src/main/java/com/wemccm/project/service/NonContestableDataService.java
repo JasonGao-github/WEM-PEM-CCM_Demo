@@ -61,7 +61,7 @@ import com.wemccm.noncontestable.dao.NonContestableDao;
 				List<NonContestableOtherCosts> projectDataList = pojo.getProjectData();
 				for (NonContestableOtherCosts Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					dao.insertNonContestableOtherCostsItermId(Pojo.getId());
+					dao.insertNonContestableOtherCostsItermId(Pojo.getNonContestableOtherCostsItemId(),Pojo.getProjectId());
 					dao.updateNonContestableOtherCostsIterm(Pojo);
 				}
 
@@ -72,12 +72,12 @@ import com.wemccm.noncontestable.dao.NonContestableDao;
 				List<NonContestableOtherCosts> projectDataList = pojo.getProjectData();
 				for (NonContestableOtherCosts Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					NonContestableOtherCosts ncoc=dao.getNonContestableOtherCostsId(Pojo.getId());
+					NonContestableOtherCosts ncoc=dao.getNonContestableOtherCostsId(Pojo.getNonContestableOtherCostsItemId(),Pojo.getProjectId());
 					if(ncoc!=null) {
 
 						dao.updateNonContestableOtherCostsIterm(Pojo);
 					}else {
-						dao.insertNonContestableOtherCostsItermId(Pojo.getId());
+						dao.insertNonContestableOtherCostsItermId(Pojo.getNonContestableOtherCostsItemId(),Pojo.getProjectId());
 						dao.updateNonContestableOtherCostsIterm(Pojo);
 					}
 
@@ -132,7 +132,7 @@ import com.wemccm.noncontestable.dao.NonContestableDao;
 				List<ProjectNonContestableProjectComponent> projectDataList = pojo.getProjectData();
 				for (ProjectNonContestableProjectComponent Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					dao.insertNonContestableProjectComponentId(Pojo.getId());
+					dao.insertNonContestableProjectComponentId(Pojo.getNonContestableProjectComponentId(),Pojo.getProjectId());
 					dao.updateNonContestableProjectComponent(Pojo);
 				}
 
@@ -144,11 +144,11 @@ import com.wemccm.noncontestable.dao.NonContestableDao;
 				for (ProjectNonContestableProjectComponent Pojo : projectDataList) {
 					
 					Pojo.setProjectId(pojo.getProjectId());
-					ProjectNonContestableProjectComponent ncoc=dao.getProjectNonContestableProjectComponentId(Pojo.getId());
+					ProjectNonContestableProjectComponent ncoc=dao.getProjectNonContestableProjectComponentId(Pojo.getNonContestableProjectComponentId(),Pojo.getProjectId());
 					if(ncoc!=null) {
 						dao.updateNonContestableProjectComponent(Pojo);
 					}else {
-						dao.insertNonContestableProjectComponentId(Pojo.getId());
+						dao.insertNonContestableProjectComponentId(Pojo.getNonContestableProjectComponentId(),Pojo.getProjectId());
 						dao.updateNonContestableProjectComponent(Pojo);
 					}
 

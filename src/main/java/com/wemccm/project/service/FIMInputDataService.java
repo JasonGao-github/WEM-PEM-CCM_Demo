@@ -78,7 +78,7 @@ import com.wemccm.project.dao.QuantityInputDataDao;
 				List<FIMAllPojo> projectDataList = pojo.getProjectData();
 				for (FIMAllPojo Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					FIMAllPojo fim=dao.getFIMAllPojoId(Pojo.getId());
+					FIMAllPojo fim=dao.getFIMAllPojoId(Pojo.getfIMinputItermId(),Pojo.getProjectId());
 					if(fim!=null) {
 						dao.updateFIMAllPojo(Pojo);
 					}else {

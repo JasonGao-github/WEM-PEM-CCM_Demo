@@ -46,7 +46,7 @@ import com.wemccm.project.service.NonContestableDataService;
 		public ProjectBasicPojo saveAndUpdateNonContestableOtherCostsIterm(@RequestBody NonContestableOtherCostsDataPojo pojo) {
 
 //			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = 2;
 			pojo.setProjectId(projectId);
 			qiService.saveAndUpdateNonContestableOtherCostsIterm(pojo);
 
