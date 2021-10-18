@@ -26,7 +26,7 @@ System.out.println(projectId);
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
-			<div class="container content d-flex flex-column">
+			<div class="container content">
 				<div class="row">
 					<div class="col-12">
 						<ul class="nav nav-pills"
@@ -135,10 +135,6 @@ System.out.println(projectId);
 					<button type="button" class="btn btn-primary"
 						ng-click="ncc_submit_input()">submit</button>
 				</form>
-				<%
-					int curr_page = 3;
-				%>
-				<%@ include file="common/pagesBar.jspf"%>
 			</div>
 		</div>
 	</section>

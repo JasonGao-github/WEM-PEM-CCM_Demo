@@ -18,7 +18,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
-			<div class="container content d-flex flex-column">
+			<div class="container content">
 				<div class="row">
 					<div class="col-12">
 						<ul class="nav nav-pills"
@@ -145,10 +145,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<button type="button" class="btn btn-primary"
 						ng-click="fim_submit_input()">submit</button>
 				</form>
-				<%
-					int curr_page = 4;
-				%>
-				<%@ include file="common/pagesBar.jspf"%>
 			</div>
 		</div>
 	</section>
