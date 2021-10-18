@@ -532,26 +532,46 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 					if(item.type == 'exist'){
 						$scope.ac_items.forEach(basic_data=>{
 							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
-								
+        						let new_data = Object.assign({}, basic_data);
+								new_data.quantity = item.quantity;
+								new_data.assetAge = item.assetAge;
+								new_data.type = 'exist'
+								$scope.exist_asset_data.push(new_data)
+								$scope.ac_update_exist_item($scope.exist_asset_data.indexOf(new_data))
+								console.log(new_data)
 							}
 						})
-						item.id = $scope.exist_asset_data.length
-						$scope.exist_asset_data.push(item)
 					}
 					if(item.type == 'new'){
-						item.id = $scope.repl_asset_data.length
-						$scope.repl_asset_data.push(item)
+						$scope.ac_items.forEach(basic_data=>{
+							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
+								let new_data = Object.assign({}, basic_data);
+								new_data.quantity = item.quantity;
+								new_data.assetAge = item.assetAge;
+								basic_data.type = 'new'
+								$scope.repl_asset_data.push(new_data)
+								$scope.ac_update_repl_item($scope.repl_asset_data.indexOf(new_data))
+								console.log(new_data)
+							}
+						})
 					}
 				})
 			}
+			
+	        $scope.ac_update_total()
+	        $scope.ac_update_weigted_avg_age()
+			/*
 			console.log("exist assets")
 			console.log($scope.exist_asset_data)
 			console.log("new assets")
 			console.log($scope.repl_asset_data)
+			*/
 			
-	        $scope.ac_update_total()
-	        $scope.ac_update_weigted_avg_age()
-		});
+			$scope.ac_get_overhead()
+			console.log("overhead")
+			console.log($scope.ac_overhead)
+		}
+		);
     }
 
     data = {
@@ -642,7 +662,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         value = $scope.exist_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.exist_asset_data[index].remLife)
         $scope.exist_asset_data[index].presentValueRC = value
         $scope.ac_update_total()
-
+		/*
+		console.log("exist assets")
+		console.log($scope.exist_asset_data)
+		console.log("new assets")
+		console.log($scope.repl_asset_data)
+		*/
     }
     $scope.ac_update_repl_item = function (index) {
         item = $scope.repl_asset_data[index]
@@ -654,8 +679,29 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $scope.ac_update_total()
         $scope.ac_update_weigted_avg_age()
+		/*
+		console.log("exist assets")
+		console.log($scope.exist_asset_data)
+		console.log("new assets")
+		console.log($scope.repl_asset_data)
+		*/
     }
+	
+	$scope.ac_get_overhead = function() {
+		var overhead = JSON.stringify({
+            projectId : payload_format.projectId,
+		});
 
+        $http({
+            method: 'POST',
+            url: url + '/listAvoidedCostESCGuideline',
+            data: overhead,
+        }).then(function mySuccess(response) {
+			console.log(response.data[0])
+			$scope.ac_overhead = parseFloat(response.data[0].constant)
+        })
+	}
+	
     $scope.ac_update_overhead = function () {
         if ($scope.exist_asset_data) {
             for (let i = 0; i < $scope.exist_asset_data.length; i++) {
@@ -732,8 +778,20 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ac_submit_input = function () {
-        //console.log($scope.exist_asset_data)
-        //console.log($scope.repl_asset_data)
+        var overhead = JSON.stringify([{
+            projectId : payload_format.projectId,
+			constant : $scope.ac_overhead
+		}]);
+        console.log(overhead)
+
+        $http({
+            method: 'POST',
+            url: url + '/insertAvoidedCostESCGuideline',
+            data: overhead,
+        }).then(function mySuccess(response) {
+
+        })
+
 		
         data = $scope.exist_asset_data.concat($scope.repl_asset_data);
 		payload_format.projectData = data

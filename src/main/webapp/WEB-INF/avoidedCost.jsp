@@ -91,7 +91,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<tr>
 							<td>Margin for overheads (%)</td>
 							<td>Jemena</td>
-							<td><input type="number" ng-model="overhead"
+							<td><input type="number" ng-model="ac_overhead"
 								ng-change="ac_update_overhead()"></td>
 							<td colspan="7">Input is constrained up to 10% as per clause
 								2.3.2(a)</td>
