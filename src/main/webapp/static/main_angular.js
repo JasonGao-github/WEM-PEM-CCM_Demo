@@ -97,7 +97,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.selected_type = $scope.project_types[1].projectTypeId;
         });
 		existing = false
-
+		
+		//get the data, if new exist then prefill the data
         $http.get('/NonContestable/getDataNonContestableProjectComponent').then(function (response) {
             console.log(response.data)
             if(response.data.projectStatus == "exist"){
@@ -122,6 +123,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			
 			if(existing){
 				$scope.project_types.forEach(type =>{
+					//in order to prefill the select input
+					//choose the whole item instead of only the id
 					if (pc_item[0].projectTypeId == type.id)
 					$scope.selected_type = type;
 				})
@@ -241,6 +244,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ncc_submit_input = function () {
+		//change only the project data to the coming json and keep the format
         payload_format.projectData = $scope.ncc_data.proj_comp
         var proj_comp = JSON.stringify(
 			payload_format
@@ -498,15 +502,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //for avoided cost
     $scope.get_ac = function () {
-		$http.get('/AvoidedCost/getData').then(function (response) {
-			console.log(response.data)
-			payload_format = response.data;
-			ac_item = payload_format.projectData;
-		});
-		
         $http.get('/selectAllAvoidedCostassetReplacementIterm').then(function (response) {
             //console.log(response.data);
             $scope.ac_items = response.data;
+			//set avoidedCostassetReplacementItermId of each item to their id
+			for(let i = 0; i < $scope.ac_items.length; i++){
+				$scope.ac_items[i].avoidedCostassetReplacementItermId = $scope.ac_items[i].id
+			}
             console.log($scope.ac_items);
 
             $scope.wacc = 4.72
@@ -515,6 +517,41 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.add_ex_asset();
             $scope.add_repl_asset();
         });
+		$http.get('/AvoidedCost/getData').then(function (response) {
+			console.log(response.data)
+			payload_format = response.data;
+			ac_saved_item = payload_format.projectData;
+			//console.log(payload_format.projectStatus)
+			if(payload_format.projectStatus == 'exist'){
+				//console.log("project exist")
+				$scope.exist_asset_data = []
+    			$scope.repl_asset_data = []
+				ac_saved_item.forEach(item =>{
+					//console.log("item")
+					//console.log(item)
+					if(item.type == 'exist'){
+						$scope.ac_items.forEach(basic_data=>{
+							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
+								
+							}
+						})
+						item.id = $scope.exist_asset_data.length
+						$scope.exist_asset_data.push(item)
+					}
+					if(item.type == 'new'){
+						item.id = $scope.repl_asset_data.length
+						$scope.repl_asset_data.push(item)
+					}
+				})
+			}
+			console.log("exist assets")
+			console.log($scope.exist_asset_data)
+			console.log("new assets")
+			console.log($scope.repl_asset_data)
+			
+	        $scope.ac_update_total()
+	        $scope.ac_update_weigted_avg_age()
+		});
     }
 
     data = {
@@ -536,22 +573,22 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     };
     $scope.exist_asset_data = []
     $scope.repl_asset_data = []
-
+	
+	//add items
     $scope.add_ex_asset = function () {
         let new_data = Object.assign({}, data);
-        avoidedCostassetReplacementItermId = $scope.exist_asset_data.length
-        new_data.id = avoidedCostassetReplacementItermId
 		new_data.type = 'existing'
         $scope.exist_asset_data.push(new_data)
         console.log($scope.exist_asset_data)
     }
     $scope.add_repl_asset = function () {
         let new_data = Object.assign({}, data);
-        new_data.id = $scope.repl_asset_data.length
-		new_data.type = ''
+		new_data.type = 'new'
         $scope.repl_asset_data.push(new_data)
+        console.log($scope.repl_asset_data)
     }
 
+	//remove items
     $scope.rm_ex_asset = function () {
         $scope.exist_asset_data.pop()
         $scope.ac_update_total()
@@ -562,7 +599,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ac_exist_select_item = function (index) {
+		//the index of the ac_items and their ac item id offset by one
+		//check if the item with that index exist
         if ($scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
+			//if exist set to this item
             ac_item = $scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]
             $scope.exist_asset_data[index].stdLife = ac_item.stdLife
             $scope.exist_asset_data[index].unit = ac_item.unit
@@ -572,10 +612,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.exist_asset_data[index].quantity = ''
             $scope.exist_asset_data[index].assetAge = ''
             $scope.exist_asset_data[index].name = ac_item.name
-            $scope.exist_asset_data[index].type = 'existing'
+            $scope.exist_asset_data[index].type = 'exist'
 
         }
         $scope.ac_update_exist_item(index)
+		console.log($scope.exist_asset_data)
     }
     $scope.ac_repl_select_item = function (index) {
         if ($scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
@@ -590,6 +631,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.repl_asset_data[index].type = 'new'
         }
         $scope.ac_update_repl_item(index)
+		console.log($scope.repl_asset_data)
     }
 
     $scope.ac_update_exist_item = function (index) {
