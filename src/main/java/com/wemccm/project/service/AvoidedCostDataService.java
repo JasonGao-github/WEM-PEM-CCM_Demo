@@ -1,6 +1,7 @@
 package com.wemccm.project.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,12 @@ import com.wemccm.fiminput.dao.FIMInputDao;
 				List<AvoidedCostAssetReplacementCosts> projectDataList = pojo.getProjectData();
 				for (AvoidedCostAssetReplacementCosts Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					dao.insertAvoidedCostassetReplacementItermId(Pojo.getAvoidedCostassetReplacementItermId(),Pojo.getProjectId());
+					HashMap hashmap=new HashMap<String,String>();
+					hashmap.put("type", Pojo.getType());
+					hashmap.put("projectId", Pojo.getProjectId());
+					hashmap.put("avoidedCostassetReplacementItermId", Pojo.getAvoidedCostassetReplacementItermId());
+					
+					dao.insertAvoidedCostassetReplacementItermId(hashmap);
 					dao.updateAvoidedCostassetReplacementIterm(Pojo);
 				}
 
@@ -67,11 +73,15 @@ import com.wemccm.fiminput.dao.FIMInputDao;
 				List<AvoidedCostAssetReplacementCosts> projectDataList = pojo.getProjectData();
 				for (AvoidedCostAssetReplacementCosts Pojo : projectDataList) {
 					Pojo.setProjectId(pojo.getProjectId());
-					AvoidedCostAssetReplacementCosts ncoc=dao.getAvoidedCostAssetReplacementCostsId(Pojo.getAvoidedCostassetReplacementItermId(),Pojo.getProjectId());
+					HashMap hashmap=new HashMap<String,String>();
+					hashmap.put("type", Pojo.getType());
+					hashmap.put("projectId", Pojo.getProjectId());
+					hashmap.put("avoidedCostassetReplacementItermId", Pojo.getAvoidedCostassetReplacementItermId());
+					AvoidedCostAssetReplacementCosts ncoc=dao.getAvoidedCostAssetReplacementCostsId(hashmap);
 					if(ncoc!=null) {
 						dao.updateAvoidedCostassetReplacementIterm(Pojo);
 					}else {
-						dao.insertAvoidedCostassetReplacementItermId(Pojo.getAvoidedCostassetReplacementItermId(),Pojo.getProjectId());
+						dao.insertAvoidedCostassetReplacementItermId(hashmap);
 						dao.updateAvoidedCostassetReplacementIterm(Pojo);
 					}
 
