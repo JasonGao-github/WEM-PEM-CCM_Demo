@@ -697,8 +697,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             url: url + '/listAvoidedCostESCGuideline',
             data: overhead,
         }).then(function mySuccess(response) {
-			console.log(response.data[0])
-			$scope.ac_overhead = parseFloat(response.data[0].constant)
+			data = response.data
+			$scope.ac_overhead = parseFloat(data[data.length - 1].constant)
         })
 	}
 	
