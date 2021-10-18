@@ -1,5 +1,6 @@
 package com.wemccm.avoidedcost.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -49,9 +50,9 @@ public interface AvoidedCostDao {
 
 	public List<AvoidedCostassetReplacementIterm> selectAllALLAvoidedCostassetReplacementIterm();
 
-	public void insertAvoidedCostassetReplacementItermId(@Param("avoidedCostassetReplacementItermId")Integer avoidedCostassetReplacementItermId,@Param("projectId")Integer projectId);
-
-	public AvoidedCostAssetReplacementCosts getAvoidedCostAssetReplacementCostsId(@Param("avoidedCostassetReplacementItermId")Integer avoidedCostassetReplacementItermId,@Param("projectId")Integer projectId);
+	public void insertAvoidedCostassetReplacementItermId(HashMap hashmap);
+//	@Param("type")String type,@Param("avoidedCostassetReplacementItermId")Integer avoidedCostassetReplacementItermId,@Param("projectId")Integer projectId
+	public AvoidedCostAssetReplacementCosts getAvoidedCostAssetReplacementCostsId(HashMap hashmap);
 
 	public List<AvoidedCostassetReplacementIterm> oldselectAllAvoidedCostassetReplacementIterm(Integer projectId);
 

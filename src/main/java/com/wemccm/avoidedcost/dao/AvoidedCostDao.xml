@@ -16,12 +16,13 @@
 	
 	
 	<select id="getAvoidedCostAssetReplacementCostsId"
-		parameterType="Integer"
+		parameterType="hashmap"
 		resultType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 
 		SELECT * FROM avoidedcostassetreplacementcosts 
 		WHERE avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId} 
 		and projectId=#{projectId}
+		and type=#{type}
 
 	</select>
 	
@@ -69,11 +70,11 @@
 
 	</select>
 		<select id="insertAvoidedCostassetReplacementItermId"
-		parameterType="Integer">
+		parameterType="hashmap">
 
-		INSERT INTO avoidedcostassetreplacementcosts (avoidedCostassetReplacementItermId,projectId)
+		INSERT INTO avoidedcostassetreplacementcosts (type,avoidedCostassetReplacementItermId,projectId)
 		VALUES
-		(#{avoidedCostassetReplacementItermId} ,#{projectId})
+		(#{type},#{avoidedCostassetReplacementItermId} ,#{projectId})
 		
 
 	</select>
@@ -101,9 +102,9 @@
 		parameterType="com.wemccm.common.entity.AvoidedCostAssetReplacementCosts">
 		update avoidedcostassetreplacementcosts 
 		set avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId}
-		<if test="projectId!=null and projectId!=''">
+<!-- 		<if test="projectId!=null and projectId!=''">
 			,projectId=#{projectId}
-		</if>
+		</if> -->
 		<if test="name!=null and name!=''">
 			,name=#{name}
 		</if>
@@ -118,12 +119,12 @@
 		</if>
 		
 		
-		<if test="projectId!=null and projectId!=''">
+<!-- 		<if test="projectId!=null and projectId!=''">
 			,projectId=#{projectId}
-		</if>
-		<if test="type!=null and type!=''">
+		</if> -->
+<!-- 		<if test="type!=null and type!=''">
 			,type=#{type}
-		</if>
+		</if> -->
 		<if test="source!=null and source!=''">
 			,source=#{source}
 		</if>
@@ -151,6 +152,7 @@
 		
 		where avoidedCostassetReplacementItermId=#{avoidedCostassetReplacementItermId} 
 		and projectId=#{projectId}
+		and type=#{type}
 
 	</select>
 	
