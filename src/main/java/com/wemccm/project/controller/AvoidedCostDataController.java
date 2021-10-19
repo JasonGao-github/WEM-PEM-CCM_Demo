@@ -28,11 +28,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
 		public AvoidedCostassetReplacementItermDataPojo getData() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 
 			AvoidedCostassetReplacementItermDataPojo resultPojo = qiService.getData(projectId, projectStatus);
 
@@ -43,8 +43,8 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdate(@RequestBody AvoidedCostAssetReplacementCostsDataPojo pojo) {
 
-//			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = getProjectIdInSession();
+//			int projectId = 1;
 			pojo.setProjectId(projectId);
 
 			qiService.saveAndUpdate(pojo);

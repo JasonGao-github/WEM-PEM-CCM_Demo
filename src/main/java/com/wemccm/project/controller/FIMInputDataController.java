@@ -29,11 +29,11 @@ import com.wemccm.project.service.QuantityInputDataService;
 		@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
 		public FIMinputItermSubTypeTypeDataPojo getData() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 
 			FIMinputItermSubTypeTypeDataPojo resultPojo = qiService.getData(projectId, projectStatus);
 
@@ -44,9 +44,9 @@ import com.wemccm.project.service.QuantityInputDataService;
 		@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdate(@RequestBody FIMinputItermSubTypeTypeDataPojo pojo) {
 
-//			int projectId = getProjectIdInSession();
+			int projectId = getProjectIdInSession();
 			
-			int projectId = 1;
+//			int projectId = 1;
 			pojo.setProjectId(projectId);
 
 			qiService.saveAndUpdate(pojo);
