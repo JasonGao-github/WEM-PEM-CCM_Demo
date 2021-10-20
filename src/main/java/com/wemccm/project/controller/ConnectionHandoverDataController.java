@@ -26,11 +26,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
 		public ConnectionHandoverDataPojo getData() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "new";
+//			int projectId = 1;
+//			String projectStatus = "new";
 
 			ConnectionHandoverDataPojo resultPojo = qiService.getData(projectId, projectStatus);
 
@@ -41,8 +41,8 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdate(@RequestBody ConnectionHandoverDataPojo pojo) {
 
-//			int projectId = getProjectIdInSession();
-			int projectId = 2;
+			int projectId = getProjectIdInSession();
+//			int projectId = 2;
 			
 			pojo.setProjectId(projectId);
 

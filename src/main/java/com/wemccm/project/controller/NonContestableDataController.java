@@ -30,11 +30,11 @@ import com.wemccm.project.service.NonContestableDataService;
 		@RequestMapping(value = "/getDataNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 		public NonContestableOtherCostsItemTypeDataPojo getDataNonContestableOtherCostsIterm() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 
 			NonContestableOtherCostsItemTypeDataPojo resultPojo = qiService.getDataNonContestableOtherCostsIterm(projectId, projectStatus);
 
@@ -45,8 +45,8 @@ import com.wemccm.project.service.NonContestableDataService;
 		@RequestMapping(value = "/saveAndUpdateNonContestableOtherCostsIterm", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateNonContestableOtherCostsIterm(@RequestBody NonContestableOtherCostsDataPojo pojo) {
 
-//			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = getProjectIdInSession();
+//			int projectId = 2;
 			pojo.setProjectId(projectId);
 			qiService.saveAndUpdateNonContestableOtherCostsIterm(pojo);
 
@@ -62,11 +62,11 @@ import com.wemccm.project.service.NonContestableDataService;
 		@RequestMapping(value = "/getDataNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 		public NonContestableProjectComponentTypeDataPojo getDataNonContestableProjectComponent() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 
 			NonContestableProjectComponentTypeDataPojo resultPojo = qiService.getDataNonContestableProjectComponent(projectId, projectStatus);
 
@@ -77,8 +77,8 @@ import com.wemccm.project.service.NonContestableDataService;
 		@RequestMapping(value = "/saveAndUpdateNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateNonContestableProjectComponent(@RequestBody ProjectNonContestableProjectComponentData pojo) {
 
-//			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = getProjectIdInSession();
+//			int projectId = 1;
 			pojo.setProjectId(projectId);
 
 			qiService.saveAndUpdateNonContestableProjectComponent(pojo);
