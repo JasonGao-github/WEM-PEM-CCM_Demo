@@ -11,7 +11,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <head>
 <%@ include file="common/meta.jspf"%>
-<link rel="stylesheet" href="<%=path%>static/css/ncc_basic.css" />
 <link rel="stylesheet" href="<%=path%>static/css/addUser.css" />
 </head>
 
@@ -46,7 +45,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<div class="col">
 											<div class="form-group">
 												<label for="fim_type">Type </label> 
-												<select id="fim_type" ng-model="fim_type" ng-change="basic_change_fim_type()">
+												<select id="fim_type" ng-model="fim_type" ng-change="basic_change_fim_type()" class="form-control">
 													<option ng-repeat="ft in fim_types" value="{{ft.id}}">{{ft.name}}</option>
 												</select>
 											</div>
@@ -54,7 +53,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<div class="col">
 											<div class="form-group">
 												<label for="selected_sub_type">Subtype</label> 
-												<select id="position" ng-model="selected_sub_type">
+												<select id="position" ng-model="selected_sub_type" class="form-control">
 													<option ng-repeat="type in sub_types" value="{{type.id}}">{{type.name}}</option>
 												</select>
 											</div>
@@ -65,7 +64,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<div class="col">
 											<div class="form-group">
 												<label for="description">Description</label> 
-												<Input type="text" ng-model="description" id="description">
+												<Input type="text" ng-model="description" id="description" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -73,7 +72,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<div class="col">
 											<div class="form-group">
 												<label for="currency">Currency</label> 
-												<Input type="text" ng-model="currency" id="currency">
+												<Input type="text" ng-model="currency" id="currency" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -81,7 +80,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<div class="col">
 											<div class="form-group">
 												<label for="unitCost">UnitCost</label> 
-												<Input type="text" ng-model="unitCost" id="unitCost">
+												<Input type="text" ng-model="unitCost" id="unitCost" class="form-control">
 											</div>
 										</div>
 									</div>
