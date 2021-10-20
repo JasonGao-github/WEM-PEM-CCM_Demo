@@ -12,6 +12,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <%@ include file="common/meta.jspf"%>
 <link rel="stylesheet" href="<%=path%>static/css/ncc_basic.css" />
+<link rel="stylesheet" href="<%=path%>static/css/addUser.css" />
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller"
@@ -20,68 +21,102 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h2>FIM Basic Data Page</h2>
-				<form class="form container" name="newFim" action="" method="POST"
-					style="justify-content: center">
-
-					<div class="row">
-						<h3>Type</h3>
-						<select id="position" ng-model="fim_type"
-							ng-change="basic_change_fim_type()">
-							<option ng-repeat="ft in fim_types" value="{{ft.id}}">{{ft.name}}</option>
-						</select>
-					</div>
-
-					<div class="row">
-						<h3>Subtype</h3>
-						<select id="position" ng-model="selected_sub_type">
-							<option ng-repeat="type in sub_types" value="{{type.id}}">{{type.name}}</option>
-						</select>
-					</div>
-
-					<div class="row">
-						<h3>Description</h3>
-						<Input type="text" ng-model="description">
-					</div>
-					<div class="row">
-						<h3>Currency</h3>
-						<Input type="text" ng-model="currency"> <br>
-					</div>
-					<div class="row">
-						<h3>unitCost</h3>
-						<Input type="number" ng-model="unitCost"> <br>
-					</div>
-
-					<a data-toggle="modal" data-target="#exampleModalCenter">
-						<button type="button" class="btn btn-primary"
-							ng-click="fim_basic_submit()">submit</button>
-					</a>
-
-				</form>
-
-				<!-- Modal -->
-				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalCenterTitle"
-					aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">FIM
-									Basic Data</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
+				<h1 style="margin: 2vh;">FIM - Basic Data</h1>
+				<div class="row">
+					<div class="col-xl-12 col-lg-12">
+						<div class="card shadow mt-5 mb-4">
+							<!-- Card Header - Dropdown -->
+							<div
+								class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">FIM - Add
+									Basic Data</h6>
+								<div class="dropdown no-arrow">
+									<a class="dropdown-toggle" href="#" role="button"
+										id="dropdownMenuLink" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"> <i
+										class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+									</a>
+								</div>
 							</div>
-							<div class="modal-body">
-								<p>Submit successful!</p>
+							<!-- Card Body -->
+							<div class="card-body">
+								<form class="form container" name="newFim" action=""
+									method="POST" style="justify-content: center">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="fim_type">Type </label> 
+												<select id="fim_type" ng-model="fim_type" ng-change="basic_change_fim_type()">
+													<option ng-repeat="ft in fim_types" value="{{ft.id}}">{{ft.name}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="selected_sub_type">Subtype</label> 
+												<select id="position" ng-model="selected_sub_type">
+													<option ng-repeat="type in sub_types" value="{{type.id}}">{{type.name}}</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="description">Description</label> 
+												<Input type="text" ng-model="description" id="description">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="currency">Currency</label> 
+												<Input type="text" ng-model="currency" id="currency">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="unitCost">UnitCost</label> 
+												<Input type="text" ng-model="unitCost" id="unitCost">
+											</div>
+										</div>
+									</div>
+
+									<a data-toggle="modal" data-target="#exampleModalCenter">
+										<button type="button" class="btn btn-primary"
+											ng-click="fim_basic_submit()">submit</button>
+									</a>
+
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-
+			</div>
+	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">FIM Basic
+						Data</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Submit successful!</p>
+				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 </body>
 </html>
