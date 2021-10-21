@@ -21,4 +21,10 @@ public interface ConnectionHandoverDao {
 
 	public UplaodedFiles downlaodedFiles(Integer projectId);
 
+	public ConnectionHandover listAllConnectionHandover(Integer projectId);
+
+	public void updateConnectionHandover(ConnectionHandover pojo);
+
+	public ConnectionHandover getConnectionHandoverId(Integer id);
+
 }

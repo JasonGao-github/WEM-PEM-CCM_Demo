@@ -103,11 +103,11 @@ public class NonContestableService {
 	
 	
 
-	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId) {
-		List<NonContestableOtherCostsItemTypePojo> l = Dao.listAllNonContestableOtherCostsIterm(projectId);
-
-		return l;
-	}
+//	public List<NonContestableOtherCostsItemTypePojo> listAllNonContestableOtherCostsIterm(Integer projectId) {
+//		List<NonContestableOtherCostsItemTypePojo> l = Dao.listAllNonContestableOtherCostsIterm(projectId);
+//
+//		return l;
+//	}
 
 	public void deleteNonContestableOtherCostsIterm(IdPojo requestPojo) {
 		Dao.deleteNonContestableOtherCostsIterm(requestPojo);
@@ -115,18 +115,18 @@ public class NonContestableService {
 	}
 	
 	
-	public void updateNonContestableOtherCostsIterm(NonContestableOtherCostsItemTypePojo requestPojo) {
-//		IdPojo  pojo=new IdPojo();
-//		pojo.setId(requestPojo.getId());
-//		Dao.deleteNonContestableOtherCostsIterm(pojo);
-		
-		Dao.updateNonContestableOtherCostsIterm(requestPojo);
-		
-		
-		
-		
-		
-	}
+//	public void updateNonContestableOtherCostsIterm(NonContestableOtherCostsItemTypePojo requestPojo) {
+////		IdPojo  pojo=new IdPojo();
+////		pojo.setId(requestPojo.getId());
+////		Dao.deleteNonContestableOtherCostsIterm(pojo);
+//		
+//		Dao.updateNonContestableOtherCostsIterm(requestPojo);
+//		
+//		
+//		
+//		
+//		
+//	}
 	
 	
 	
@@ -140,17 +140,30 @@ public class NonContestableService {
 		
 	}
 
-	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId) {
-		List<NonContestableProjectComponentTypePojo> l = Dao.listAllNonContestableProjectComponent(projectId);
+//	public List<NonContestableProjectComponentTypePojo> listAllNonContestableProjectComponent(Integer projectId) {
+//		List<NonContestableProjectComponentTypePojo> l = Dao.listAllNonContestableProjectComponent(projectId);
+//
+//		return l;
+//	}
+//
+//	public void updateNonContestableProjectComponent(NonContestableProjectComponentTypePojo requestPojo) {
+//		Dao.updateNonContestableProjectComponent(requestPojo);
+//		
+//	}
 
-		return l;
-	}
 
-	public void updateNonContestableProjectComponent(NonContestableProjectComponentTypePojo requestPojo) {
-		Dao.updateNonContestableProjectComponent(requestPojo);
-		
-	}
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

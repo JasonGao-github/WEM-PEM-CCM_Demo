@@ -151,8 +151,12 @@ UML图里红色表示的表格，增加updata接口
 /findPage 添加user name     FN 和LN
 
 add everything to API.doc
-
-
+-----------------------------------------------------------------
+1.重构project创建流程中，Martin开发的页面所包含的接口。
+逻辑：
+1.必须按照指定json格式进行数据交互
+2.通过session中projectId和projectStatus来判断project对应的状态。
+3.在数据查询过程中，如果projectStatus为new，则返回所有basicdata（红表）数据，如果为exist，则根据projectID返回项目相关的数据。
 
 
 

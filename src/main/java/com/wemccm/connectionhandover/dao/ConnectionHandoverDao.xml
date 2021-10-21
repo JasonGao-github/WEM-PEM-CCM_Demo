@@ -50,6 +50,117 @@ where nc.projectId=#{projectId}
 		
 	</select>
 	
+		<select id="updateConnectionHandover" 
+	parameterType="com.wemccm.common.entity.ConnectionHandover">
+
+		update connectionhandover 
+		set projectId =#{projectId} 
+		<if test="projectId!=null and projectId!=''">
+			,projectId=#{projectId}
+		</if>
+		<if test="coustomerBusinesName!=null and coustomerBusinesName!=''">
+			,coustomerBusinesName=#{coustomerBusinesName}
+		</if>
+		<if test="projectRef!=null and projectRef!=''">
+			,projectRef=#{projectRef}
+		</if>
+		<if test="portalNo!=null and portalNo!=''">
+			,portalNo=#{portalNo}
+		</if>
+		<if test="date!=null and date!=''">
+			,date=#{date}
+		</if>
+		
+		
+		
+		<if test="projectAddress!=null and projectAddress!=''">
+			,projectAddress=#{projectAddress}
+		</if>
+		<if test="customerContactName!=null and customerContactName!=''">
+			,customerContactName=#{customerContactName}
+		</if>
+		<if test="customerContactNumber!=null and customerContactNumber!=''">
+			,customerContactNumber=#{customerContactNumber}
+		</if>
+		
+		
+		
+		<if test="customerContactEmail!=null and customerContactEmail!=''">
+			,customerContactEmail=#{customerContactEmail}
+		</if>
+		
+		<if test="maximumAllocatedCapacityPhases!=null and maximumAllocatedCapacityPhases!=''">
+			,maximumAllocatedCapacityPhases=#{maximumAllocatedCapacityPhases}
+		</if>
+		<if test="maximumAllocatedCapacityAmps!=null and maximumAllocatedCapacityAmps!=''">
+			,maximumAllocatedCapacityAmps=#{maximumAllocatedCapacityAmps}
+		</if>
+		<if test="maximumAllocatedCapacitykVA!=null and maximumAllocatedCapacitykVA!=''">
+			,maximumAllocatedCapacitykVA=#{maximumAllocatedCapacitykVA}
+		</if>
+		<if test="propertyRequirement!=null and propertyRequirement!=''">
+			,propertyRequirement=#{propertyRequirement}
+		</if>
+		
+		
+		<if test="existingConnection!=null and existingConnection!=''">
+			,existingConnection=#{existingConnection}
+		</if>
+		<if test="embeddedNetwork!=null and embeddedNetwork!=''">
+			,embeddedNetwork=#{embeddedNetwork}
+		</if>
+		<if test="reCadvisedofCTarrangement!=null and reCadvisedofCTarrangement!=''">
+			,reCadvisedofCTarrangement=#{reCadvisedofCTarrangement}
+		</if>
+			<if test="projectManagerName and projectManagerName!=''">
+			,projectManagerName=#{projectManagerName}
+		</if>
+		<if test="projectManagerPhone!=null and projectManagerPhone!=''">
+			,projectManagerPhone=#{projectManagerPhone}
+		</if>
+		<if test="ugCrewRequired!=null and ugCrewRequired!=''">
+			,ugCrewRequired=#{ugCrewRequired}
+		</if>
+		<if test="complianceReviewedDesign!=null and complianceReviewedDesign!=''">
+			,complianceReviewedDesign=#{complianceReviewedDesign}
+		</if>
+		
+		
+		<if test="networkOperatorRequired!=null and networkOperatorRequired!=''">
+			,networkOperatorRequired=#{networkOperatorRequired}
+		</if>
+		
+		<if test="supplyPointDetails!=null and supplyPointDetails!=''">
+			,supplyPointDetails=#{supplyPointDetails}
+		</if>
+		<if test="supplyPointComments!=null and supplyPointComments!=''">
+			,supplyPointComments=#{supplyPointComments}
+		</if>
+		<if test="silVonissue!=null and silVonissue!=''">
+			,silVonissue=#{silVonissue}
+		</if>
+		<if test="silVonissueComments!=null and silVonissueComments!=''">
+			,silVonissueComments=#{silVonissueComments}
+		</if>
+		
+		
+		where projectId =#{projectId} 
+
+
+	</select> 
+	
+	
+	<select id="getConnectionHandoverId"
+		parameterType="Integer"
+		resultType="com.wemccm.common.entity.ConnectionHandover">
+
+		SELECT * FROM connectionhandover WHERE
+		projectId =#{projectId}
+
+	</select>
+	
+	
+	
 	<select id="uplaodedFiles" 
 	parameterType="com.wemccm.common.entity.UplaodedFiles">
 
@@ -72,7 +183,17 @@ where projectId=#{projectId}
 
 	</select> 
 	
+	
+<select id="listAllConnectionHandover" 
+	parameterType="Integer"
+		resultType="com.wemccm.common.entity.ConnectionHandover">
 
+select *
+from connectionhandover
+where projectId=#{projectId}
+
+
+	</select> 
 
 
 

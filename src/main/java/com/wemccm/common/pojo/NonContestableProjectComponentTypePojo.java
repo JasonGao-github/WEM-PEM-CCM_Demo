@@ -9,6 +9,7 @@ public class NonContestableProjectComponentTypePojo {
 	
 	
 	private String name;
+	
 	public Integer getId() {
 		return id;
 	}

@@ -96,10 +96,42 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.project_types = response.data;
             $scope.selected_type = $scope.project_types[1].projectTypeId;
         });
+		existing = false
+
+		//get the data, if new exist then prefill the data
+        $http.get('/NonContestable/getDataNonContestableProjectComponent').then(function (response) {
+            console.log(response.data)
+            if(response.data.projectStatus == "exist"){
+				existing = true
+			}
+			payload_format = response.data;
+			pc_item = response.data.projectData;
+        });
+
+		$http.get('/NonContestable/getDataNonContestableOtherCostsIterm').then(function (response) {
+            console.log(response.data)
+            if(response.data.projectStatus == "exist"){
+				existing = true
+			}
+			other_item = response.data.projectData;
+        });
+
 
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
             get_item();
+
+			if(existing){
+				$scope.project_types.forEach(type =>{
+					//in order to prefill the select input
+					//choose the whole item instead of only the id
+					if (pc_item[0].projectTypeId == type.id)
+					$scope.selected_type = type;
+				})
+				//$scope.selected_type.id = pc_item[0].projectTypeId
+				console.log($scope.selected_type)
+				$scope.ncc_typeChanged()
+			}
         });
 
         //get item of each type and concat to json
@@ -117,15 +149,24 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                     $scope.ncc_otherTypes[i].items = response.data;
                     for (let j = 0; j < $scope.ncc_otherTypes[i].items.length; j++) {
                         $scope.ncc_otherTypes[i].items[j].quantity = '';
+						if(existing){
+							other_item.forEach(item=>{
+								if($scope.ncc_otherTypes[i].items[j].id == item.nonContestableOtherCostsItemId){
+									$scope.ncc_otherTypes[i].items[j].quantity = item.quantity;
+								}
+							})
+						}
                     }
+				//console.log($scope.ncc_otherTypes)
                 })
             }
         }
+
     }
 
     $scope.ncc_typeChanged = function () {
         var obj = JSON.stringify({
-            "projectTypeId": $scope.selected_type,
+            "projectTypeId": $scope.selected_type.id,
         });
 
         $http({
@@ -135,71 +176,96 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             $scope.proj_comps = response.data;
             for (let j = 0; j < $scope.proj_comps.length; j++) {
+				//console.log("basic");
                 $scope.proj_comps[j].quantity = '';
+				//console.log($scope.proj_comps[j])
+				if(existing){
+					//console.log("item")
+					pc_item.forEach(item=>{
+						//console.log(item)
+						if($scope.proj_comps[j].id == item.nonContestableProjectComponentId){
+							$scope.proj_comps[j].quantity = item.hours;
+						}
+					})
+				}
             }
         })
+
 
         //when type changed, reset the content
         $scope.ncc_data.proj_comp = []
     }
 
     $scope.ncc_projCompChanged = function (compId, quantity, total) {
-
-        if (quantity == null) {
-            for (let i = 0; i < $scope.ncc_data.proj_comp.length; i++) {
-                if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
-                    $scope.ncc_data.proj_comp.splice(i, 1);
-                }
+		//replace null or empty string with 0
+		if (!quantity){
+			quantity = 0
+		}
+		// check if the id already exist
+        for (let i = 0; i < $scope.ncc_data.proj_comp.length; i++) {
+            if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
+				$scope.ncc_data.proj_comp[i].quantity = quantity
+				$scope.ncc_data.proj_comp[i].total = total
+        		//console.log($scope.ncc_data)
+				return
             }
-        } else {
-
-            $scope.ncc_data.proj_comp.push({
-                "nonContestableProjectComponentId": compId,
-                "hours": quantity,
-                "total": total
-            })
         }
+		//if not exist
+        $scope.ncc_data.proj_comp.push({
+            "nonContestableProjectComponentId": compId,
+            "hours": quantity,
+            "total": total
+        })
+
         console.log($scope.ncc_data)
     }
 
     $scope.ncc_otherChanged = function (itemId, quantity, total) {
-        console.log($scope.projectId);
-        if (quantity == null) {
-            for (let i = 0; i < $scope.ncc_data.other.length; i++) {
-                if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
-                    $scope.ncc_data.other.splice(i, 1);
-                }
+		//replace null or empty string with 0
+		if (!quantity){
+			quantity = 0
+		}
+		// check if the id already exist
+        for (let i = 0; i < $scope.ncc_data.other.length; i++) {
+            if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
+				$scope.ncc_data.other[i].quantity = quantity
+				$scope.ncc_data.other[i].total = total
+        		//console.log($scope.ncc_data)
+				return
             }
-        } else {
-            $scope.ncc_data.other.push({
-                "nonContestableOtherCostsItemId": itemId,
-                "quantity": quantity,
-                "total": total
-            })
         }
-        console.log($scope.ncc_data)
+		//if not exist
+		$scope.ncc_data.other.push({
+            "nonContestableOtherCostsItemId": itemId,
+            "quantity": quantity,
+            "total": total
+        })
+        //console.log($scope.ncc_data)
     }
 
     $scope.ncc_submit_input = function () {
+		//change only the project data to the coming json and keep the format
+        payload_format.projectData = $scope.ncc_data.proj_comp
         var proj_comp = JSON.stringify(
-            $scope.ncc_data.proj_comp
+			payload_format
         );
-        //console.log(proj_comp);
+        console.log(proj_comp);
 
+        payload_format.projectData = $scope.ncc_data.other
         var other = JSON.stringify(
-            $scope.ncc_data.other
+            payload_format
         );
-        //console.log(other);
+        console.log(other);
 
         $http({
             method: 'POST',
-            url: url + '/insertProjectNonContestableProjectComponent',
+            url: url + '/NonContestable/saveAndUpdateNonContestableProjectComponent',
             data: proj_comp
         }).then(function mySuccess(response) {
 
             $http({
                 method: 'POST',
-                url: url + '/insertNonContestableOtherCosts',
+                url: url + '/NonContestable/saveAndUpdateNonContestableOtherCostsIterm',
                 data: other
             }).then(function mySuccess(response) {
                 $window.location.href = '/fim_page'
@@ -246,8 +312,17 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //for fim page
     $scope.get_fim = function () {
+		existing = false
         //get fim type first
         $http.get('/listAllFIMinputType').then(function (response) {
+			$http.get('/FIMInput/getData').then(function (response) {
+	            console.log(response.data);
+				if (response.data.projectStatus == "exist"){
+					existing = true;
+				}
+				fim_item = response.data.projectData;
+				payload_format = response.data;
+	        });
             //console.log(response.data);
             $scope.fim_types = response.data;
             //console.log($scope.fim_types)
@@ -289,7 +364,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                                 $scope.fim_types[i].sub_types[j].items[k].actual = '';
                                 $scope.fim_types[i].sub_types[j].items[k].jen = '';
                                 $scope.fim_types[i].sub_types[j].items[k].lcta = '';
+								if(existing){
+									fim_item.forEach(item=>{
+										if ($scope.fim_types[i].sub_types[j].items[k].id == item.fIMinputItermId){
+			                                $scope.fim_types[i].sub_types[j].items[k].actual = item.acturalQuantity;
+			                                $scope.fim_types[i].sub_types[j].items[k].jen = item.jenFoundedQuantity;
+			                                $scope.fim_types[i].sub_types[j].items[k].lcta = item.lctaQuantity;
+        									update_fim_type_total()
+										}
+									})
+								}
                             }
+							console.log($scope.fim_types)
                         })
                     }
                 })
@@ -302,25 +388,51 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.fim_data = []
     $scope.fim_type_total = {}
     $scope.fim_input_changed = function (itemId, actQ, jenQ, lctaQ, actTotal, jenTotal, lctaTotal, fimTypeId) {
-        for (let i = 0; i < $scope.fim_data.length; i++) {
+		//replace null values with 0
+		if(!actQ){
+			actQ = 0
+		}
+		if(!jenQ){
+			jenQ = 0
+		}
+		if(!lctaQ){
+			lctaQ = 0
+		}
+		if(!actTotal){
+			actTotal = 0
+		}
+		if(!jenTotal){
+			jenTotal = 0
+		}
+		if(!lctaTotal){
+			lctaTotal = 0
+		}
+		//check if existing
+		for (let i = 0; i < $scope.fim_data.length; i++) {
             if ($scope.fim_data[i].fIMinputItermId == itemId) {
-                $scope.fim_data.splice(i, 1);
+                $scope.fim_data[i].fIMinputItermId = itemId;
+				$scope.fim_data[i].acturalQuantity = actQ;
+				$scope.fim_data[i].jenFoundedQuantity = jenQ;
+				$scope.fim_data[i].lctaQuantity = lctaQ;
+				$scope.fim_data[i].acturalSubTotal = actTotal;
+				$scope.fim_data[i].jenFoundedTotal = jenTotal;
+				$scope.fim_data[i].lctaTotal = lctaTotal;
+				console.log($scope.fim_data);
+				return
             }
         }
 
-        if (actQ || jenQ || lctaQ) {
-            $scope.fim_data.push({
-                fIMinputItermId: itemId,
-                acturalQuantity: actQ,
-                jenFoundedQuantity: jenQ,
-                lctaQuantity: lctaQ,
-                acturalSubTotal: actTotal,
-                jenFoundedTotal: jenTotal,
-                lctaTotal: lctaTotal,
-                fimTypeId: fimTypeId
-            })
-        }
-        update_fim_type_total()
+        $scope.fim_data.push({
+            fIMinputItermId: itemId,
+            acturalQuantity: actQ,
+            jenFoundedQuantity: jenQ,
+            lctaQuantity: lctaQ,
+            acturalSubTotal: actTotal,
+            jenFoundedTotal: jenTotal,
+            lctaTotal: lctaTotal,
+            fimTypeId: fimTypeId
+        })
+		console.log($scope.fim_data);
 
     }
 
@@ -341,12 +453,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.fim_submit_input = function () {
+		payload_format.projectData = $scope.fim_data;
         var obj = JSON.stringify(
-            $scope.fim_data
+            payload_format
         )
+		console.log(obj)
         $http({
             method: 'POST',
-            url: url + '/insertFIMinputItermQuantity',
+            url: url + '/FIMInput/saveAndUpdate',
             data: obj,
         }).then(function mySuccess(response) {
             $window.location.href = '/avoided_cost_page'
@@ -391,6 +505,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http.get('/selectAllAvoidedCostassetReplacementIterm').then(function (response) {
             //console.log(response.data);
             $scope.ac_items = response.data;
+			//set avoidedCostassetReplacementItermId of each item to their id
+			for(let i = 0; i < $scope.ac_items.length; i++){
+				$scope.ac_items[i].avoidedCostassetReplacementItermId = $scope.ac_items[i].id
+			}
             console.log($scope.ac_items);
 
             $scope.wacc = 4.72
@@ -399,6 +517,61 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.add_ex_asset();
             $scope.add_repl_asset();
         });
+		$http.get('/AvoidedCost/getData').then(function (response) {
+			console.log(response.data)
+			payload_format = response.data;
+			ac_saved_item = payload_format.projectData;
+			//console.log(payload_format.projectStatus)
+			if(payload_format.projectStatus == 'exist'){
+				//console.log("project exist")
+				$scope.exist_asset_data = []
+    			$scope.repl_asset_data = []
+				ac_saved_item.forEach(item =>{
+					//console.log("item")
+					//console.log(item)
+					if(item.type == 'exist'){
+						$scope.ac_items.forEach(basic_data=>{
+							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
+        						let new_data = Object.assign({}, basic_data);
+								new_data.quantity = item.quantity;
+								new_data.assetAge = item.assetAge;
+								new_data.type = 'exist'
+								$scope.exist_asset_data.push(new_data)
+								$scope.ac_update_exist_item($scope.exist_asset_data.indexOf(new_data))
+								console.log(new_data)
+							}
+						})
+					}
+					if(item.type == 'new'){
+						$scope.ac_items.forEach(basic_data=>{
+							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
+								let new_data = Object.assign({}, basic_data);
+								new_data.quantity = item.quantity;
+								new_data.assetAge = item.assetAge;
+								basic_data.type = 'new'
+								$scope.repl_asset_data.push(new_data)
+								$scope.ac_update_repl_item($scope.repl_asset_data.indexOf(new_data))
+								console.log(new_data)
+							}
+						})
+					}
+				})
+			}
+
+	        $scope.ac_update_total()
+	        $scope.ac_update_weigted_avg_age()
+			/*
+			console.log("exist assets")
+			console.log($scope.exist_asset_data)
+			console.log("new assets")
+			console.log($scope.repl_asset_data)
+			*/
+
+			$scope.ac_get_overhead()
+			console.log("overhead")
+			console.log($scope.ac_overhead)
+		}
+		);
     }
 
     data = {
@@ -415,24 +588,27 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         remLife: '',
         totalCost: '',
         presentValueRC: '',
-        source: 'Jemena'
+        source: 'Jemena',
+		type: ''
     };
     $scope.exist_asset_data = []
     $scope.repl_asset_data = []
 
+	//add items
     $scope.add_ex_asset = function () {
         let new_data = Object.assign({}, data);
-        avoidedCostassetReplacementItermId = $scope.exist_asset_data.length
-        new_data.id = avoidedCostassetReplacementItermId
+		new_data.type = 'existing'
         $scope.exist_asset_data.push(new_data)
         console.log($scope.exist_asset_data)
     }
     $scope.add_repl_asset = function () {
         let new_data = Object.assign({}, data);
-        new_data.id = $scope.repl_asset_data.length
+		new_data.type = 'new'
         $scope.repl_asset_data.push(new_data)
+        console.log($scope.repl_asset_data)
     }
 
+	//remove items
     $scope.rm_ex_asset = function () {
         $scope.exist_asset_data.pop()
         $scope.ac_update_total()
@@ -443,7 +619,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ac_exist_select_item = function (index) {
+		//the index of the ac_items and their ac item id offset by one
+		//check if the item with that index exist
         if ($scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
+			//if exist set to this item
             ac_item = $scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]
             $scope.exist_asset_data[index].stdLife = ac_item.stdLife
             $scope.exist_asset_data[index].unit = ac_item.unit
@@ -453,8 +632,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.exist_asset_data[index].quantity = ''
             $scope.exist_asset_data[index].assetAge = ''
             $scope.exist_asset_data[index].name = ac_item.name
+            $scope.exist_asset_data[index].type = 'exist'
+
         }
         $scope.ac_update_exist_item(index)
+		console.log($scope.exist_asset_data)
     }
     $scope.ac_repl_select_item = function (index) {
         if ($scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
@@ -466,8 +648,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.repl_asset_data[index].vegetationManagementCost = ac_item.vegetationManagementCost
             $scope.repl_asset_data[index].quantity = ''
             $scope.repl_asset_data[index].name = ac_item.name
+            $scope.repl_asset_data[index].type = 'new'
         }
         $scope.ac_update_repl_item(index)
+		console.log($scope.repl_asset_data)
     }
 
     $scope.ac_update_exist_item = function (index) {
@@ -478,7 +662,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         value = $scope.exist_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.exist_asset_data[index].remLife)
         $scope.exist_asset_data[index].presentValueRC = value
         $scope.ac_update_total()
-
+		/*
+		console.log("exist assets")
+		console.log($scope.exist_asset_data)
+		console.log("new assets")
+		console.log($scope.repl_asset_data)
+		*/
     }
     $scope.ac_update_repl_item = function (index) {
         item = $scope.repl_asset_data[index]
@@ -490,7 +679,28 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $scope.ac_update_total()
         $scope.ac_update_weigted_avg_age()
+		/*
+		console.log("exist assets")
+		console.log($scope.exist_asset_data)
+		console.log("new assets")
+		console.log($scope.repl_asset_data)
+		*/
     }
+
+	$scope.ac_get_overhead = function() {
+		var overhead = JSON.stringify({
+            projectId : payload_format.projectId,
+		});
+
+        $http({
+            method: 'POST',
+            url: url + '/listAvoidedCostESCGuideline',
+            data: overhead,
+        }).then(function mySuccess(response) {
+			data = response.data
+			$scope.ac_overhead = parseFloat(data[data.length - 1].constant)
+        })
+	}
 
     $scope.ac_update_overhead = function () {
         if ($scope.exist_asset_data) {
@@ -568,23 +778,38 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ac_submit_input = function () {
-        //console.log($scope.exist_asset_data)
-        //console.log($scope.repl_asset_data)
-        data = $scope.exist_asset_data.concat($scope.repl_asset_data);
-        //console.log(data)
-        var obj = JSON.stringify(
-            $scope.exist_asset_data.concat($scope.repl_asset_data)
-        );
-        //console.log(obj)
+        var overhead = JSON.stringify([{
+            projectId : payload_format.projectId,
+			constant : $scope.ac_overhead
+		}]);
+        console.log(overhead)
 
         $http({
             method: 'POST',
-            url: url + '/insertAvoidedCostAssetReplacementCosts',
+            url: url + '/insertAvoidedCostESCGuideline',
+            data: overhead,
+        }).then(function mySuccess(response) {
+
+        })
+
+
+        data = $scope.exist_asset_data.concat($scope.repl_asset_data);
+		payload_format.projectData = data
+
+        var obj = JSON.stringify(
+            payload_format
+        );
+        console.log(obj)
+
+        $http({
+            method: 'POST',
+            url: url + '/AvoidedCost/saveAndUpdate',
             data: obj,
         }).then(function mySuccess(response) {
             //console.log(response.data);
             $window.location.href = '/financials_page'
         })
+
 
     }
 
@@ -646,13 +871,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     }
 
-    //connection handover get attachment
-    $scope.conn_handover_getAllAttachments = function () {
-        $http.get('/downlaodedFiles').then(function (response) {
-            console.log(response.data)
-            $scope.conn_handover_attachment_list = response.data;
-        });
-    }
+	//connection handover get attachment
+	$scope.conn_handover_getAllAttachments = function() {
+		$http.get('/downlaodedFiles').then(function(response) {
+			console.log(response.data)
+			$scope.conn_handover_attachment_list = response.data;
+		});
+	}
 
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
@@ -1028,71 +1253,71 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
-
-    //project list
-    $scope.get_all_projects = function () {
-
-        $http({
+	
+	//project list
+	$scope.get_all_projects = function(){
+		
+		$http({
             method: 'POST',
             url: url + '/findPage',
             data: JSON.stringify({
-                pageNum: 1,
-                pageSize: 100
-            })
+				pageNum : 1,
+				pageSize: 100
+			})
         }).then(function mySuccess(response) {
-            $scope.project_list = response.data.content
-            change_projects_date_format();
-            console.log($scope.project_list)
+			$scope.project_list = response.data.content
+			change_projects_date_format();
+			console.log($scope.project_list)
         })
-
-        $http.get('/selectAllProjectType').then(function (response) {
+		
+		 $http.get('/selectAllProjectType').then(function (response) {
             $scope.project_types = response.data;
         });
-    }
-
-    $scope.search_project = function () {
-        var obj = JSON.stringify({
-            projectTitle: $scope.projectTitle,
-            jemenaWBS: $scope.jemenaWBS,
-            inquiryNumber: $scope.inquiryNumber,
-            jemenaSapPmOrder: $scope.jemenaSapPmOrder,
-            zinfraWBS: $scope.zinfraWBS,
-            projectType: $scope.projectType,
-            supplyAddress: $scope.supplyAddress
-        })
-        $http({
+	}
+	
+	$scope.search_project = function(){
+		var obj = JSON.stringify({
+			projectTitle: $scope.projectTitle,
+			jemenaWBS: $scope.jemenaWBS,
+			inquiryNumber: $scope.inquiryNumber,
+			jemenaSapPmOrder: $scope.jemenaSapPmOrder,
+			zinfraWBS: $scope.zinfraWBS,
+			projectType: $scope.projectType,
+			supplyAddress: $scope.supplyAddress
+		})
+		$http({
             method: 'POST',
             url: url + '/findPage',
             data: obj
         }).then(function mySuccess(response) {
-            $scope.project_list = response.data.content
-            change_projects_date_format();
+			$scope.project_list = response.data.content
+			change_projects_date_format();
         })
-    }
-
-    function change_projects_date_format() {
-        for (let i = 0; i < $scope.project_list.length; i++) {
-            $scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
-        }
-    }
-
-    function timeConverter(UNIX_timestamp) {
-        var a = new Date(UNIX_timestamp);
-        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        var year = a.getFullYear();
-        var month = months[a.getMonth()];
-        var date = a.getDate();
-        var time = date + ' ' + month + ' ' + year;
-        return time;
-    }
-
-    $scope.view_project = function (id) {
-        //console.log(parseInt(id))
-        var obj = JSON.stringify({
-            projectStatus: "exist",
-            projectId: id
-        })
-        $http({
+	}
+	
+	function change_projects_date_format(){
+		for(let i = 0; i < $scope.project_list.length; i++){
+			$scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
+		}
+	}
+	
+	function timeConverter(UNIX_timestamp){
+	  var a = new Date(UNIX_timestamp);
+	  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+	  var year = a.getFullYear();
+	  var month = months[a.getMonth()];
+	  var date = a.getDate();
+	  var time = date + ' ' + month + ' ' + year;
+	  return time;
+	}
+	
+	$scope.view_project = function(id){
+		//console.log(parseInt(id))
+		var obj = JSON.stringify({
+			projectStatus: "exist",
+			projectId: id
+		})
+		$http({
             method: 'POST',
             url: url + '/updateSession',
             data: obj

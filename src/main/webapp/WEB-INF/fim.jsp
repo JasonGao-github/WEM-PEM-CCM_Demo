@@ -67,93 +67,87 @@
                 <form class="form container" name="newUser" action="" method="POST"
                       style="justify-content: center">
 
-                    <div class="basic">
-                        <div class="row">
-                            <h4 class="col-6"></h4>
-                            <h4 class="col-3">General</h4>
-                            <h4 class="col-1"></h4>
-                            <h4 class="col-1"></h4>
-                            <h4 class="col-1"></h4>
-                        </div>
-                        <div class="row">
-                            <h4 class="col-1">Item</h4>
-                            <h4 class="col-2">Description</h4>
-                            <h4 class="col-3">Quantity</h4>
-                            <h4 class="col-1">Currency</h4>
-                            <h4 class="col-2">Unit Cost</h4>
-                            <h4 class="col-3">Subtotal</h4>
-                        </div>
+					<div class="basic">
+						<div class="row">
+							<h4 class="col-6"></h4>
+							<h4 class="col-3">General</h4>
+							<h4 class="col-1"></h4>
+							<h4 class="col-1"></h4>
+							<h4 class="col-1"></h4>
+						</div>
+						<div class="row">
+							<h4 class="col-1">Item</h4>
+							<h4 class="col-2">Description</h4>
+							<h4 class="col-3">Quantity</h4>
+							<h4 class="col-1">Currency</h4>
+							<h4 class="col-2">Unit Cost</h4>
+							<h4 class="col-3">Subtotal</h4>
+						</div>
 
-                        <div class="row">
-                            <h4 class="col-1"></h4>
-                            <h4 class="col-2"></h4>
-                            <h4 class="col-1">Actuals</h4>
-                            <h4 class="col-1">JEN Funded</h4>
-                            <h4 class="col-1">LCTA</h4>
-                            <h4 class="col-1"></h4>
-                            <h4 class="col-2">Cost ($)</h4>
-                            <h4 class="col-1">Actuals ($)</h4>
-                            <h4 class="col-1">JEN Funded ($)</h4>
-                            <h4 class="col-1">LCTA ($)</h4>
-                        </div>
-                    </div>
+						<div class="row">
+							<h4 class="col-1"></h4>
+							<h4 class="col-2"></h4>
+							<h4 class="col-1">Actuals</h4>
+							<h4 class="col-1">JEN Funded</h4>
+							<h4 class="col-1">LCTA</h4>
+							<h4 class="col-1"></h4>
+							<h4 class="col-2">Cost ($)</h4>
+							<h4 class="col-1">Actuals ($)</h4>
+							<h4 class="col-1">JEN Funded ($)</h4>
+							<h4 class="col-1">LCTA ($)</h4>
+						</div>
+					</div>
 
-                    <div ng-repeat="fim_type in fim_types">
-                        <div class="row">
-                            <h4 class="col-12">{{fim_type.name}}</h4>
-                        </div>
+					<div ng-repeat="fim_type in fim_types">
+						<div class="row">
+							<h4 class="col-12">{{fim_type.name}}</h4>
+						</div>
 
-                        <div ng-repeat="sub_type in fim_type.sub_types">
-                            <div class="row">
-                                <h4 class="col-3">{{sub_type.name}}</h4>
-                                <h4 class="col-9"></h4>
-                            </div>
-                            <div class="light" ng-repeat="item in sub_type.items">
-                                <div class="row">
-                                    <h4 class="col-1">{{item.id}}</h4>
-                                    <h4 class="col-2">{{item.description}}</h4>
-                                    <input class="currency col-1" type="number"
-                                           ng-model="item.actual"
-                                           ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta,
+						<div ng-repeat="sub_type in fim_type.sub_types">
+							<div class="row">
+								<h4 class="col-3">{{sub_type.name}}</h4>
+								<h4 class="col-9"></h4>
+							</div>
+							<div class="light" ng-repeat="item in sub_type.items">
+								<div class="row">
+									<h4 class="col-1">{{item.id}}</h4>
+									<h4 class="col-2">{{item.description}}</h4>
+									<input class="currency col-1" type="number"
+										ng-model="item.actual"
+										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
 										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost, fim_type.id)">
-                                    <input class="currency col-1" type="number" ng-model="item.jen"
-                                           ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta,
+									<input class="currency col-1" type="number" ng-model="item.jen"
+										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
 										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost, fim_type.id)">
-                                    <input class="currency col-1" type="number"
-                                           ng-model="item.lcta"
-                                           ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta,
+									<input class="currency col-1" type="number"
+										ng-model="item.lcta"
+										ng-change="fim_input_changed(item.id,item.actual,item.jen,item.lcta, 
 										item.actual * item.unitCost, item.jen * item.unitCost, item.lcta * item.unitCost, fim_type.id)">
-                                    <h4 class="col-1">{{item.currency}}</h4>
-                                    <h4 class="col-2">{{item.unitCost}}</h4>
+									<h4 class="col-1">{{item.currency}}</h4>
+									<h4 class="col-2">{{item.unitCost | number: 2 }}</h4>
 
-                                    <h4 class="col-1">{{item.actual * item.unitCost}}</h4>
-                                    <h4 class="col-1">{{item.jen * item.unitCost}}</h4>
-                                    <h4 class="col-1">{{item.lcta * item.unitCost}}</h4>
+									<h4 class="col-1">{{item.actual * item.unitCost | number: 2 }}</h4>
+									<h4 class="col-1">{{item.jen * item.unitCost | number: 2 }}</h4>
+									<h4 class="col-1">{{item.lcta * item.unitCost | number: 2 }}</h4>
 
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <h4 class="col-3">{{fim_type.name}}</h4>
-                            <h4 class="col-6">Total</h4>
-                            <h4 class="col-1">{{fim_type_total[fim_type.id].actTotal}}</h4>
-                            <h4 class="col-1">{{fim_type_total[fim_type.id].jenTotal}}</h4>
-                            <h4 class="col-1">{{fim_type_total[fim_type.id].lctaTotal}}</h4>
-                        </div>
-                    </div>
-                    <br>
-                    <button type="button" class="btn btn-primary"
-                            ng-click="fim_submit_input()">submit
-                    </button>
-                </form>
-            </div>
-            <%--				<%--%>
-            <%--					int curr_page = 4;--%>
-            <%--				%>--%>
-            <%--				<%@ include file="common/pagesBar.jspf"%>--%>
-        </div>
-    </div>
-</section>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<h4 class="col-3">{{fim_type.name}}</h4>
+							<h4 class="col-6">Total</h4>
+							<h4 class="col-1">{{fim_type_total[fim_type.id].actTotal | number: 2 }}</h4>
+							<h4 class="col-1">{{fim_type_total[fim_type.id].jenTotal | number: 2 }}</h4>
+							<h4 class="col-1">{{fim_type_total[fim_type.id].lctaTotal | number: 2 }}</h4>
+						</div>
+					</div>
+					<br>
+					<button type="button" class="btn btn-primary"
+						ng-click="fim_submit_input()">submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

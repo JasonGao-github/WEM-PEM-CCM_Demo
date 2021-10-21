@@ -57,12 +57,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<a class="nav-link" href="#">Inputs | Projects</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="approvals">Approvals</a>
+								<a class="nav-link" href="#">Approvers</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<h2 style="margin: 2vh; text-align: center; font-weight: 600;">Avoided Costs</h2>
+				<h1 style="margin: 2vh;">Avoided Cost Page</h1>
 				<table class="table" ng-init="get_ac()">
 					<thead>
 						<tr>
@@ -120,24 +120,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</thead>
 					<tbody>
 						<tr ng-repeat="asset in exist_asset_data">
-							<td colspan="1"><select
-								ng-model="exist_asset_data[asset.id].avoidedCostassetReplacementItermId"
-								ng-change="ac_exist_select_item(asset.id)">
-									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.name}}</option>
-							</select></td>
+							<td colspan="1">
+								<select
+								ng-model="exist_asset_data[$index]"
+								ng-change="ac_exist_select_item($index)"
+								ng-options="item as item.name for item in ac_items">
+								</select>
+							</td>
 							<td>Jemena</td>
-							<td>{{exist_asset_data[asset.id].unitCost | number: 2 }}</td>
-							<td>{{exist_asset_data[asset.id].unit}}</td>
+							<td>{{exist_asset_data[$index].unitCost | number: 2 }}</td>
+							<td>{{exist_asset_data[$index].unit}}</td>
 							<td><input type="number"
-								ng-model="exist_asset_data[asset.id].quantity"
-								ng-change="ac_update_exist_item(asset.id)"></td>
-							<td>{{exist_asset_data[asset.id].totalCost | number: 2 }}</td>
+								ng-model="exist_asset_data[$index].quantity"
+								ng-change="ac_update_exist_item($index)"></td>
+							<td>{{exist_asset_data[$index].totalCost | number: 2 }}</td>
 							<td><input type="number"
-								ng-model="exist_asset_data[asset.id].assetAge"
-								ng-change="ac_update_exist_item(asset.id)"></td>
-							<td>{{exist_asset_data[asset.id].stdLife}}</td>
-							<td>{{exist_asset_data[asset.id].remLife}}</td>
-							<td>{{exist_asset_data[asset.id].presentValueRC | number: 2 }}</td>
+								ng-model="exist_asset_data[$index].assetAge"
+								ng-change="ac_update_exist_item($index)"></td>
+							<td>{{exist_asset_data[$index].stdLife}}</td>
+							<td>{{exist_asset_data[$index].remLife}}</td>
+							<td>{{exist_asset_data[$index].presentValueRC | number: 2 }}</td>
 						</tr>
 						<tr>
 							<td><button type="button" class="btn btn-primary"
@@ -166,21 +168,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<tbody>
 						<tr ng-repeat="asset in repl_asset_data">
 							<td colspan="1"><select
-								ng-model="repl_asset_data[asset.id].avoidedCostassetReplacementItermId"
-								ng-change="ac_repl_select_item(asset.id)">
-									<option ng-repeat="item in ac_items" value="{{item.id}}">{{item.name}}</option>
+								ng-model="repl_asset_data[$index]"
+								ng-change="ac_repl_select_item($index)"
+								ng-options="item as item.name for item in ac_items track by item.id">
 							</select></td>
 							<td>Jemena</td>
-							<td>{{repl_asset_data[asset.id].unitCost | number: 2 }}</td>
-							<td>{{repl_asset_data[asset.id].unit}}</td>
+							<td>{{repl_asset_data[$index].unitCost | number: 2 }}</td>
+							<td>{{repl_asset_data[$index].unit}}</td>
 							<td><input type="number"
-								ng-model="repl_asset_data[asset.id].quantity"
-								ng-change="ac_update_repl_item(asset.id)"></td>
-							<td>{{repl_asset_data[asset.id].totalCost | number: 2 }}</td>
+								ng-model="repl_asset_data[$index].quantity"
+								ng-change="ac_update_repl_item($index)"></td>
+							<td>{{repl_asset_data[$index].totalCost | number: 2 }}</td>
 							<td>-</td>
-							<td>{{repl_asset_data[asset.id].stdLife}}</td>
-							<td>{{repl_asset_data[asset.id].remLife}}</td>
-							<td>{{repl_asset_data[asset.id].presentValueRC | number: 2 }}</td>
+							<td>{{repl_asset_data[$index].stdLife}}</td>
+							<td>{{repl_asset_data[$index].remLife}}</td>
+							<td>{{repl_asset_data[$index].presentValueRC | number: 2 }}</td>
 						</tr>
 						<tr>
 							<td><button type="button" class="btn btn-primary"
@@ -198,10 +200,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				</table>
 				<button type="button" class="btn btn-primary"
 					ng-click="ac_submit_input()">submit</button>
-<%--				<%--%>
-<%--					int curr_page = 5;--%>
-<%--				%>--%>
-<%--				<%@ include file="common/pagesBar.jspf"%>--%>
 			</div>
 		</div>
 	</section>

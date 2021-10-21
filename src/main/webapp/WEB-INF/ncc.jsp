@@ -99,51 +99,45 @@
                             <h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
                         </div>
 
-                    </div>
+					</div>
 
 
-                    <div class="other">
-                        <div class="row">
-                            <h4 class="col-4"></h4>
-                            <h4 class="col-2">Unit</h4>
-                            <h4 class="col-2">Quantity</h4>
-                            <h4 class="col-2">Rate</h4>
-                            <h4 class="col-2">Total</h4>
-                        </div>
+					<div class="other">
+						<div class="row">
+							<h4 class="col-4"></h4>
+							<h4 class="col-2">Unit</h4>
+							<h4 class="col-2">Quantity</h4>
+							<h4 class="col-2">Rate</h4>
+							<h4 class="col-2">Total</h4>
+						</div>
 
-                        <div ng-repeat="type in ncc_otherTypes">
-                            <div class="row">
-                                <h4 class="col-4">{{type.name}}</h4>
-                                <h4 class="col-2"></h4>
-                                <h4 class="col-2"></h4>
-                                <h4 class="col-2"></h4>
-                                <h4 class="col-2"></h4>
-                            </div>
+						<div ng-repeat="type in ncc_otherTypes">
+							<div class="row">
+								<h4 class="col-4">{{type.name}}</h4>
+								<h4 class="col-2"></h4>
+								<h4 class="col-2"></h4>
+								<h4 class="col-2"></h4>
+								<h4 class="col-2"></h4>
+							</div>
 
 
-                            <div class="row light" ng-repeat="item in type.items">
-                                <h4 class="col-4">{{item.description}}</h4>
-                                <h4 class="col-2">{{item.unit}}</h4>
-                                <input class="currency col-2" type="number"
-                                       ng-model="item.quantity"
-                                       ng-change="ncc_otherChanged(item.id, item.quantity, item.rate * item.quantity)">
-                                <h4 class="col-2">{{item.rate}}</h4>
-                                <h4 class="col-2">{{item.rate * item.quantity}}</h4>
-                            </div>
-                        </div>
+							<div class="row light" ng-repeat="item in type.items">
+								<h4 class="col-4">{{item.description}}</h4>
+								<h4 class="col-2">{{item.unit}}</h4>
+								<input class="currency col-2" type="number"
+									ng-model="item.quantity"
+									ng-change="ncc_otherChanged(item.id, item.quantity, item.rate * item.quantity)">
+								<h4 class="col-2">{{item.rate | number: 2 }}</h4>
+								<h4 class="col-2">{{item.rate * item.quantity | number: 2 }}</h4>
+							</div>
+						</div>
 
-                    </div>
-                    <button type="button" class="btn btn-primary"
-                            ng-click="ncc_submit_input()">submit
-                    </button>
-                </form>
-            </div>
-            <%--				<%--%>
-            <%--					int curr_page = 3;--%>
-            <%--				%>--%>
-            <%--				<%@ include file="common/pagesBar.jspf"%>--%>
-        </div>
-    </div>
-</section>
+					</div>
+					<button type="button" class="btn btn-primary"
+						ng-click="ncc_submit_input()">submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

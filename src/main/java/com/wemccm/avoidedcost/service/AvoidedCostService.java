@@ -86,8 +86,18 @@ public class AvoidedCostService {
 		return l;
 	}
 
-	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
-		List<AvoidedCostassetReplacementIterm> l = avoidedCostDao.selectAllAvoidedCostassetReplacementIterm();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm(Integer projectId) {
+		List<AvoidedCostassetReplacementIterm> l = avoidedCostDao.oldselectAllAvoidedCostassetReplacementIterm(projectId);
 
 		return l;
 	}
@@ -97,9 +107,26 @@ public class AvoidedCostService {
 		
 	}
 
-	public void updateAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm requestPojo) {
-		avoidedCostDao.updateAvoidedCostassetReplacementIterm(requestPojo);
-		
-	}
+//	public void updateAvoidedCostassetReplacementIterm(AvoidedCostassetReplacementIterm requestPojo) {
+//		avoidedCostDao.updateAvoidedCostassetReplacementIterm(requestPojo);
+//		
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

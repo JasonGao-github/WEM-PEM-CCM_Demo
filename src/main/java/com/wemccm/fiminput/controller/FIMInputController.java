@@ -60,28 +60,28 @@ public class FIMInputController {
 	
 	
 	
-	@RequestMapping(value = "/listAllFIMinputIterm", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm() {
-		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
-
-		List<FIMinputItermSubTypeTypePojo> l = serivce.listAllFIMinputIterm(projectId);
-		return l;
-	}
-	
-	@RequestMapping(value = "/updateFIMinputIterm", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public ResponseResult updateFIMinputIterm(
-			@RequestBody FIMinputItermSubTypeTypePojo requestPojo) {
-
-
-		 serivce.updateFIMinputIterm(requestPojo);
-		return new ResponseResult();
-	}
+//	@RequestMapping(value = "/listAllFIMinputIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public List<FIMinputItermSubTypeTypePojo> listAllFIMinputIterm() {
+//		Integer projectId=123;
+////		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+////				.getRequest();
+////		HttpSession session = request.getSession();
+////		projectId=(int) session.getAttribute("projectId");
+//
+//		List<FIMinputItermSubTypeTypePojo> l = serivce.listAllFIMinputIterm(projectId);
+//		return l;
+//	}
+//	
+//	@RequestMapping(value = "/updateFIMinputIterm", produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public ResponseResult updateFIMinputIterm(
+//			@RequestBody FIMinputItermSubTypeTypePojo requestPojo) {
+//
+//
+//		 serivce.updateFIMinputIterm(requestPojo);
+//		return new ResponseResult();
+//	}
 	
 	@RequestMapping(value = "/deleteFIMinputIterm", produces = "application/json;charset=UTF-8")
 	@ResponseBody
