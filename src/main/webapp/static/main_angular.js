@@ -1272,7 +1272,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 	$scope.view_project = function(id){
 		//console.log(parseInt(id))
 		var obj = JSON.stringify({
-			projectStatus: "existing",
+			projectStatus: "exist",
 			projectId: id
 		})
 		$http({

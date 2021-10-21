@@ -110,6 +110,8 @@ import com.wemccm.project.service.NonContestableDataService;
 
 			HttpSession session = getSession();
 
+			System.out.println("session..." + (String) session.getAttribute("projectStatus"));
+
 			return (String) session.getAttribute("projectStatus");
 		}
 
