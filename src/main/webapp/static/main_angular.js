@@ -993,22 +993,38 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             method: 'GET',
             url: url + '/customer_contribution/getData',
         }).then(function mySuccess(response) {
-            console.log(response)
+            // console.log(response)
             var response_payload = response['data']
-            console.log(response_payload)
+            // console.log(response_payload)
+            var projectStatus = response_payload['projectStatus']
 
-            $scope.cc_wbs = ''
-            $scope.cc_inquiryNumber = ''
-            $scope.cc_SAPPM_order = ''
-            $scope.cc_zinfraWBS = ''
-            $scope.cc_project_title = ''
-            // $scope.cc_project_type = ''
-            $scope.cc_supply_address = ''
-            $scope.cc_reason_of_work = ''
-            $scope.cc_customer_scope_of_work = ''
-            $scope.cc_jemena_scope_of_work = ''
-            $scope.cc_jemena_scope_of_exclusions = ''
-            $scope.cc_assumptions = ''
+            if (projectStatus.toString() === "exist") {
+                $scope.cc_wbs = response_payload['projectData']['jemenaWBS']
+                $scope.cc_inquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.cc_SAPPM_order = response_payload['projectData']['jemenaSapPmOrder']
+                $scope.cc_zinfraWBS = response_payload['projectData']['zinfraWBS']
+                $scope.cc_project_title = response_payload['projectData']['projectTitle']
+                // $scope.cc_project_type = ''
+                $scope.cc_supply_address = response_payload['projectData']['supplyAddress']
+                $scope.cc_reason_of_work = response_payload['projectData']['customerReasonForWorks']
+                $scope.cc_customer_scope_of_work = response_payload['projectData']['customerScopeOfWork']
+                $scope.cc_jemena_scope_of_work = response_payload['projectData']['jemenaScopeOfWork']
+                $scope.cc_jemena_scope_of_exclusions = response_payload['projectData']['jemenaScopeExclusions']
+                $scope.cc_assumptions = response_payload['projectData']['assumption']
+            } else {
+                $scope.cc_wbs = ''
+                $scope.cc_inquiryNumber = ''
+                $scope.cc_SAPPM_order = ''
+                $scope.cc_zinfraWBS = ''
+                $scope.cc_project_title = ''
+                // $scope.cc_project_type = ''
+                $scope.cc_supply_address = ''
+                $scope.cc_reason_of_work = ''
+                $scope.cc_customer_scope_of_work = ''
+                $scope.cc_jemena_scope_of_work = ''
+                $scope.cc_jemena_scope_of_exclusions = ''
+                $scope.cc_assumptions = ''
+            }
         })
     }
 

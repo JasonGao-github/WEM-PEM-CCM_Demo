@@ -57,7 +57,7 @@
                             <a class="nav-link" href="#">Inputs | Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Approvers</a>
+                            <a class="nav-link" href="approvals">Approvals</a>
                         </li>
                     </ul>
                 </div>
