@@ -711,3 +711,23 @@ INSERT INTO `avoidedcostassetreplacementiterm` VALUES (9,'Bare Conductors (Al)',
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (10,'Insulated Conductors - LV',60,'$/metre',131.3722217,0.154763897,0.259578461);
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (11,'Underground Cables and Cablehead - HV, XLPE',40,'$/metre',711.55,0.016655326,0);
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (12,'Underground Cables and Cablehead - LV, XLPE',55,'$/metre',574.69,0.016655326,0);
+
+
+INSERT INTO `cicprojecttask` VALUES (1, 'Project Management & Design');
+INSERT INTO `cicprojecttask` VALUES (2, 'Overhead Estimate');
+INSERT INTO `cicprojecttask` VALUES (3, 'Underground Estimate');
+INSERT INTO `cicprojecttask` VALUES (4, 'Substations Estimate');
+INSERT INTO `cicprojecttask` VALUES (5, 'Public Lighting Estimate');
+INSERT INTO `cicprojecttask` VALUES (6, 'Additional Overtime');
+INSERT INTO `cicprojecttask` VALUES (7, 'Additional Labour');
+INSERT INTO `cicprojecttask` VALUES (8, 'Additional Plant');
+INSERT INTO `cicprojecttask` VALUES (9, 'Additional Subcontracts');
+INSERT INTO `cicprojecttask` VALUES (10, 'Retirements');
+INSERT INTO `cicprojecttask` VALUES (11, 'Recoverable Works');
+INSERT INTO `cicprojecttask` VALUES (12, 'Road Consent');
+INSERT INTO `cicprojecttask` VALUES (13, 'CUSTOMER SUB TOTAL');
+INSERT INTO `cicprojecttask` VALUES (14, 'JEMENA Funded Additional Works');
+INSERT INTO `cicprojecttask` VALUES (15, 'Total Zinfra Direct Costs (Zinfra Budget');
+INSERT INTO `cicprojecttask` VALUES (16, 'Zinfra Margin');
+INSERT INTO `cicprojecttask` VALUES (17, 'Total Zinfra Template Fixed Price');
+
