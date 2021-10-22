@@ -15,6 +15,7 @@ import com.wemccm.project.service.CICService;
 @RestController
 @RequestMapping("/Financial")
 public class FinacialDataController {
+	//
 
 	@Autowired
 	private CICService cicService;

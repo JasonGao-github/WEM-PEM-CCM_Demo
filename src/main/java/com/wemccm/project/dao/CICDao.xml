@@ -3,6 +3,7 @@
 <mapper namespace="com.wemccm.project.dao.CICDao">
 
 
+
 	<insert id="saveCICprojectDetails"
 		parameterType="com.wemccm.common.entity.CICprojectDetails">
 		INSERT INTO cicprojectdetails (projectId,wbsElements)

@@ -10,6 +10,7 @@ import com.wemccm.common.entity.CICprojectTask;
 
 @Mapper
 public interface CICDao {
+	//
 
 	public void saveCICprojectEstimate(CICprojectEstimate cicProjectEstimate);
 
