@@ -26,7 +26,7 @@ System.out.println(projectId);
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
-			<div class="container content d-flex flex-column">
+			<div class="container content">
 				<div class="row">
 					<div class="col-12">
 						<ul class="nav nav-pills"
@@ -77,8 +77,8 @@ System.out.println(projectId);
 					<div class="row">
 						<h3>Project Type</h3>
 						<select id="position" ng-change="ncc_typeChanged()"
-							ng-model="selected_type">
-							<option ng-repeat="type in project_types" value="{{type.id}}">{{type.name}}</option>
+							ng-model="selected_type" 
+							ng-options="type as type.name for type in project_types track by type.id">
 						</select>
 					</div>
 					<div class="projectComp">
@@ -94,8 +94,8 @@ System.out.println(projectId);
 							<h4 class="col-2">Hour</h4>
 							<input class="col-2" type="number" ng-model="comp.quantity"
 								ng-change="ncc_projCompChanged(comp.id, comp.quantity, comp.quantity * comp.cost)">
-							<h4 class="col-2">{{comp.cost}}</h4>
-							<h4 class="col-2">{{comp.quantity * comp.cost}}</h4>
+							<h4 class="col-2">{{comp.cost | number: 2 }}</h4>
+							<h4 class="col-2">{{comp.quantity * comp.cost | number: 2 }}</h4>
 						</div>
 
 					</div>
@@ -126,8 +126,8 @@ System.out.println(projectId);
 								<input class="currency col-2" type="number"
 									ng-model="item.quantity"
 									ng-change="ncc_otherChanged(item.id, item.quantity, item.rate * item.quantity)">
-								<h4 class="col-2">{{item.rate}}</h4>
-								<h4 class="col-2">{{item.rate * item.quantity}}</h4>
+								<h4 class="col-2">{{item.rate | number: 2 }}</h4>
+								<h4 class="col-2">{{item.rate * item.quantity | number: 2 }}</h4>
 							</div>
 						</div>
 
@@ -135,10 +135,6 @@ System.out.println(projectId);
 					<button type="button" class="btn btn-primary"
 						ng-click="ncc_submit_input()">submit</button>
 				</form>
-				<%
-					int curr_page = 3;
-				%>
-				<%@ include file="common/pagesBar.jspf"%>
 			</div>
 		</div>
 	</section>

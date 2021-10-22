@@ -21,68 +21,111 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<h3>Avoided cost - Add basic data</h3>
-				<nav>
-					<div>
-						<span class="Group"> Asset </span> <input class="testing"
-							type="text" placeholder="Type" ng-model="asset">
-
-					</div>
-				</nav>
-				<div>
-					<span class="item">Asset Life</span> <input class="testing"
-						type="number" placeholder="Type" ng-model="life">
-				</div>
-
-				<div>
-					<span class="item">Units</span> <input class="testing" type="text"
-						placeholder="Type" ng-model="unit">
-				</div>
-				<div>
-					<span class="item">New Asset Cost</span> <input class="testing"
-						type="number" placeholder="Type" ng-model="new_asset_cost">
-				</div>
-				<div>
-					<span class="item">Maintenance Cost</span> <input class="testing"
-						type="number" placeholder="Type" ng-model="main_cost">
-				</div>
-				<div>
-					<span class="item">Vegetation Management Cost</span> <input
-						class="testing" type="number" placeholder="Type"
-						ng-model="veg_cost">
-				</div>
-
-
-
-
-				<a data-toggle="modal" data-target="#exampleModalCenter">
-					<button class="savebtn" ng-click="ac_submit_basic()">Save
-					</button>
-				</a>
-
-				<!-- Modal -->
-				<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalCenterTitle"
-					aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">NCC
-									Basic Data</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
+				<h1 style="margin: 2vh;">Avoided Cost -Basic Data</h1>
+				<div class="row">
+					<div class="col-xl-12 col-lg-12">
+						<div class="card shadow mt-5 mb-4">
+							<!-- Card Header - Dropdown -->
+							<div
+								class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">Avoided Cost - Add
+									Basic Data</h6>
+								<div class="dropdown no-arrow">
+									<a class="dropdown-toggle" href="#" role="button"
+										id="dropdownMenuLink" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"> <i
+										class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+									</a>
+								</div>
 							</div>
-							<div class="modal-body">
-								<p>Submit successful!</p>
+							<!-- Card Body -->
+							<div class="card-body">
+								<form class="form container" name="newFim" action=""
+									method="POST" style="justify-content: center">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="asset">Asset</label> 
+												<input type="text" ng-model="asset" id="asset" class="form-control">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="life">Asset Life</label> 
+												<input type="number" ng-model="life" id="life" class="form-control">
+											</div>
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="life">Units</label> 
+												<input type="text" ng-model="unit" id="unit" class="form-control">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="life">New Asset Cost</label> 
+												<input type="number" ng-model="new_asset_cost" id="new_asset_cost" class="form-control">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="life">Maintenance Cost</label> 
+												<input type="number" ng-model="main_cost" id="main_cost" class="form-control">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="life">Vegetation Management Cost</label> 
+												<input type="number" ng-model="veg_cost" id="veg_cost" class="form-control">
+											</div>
+										</div>
+									</div>
+
+									<a data-toggle="modal" data-target="#exampleModalCenter">
+										<button type="button" class="btn btn-primary"
+											ng-click="ac_submit_basic()">submit</button>
+									</a>
+
+								</form>
 							</div>
 						</div>
-					</div>
-				</div>
+					</div>			
 
 			</div>
 		</div>
 	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">NCC
+						Basic Data</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Submit successful!</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
