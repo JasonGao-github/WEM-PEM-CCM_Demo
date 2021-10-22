@@ -713,6 +713,8 @@ INSERT INTO `avoidedcostassetreplacementiterm` VALUES (11,'Underground Cables an
 INSERT INTO `avoidedcostassetreplacementiterm` VALUES (12,'Underground Cables and Cablehead - LV, XLPE',55,'$/metre',574.69,0.016655326,0);
 
 
+
+
 INSERT INTO `cicprojecttask` VALUES (1, 'Project Management & Design');
 INSERT INTO `cicprojecttask` VALUES (2, 'Overhead Estimate');
 INSERT INTO `cicprojecttask` VALUES (3, 'Underground Estimate');
