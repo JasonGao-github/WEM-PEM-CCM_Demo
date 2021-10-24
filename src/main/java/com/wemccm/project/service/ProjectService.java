@@ -18,6 +18,7 @@ import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.page.PageUtils;
 import com.wemccm.common.pojo.AddCurrentoccupyPojo;
+import com.wemccm.common.pojo.ProjectListPojo;
 import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.common.util.SR;
 import com.wemccm.customercontribution.dao.CustomerContributionDao;
@@ -49,21 +50,20 @@ public class ProjectService {
 		PageHelper.startPage(pageNum, pageSize);
 		List<FindPageRequestDto> dprdto = projectDao.selectPage(dto);
 
-		for(FindPageRequestDto dp:dprdto) {
-			if(dp!=null) {
-			Integer id=dp.getUserId();
-			
-		System.out.println("id"+id);
-			User u=projectDao.getUser(id);
-			System.out.println("user"+u);
-			if(u!=null) {
-			dp.setLastName(u.getFirstName());
-			dp.setFirstName(u.getLastName());
-			}
+		for (FindPageRequestDto dp : dprdto) {
+			if (dp != null) {
+				Integer id = dp.getUserId();
+
+				System.out.println("id" + id);
+				User u = projectDao.getUser(id);
+				System.out.println("user" + u);
+				if (u != null) {
+					dp.setLastName(u.getFirstName());
+					dp.setFirstName(u.getLastName());
+				}
 			}
 		}
-		
-		
+
 //		System.out.println(dprdto.get(0).getId());
 //		pageResult.setPageNum(pageInfo.getPageNum());
 //		pageResult.setPageSize(pageInfo.getPageSize());
@@ -110,6 +110,10 @@ public class ProjectService {
 		projectDao.addCurrentoccupy(addCurrentoccupyPojo);
 	}
 
+	public List<ProjectListPojo> listByApprover(int userId) {
 
+		return projectDao.listByApprover(userId);
+
+	}
 
 }
