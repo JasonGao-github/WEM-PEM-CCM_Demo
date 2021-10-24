@@ -14,6 +14,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.entity.User;
+import com.wemccm.common.entity.UserType;
 import com.wemccm.common.pojo.ChangePasswordPojo;
 import com.wemccm.common.pojo.DeleteUserPojo;
 import com.wemccm.common.pojo.ResponseResult;
@@ -67,9 +68,6 @@ public class UserController {
 
 	}
 
-
-	
-	
 	// delete user
 	@RequestMapping(value = "/deleteUser", produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -104,4 +102,33 @@ public class UserController {
 		return new ResponseResult();
 
 	}
+
+	// listAllUserType
+	@RequestMapping(value = "/listAllUserType", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult listAllUserType() {
+
+		List<UserType> list = serivce.listAllUserType();
+
+		ResponseResult rr = new ResponseResult();
+		rr.setData(list);
+
+		return rr;
+
+	}
+
+	// listUserByType
+	@RequestMapping(value = "/listUserByType", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseResult listUserByType(@RequestBody UsertypePojo pojo) {
+
+		List<User> list = serivce.listUserByType(pojo.getUserTypeId());
+
+		ResponseResult rr = new ResponseResult();
+		rr.setData(list);
+
+		return rr;
+
+	}
+
 }

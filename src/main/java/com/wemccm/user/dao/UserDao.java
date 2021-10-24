@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.wemccm.common.entity.User;
+import com.wemccm.common.entity.UserType;
 import com.wemccm.common.pojo.ChangePasswordPojo;
 import com.wemccm.common.pojo.UserListPojo;
 import com.wemccm.common.pojo.wholeUserPojo;
@@ -23,5 +24,9 @@ public interface UserDao {
 	public User getUserById(int userId);
 
 	public void updatePassword(ChangePasswordPojo pojo);
+
+	public List<UserType> listAllUserType();
+
+	public List<User> listUserByType(int userTypeId);
 
 }
