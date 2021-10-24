@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.project.dao.ApproverDao">
+
+	<select id="listApprover" parameterType="int"
+		resultType="com.wemccm.common.entity.Approver">
+
+		SELECT * FROM approver WHERE projectId =#{projectId}
+
+	</select>
+
+
+	<insert id="insertApprover"
+		parameterType="com.wemccm.common.entity.Approver">
+		INSERT INTO approver
+		( projectId,
+		approverUserId,
+		approverPost,
+		approverName,
+		approverStatus,
+		approvalDate)
+		VALUES
+		(#{projectId},#{approverUserId},#{approverPost},#{approverStatus},#{approvalDate})
+	</insert>
+
+	<update id="updateApprover"
+		parameterType="com.wemccm.common.entity.Approver">
+
+		UPDATE approver
+		SET approverUserId =#{approverUserId},
+		approverPost =#{approverPost},
+		approverName =#{approverName}
+		WHERE id =
+		#{id}
+	</update>
+
+	<update id="updateStatus"
+		parameterType="com.wemccm.common.entity.Approver">
+		UPDATE approver
+		SET approverUserId =#{approverUserId},
+		approverStatus =#{approverStatus},
+		approvalDate =#{approvalDate}
+		WHERE
+		id = #{id}
+	</update>
+
+
+
+
+</mapper>
