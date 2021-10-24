@@ -77,7 +77,215 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4>Approver 01</h4>
+                                </div>
+                                <div class="col-12">
+                                    <form>
+                                        <div class="row d-flex align-items-center">
+                                            <label for="approverOnePost" class="col-sm-2 col-form-label">Set
+                                                Approver: </label>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverOnePost">Approver Post</label>
+                                                    <select class="form-control" id="approverOnePost"
+                                                            ng-model="approver_one_post">
+                                                        <option value="" selected disabled hidden>Select
+                                                            job role
+                                                        </option>
+                                                        <option value="2">Financial Administrator</option>
+                                                        <option value="3">Tariff Administrator</option>
+                                                        <option value="4">Pricing Administrator</option>
+                                                        <option value="5">Commercial & Operational Administrator
+                                                        </option>
+                                                        <option value="6">Final Approver</option>
+                                                        <option value="7">Senior Project Manager</option>
+                                                        <option value="8">Project Manager</option>
+                                                        <option value="9">Estimator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverOneName">Approver Name</label>
+                                                    <select class="form-control" id="approverOneName"
+                                                            ng-model="approver_one_name">
+                                                        <option value="" selected disabled hidden>Select
+                                                            job role
+                                                        </option>
+                                                        <option value="2">Financial Administrator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" ng-click="">Set Approval
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <label for="approverOnePost"
+                                                   class="col-sm-2 col-form-label">Approver: </label>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success" ng-click="">Approve
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverOneStatus">Approval Status</label>
+                                                    <h4 ng-model="approverOneStatus"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverOneDate">Approval Date</label>
+                                                    <h4 ng-model="approverOneDate">Approval Date</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4>Approver 02</h4>
+                                </div>
+                                <div class="col-12">
+                                    <form>
+                                        <div class="row d-flex align-items-center">
+                                            <label for="approverTwoPost" class="col-sm-2 col-form-label">Set
+                                                Approver: </label>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverTwoPost">Approver Post</label>
+                                                    <select class="form-control" id="approverTwoPost"
+                                                            ng-model="approver_two_post">
+                                                        <option value="" selected disabled hidden>Select
+                                                            job role
+                                                        </option>
+                                                        <option value="2">Financial Administrator</option>
+                                                        <option value="3">Tariff Administrator</option>
+                                                        <option value="4">Pricing Administrator</option>
+                                                        <option value="5">Commercial & Operational Administrator
+                                                        </option>
+                                                        <option value="6">Final Approver</option>
+                                                        <option value="7">Senior Project Manager</option>
+                                                        <option value="8">Project Manager</option>
+                                                        <option value="9">Estimator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverTwoName">Approver Name</label>
+                                                    <select class="form-control" id="approverTwoName"
+                                                            ng-model="approver_two_name">
+                                                        <option value="" selected disabled hidden>Select
+                                                            job role
+                                                        </option>
+                                                        <option value="2">Financial Administrator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" ng-click="">Set Approval
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <label for="approverOnePost"
+                                                   class="col-sm-2 col-form-label">Approver: </label>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success" ng-click="">Approve
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverTwoStatus">Approval Status</label>
+                                                    <h4 ng-model="approverTwoStatus"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverTwoDate">Approval Date</label>
+                                                    <h4 ng-model="approverTwoDate">Approval Date</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4>Approver 03</h4>
+                                </div>
+                                <div class="col-12">
+                                    <form>
+                                        <div class="row d-flex align-items-center">
+                                            <label for="approverTwoPost" class="col-sm-2 col-form-label">Set
+                                                Approver: </label>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverThreePost">Approver Post</label>
+                                                    <select class="form-control" id="approverThreePost"
+                                                            ng-model="approver_three_post">
+                                                        <option value="" selected disabled hidden>Select
+                                                            job role
+                                                        </option>
+                                                        <option value="2">Financial Administrator</option>
+                                                        <option value="3">Tariff Administrator</option>
+                                                        <option value="4">Pricing Administrator</option>
+                                                        <option value="5">Commercial & Operational Administrator
+                                                        </option>
+                                                        <option value="6">Final Approver</option>
+                                                        <option value="7">Senior Project Manager</option>
+                                                        <option value="8">Project Manager</option>
+                                                        <option value="9">Estimator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverThreeName">Approver Name</label>
+                                                    <select class="form-control" id="approverThreeName"
+                                                            ng-model="approver_three_name">
+                                                        <option value="" selected disabled hidden>Select
+                                                            job role
+                                                        </option>
+                                                        <option value="2">Financial Administrator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" ng-click="">Set Approval
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <label for="approverThreePost"
+                                                   class="col-sm-2 col-form-label">Approver: </label>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success" ng-click="">Approve
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverThreeStatus">Approval Status</label>
+                                                    <h4 ng-model="approverThreeStatus"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="approverThreeDate">Approval Date</label>
+                                                    <h4 ng-model="approverThreeDate">Approval Date</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
