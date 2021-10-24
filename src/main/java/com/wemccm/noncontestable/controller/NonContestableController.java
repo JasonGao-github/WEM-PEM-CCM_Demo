@@ -155,7 +155,13 @@ public class NonContestableController {
 	@RequestMapping(value = "/insertNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult insertNonContestableProjectComponent(@RequestBody NonContestableProjectComponent ncpc) {
-
+		
+		
+		
+		System.out.println(ncpc.getProjecTypeId()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(ncpc.getDescription()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		
+		
 		String result = serivce.insertNonContestableProjectComponent(ncpc);
 		if ("-1".equals(result)) {
 			return new ResponseResult("false", "this data has already exist in our system!");

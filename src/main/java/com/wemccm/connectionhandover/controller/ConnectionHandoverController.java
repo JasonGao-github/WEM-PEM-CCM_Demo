@@ -18,6 +18,7 @@ import com.wemccm.common.entity.UplaodedFiles;
 import com.wemccm.common.pojo.ConnectionHandoverPojo;
 import com.wemccm.common.pojo.NegotiatedConnectionPojo;
 import com.wemccm.common.pojo.ResponseResult;
+import com.wemccm.common.util.S3Utils;
 import com.wemccm.connectionhandover.service.ConnectionHandoverService;
 
 @RestController
@@ -74,7 +75,9 @@ public class ConnectionHandoverController {
 		Pojo.setModule("ConnectionHandover");
 		File dest = new File(filePath);
 	    Files.copy(file.getInputStream(), dest.toPath());
-	     
+	    String url=S3Utils.uploadToS3(dest, fileName);
+//	    System.out.println(Pojo.getLocalURL()+Pojo.getFileName()+Pojo.getModule());
+	    Pojo.setS3URL(url);
 		serivce.uplaodedFiles(Pojo);
 		return new ResponseResult();
 	}
