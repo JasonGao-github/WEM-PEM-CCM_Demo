@@ -39,8 +39,8 @@ public class ConnectionHandoverService {
 
 
 
-	public UplaodedFiles downlaodedFiles(Integer projectId) {
-		UplaodedFiles p=Dao.downlaodedFiles(projectId);
+	public List<UplaodedFiles> downlaodedFiles(Integer projectId) {
+		List<UplaodedFiles> p=Dao.downlaodedFiles(projectId);
 		
 		return p;
 	}

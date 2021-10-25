@@ -5,12 +5,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.wemccm.common.entity.ConnectionHandover;
@@ -32,10 +37,13 @@ public class ConnectionHandoverController {
 	@ResponseBody
 	public ResponseResult insertConnectionHandover(@RequestBody ConnectionHandover Pojo) {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+
+		projectId=(int) session.getAttribute("projectId");
+
 		Pojo.setProjectId(projectId);
 		serivce.insertConnectionHandover(Pojo);
 		return new ResponseResult();
@@ -48,10 +56,10 @@ public class ConnectionHandoverController {
 	@ResponseBody
 	public ConnectionHandoverPojo findConnectionHandover() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 
 		
 		ConnectionHandoverPojo p = serivce.findConnectionHandover(projectId);
@@ -63,10 +71,10 @@ public class ConnectionHandoverController {
 	public ResponseResult uplaodedFiles(@RequestPart MultipartFile file) throws IOException  {
 		UplaodedFiles Pojo = new UplaodedFiles();
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		Pojo.setProjectId(projectId);
 		String fileName = file.getOriginalFilename();
 		Pojo.setFileName(fileName);
@@ -84,13 +92,13 @@ public class ConnectionHandoverController {
 	
 	@RequestMapping(value = "/downlaodedFiles", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public UplaodedFiles downlaodedFiles() {
+	public List<UplaodedFiles> downlaodedFiles() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
-		UplaodedFiles uf=serivce.downlaodedFiles(projectId);
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
+		List<UplaodedFiles> uf=serivce.downlaodedFiles(projectId);
 		return uf;
 	}
 	
