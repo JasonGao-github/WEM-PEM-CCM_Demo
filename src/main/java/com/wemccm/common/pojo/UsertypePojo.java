@@ -1,14 +1,24 @@
 package com.wemccm.common.pojo;
 
 public class UsertypePojo {
-private String usertype;
+	private String usertype;
 
-public String getUsertype() {
-	return usertype;
-}
+	private Integer userTypeId;
 
-public void setUsertype(String usertype) {
-	this.usertype = usertype;
-}
+	public Integer getUserTypeId() {
+		return userTypeId;
+	}
+
+	public void setUserTypeId(Integer userTypeId) {
+		this.userTypeId = userTypeId;
+	}
+
+	public String getUsertype() {
+		return usertype;
+	}
+
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
 
 }

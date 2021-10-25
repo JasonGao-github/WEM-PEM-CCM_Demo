@@ -80,6 +80,7 @@ public class NonContestableService {
 		if (null != temp) {
 			return "-1";
 		}
+		System.out.println(ncpc.getProjecTypeId()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		Dao.insertNonContestableProjectComponent(ncpc);
 
 		return "00";

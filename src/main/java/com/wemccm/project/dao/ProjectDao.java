@@ -10,6 +10,7 @@ import com.wemccm.common.entity.User;
 import com.wemccm.common.page.FindPageRequestDto;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.pojo.AddCurrentoccupyPojo;
+import com.wemccm.common.pojo.ProjectListPojo;
 import com.wemccm.common.pojo.projectPojo;
 
 @Mapper
@@ -33,7 +34,8 @@ public interface ProjectDao {
 
 	public void addCurrentoccupy(AddCurrentoccupyPojo addCurrentoccupyPojo);
 
-
 //	List<FindPageRequestDto> selectPage(List<FindPageRequestDto> dto);
+
+	public List<ProjectListPojo> listByApprover(int userId);
 
 }

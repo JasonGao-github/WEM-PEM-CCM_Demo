@@ -20,12 +20,42 @@ public interface ContractScheduleDao {
 
 	public void insertNegotiatedConnection(NegotiatedConnection pojo);
 
+	public NegotiatedConnection getNCinCC(Integer projectId);
+
+	public void deleteNegotiatedConnection(Integer projectId);
+	
+	
+	
+	
+	
+	
+	
+
 	public URDPojo findURDinCC(Integer projectId);
 
 	public void insertURD(URD pojo);
 
+	public URD getURDinCC(Integer projectId);
+	
+	public void deleteURD(Integer projectId);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	public AssetRelocationPojo findARinCC(Integer projectId);
 
 	public void insertAssetRelocation(AssetRelocation pojo);
+
+	public AssetRelocation getARinCC(Integer projectId);
+	
+	public void deleteAssetRelocation(Integer projectId);
+
 
 }

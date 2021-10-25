@@ -26,6 +26,15 @@ public class ContractScheduleController {
 	@Autowired
 	private ContractScheduleService serivce;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/findNegotiatedConnection", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public NegotiatedConnectionPojo findNegotiatedConnection() {
@@ -57,6 +66,21 @@ public class ContractScheduleController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/findURD", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public URDPojo findURD() {
@@ -84,6 +108,15 @@ public class ContractScheduleController {
 		serivce.insertURD(pojo);
 		return new ResponseResult();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

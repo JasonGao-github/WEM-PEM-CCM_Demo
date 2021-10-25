@@ -48,6 +48,7 @@ DROP TABLE IF EXISTS `assetrelocation`;
 DROP TABLE IF EXISTS `urd`;
 DROP TABLE IF EXISTS `negotiatedconnection`;
 DROP TABLE IF EXISTS `uplaodedfiles`;
+DROP TABLE IF EXISTS `approver`;
 --  -- -- -- -- -- -- -- -- -
 --  create tables 
 --  -- -- -- -- -- -- -- -- -
@@ -532,4 +533,14 @@ CREATE TABLE `usertype` (
     `name` VARCHAR(64) NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE
 );
+
+CREATE TABLE `approver`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectId` int(11) NULL DEFAULT NULL,
+  `approverUserId` int(11) NULL DEFAULT NULL,
+  `approverPost` varchar(32)  NULL DEFAULT NULL,
+  `approverName` varchar(32)  NULL DEFAULT NULL,
+  `approvalDate` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ;
 

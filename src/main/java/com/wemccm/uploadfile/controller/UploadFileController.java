@@ -7,23 +7,36 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wemccm.common.pojo.UploadfilePojo;
 import com.wemccm.common.util.S3Utils;
+import com.wemccm.quantityinput.service.QuantityInputService;
+import com.wemccm.uploadfile.service.UploadfileService;
 
 @Controller
 public class UploadFileController {
+	
+	@Autowired
+	private UploadfileService serivce;
+	
 
 	private static final String FILE_PATH = "/wemccm_upload";
-
+	
+	
 	@PostMapping("/upload")
 	@ResponseBody
 	public String create(@RequestPart MultipartFile file) throws IOException {
@@ -32,7 +45,14 @@ public class UploadFileController {
 		File dest = new File(filePath);
 		Files.copy(file.getInputStream(), dest.toPath());
 
-		S3Utils.uploadToS3(dest, fileName);
+		String url=S3Utils.uploadToS3(dest, fileName);
+		int projectId = getProjectIdInSession();
+		UploadfilePojo pojo=new UploadfilePojo();
+		pojo.setFileName(fileName);
+		pojo.setProjectId(projectId);
+		pojo.setUrl(url);
+//		System.out.println(pojo.toString());
+//		serivce.insertUploadfile(pojo);
 
 		return "Upload file success : " + dest.getAbsolutePath();
 	}
@@ -62,5 +82,39 @@ public class UploadFileController {
 		}
 		return "download success";
 	}
+	private int getProjectIdInSession() {
 
+		HttpSession session = getSession();
+
+		int projectId = (int) session.getAttribute("projectId");
+
+		System.out.println("project..." + projectId);
+
+		return projectId;
+
+	}
+
+	private String getProjectStatusInSession() {
+
+		HttpSession session = getSession();
+
+		return (String) session.getAttribute("projectStatus");
+	}
+
+	private void updateSession(int projectId) {
+
+		HttpSession session = getSession();
+		session.setAttribute("projectId", projectId);
+		session.setAttribute("projectStatus", "exist");
+
+	}
+
+	private HttpSession getSession() {
+
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		return session;
+
+	}
 }
