@@ -870,6 +870,23 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
 
     }
+    
+    $scope.handover_onSelectFile = function($files) {
+            for (var i = 0; i < $files.length; i++) {
+              var $file = $files[i];
+              $upload.upload({
+                  url: 'api/HomeControler/upload',
+                  file: $file,
+                  progress: function(e) {
+                    // wait...
+                  }
+                })
+                .then(function(data, status, headers, config) {
+                  alert('file is uploaded successfully');
+                });
+            }
+        alert('file is uploaded successfully');
+      }
 
 	//connection handover get attachment
 	$scope.conn_handover_getAllAttachments = function() {

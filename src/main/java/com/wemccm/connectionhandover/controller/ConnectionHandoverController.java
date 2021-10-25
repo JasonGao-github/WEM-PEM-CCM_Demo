@@ -46,7 +46,7 @@ public class ConnectionHandoverController {
 	@RequestMapping(value = "/findConnectionHandover", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ConnectionHandoverPojo findConnectionHandover() {
-		Integer projectId=123;
+		Integer projectId=1;
 //		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 //				.getRequest();
 //		HttpSession session = request.getSession();
@@ -69,7 +69,7 @@ public class ConnectionHandoverController {
 		Pojo.setProjectId(projectId);
 		String fileName = file.getOriginalFilename();
 		Pojo.setFileName(fileName);
-		String filePath ="C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
+		String filePath ="D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
 		Pojo.setLocalURL(filePath);
 		Pojo.setModule("ConnectionHandover");
 		File dest = new File(filePath);

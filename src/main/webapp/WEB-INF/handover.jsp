@@ -283,7 +283,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="c" ng-init="conn_handover_getAllAttachments()">
 								<h3>Attachements (Photos or Designs)</h3>
 							</div>
-							<input type="file" id="file-uploader" multiple>
+							<input type="file" id="file-uploader" ng-file-select="handover_onSelectFile()" multiple>
 							<p id="feedback"></p>
 						</div>
 						<div ng-repeat="attachment in conn_handover_attachment_list">
