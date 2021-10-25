@@ -131,7 +131,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											</tr>
 											<tr ng-repeat="item in other_type.items">
 												<td>{{item.description}}</td>
-												<td>Hour</td>
+												<td>{{item.unit}}</td>
 												<td>{{item.rate | number : 2}}</td>
 												<td>
 													<button type="button" class="btn btn-danger"
