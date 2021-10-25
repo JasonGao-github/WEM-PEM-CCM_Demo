@@ -2,11 +2,16 @@ package com.wemccm.inputproject.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.entity.ConnectionHandover;
 import com.wemccm.common.entity.InputProject;
@@ -27,10 +32,11 @@ public class InputProjectController {
 	@ResponseBody
 	public InputProjectPojo findInputProjectYes() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+
+		projectId=(int) session.getAttribute("projectId");
 		
 		InputProjectPojo p = serivce.findInputProjectYes(projectId);
 		return p;
@@ -40,10 +46,10 @@ public class InputProjectController {
 	@ResponseBody
 	public InputProjectPojo findInputProjectNo() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		
 		InputProjectPojo p = serivce.findInputProjectNo(projectId);
 		return p;
@@ -63,10 +69,10 @@ public class InputProjectController {
 	@ResponseBody
 	public InputProject sendInputProject() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		InputProject ip=serivce.sendInputProject(projectId);
 		return ip;
 	}
