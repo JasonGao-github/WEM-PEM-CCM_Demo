@@ -581,8 +581,76 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             data: obj,
         }).then(function mySuccess(response) {
             console.log(response.data);
+            $scope.fim_get_basic();
         })
 
+    }
+    
+    //get fim basic
+    $scope.fim_get_basic = function () {
+        //get fim type first
+        $http.get('/listAllFIMinputType').then(function (response) {
+
+            //console.log(response.data);
+            $scope.fim_types = response.data;
+            //console.log($scope.fim_types)
+            get_sub_type();
+        });
+		
+        //get sub_type of each fim type and add to the json
+        get_sub_type = function () {
+            for (let i = 0; i < $scope.fim_types.length; i++) {
+                typeId = $scope.fim_types[i].id
+                var obj = JSON.stringify({
+                    "fIMinputTypeID": typeId
+                });
+                $http({
+                    method: 'POST',
+                    url: url + '/listFIMinputSubType',
+                    data: obj,
+                }).then(function mySuccess(response) {
+                    var data = response.data;
+                    $scope.fim_types[i].sub_types = data;
+                    //console.log($scope.fim_types)
+
+                    //get item for each sub type
+                    for (let j = 0; j < $scope.fim_types[i].sub_types.length; j++) {
+                        subTypeId = $scope.fim_types[i].sub_types[j].id
+                        //console.log("type id: " + typeId)
+                        var obj = JSON.stringify({
+                            "fIMinputSubTypeID": subTypeId
+                        });
+
+                        $http({
+                            method: 'POST',
+                            url: url + '/listFIMinputIterm',
+                            data: obj,
+                        }).then(function mySuccess(response) {
+                            var data = response.data;
+                            $scope.fim_types[i].sub_types[j].items = data;
+							//console.log($scope.fim_types)
+                        })
+                    }
+                })
+            }
+        }
+        
+
+    }
+    
+    //fim remove basic data
+    $scope.fim_remove_basic = function (id){
+    	var obj = JSON.stringify({
+    		'id': id
+		})
+        $http({
+            method: 'POST',
+            url: url + '/deleteFIMinputIterm',
+            data: obj,
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+            $scope.fim_get_basic();
+        })
     }
 
     //for avoided cost

@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller"
-	ng-init="get_fim()">
+	ng-init="fim_get_basic()">
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
@@ -92,6 +92,43 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 								</form>
 							</div>
+							
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="table-responsive">
+									<table
+										class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+										style="text-align: center; margin: 0" ng-repeat=" fim_type in fim_types">
+										<thead class="thead-light">
+											<tr>
+												<th>Description</th>
+												<th>Currency</th>
+												<th>UnitCost</th>
+												<th>Remove</th>
+											</tr>
+											<tr>
+												<th colspan="4">{{fim_type.name}}</th>
+											</tr>
+										</thead>
+										<tbody ng-repeat="sub_type in fim_type.sub_types">
+											<tr>
+												<td colspan="4">{{sub_type.name}}</td>
+											</tr>
+											<tr ng-repeat="item in sub_type.items">
+												<td>{{item.description}}</td>
+												<td>{{item.currency}}</td>
+												<td>{{item.unitCost}}</td>
+												<td>
+													<button type="button" class="btn btn-danger"
+														ng-click="fim_remove_basic(item.id)">Remove</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							
+							
 						</div>
 					</div>
 				</div>
