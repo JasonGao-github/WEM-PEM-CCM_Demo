@@ -3,6 +3,8 @@ package com.wemccm.connectionhandover.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,7 +78,10 @@ public class ConnectionHandoverController {
 		HttpSession session = request.getSession();
 		projectId=(int) session.getAttribute("projectId");
 		Pojo.setProjectId(projectId);
-		String fileName = file.getOriginalFilename();
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String date = df.format(new Date());
+		String fileName = file.getOriginalFilename()+date;
 		Pojo.setFileName(fileName);
 		String filePath ="C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
 		Pojo.setLocalURL(filePath);
