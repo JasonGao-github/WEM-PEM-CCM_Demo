@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.User;
+import com.wemccm.common.entity.UserType;
 import com.wemccm.common.pojo.ChangePasswordPojo;
 import com.wemccm.common.pojo.UserListPojo;
 import com.wemccm.common.pojo.wholeUserPojo;
@@ -47,6 +48,16 @@ public class UserService {
 		userDao.updatePassword(pojo);
 		return "00";
 
+	}
+
+	public List<UserType> listAllUserType() {
+
+		return userDao.listAllUserType();
+	}
+
+	public List<User> listUserByType(int userTypeId) {
+
+		return userDao.listUserByType(userTypeId);
 	}
 
 }
