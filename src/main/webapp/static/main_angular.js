@@ -90,6 +90,91 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     };
 
     //for ncc page
+    //get all basic items to show in the basic data page
+    $scope.ncc_get_all_basic = function () {
+        
+        $http.get('/selectAllProjectType').then(function (response) {
+            $scope.project_types = response.data;
+            get_pc_item();
+            console.log($scope.project_types);
+        });
+
+        $http.get('/selectAllNonContestableType').then(function (response) {
+            $scope.ncc_otherTypes = response.data;
+            get_other_item();	
+            console.log($scope.ncc_otherTypes);		
+        });
+
+        //get item of other = and concat to json
+        get_other_item = function () {
+            for (let i = 0; i < $scope.ncc_otherTypes.length; i++) {
+                typeId = $scope.ncc_otherTypes[i].id
+                var obj = JSON.stringify({
+                    "nonContestableTypeId": typeId
+                });
+                $http({
+                    method: 'POST',
+                    url: url + '/findNonContestableOtherCostsIterm',
+                    data: obj,
+                }).then(function mySuccess(response) {
+                    $scope.ncc_otherTypes[i].items = response.data;
+					//console.log($scope.ncc_otherTypes)
+                })
+            }
+        }
+        
+		//get item of proj comp and concat to json
+        get_pc_item = function (){
+        	for (let i = 0; i < $scope.project_types.length; i++){
+        		projectTypeId = $scope.project_types[i].id
+	            var obj = JSON.stringify({
+			        "projectTypeId": projectTypeId
+			    });
+				
+			    $http({
+			        method: 'POST',
+			        url: url + '/findNonContestableProjectComponent',
+			        data: obj
+			    }).then(function mySuccess(response) {
+			    	//console.log(response.data);
+			        $scope.project_types[i].items = response.data;
+		        })
+
+		    }
+	    }
+		
+    }
+    
+    $scope.ncc_remove_basic_other = function (id){
+    	var obj = JSON.stringify({
+    		'id': id
+		})
+        $http({
+            method: 'POST',
+            url: url + '/deleteNonContestableOtherCostsIterm',
+            data: obj,
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+            $scope.ncc_get_all_basic();
+        })
+    	
+    }
+    
+    $scope.ncc_remove_basic_pc = function (id){
+    	var obj = JSON.stringify({
+    		'id': id
+		})
+        $http({
+            method: 'POST',
+            url: url + '/deleteNonContestableProjectComponent',
+            data: obj,
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+            $scope.ncc_get_all_basic();
+        })
+    	
+    }
+    
     $scope.ncc_data = {"proj_comp": [], "other": []}
     $scope.get_ncc = function () {
         $http.get('/selectAllProjectType').then(function (response) {
@@ -98,7 +183,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         });
 		existing = false
 		
-		//get the data, if new exist then prefill the data
+		//get the data, if exist then prefill the data
         $http.get('/NonContestable/getDataNonContestableProjectComponent').then(function (response) {
             console.log(response.data)
             if(response.data.projectStatus == "exist"){
@@ -1309,7 +1394,6 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $window.location.href = '/view_project_page';
 			console.log(response.data)
         })
-		
 	}
 }])
 
