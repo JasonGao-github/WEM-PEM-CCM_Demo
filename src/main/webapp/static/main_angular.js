@@ -517,7 +517,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.add_ex_asset();
             $scope.add_repl_asset();
         });
-		$http.get('/AvoidedCost/getData').then(function (response) {
+		
+    }
+    
+    $scope.get_project_ac = function() {
+    	$http.get('/AvoidedCost/getData').then(function (response) {
 			console.log(response.data)
 			payload_format = response.data;
 			ac_saved_item = payload_format.projectData;
@@ -572,6 +576,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			console.log($scope.ac_overhead)
 		}
 		);
+    
     }
 
     data = {
@@ -829,6 +834,22 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             data: obj,
         }).then(function mySuccess(response) {
             console.log(response.data);
+            $scope.get_ac();
+        })
+    }
+    
+    //ac remove basic data
+    $scope.ac_remove_basic = function (id) {
+    	var obj = JSON.stringify({
+    		'id': id
+		})
+        $http({
+            method: 'POST',
+            url: url + '/deleteAvoidedCostassetReplacementIterm',
+            data: obj,
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+            $scope.get_ac();
         })
     }
 
@@ -871,22 +892,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     }
     
-    $scope.handover_onSelectFile = function($files) {
-            for (var i = 0; i < $files.length; i++) {
-              var $file = $files[i];
-              $upload.upload({
-                  url: 'api/HomeControler/upload',
-                  file: $file,
-                  progress: function(e) {
-                    // wait...
-                  }
-                })
-                .then(function(data, status, headers, config) {
-                  alert('file is uploaded successfully');
-                });
-            }
-        alert('file is uploaded successfully');
-      }
+    //connection handover get data
+    $scope.conn_handover_getData = function() {
+    	
+    }
 
 	//connection handover get attachment
 	$scope.conn_handover_getAllAttachments = function() {

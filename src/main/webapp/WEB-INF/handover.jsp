@@ -12,8 +12,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <%@ include file="common/meta.jspf"%>
 <link rel="stylesheet" href="<%=path%>static/css/CCF.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+<script type="text/javascript"
+	src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 </head>
 
 
@@ -26,7 +28,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<h2>Connection Handover</h2>
 				<button onclick="javascript:demoFromHTML()">Print this page</button>
 
-				<form class="form container" name="newUser" action="" method="POST"
+				<div class="form container" name="newUser"
 					style="justify-content: center">
 
 					<div class="basic">
@@ -61,7 +63,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Customer / Business Name :</h3>
 							</div>
 							<div class="col-lg-7">
-								<input ng-model="coustomerBusinessName" type="text" id="coustomerBusinessName" />
+								<input ng-model="coustomerBusinessName" type="text"
+									id="coustomerBusinessName" />
 							</div>
 						</div>
 
@@ -82,19 +85,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Name :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="customerContactName" type="text" id="customerContactName" />
+								<input ng-model="customerContactName" type="text"
+									id="customerContactName" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Number :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="customerContactNumber" type="text" id="customerContactNumber" />
+								<input ng-model="customerContactNumber" type="text"
+									id="customerContactNumber" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Email :</h3>
 							</div>
 							<div class="col-lg-3">
-								<input ng-model="customerContactEmail" type="text" id="customerContactEmail" />
+								<input ng-model="customerContactEmail" type="text"
+									id="customerContactEmail" />
 							</div>
 						</div>
 
@@ -193,13 +199,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Name :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="projectManagerName" type="text" id="projectManagerName" />
+								<input ng-model="projectManagerName" type="text"
+									id="projectManagerName" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Phone :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="projectManagerPhone" type="text" id="projectManagerPhone" />
+								<input ng-model="projectManagerPhone" type="text"
+									id="projectManagerPhone" />
 							</div>
 						</div>
 
@@ -248,13 +256,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Supply Point Details</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="supplyPointDetails" type="text" id="supplyPointDetails" />
+								<input ng-model="supplyPointDetails" type="text"
+									id="supplyPointDetails" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Comments</h3>
 							</div>
 							<div class="col-5">
-								<input ng-model="supplyPointComments" type="text" id="supplyPointComments" />
+								<input ng-model="supplyPointComments" type="text"
+									id="supplyPointComments" />
 							</div>
 						</div>
 
@@ -283,23 +293,34 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="c" ng-init="conn_handover_getAllAttachments()">
 								<h3>Attachements (Photos or Designs)</h3>
 							</div>
-							<input type="file" id="file-uploader" ng-file-select="handover_onSelectFile()" multiple>
-							<p id="feedback"></p>
+							<form method="post" action="/uplaodedFiles"
+								enctype="multipart/form-data" id="uploadForm">
+								<input type="file" name="file" multiple> <input
+									type="submit" value="submit">
+							</form>
 						</div>
 						<div ng-repeat="attachment in conn_handover_attachment_list">
-							<a href="{{attachment.localURL}}" download>{{attachment.name}}</a>
 						</div>
+						<a href="{{conn_handover_attachment_list.s3URL}}" download>{{conn_handover_attachment_list.fileName}}</a>
 
 					</div>
+					<script>
+						var form = document.getElementById("uploadForm");
+						function handleForm(event) {
+							event.preventDefault();
+						}
+						form.addEventListener('submit', handleForm);
+					</script>
 
-				</form>
-				<button type="button" class="btn btn-primary"
-					ng-click="conn_handover_submit()">submit</button>
 
-				<%
-					int curr_page = 8;
-				%>
-				<%@ include file="common/pagesBar.jspf"%>
+					<button type="button" class="btn btn-primary"
+						ng-click="conn_handover_submit()">submit</button>
+
+					<%
+						int curr_page = 8;
+					%>
+					<%@ include file="common/pagesBar.jspf"%>
+				</div>
 			</div>
 		</div>
 	</section>

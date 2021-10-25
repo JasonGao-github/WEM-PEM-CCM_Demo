@@ -14,7 +14,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link rel="stylesheet" href="<%=path%>static/css/CCF.css" />
 </head>
 
-<body ng-app="main_app" id="main" ng-controller="controller">
+<body ng-app="main_app" id="main" ng-controller="controller" ng-init="get_ac()">
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
@@ -63,7 +63,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</div>
 				</div>
 				<h1 style="margin: 2vh;">Avoided Cost Page</h1>
-				<table class="table" ng-init="get_ac()">
+				<table class="table" ng-init="get_project_ac()">
 					<thead>
 						<tr>
 							<th scope="col" colspan="11">JEN Avoided Cost Model</th>
