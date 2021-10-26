@@ -511,7 +511,6 @@
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mt-3">
@@ -548,37 +547,462 @@
                                                 <div class="card-body">
                                                     <form>
                                                         <div class="row">
-                                                            <div class="col-4">
-                                                                <div class="form-group">
-                                                                    <label for="scopeAssumptionItemDescription">Assumption
-                                                                        item
-                                                                        description</label>
-                                                                    <input id="scopeAssumptionItemDescription"
-                                                                           ng-model="scopeAssumptionItemDescription"
-                                                                           type="text"
-                                                                           class="form-control"
-                                                                           placeholder="Enter assumption item description"/>
-                                                                </div>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                                       style="text-align: center; margin: 0">
+                                                                    <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th>Item #</th>
+                                                                        <th>Title</th>
+                                                                        <th>Terms of Offer</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            1
+                                                                        </td>
+                                                                        <td>
+                                                                            Inquiry Number
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncInquiryNumber"
+                                                                                   ng-change="contractSchedule_update_row(ncInquiryNumber, 'ncInquiryNumber')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncInquiryNumber}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            2
+                                                                        </td>
+                                                                        <td>
+                                                                            Maximum Allocated Capacity
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncMaxAllocatedCapacity"
+                                                                                   ng-change="contractSchedule_update_row(ncMaxAllocatedCapacity, 'ncMaxAllocatedCapacity')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncMaxAllocatedCapacity}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            3
+                                                                        </td>
+                                                                        <td>
+                                                                            Minimum Contract Demand –– Primary
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncMinContractDemandPrimary"
+                                                                                   ng-change="contractSchedule_update_row(ncMinContractDemandPrimary, 'ncMinContractDemandPrimary')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncMinContractDemandPrimary}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            4
+                                                                        </td>
+                                                                        <td>
+                                                                            Minimum Contract Demand - Reserve Feeder (if
+                                                                            applicable)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncncMinContractDemandReserve"
+                                                                                   ng-change="contractSchedule_update_row(ncncMinContractDemandReserve, 'ncncMinContractDemandReserve')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncncMinContractDemandReserve}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            5
+                                                                        </td>
+                                                                        <td>
+                                                                            Scope of Works (Customer)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncScopeOfWorkCustomer"
+                                                                                   ng-change="contractSchedule_update_row(ncScopeOfWorkCustomer, 'ncScopeOfWorkCustomer')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncScopeOfWorkCustomer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            6
+                                                                        </td>
+                                                                        <td>
+                                                                            Scope of Works (Jemena)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncScopeOfWorkJemena"
+                                                                                   ng-change="contractSchedule_update_row(ncScopeOfWorkJemena, 'ncScopeOfWorkJemena')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncScopeOfWorkJemena}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            7
+                                                                        </td>
+                                                                        <td>
+                                                                            Exclusions
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncExclusions"
+                                                                                   ng-change="contractSchedule_update_row(ncExclusions, 'ncExclusions')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncExclusions}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            8
+                                                                        </td>
+                                                                        <td>
+                                                                            Assumptions
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncAssumptions"
+                                                                                   ng-change="contractSchedule_update_row(ncAssumptions, 'ncAssumptions')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncAssumptions}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            9
+                                                                        </td>
+                                                                        <td>
+                                                                            Validity Period
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncValidityPeriod"
+                                                                                   ng-change="contractSchedule_update_row(ncValidityPeriod, 'ncValidityPeriod')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncValidityPeriod}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            10
+                                                                        </td>
+                                                                        <td>
+                                                                            Planned Construction Period
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncPlannedConstructionPeriod"
+                                                                                   ng-change="contractSchedule_update_row(ncPlannedConstructionPeriod, 'ncPlannedConstructionPeriod')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncPlannedConstructionPeriod}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            11
+                                                                        </td>
+                                                                        <td>
+                                                                            Nominal Supply Voltage
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="ncNominalSupplyVoltage"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="ncNominalSupplyVoltage">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="230V">
+                                                                                    230V
+                                                                                </option>
+                                                                                <option value="400V">
+                                                                                    400V
+                                                                                </option>
+                                                                                <option value="415V">
+                                                                                    415V
+                                                                                </option>
+                                                                                <option value="433V">
+                                                                                    433V
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            12
+                                                                        </td>
+                                                                        <td>
+                                                                            Supply Address
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncSupplyAddress"
+                                                                                   ng-change="contractSchedule_update_row(ncSupplyAddress, 'ncSupplyAddress')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncSupplyAddress}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            13
+                                                                        </td>
+                                                                        <td>
+                                                                            Supply Phasing
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="ncSupplyPhasing"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="ncSupplyPhasing">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="1 Phase">
+                                                                                    1 Phase
+                                                                                </option>
+                                                                                <option value="2 Phase">
+                                                                                    2 Phase
+                                                                                </option>
+                                                                                <option value="3 Phase">
+                                                                                    3 Phase
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            14
+                                                                        </td>
+                                                                        <td>
+                                                                            Embedded Network
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="ncEmbeddedNetwork"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="ncEmbeddedNetwork">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="Yes">
+                                                                                    Yes
+                                                                                </option>
+                                                                                <option value="No">
+                                                                                    No
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            15
+                                                                        </td>
+                                                                        <td>
+                                                                            Interest rate for overdue payment
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncInterestRate"
+                                                                                   ng-change="contractSchedule_update_row(ncInterestRate, 'ncInterestRate')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncInterestRate}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            16
+                                                                        </td>
+                                                                        <td>
+                                                                            Security
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncSecurity"
+                                                                                   ng-change="contractSchedule_update_row(ncSecurity, 'ncSecurity')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncSecurity}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            17
+                                                                        </td>
+                                                                        <td>
+                                                                            Connection Asset and Connection Point
+                                                                            Location
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="ncConnectionAssetConnectionPointLocation"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="ncConnectionAssetConnectionPointLocation">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="LV Underground Service Pit">
+                                                                                    LV Underground Service Pit
+                                                                                </option>
+                                                                                <option value="LV Underground Service to customer installed pillar">
+                                                                                    LV Underground Service to customer
+                                                                                    installed pillar
+                                                                                </option>
+                                                                                <option value="LV Overhead Connection">
+                                                                                    LV Overhead Connection
+                                                                                </option>
+                                                                                <option value="LV Weber Strip">
+                                                                                    LV Weber Strip
+                                                                                </option>
+                                                                                <option value="HV Switching Cabinet">
+                                                                                    HV Switching Cabinet
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            18
+                                                                        </td>
+                                                                        <td>
+                                                                            Premises Connection Assets and Parties
+                                                                            Responsible for Installation
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncPremisesConnectionAssets"
+                                                                                   ng-change="contractSchedule_update_row(ncPremisesConnectionAssets, 'ncPremisesConnectionAssets')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncPremisesConnectionAssets}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            19
+                                                                        </td>
+                                                                        <td>
+                                                                            Project Reference
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncProjectReference"
+                                                                                   ng-change="contractSchedule_update_row(ncProjectReference, 'ncProjectReference')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncProjectReference}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            20
+                                                                        </td>
+                                                                        <td>
+                                                                            Statutory or Other Approvals to be obtained
+                                                                            by Jemena
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncStatutoryOrOther"
+                                                                                   ng-change="contractSchedule_update_row(ncStatutoryOrOther, 'ncStatutoryOrOther')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncStatutoryOrOther}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            21
+                                                                        </td>
+                                                                        <td>
+                                                                            Lease or Easement Required?
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="ncLeaseOrEasement"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="ncLeaseOrEasement">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="Yes">
+                                                                                    Yes
+                                                                                </option>
+                                                                                <option value="No">
+                                                                                    No
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            22
+                                                                        </td>
+                                                                        <td>
+                                                                            Customer Responsible Officer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncCustomerResponsibleOfficer"
+                                                                                   ng-change="contractSchedule_update_row(ncCustomerResponsibleOfficer, 'ncCustomerResponsibleOfficer')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncCustomerResponsibleOfficer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            23
+                                                                        </td>
+                                                                        <td>
+                                                                            Jemena Responsible Officer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="ncJemenaResponsibleOfficer"
+                                                                                   ng-change="contractSchedule_update_row(ncJemenaResponsibleOfficer, 'ncJemenaResponsibleOfficer')"
+                                                                                   class="form-control"
+                                                                                   value="{{ncJemenaResponsibleOfficer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            24
+                                                                        </td>
+                                                                        <td>
+                                                                            Network Extension or Augmentation
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="ncNetworkExtensionOrAugemntation"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="ncNetworkExtensionOrAugemntation">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="Yes">
+                                                                                    Yes
+                                                                                </option>
+                                                                                <option value="No">
+                                                                                    No
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
-
-                                                        <div class="row"
-                                                             ng-show="scopeAssumptionItemDescriptionDataError">
-                                                            <div class="col">
-                                                                <h6 style="color: red">Error in data!</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row"
-                                                             ng-show="scopeAssumptionItemDescriptionDataSuccess">
-                                                            <div class="col">
-                                                                <h6 style="color: green">Item added successfully!</h6>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="row mt-3">
-                                                            <div class="col">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        ng-click="add_assumption_item()">Submit
+                                                            <div class="col d-flex justify-content-end">
+                                                                <button type="button" class="btn btn-success"
+                                                                        ng-click="submitNcdData()">Submit
                                                                     Data
                                                                 </button>
                                                             </div>

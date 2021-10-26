@@ -1337,7 +1337,60 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             console.log(response)
             var response_payload = response['data']
+            $scope.urd_response_payload = response['data']
             console.log(response_payload)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                $scope.ncInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['supplyAddress']
+                $scope.ncMinContractDemandPrimary = response_payload['projectData']['subdivision']
+                $scope.ncncMinContractDemandReserve = "N/A"
+                $scope.ncScopeOfWorkCustomer = "3.5kVA"
+                $scope.ncScopeOfWorkJemena = ""
+                $scope.ncExclusions = ""
+                $scope.ncAssumptions = "Yes" //dropdown
+                $scope.ncValidityPeriod = "60 Business Days from the date of this offer unless agreed in writing to extend."
+                $scope.ncPlannedConstructionPeriod = "12 weeks from date of acceptance (or the agreed site readiness date)."
+                $scope.ncNominalSupplyVoltage = "Please select from drop down list" // dropdown
+                $scope.ncSupplyAddress = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyJemena']
+                $scope.ncSupplyPhasing = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyDeveloper']
+                $scope.ncEmbeddedNetwork = "" // dropdown
+                $scope.ncInterestRate = "5% over the 90 day Commonwealth Bank Bill rate."
+                $scope.ncSecurity = "" // dropdown
+                $scope.ncConnectionAssetConnectionPointLocation = "As set out in the Connection Charge Details section below"
+                $scope.ncPremisesConnectionAssets = "· The customer must have appropriate metering installed. ·To do this, the customer is required to contact the a retailer to arrange for installation of an appropriate meter. " +
+                    "Note: Meter Service Charges are payable if the retailer requests Jemena to supply and install the meter.  The Meter Service Charges are additional fees which are not included in the Connection Charges).\n"
+                $scope.ncProjectReference = "N/A"
+                $scope.ncStatutoryOrOther = "5% over the 90 day Commonwealth Bank bill rate."
+                $scope.ncLeaseOrEasement = ""
+                $scope.ncCustomerResponsibleOfficer = ""
+                $scope.ncJemenaResponsibleOfficer = "N/A"
+                $scope.ncNetworkExtensionOrAugemntation = "N/A"
+            } else {
+                $scope.ncInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['supplyAddress']
+                $scope.ncMinContractDemandPrimary = response_payload['projectData']['subdivision']
+                $scope.ncncMinContractDemandReserve = response_payload['projectData']['inquiryNumber']
+                $scope.ncScopeOfWorkCustomer = response_payload['projectData']['inquiryNumber']
+                $scope.ncScopeOfWorkJemena = response_payload['projectData']['inquiryNumber']
+                $scope.ncExclusions = response_payload['projectData']['inquiryNumber']
+                $scope.ncAssumptions = response_payload['projectData']['inquiryNumber']
+                $scope.ncValidityPeriod = response_payload['projectData']['inquiryNumber']
+                $scope.ncPlannedConstructionPeriod = response_payload['projectData']['inquiryNumber']
+                $scope.ncNominalSupplyVoltage = response_payload['projectData']['inquiryNumber']
+                $scope.ncSupplyAddress = response_payload['projectData']['inquiryNumber']
+                $scope.ncSupplyPhasing = response_payload['projectData']['inquiryNumber']
+                $scope.ncInterestRate = response_payload['projectData']['inquiryNumber']
+                $scope.ncSecurity = response_payload['projectData']['inquiryNumber']
+                $scope.ncConnectionAssetConnectionPointLocation = response_payload['projectData']['inquiryNumber']
+                $scope.ncPremisesConnectionAssets = response_payload['projectData']['inquiryNumber']
+                $scope.ncProjectReference = response_payload['projectData']['inquiryNumber']
+                $scope.ncStatutoryOrOther = response_payload['projectData']['inquiryNumber']
+                $scope.ncLeaseOrEasement = response_payload['projectData']['inquiryNumber']
+                $scope.ncCustomerResponsibleOfficer = response_payload['projectData']['inquiryNumber']
+                $scope.ncJemenaResponsibleOfficer = response_payload['projectData']['inquiryNumber']
+                $scope.ncNetworkExtensionOrAugemntation = response_payload['projectData']['inquiryNumber']
+            }
         })
     }
 
@@ -1464,6 +1517,53 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http({
             method: 'POST',
             url: url + '/ContractSchedule/saveAndUpdateURD',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#contractScheduleDataModal').modal('show');
+            }
+        })
+    }
+
+    $scope.submitNcdData = function () {
+        console.log("Inside submitNcdData")
+
+        var obj = JSON.stringify({
+            abn: "exist",
+            applicableInterestRate: $scope.urdApplicableInterestRate,
+            companyTradingName: "",
+            connectionAssetsandConnectionPoint: $scope.urdAssetsAndConnectionPoint,
+            costofNetworkExtensionofAugmentation: $scope.urdCostOfNewtworkExtension,
+            date: "",
+            descriptionofConnectionWorkstobeundertakenbyDeveloper: $scope.urdConnectionWorksDeveloper,
+            descriptionofConnectionWorkstobeundertakenbyJemena: $scope.urdConnectionWorksJemena,
+            developerResponsibleOfficer: $scope.urdDeveloperResponsibleOfficer,
+            id: "",
+            inquiryNumber: $scope.urdInquiryNumber,
+            jemenaResponsibleOfficer: $scope.urdJemenaResponsibleOfficer,
+            leaseorEasement: $scope.urdLeaseOrEasement,
+            lotnumbers: $scope.urdLotNumbers,
+            meterInformation: $scope.urdMeterInfo,
+            networkExtensionorAugmentationifrequired: $scope.urdNetworkExtension,
+            numberoflots: $scope.urdNumLots,
+            otherJobSpecificRequirements: $scope.urdOtherJobSpecific,
+            plannedConstructionPeriod: $scope.urdPlannedConstructionPeriod,
+            premisesConnectionAssetsandPartiesResponsibleforInstallation: $scope.urdPremisesConnectionAssets,
+            projectId: $scope.urd_response_payload['projectId'],
+            security: $scope.urdSecurity,
+            statutoryandOtherApprovals: $scope.urdStatOtherApprovals,
+            subdivision: $scope.urdSubdivision,
+            supplyAddress: $scope.urdSupplyAddress,
+            supplyCapacityperLot: $scope.urdSupplyCapacity,
+            tenderFeeifapplicable: $scope.urdTenderFee,
+            validityPeriod: $scope.urdValidityPeriod,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/ContractSchedule/saveAndUpdateNegotiatedConnection',
             data: obj
         }).then(function mySuccess(response) {
             console.log(response.data)
