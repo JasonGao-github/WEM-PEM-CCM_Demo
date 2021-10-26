@@ -7,7 +7,7 @@ input[type="email"],
 input[type="number"],
 select[id="projectType"] {
   width: 100%;
-  background: #f4f4f4;
+  background: #dce1f5;
   border-radius: 10px;
   border-style: hidden;
   margin: 0 0 8px;
@@ -15,7 +15,7 @@ select[id="projectType"] {
 
 .content h4 {
   font-size: 1rem;
-  background-color: #cccccc;
+  background-color: #dce1f5;
   border-block: initial;
   border-radius: 10px;
   border-style: hidden;
@@ -24,7 +24,7 @@ select[id="projectType"] {
 
 .light h4 {
   font-size: 0.75rem;
-  background-color: #E7E7E7;
+  background-color: #dce1f5;
   border-block: initial;
   border-radius: 10px;
   border-style: hidden;
@@ -33,7 +33,7 @@ select[id="projectType"] {
 
 .content input[type="btn"] {
   font-size: 1.5rem;
-  background: #909ec3;
+  background: #dce1f5;
   display: block;
   margin: clamp(3vh, 10vh, 20vh) auto;
   text-align: center;
