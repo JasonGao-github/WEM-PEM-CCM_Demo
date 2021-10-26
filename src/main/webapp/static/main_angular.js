@@ -1047,6 +1047,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     
     //connection handover get data
     $scope.conn_handover_getData = function() {
+		$http.get('/findConnectionHandover').then(function(response) {
+			console.log(response.data)
+			//$scope.conn_handover_attachment_list = response.data;
+		});
     	
     }
 
@@ -1056,6 +1060,30 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 			console.log(response.data)
 			$scope.conn_handover_attachment_list = response.data;
 		});
+	}
+	
+	//for adding attachment
+	$scope.add_attachment = function(evt){
+		files = evt.target.files[0];
+		console.log(files)
+		var formData = new FormData();
+		console.log(formData)
+		formData.append('file', files);
+		console.log(formData)
+		$scope.attachments = formData;
+		console.log($scope.attachments);
+	}
+	
+	$scope.conn_handover_submit_attachment = function(){
+		data = $scope.attachments;
+		$http({
+            method: "POST",
+            url: url + '/uplaodedFiles',
+            data: data,
+            headers: {'Content-Type': undefined}
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+        })
 	}
 
     // $('#add_new_user_btn').click(function (e) {
