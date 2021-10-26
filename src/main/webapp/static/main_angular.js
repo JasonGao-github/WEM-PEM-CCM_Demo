@@ -1047,9 +1047,35 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     
     //connection handover get data
     $scope.conn_handover_getData = function() {
-		$http.get('/findConnectionHandover').then(function(response) {
+		$http.get('/ConnectionHandover/getData').then(function(response) {
 			console.log(response.data)
-			//$scope.conn_handover_attachment_list = response.data;
+			data = response.data.projectData[0]
+			$scope.complianceReviewedDesign = data.complianceReviewedDesign
+			$scope.coustomerBusinesName = data.coustomerBusinesName
+			$scope.customerContactEmail = data.customerContactEmail
+			$scope.customerContactName = data.customerContactName
+			$scope.customerContactNumber = data.customerContactNumber
+			$scope.date = data.date
+			$scope.embeddedNetwork = data.embeddedNetwork
+			$scope.existingConnection = data.existingConnection
+			$scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
+			$scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
+			$scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
+			$scope.networkOperatorRequired = data.networkOperatorRequired
+			$scope.portalNo = data.portalNo
+			$scope.projectAddress = data.projectAddress
+			$scope.projectId = data.projectId
+			$scope.projectManagerName = data.projectManagerName
+			$scope.projectManagerPhone = data.projectManagerPhone
+			$scope.projectRef = data.projectRef
+			$scope.propertyRequirement = data.propertyRequirement
+			$scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
+			$scope.silVonissue = data.silVonissue
+			$scope.silVonissueComments = data.silVonissueComments
+			$scope.supplyPointComments = data.supplyPointComments
+			$scope.supplyPointDetails = data.supplyPointDetails
+			$scope.ugCrewRequired = data.ugCrewRequired
+			
 		});
     	
     }
