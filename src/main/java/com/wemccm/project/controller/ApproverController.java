@@ -6,13 +6,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.pojo.ApproverDataPojo;
 import com.wemccm.common.pojo.ProjectBasicPojo;
+import com.wemccm.common.pojo.UpdateApproverPojo;
 import com.wemccm.project.service.ApproverService;
 
+@RestController
+@RequestMapping("/Approver")
 public class ApproverController {
 
 	@Autowired
@@ -34,9 +38,9 @@ public class ApproverController {
 	}
 
 	@RequestMapping(value = "/updateApprover", produces = "application/json;charset=UTF-8")
-	public ProjectBasicPojo updateApprover(@RequestBody ApproverDataPojo pojo) {
+	public ProjectBasicPojo updateApprover(@RequestBody UpdateApproverPojo pojo) {
 
-//		int projectId = getProjectIdInSession();
+		int projectId = getProjectIdInSession();
 //		String projectStatus = getProjectStatusInSession();
 
 //		int projectId = 1;
@@ -45,7 +49,7 @@ public class ApproverController {
 		approverService.updateApprover(pojo);
 
 		ProjectBasicPojo result = new ProjectBasicPojo();
-		result.setProjectId(pojo.getProjectId());
+		result.setProjectId(projectId);
 		result.setResult("success");
 
 		return result;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wemccm.common.entity.Approver;
 import com.wemccm.common.pojo.ApproverDataPojo;
+import com.wemccm.common.pojo.UpdateApproverPojo;
 import com.wemccm.project.dao.ApproverDao;
 
 @Service
@@ -31,15 +32,9 @@ public class ApproverService {
 
 	};
 
-	public void updateApprover(ApproverDataPojo pojo) {
+	public void updateApprover(UpdateApproverPojo pojo) {
 
-		List<Approver> projectData = pojo.getProjectData();
-
-		for (Approver approver : projectData) {
-
-			approverDao.updateApprover(approver);
-
-		}
+		approverDao.updateApprover(pojo);
 
 	}
 
