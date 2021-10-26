@@ -76,12 +76,14 @@
                                            aria-controls="exclusions" aria-selected="true">URD</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="negotiatedConnection-tab" data-toggle="tab" href="#negotiatedConnection"
+                                        <a class="nav-link" id="negotiatedConnection-tab" data-toggle="tab"
+                                           href="#negotiatedConnection"
                                            role="tab"
                                            aria-controls="assumptions" aria-selected="false">Negotiated Connection</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="assetRelocation-tab" data-toggle="tab" href="#assetRelocation"
+                                        <a class="nav-link" id="assetRelocation-tab" data-toggle="tab"
+                                           href="#assetRelocation"
                                            role="tab"
                                            aria-controls="assumptions" aria-selected="false">Asset Relocation</a>
                                     </li>
@@ -93,7 +95,8 @@
                                             <div class="card shadow mt-5 mb-4">
                                                 <!-- Card Header - Dropdown -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Underground Development Offer Schedule</h6>
+                                                    <h6 class="m-0 font-weight-bold text-primary">Underground
+                                                        Development Offer Schedule</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button"
                                                            id="dropdownMenuLink"
@@ -107,37 +110,376 @@
                                                 <div class="card-body">
                                                     <form>
                                                         <div class="row">
-                                                            <div class="col-4">
-                                                                <div class="form-group">
-                                                                    <label for="scopeExclusionItemDescription">Scope
-                                                                        exclusion item
-                                                                        description</label>
-                                                                    <input id="scopeExclusionItemDescription"
-                                                                           ng-model="scopeExclusionItemDescription"
-                                                                           type="text"
-                                                                           class="form-control"
-                                                                           placeholder="Enter scope exclusion item description"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row"
-                                                             ng-show="scopeExclusionItemDescriptionDataError">
-                                                            <div class="col">
-                                                                <h6 style="color: red">Error in data!</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row"
-                                                             ng-show="scopeExclusionItemDescriptionDataSuccess">
-                                                            <div class="col">
-                                                                <h6 style="color: green">Item added successfully!</h6>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                                       style="text-align: center; margin: 0">
+                                                                    <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th>Item #</th>
+                                                                        <th>Title</th>
+                                                                        <th>Terms of Offer</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            1
+                                                                        </td>
+                                                                        <td>
+                                                                            Inquiry Number
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdInquiryNumber"
+                                                                                   ng-change="contractSchedule_update_row(urdInquiryNumber, 'urdInquiryNumber')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdInquiryNumber}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            2
+                                                                        </td>
+                                                                        <td>
+                                                                            Supply Address
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdSupplyAddress"
+                                                                                   ng-change="contractSchedule_update_row(urdSupplyAddress, 'urdSupplyAddress')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdSupplyAddress}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            3
+                                                                        </td>
+                                                                        <td>
+                                                                            Subdivision
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdSubdivision"
+                                                                                   ng-change="contractSchedule_update_row(urdSubdivision, 'urdSubdivision')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdSubdivision}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            4
+                                                                        </td>
+                                                                        <td>
+                                                                            Statutory and Other Approvals
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdStatOtherApprovals"
+                                                                                   ng-change="contractSchedule_update_row(urdStatOtherApprovals, 'urdStatOtherApprovals')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdStatOtherApprovals}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            5
+                                                                        </td>
+                                                                        <td>
+                                                                            Supply Capacity per Lot
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdSupplyCapacity"
+                                                                                   ng-change="contractSchedule_update_row(urdSupplyCapacity, 'urdSupplyCapacity')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdSupplyCapacity}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            6
+                                                                        </td>
+                                                                        <td>
+                                                                            Number of lots
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdNumLots"
+                                                                                   ng-change="contractSchedule_update_row(urdNumLots, 'urdNumLots')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdNumLots}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            7
+                                                                        </td>
+                                                                        <td>
+                                                                            Lot numbers
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdLotNumbers"
+                                                                                   ng-change="contractSchedule_update_row(urdLotNumbers, 'urdLotNumbers')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdLotNumbers}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            8
+                                                                        </td>
+                                                                        <td>
+                                                                            Lease or Easement
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdLeaseOrEasement"
+                                                                                   ng-change="contractSchedule_update_row(urdLeaseOrEasement, 'urdLeaseOrEasement')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdLeaseOrEasement}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            9
+                                                                        </td>
+                                                                        <td>
+                                                                            Validity Period
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdValidityPeriod"
+                                                                                   ng-change="contractSchedule_update_row(urdValidityPeriod, 'urdValidityPeriod')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdValidityPeriod}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            10
+                                                                        </td>
+                                                                        <td>
+                                                                            Security
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdSecurity"
+                                                                                   ng-change="contractSchedule_update_row(urdSecurity, 'urdSecurity')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdSecurity}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            11
+                                                                        </td>
+                                                                        <td>
+                                                                            Planned Construction Period
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdPlannedConstructionPeriod"
+                                                                                   ng-change="contractSchedule_update_row(urdPlannedConstructionPeriod, 'urdPlannedConstructionPeriod')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdPlannedConstructionPeriod}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            12
+                                                                        </td>
+                                                                        <td>
+                                                                            Description of Connection Works to be
+                                                                            undertaken by Jemena
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdConnectionWorksJemena"
+                                                                                   ng-change="contractSchedule_update_row(urdConnectionWorksJemena, 'urdConnectionWorksJemena')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdConnectionWorksJemena}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            13
+                                                                        </td>
+                                                                        <td>
+                                                                            Description of Connection Works to be
+                                                                            undertaken by Developer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdConnectionWorksDeveloper"
+                                                                                   ng-change="contractSchedule_update_row(urdConnectionWorksDeveloper, 'urdConnectionWorksDeveloper')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdConnectionWorksDeveloper}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            14
+                                                                        </td>
+                                                                        <td>
+                                                                            Connection Assets and Connection Point
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdAssetsAndConnectionPoint"
+                                                                                   ng-change="contractSchedule_update_row(urdAssetsAndConnectionPoint, 'urdAssetsAndConnectionPoint')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdAssetsAndConnectionPoint}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            15
+                                                                        </td>
+                                                                        <td>
+                                                                            Premises Connection Assets and Parties
+                                                                            Responsible for Installation
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdPremisesConnectionAssets"
+                                                                                   ng-change="contractSchedule_update_row(urdPremisesConnectionAssets, 'urdPremisesConnectionAssets')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdPremisesConnectionAssets}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            16
+                                                                        </td>
+                                                                        <td>
+                                                                            Network Extension or Augmentation (if
+                                                                            required)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdNetworkExtension"
+                                                                                   ng-change="contractSchedule_update_row(urdNetworkExtension, 'urdNetworkExtension')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdNetworkExtension}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            17
+                                                                        </td>
+                                                                        <td>
+                                                                            Cost of Network Extension of Augmentation
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdCostOfNewtworkExtension"
+                                                                                   ng-change="contractSchedule_update_row(urdCostOfNewtworkExtension, 'urdCostOfNewtworkExtension')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdCostOfNewtworkExtension}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            18
+                                                                        </td>
+                                                                        <td>
+                                                                            Meter Information
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdMeterInfo"
+                                                                                   ng-change="contractSchedule_update_row(urdMeterInfo, 'urdMeterInfo')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdMeterInfo}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            19
+                                                                        </td>
+                                                                        <td>
+                                                                            Tender Fee (if applicable)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdTenderFee"
+                                                                                   ng-change="contractSchedule_update_row(urdTenderFee, 'urdTenderFee')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdTenderFee}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            20
+                                                                        </td>
+                                                                        <td>
+                                                                            Applicable Interest Rate
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdApplicableInterestRate"
+                                                                                   ng-change="contractSchedule_update_row(urdApplicableInterestRate, 'urdApplicableInterestRate')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdApplicableInterestRate}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            21
+                                                                        </td>
+                                                                        <td>
+                                                                            Developer Responsible Officer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdDeveloperResponsibleOfficer"
+                                                                                   ng-change="contractSchedule_update_row(urdDeveloperResponsibleOfficer, 'urdDeveloperResponsibleOfficer')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdDeveloperResponsibleOfficer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            22
+                                                                        </td>
+                                                                        <td>
+                                                                            Jemena Responsible Officer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdJemenaResponsibleOfficer"
+                                                                                   ng-change="contractSchedule_update_row(urdJemenaResponsibleOfficer, 'urdJemenaResponsibleOfficer')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdJemenaResponsibleOfficer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            23
+                                                                        </td>
+                                                                        <td>
+                                                                            Other Job Specific Requirements
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="urdOtherJobSpecific"
+                                                                                   ng-change="contractSchedule_update_row(urdOtherJobSpecific, 'urdOtherJobSpecific')"
+                                                                                   class="form-control"
+                                                                                   value="{{urdOtherJobSpecific}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                </table>
                                                             </div>
                                                         </div>
 
                                                         <div class="row mt-3">
-                                                            <div class="col">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        ng-click="add_scope_exclusion_item()">Submit
+                                                            <div class="col d-flex justify-content-end">
+                                                                <button type="button" class="btn btn-success"
+                                                                        ng-click="submitUrdData()">Submit
                                                                     Data
                                                                 </button>
                                                             </div>
@@ -153,7 +495,8 @@
                                             <div class="card shadow mt-5 mb-4">
                                                 <!-- Card Header - Dropdown -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Negotiated Connection Offer Schedule</h6>
+                                                    <h6 class="m-0 font-weight-bold text-primary">Negotiated Connection
+                                                        Offer Schedule</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button"
                                                            id="dropdownMenuLink"
@@ -213,7 +556,8 @@
                                             <div class="card shadow mt-5 mb-4">
                                                 <!-- Card Header - Dropdown -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Distribution Works Offer Schedule</h6>
+                                                    <h6 class="m-0 font-weight-bold text-primary">Distribution Works
+                                                        Offer Schedule</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button"
                                                            id="dropdownMenuLink"
