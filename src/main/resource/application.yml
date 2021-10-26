@@ -3,7 +3,6 @@ spring:
     mode: HTML5
     encoding: UTF-8
     content-type: text/html
-    # 开发禁用缓存
     cache: false
     enabled: false
   datasource:
@@ -13,7 +12,6 @@ spring:
     username : root
     password : root1234
 #    password: root1234
-    # 可省略驱动配置, sprin-boot 会由url检测出驱动类型
     driver-class-name: com.mysql.jdbc.Driver
     # driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -25,7 +23,6 @@ spring:
 mybatis:
   mapperLocations: classpath:/wemccm/src/main/java/com/wemccm/demo/dao/xml/*.xml
   typeAliasesPackage: cn.boot.domain
-# spring-boot默认打印输出info级别以上的，可在此处修改输出级别
 logging:
   level:
     root: info
