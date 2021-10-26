@@ -151,7 +151,10 @@ public class ContractScheduleDataService {
 	}
 
 	public void saveAndUpdateURD(URDData pojo) {
-
+		URD urd=pojo.getProjectData();
+		System.out.println(urd.getInquiryNumber());
+		
+		
 		if ("new".equals(pojo.getProjectStatus())) {
 			URD nc = new URD();
 			nc = pojo.getProjectData();

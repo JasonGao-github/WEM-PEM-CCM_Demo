@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.wemccm.common.entity.URD;
 import com.wemccm.common.pojo.AssetRelocationData;
 import com.wemccm.common.pojo.AvoidedCostAssetReplacementCostsDataPojo;
 import com.wemccm.common.pojo.AvoidedCostassetReplacementItermDataPojo;
@@ -79,11 +80,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getURD", produces = "application/json;charset=UTF-8")
 		public URDData getURD() {
 
-			int projectId = getProjectIdInSession();
-			String projectStatus = getProjectStatusInSession();
+//			int projectId = getProjectIdInSession();
+//			String projectStatus = getProjectStatusInSession();
 
-//			int projectId = 1;
-//			String projectStatus = "exist";
+			int projectId = 1;
+			String projectStatus = "new";
 
 			URDData resultPojo = qiService.getURD(projectId, projectStatus);
 
@@ -94,10 +95,14 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/saveAndUpdateURD", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateURD(@RequestBody URDData pojo) {
 
-			int projectId = getProjectIdInSession();
-//			int projectId = 1;
+//			int projectId = getProjectIdInSession();
+			int projectId = 1;
 			pojo.setProjectId(projectId);
-
+			
+			
+			URD urd=pojo.getProjectData();
+			System.out.println(urd.getInquiryNumber());
+			
 			qiService.saveAndUpdateURD(pojo);
 
 			updateSession(projectId);
