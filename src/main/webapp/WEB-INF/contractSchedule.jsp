@@ -234,11 +234,16 @@
                                                                             Lease or Easement
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text"
-                                                                                   ng-model="urdLeaseOrEasement"
-                                                                                   ng-change="contractSchedule_update_row(urdLeaseOrEasement, 'urdLeaseOrEasement')"
-                                                                                   class="form-control"
-                                                                                   value="{{urdLeaseOrEasement}}">
+                                                                            <select id="urdLeaseOrEasement"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="urdLeaseOrEasement">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="yes">Yes</option>
+                                                                                <option value="No">No</option>
+                                                                            </select>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -279,11 +284,21 @@
                                                                             Planned Construction Period
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text"
-                                                                                   ng-model="urdPlannedConstructionPeriod"
-                                                                                   ng-change="contractSchedule_update_row(urdPlannedConstructionPeriod, 'urdPlannedConstructionPeriod')"
-                                                                                   class="form-control"
-                                                                                   value="{{urdPlannedConstructionPeriod}}">
+                                                                            <select id="urdPlannedConstructionPeriod"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="urdPlannedConstructionPeriod">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="To be determined by customer">
+                                                                                    To be determined by customer
+                                                                                </option>
+                                                                                <option value="12 weeks from date of acceptance (or the agreed site readiness date)">
+                                                                                    12 weeks from date of acceptance (or
+                                                                                    the agreed site readiness date)
+                                                                                </option>
+                                                                            </select>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -326,11 +341,30 @@
                                                                             Connection Assets and Connection Point
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text"
-                                                                                   ng-model="urdAssetsAndConnectionPoint"
-                                                                                   ng-change="contractSchedule_update_row(urdAssetsAndConnectionPoint, 'urdAssetsAndConnectionPoint')"
-                                                                                   class="form-control"
-                                                                                   value="{{urdAssetsAndConnectionPoint}}">
+                                                                            <select id="urdAssetsAndConnectionPoint"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="urdAssetsAndConnectionPoint">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="LV Underground Service Pit">
+                                                                                    LV Underground Service Pit
+                                                                                </option>
+                                                                                <option value="LV Underground Service to customer installed pillar">
+                                                                                    LV Underground Service to customer
+                                                                                    installed pillar
+                                                                                </option>
+                                                                                <option value="LV Overhead Connection">
+                                                                                    LV Overhead Connection
+                                                                                </option>
+                                                                                <option value="LV Weber Strip">LV Weber
+                                                                                    Strip
+                                                                                </option>
+                                                                                <option value="HV Switching Cabinet">HV
+                                                                                    Switching Cabinet
+                                                                                </option>
+                                                                            </select>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -358,11 +392,16 @@
                                                                             required)
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text"
-                                                                                   ng-model="urdNetworkExtension"
-                                                                                   ng-change="contractSchedule_update_row(urdNetworkExtension, 'urdNetworkExtension')"
-                                                                                   class="form-control"
-                                                                                   value="{{urdNetworkExtension}}">
+                                                                            <select id="urdLeaseOrEasement"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="urdNetworkExtension">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="Yes">Yes</option>
+                                                                                <option value="No">No</option>
+                                                                            </select>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -475,7 +514,6 @@
                                                                 </table>
                                                             </div>
                                                         </div>
-
                                                         <div class="row mt-3">
                                                             <div class="col d-flex justify-content-end">
                                                                 <button type="button" class="btn btn-success"
@@ -620,5 +658,27 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="contractScheduleDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Contract Schedule - Status</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Data saved successfully!</h5>
+            </div>
+            <div class="modal-footer">
+                <%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

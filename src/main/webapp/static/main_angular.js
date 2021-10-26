@@ -1333,7 +1333,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $http({
             method: 'GET',
-            url: url + '/findNegotiatedConnection',
+            url: url + '/ContractSchedule/getNegotiatedConnectionData',
         }).then(function mySuccess(response) {
             console.log(response)
             var response_payload = response['data']
@@ -1346,7 +1346,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $http({
             method: 'GET',
-            url: url + '/findAssetRelocation',
+            url: url + '/ContractSchedule/getAssetRelocation',
         }).then(function mySuccess(response) {
             console.log(response)
             var response_payload = response['data']
@@ -1359,11 +1359,62 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $http({
             method: 'GET',
-            url: url + '/findURD',
+            url: url + '/ContractSchedule/getURD',
         }).then(function mySuccess(response) {
             console.log(response)
             var response_payload = response['data']
+            $scope.urd_response_payload = response['data']
             console.log(response_payload)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                $scope.urdInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.urdSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.urdSubdivision = response_payload['projectData']['subdivision']
+                $scope.urdStatOtherApprovals = "N/A"
+                $scope.urdSupplyCapacity = "3.5kVA"
+                $scope.urdNumLots = ""
+                $scope.urdLotNumbers = ""
+                $scope.urdLeaseOrEasement = "Yes" //dropdown
+                $scope.urdValidityPeriod = "The validity period is 60 Business Days from the date of this offer unless agreed in writing to extend."
+                $scope.urdSecurity = "N/A"
+                $scope.urdPlannedConstructionPeriod = "To be determined by customer." // dropdown
+                $scope.urdConnectionWorksJemena = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyJemena']
+                $scope.urdConnectionWorksDeveloper = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyDeveloper']
+                $scope.urdAssetsAndConnectionPoint = "" // dropdown
+                $scope.urdPremisesConnectionAssets = "Customer installed connection facility within the customer boundary."
+                $scope.urdNetworkExtension = "" // dropdown
+                $scope.urdCostOfNewtworkExtension = "As set out in the Connection Charge Details section below"
+                $scope.urdMeterInfo = "· The customer must have appropriate metering installed. ·To do this, the customer is required to contact the a retailer to arrange for installation of an appropriate meter. " +
+                    "Note: Meter Service Charges are payable if the retailer requests Jemena to supply and install the meter.  The Meter Service Charges are additional fees which are not included in the Connection Charges).\n"
+                $scope.urdTenderFee = "N/A"
+                $scope.urdApplicableInterestRate = "5% over the 90 day Commonwealth Bank bill rate."
+                $scope.urdDeveloperResponsibleOfficer = ""
+                $scope.urdJemenaResponsibleOfficer = ""
+                $scope.urdOtherJobSpecific = "N/A"
+            } else {
+                $scope.urdInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.urdSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.urdSubdivision = response_payload['projectData']['subdivision']
+                $scope.urdStatOtherApprovals = response_payload['projectData']['statutoryandOtherApprovals']
+                $scope.urdSupplyCapacity = response_payload['projectData']['supplyCapacityperLot']
+                $scope.urdNumLots = response_payload['projectData']['numberoflots']
+                $scope.urdLotNumbers = response_payload['projectData']['lotnumbers']
+                $scope.urdLeaseOrEasement = response_payload['projectData']['leaseorEasement']
+                $scope.urdValidityPeriod = response_payload['projectData']['validityPeriod']
+                $scope.urdSecurity = response_payload['projectData']['security']
+                $scope.urdPlannedConstructionPeriod = response_payload['projectData']['plannedConstructionPeriod']
+                $scope.urdConnectionWorksJemena = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyJemena']
+                $scope.urdConnectionWorksDeveloper = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyDeveloper']
+                $scope.urdAssetsAndConnectionPoint = response_payload['projectData']['connectionAssetsandConnectionPoint']
+                $scope.urdPremisesConnectionAssets = response_payload['projectData']['premisesConnectionAssetsandPartiesResponsibleforInstallation']
+                $scope.urdNetworkExtension = response_payload['projectData']['networkExtensionorAugmentationifrequired']
+                $scope.urdCostOfNewtworkExtension = response_payload['projectData']['costofNetworkExtensionofAugmentation']
+                $scope.urdTenderFee = response_payload['projectData']['tenderFeeifapplicable']
+                $scope.urdApplicableInterestRate = response_payload['projectData']['applicableInterestRate']
+                $scope.urdDeveloperResponsibleOfficer = response_payload['projectData']['developerResponsibleOfficer']
+                $scope.urdJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.urdOtherJobSpecific = response_payload['projectData']['otherJobSpecificRequirements']
+            }
         })
     }
 
@@ -1373,37 +1424,55 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $scope.getAssetRelocationData()
     }
 
-    $scope.urdInquiryNumber = ""
-    $scope.urdSupplyAddress = ""
-    $scope.urdSubdivision = ""
-    $scope.urdStatOtherApprovals = ""
-    $scope.urdSupplyCapacity = ""
-    $scope.urdNumLots = ""
-    $scope.urdLotNumbers = ""
-    $scope.urdLeaseOrEasement = ""
-    $scope.urdValidityPeriod = ""
-    $scope.urdSecurity = ""
-    $scope.urdPlannedConstructionPeriod = ""
-    $scope.urdConnectionWorksJemena = ""
-    $scope.urdConnectionWorksDeveloper = ""
-    $scope.urdAssetsAndConnectionPoint = ""
-    $scope.urdPremisesConnectionAssets = ""
-    $scope.urdNetworkExtension = ""
-    $scope.urdCostOfNewtworkExtension = ""
-    $scope.urdTenderFee = ""
-    $scope.urdApplicableInterestRate = ""
-    $scope.urdDeveloperResponsibleOfficer = ""
-    $scope.urdJemenaResponsibleOfficer = ""
-    $scope.urdOtherJobSpecific = " "
-
     $scope.contractSchedule_update_row = function (value, name) {
         $scope[name] = value
     }
 
     $scope.submitUrdData = function () {
         console.log("Inside submitUrdData")
-        console.log($scope.urdInquiryNumber)
-        console.log($scope.urdSupplyAddress)
+
+        var obj = JSON.stringify({
+            abn: "exist",
+            applicableInterestRate: $scope.urdApplicableInterestRate,
+            companyTradingName: "",
+            connectionAssetsandConnectionPoint: $scope.urdAssetsAndConnectionPoint,
+            costofNetworkExtensionofAugmentation: $scope.urdCostOfNewtworkExtension,
+            date: "",
+            descriptionofConnectionWorkstobeundertakenbyDeveloper: $scope.urdConnectionWorksDeveloper,
+            descriptionofConnectionWorkstobeundertakenbyJemena: $scope.urdConnectionWorksJemena,
+            developerResponsibleOfficer: $scope.urdDeveloperResponsibleOfficer,
+            id: "",
+            inquiryNumber: $scope.urdInquiryNumber,
+            jemenaResponsibleOfficer: $scope.urdJemenaResponsibleOfficer,
+            leaseorEasement: $scope.urdLeaseOrEasement,
+            lotnumbers: $scope.urdLotNumbers,
+            meterInformation: $scope.urdMeterInfo,
+            networkExtensionorAugmentationifrequired: $scope.urdNetworkExtension,
+            numberoflots: $scope.urdNumLots,
+            otherJobSpecificRequirements: $scope.urdOtherJobSpecific,
+            plannedConstructionPeriod: $scope.urdPlannedConstructionPeriod,
+            premisesConnectionAssetsandPartiesResponsibleforInstallation: $scope.urdPremisesConnectionAssets,
+            projectId: $scope.urd_response_payload['projectId'],
+            security: $scope.urdSecurity,
+            statutoryandOtherApprovals: $scope.urdStatOtherApprovals,
+            subdivision: $scope.urdSubdivision,
+            supplyAddress: $scope.urdSupplyAddress,
+            supplyCapacityperLot: $scope.urdSupplyCapacity,
+            tenderFeeifapplicable: $scope.urdTenderFee,
+            validityPeriod: $scope.urdValidityPeriod,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/ContractSchedule/saveAndUpdateURD',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#contractScheduleDataModal').modal('show');
+            }
+        })
     }
 
 
