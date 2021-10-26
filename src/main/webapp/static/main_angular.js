@@ -1327,6 +1327,52 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
 
     }
+
+    $scope.getNegotiatedConnectionData = function () {
+        console.log("clicked getNegotiatedConnectionData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/findNegotiatedConnection',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getAssetRelocationData = function () {
+        console.log("clicked getAssetRelocationData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/findAssetRelocation',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getUrdData = function () {
+        console.log("clicked getUrdData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/findURD',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getContractScheduleData = function () {
+        $scope.getUrdData()
+        $scope.getNegotiatedConnectionData()
+        $scope.getAssetRelocationData()
+    }
+
     $scope.urdInquiryNumber = ""
     $scope.urdSupplyAddress = ""
     $scope.urdSubdivision = ""
