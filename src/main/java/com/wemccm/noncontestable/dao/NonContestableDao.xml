@@ -116,8 +116,8 @@
 	<select id="insertNonContestableProjectComponent"
 		parameterType="com.wemccm.common.entity.NonContestableProjectComponent">
 
-		INSERT INTO noncontestableprojectcomponent
-		(projectTypeId, cost,description)
+		INSERT INTO noncontestableprojectcomponent 
+		(projectTypeId,cost,description)
 		VALUES
 		(#{projectTypeId},#{cost},#{description})
 

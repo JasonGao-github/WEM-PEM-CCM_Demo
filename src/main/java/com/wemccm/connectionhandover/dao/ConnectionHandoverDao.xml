@@ -164,13 +164,14 @@ where nc.projectId=#{projectId}
 	<select id="uplaodedFiles" 
 	parameterType="com.wemccm.common.entity.UplaodedFiles">
 
-		INSERT INTO uplaodedfiles (	
-		fileName,projectId,module,localURL,s3URL) 
-		VALUES (	
-			#{fileName},#{projectId},#{module},#{localURL},#{s3URL})
-
-
+		INSERT INTO uplaodedfiles (fileName,projectId,module,localURL,s3URL) 
+		VALUES (#{fileName},#{projectId},#{module},#{localURL},#{s3URL})
 	</select> 
+	
+	
+	
+	
+	
 	
 <select id="downlaodedFiles" 
 	parameterType="Integer"

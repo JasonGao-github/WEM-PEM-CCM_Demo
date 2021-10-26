@@ -2,11 +2,16 @@ package com.wemccm.avoidedcost.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.avoidedcost.service.AvoidedCostService;
 import com.wemccm.common.entity.AvoidedCostAssetReplacementCosts;
@@ -28,10 +33,11 @@ public class AvoidedCostController {
 	@ResponseBody
 	public List<AvoidedCostassetReplacementIterm> selectAllAvoidedCostassetReplacementIterm() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+
+		projectId=(int) session.getAttribute("projectId");
 		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm(projectId);
 		return l;
 	}

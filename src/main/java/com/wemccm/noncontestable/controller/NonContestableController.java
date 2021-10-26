@@ -2,11 +2,16 @@ package com.wemccm.noncontestable.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.wemccm.common.entity.NonContestableOtherCosts;
 import com.wemccm.common.entity.NonContestableOtherCostsItem;
@@ -155,7 +160,13 @@ public class NonContestableController {
 	@RequestMapping(value = "/insertNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult insertNonContestableProjectComponent(@RequestBody NonContestableProjectComponent ncpc) {
-
+		
+		
+		
+//		System.out.println(ncpc.getProjecTypeId()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		System.out.println(ncpc.getDescription()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		
+		
 		String result = serivce.insertNonContestableProjectComponent(ncpc);
 		if ("-1".equals(result)) {
 			return new ResponseResult("false", "this data has already exist in our system!");
@@ -180,6 +191,12 @@ public class NonContestableController {
 	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(
 			@RequestBody projectIdPojo requestPojo) {
 		// find by projectTypeId
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+
+		int projectId=(int) session.getAttribute("projectId");
+		requestPojo.setProjectId(projectId);
 		List<NccProjectComponentPojo> l = serivce.findMultiNonContestableProjectComponent(requestPojo);
 		return l;
 	}

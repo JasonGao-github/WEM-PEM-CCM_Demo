@@ -1,6 +1,8 @@
 package com.wemccm.connectionhandover.dao;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.wemccm.common.entity.ConnectionHandover;
@@ -19,7 +21,7 @@ public interface ConnectionHandoverDao {
 
 	public void uplaodedFiles(UplaodedFiles pojo);
 
-	public UplaodedFiles downlaodedFiles(Integer projectId);
+	public List<UplaodedFiles> downlaodedFiles(Integer projectId);
 
 	public ConnectionHandover listAllConnectionHandover(Integer projectId);
 

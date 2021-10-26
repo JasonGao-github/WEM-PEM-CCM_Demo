@@ -6,24 +6,20 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.wemccm.common.pojo.CustomerControllerDatePojo;
+import com.wemccm.common.pojo.ApproverDataPojo;
 import com.wemccm.common.pojo.ProjectBasicPojo;
-import com.wemccm.project.service.CustomerContributionDataService;
+import com.wemccm.project.service.ApproverService;
 
-@RestController
-@RequestMapping("/customer_contribution")
-public class CustomerContributionDataController {
-	////
+public class ApproverController {
 
 	@Autowired
-	private CustomerContributionDataService service;
+	private ApproverService approverService;
 
 	@RequestMapping(value = "/getData", produces = "application/json;charset=UTF-8")
-	public CustomerControllerDatePojo getData() {
+	public ApproverDataPojo getData() {
 
 		int projectId = getProjectIdInSession();
 		String projectStatus = getProjectStatusInSession();
@@ -31,32 +27,42 @@ public class CustomerContributionDataController {
 //		int projectId = 1;
 //		String projectStatus = "exist";
 
-		CustomerControllerDatePojo pojo = service.getData(projectId, projectStatus);
+		ApproverDataPojo pojo = approverService.getData(projectId, projectStatus);
 
 		return pojo;
 
 	}
 
-//
-	@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
-	public ProjectBasicPojo saveAndUpdate(@RequestBody CustomerControllerDatePojo pojo) {
+	@RequestMapping(value = "/updateApprover", produces = "application/json;charset=UTF-8")
+	public ProjectBasicPojo updateApprover(@RequestBody ApproverDataPojo pojo) {
+
+//		int projectId = getProjectIdInSession();
+//		String projectStatus = getProjectStatusInSession();
+
+//		int projectId = 1;
+//		String projectStatus = "exist";
+
+		approverService.updateApprover(pojo);
+
+		ProjectBasicPojo result = new ProjectBasicPojo();
+		result.setProjectId(pojo.getProjectId());
+		result.setResult("success");
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/updateStatus", produces = "application/json;charset=UTF-8")
+	public ProjectBasicPojo updateStatus(@RequestBody int approverId) {
 
 		int projectId = getProjectIdInSession();
 
-		String projectStatus = getProjectStatusInSession();
-
-//		int projectId = 1;
-//		String projectStatus = "new";
-
-		pojo.setProjectId(projectId);
-
-		int newProjectId = service.saveAndupdate(pojo, projectStatus, projectId);
-
-		updateSession(newProjectId);
+		approverService.updateStatus(approverId);
 
 		ProjectBasicPojo result = new ProjectBasicPojo();
 		result.setProjectId(projectId);
 		result.setResult("success");
+
 		return result;
 
 	}

@@ -5,10 +5,12 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wemccm.common.entity.Approver;
 import com.wemccm.common.entity.Project;
 import com.wemccm.common.pojo.CustomerContributionDataDetailPojo;
 import com.wemccm.common.pojo.CustomerControllerDatePojo;
 import com.wemccm.common.util.SR;
+import com.wemccm.project.dao.ApproverDao;
 import com.wemccm.project.dao.CustomerContributionDataDao;
 import com.wemccm.project.dao.ProjectDao;
 
@@ -19,6 +21,8 @@ public class CustomerContributionDataService {
 	private CustomerContributionDataDao ccDao;
 	@Autowired
 	private ProjectDao pDao;
+	@Autowired
+	private ApproverDao approverDao;
 
 	public CustomerControllerDatePojo getData(Integer projectId, String projectStatus) {
 
@@ -62,7 +66,22 @@ public class CustomerContributionDataService {
 			ccDao.updateCustomerContribution(pojo.getProjectData());
 			return projectId;
 		}
+
+		createApprovers(projectId);
 		return 0;
+
+	}
+
+	private void createApprovers(Integer projectId) {
+
+		for (int i = 1; i <= 3; i++) {
+
+			Approver approver = new Approver();
+			approver.setProjectId(projectId);
+			approver.setApproverStatus("Not_Approved");
+			approverDao.insertApprover(approver);
+
+		}
 
 	}
 

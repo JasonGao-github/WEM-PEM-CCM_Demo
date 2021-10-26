@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wemccm.project.dao.CICDao">
+
+
+
+	<insert id="saveCICprojectDetails"
+		parameterType="com.wemccm.common.entity.CICprojectDetails">
+		INSERT INTO cicprojectdetails (projectId,wbsElements)
+		VALUES(#{projectId},#{wbsElements})
+	</insert>
+
+	<insert id="saveCICprojectEstimate"
+		parameterType="com.wemccm.common.entity.CICprojectEstimate">
+		INSERT INTO cicprojectestimate
+		(cicProjectTaskId,cicProjectDetailsId,labour,materials,plants,contracts,total)
+		VALUES(#{cicProjectTaskId},#{cicProjectDetailsId},#{labour},#{materials},#{plants},#{contracts},#{total})
+	</insert>
+
+
+	<select id="getCICprojectDetailsNewestId" resultType="int">
+		SELECT id
+		from cicprojectdetails ORDER BY id DESC
+		LIMIT 1
+	</select>
+
+	<select id="getCICprojectEstimateNewestId" resultType="int">
+		SELECT id
+		from cicprojectestimate ORDER BY id DESC
+		LIMIT 1
+	</select>
+
+	<select id="getCICProjectDetailsId" parameterType="int"
+		resultType="int">
+		SELECT id FROM CICprojectDetails WHERE projectId
+		=#{projectId}
+
+	</select>
+
+	<update id="updateCICprojectDetails"
+		parameterType="com.wemccm.common.entity.CICprojectDetails">
+		UPDATE cicprojectestimate
+		SET
+		wbsElements =#{wbsElements}
+		WHERE
+		projectId =#{projectId}
+
+	</update>
+
+	<update id="updateCICprojectEstimate"
+		parameterType="com.wemccm.common.entity.CICprojectEstimate">
+		UPDATE cicprojectestimate
+		SET
+		labour =#{labour},
+		materials=#{materials},
+		plants=#{plants},
+		contracts=#{contracts}
+		WHERE
+		cicProjectTaskId =#{cicProjectTaskId} and cicProjectDetailsId
+		=#{cicProjectDetailsId}
+
+	</update>
+
+
+	<select id="listAllTask"
+		resultType="com.wemccm.common.entity.CICprojectTask">
+		SELECT * FROM
+		cicprojecttask
+	</select>
+
+	<select id="getDetailByProjectId" parameterType="int"
+		resultType="com.wemccm.common.entity.CICprojectDetails">
+		SELECT * FROM cicprojectdetails where projectId
+		=#{projectId}
+	</select>
+
+
+	<select id="getEstimate"
+		resultType="com.wemccm.common.entity.CICprojectDetails">
+		SELECT * FROM cicprojectEstimate where cicProjectDetailsId
+		=#{1} and cicProjectTaskId =#{0}
+	</select>
+
+	<select id="caculateProjectManagementDesignLabour1"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.labour), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd
+		ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-02' ,
+		'5.01-03',
+		'5.01-05',
+		'5.01-06',
+		'5.01-08',
+		'5.01-09',
+		'5.01-11',
+		'5.01-12',
+		'5.01-14',
+		'5.01-15',
+		'5.01-17',
+		'5.01-18',
+		'5.01-32') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementDesignLabour2"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.labour), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd
+		ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-31') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+
+	<select id="caculateProjectManagementDesignLabour3"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.labour), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd
+		ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-32') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementMaterials1"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.material), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd
+		ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-02' ,
+		'5.01-03',
+		'5.01-05',
+		'5.01-06',
+		'5.01-08',
+		'5.01-09',
+		'5.01-11',
+		'5.01-12',
+		'5.01-14',
+		'5.01-15',
+		'5.01-17',
+		'5.01-18',
+		'5.01-32') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementMaterials2"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.material), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd
+		ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-31') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementPlant1" parameterType="int"
+		resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals * qi.plant), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-02' ,
+		'5.01-03',
+		'5.01-05',
+		'5.01-06',
+		'5.01-08',
+		'5.01-09',
+		'5.01-11',
+		'5.01-12',
+		'5.01-14',
+		'5.01-15',
+		'5.01-17',
+		'5.01-18',
+		'5.01-32') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementPlant2" parameterType="int"
+		resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals * qi.plant), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-31') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementContracts1"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.subcontract), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-02' ,
+		'5.01-03',
+		'5.01-05',
+		'5.01-06',
+		'5.01-08',
+		'5.01-09',
+		'5.01-11',
+		'5.01-12',
+		'5.01-14',
+		'5.01-15',
+		'5.01-17',
+		'5.01-18',
+		'5.01-32') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementContracts2"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.subcontract), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata
+		bd ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-23') and
+		qi.projectId = #{projectId}
+
+	</select>
+
+	<select id="caculateProjectManagementContracts3"
+		parameterType="int" resultType="Double">
+
+		SELECT
+		IFNULL(SUM(qi.actuals *
+		qi.subcontract), 0)
+		FROM
+		quantityinput qi
+		LEFT JOIN
+		quantityinputbasicdata bd ON
+		qi.quantityInputBasicDataId = bd.id
+		WHERE
+		bd.code IN ('5.01-24') and
+		qi.projectId = #{projectId}
+	</select>
+
+
+
+
+
+</mapper>

@@ -5,7 +5,84 @@
 	
 
 	
-
+	 <select id="getNCinCC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.entity.NegotiatedConnection">
+		
+		SELECT *
+		
+		
+		FROM negotiatedconnection
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+		 <select id="getARinCC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.entity.AssetRelocation">
+		
+		SELECT *
+		
+		
+		FROM assetrelocation
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+	
+		 <select id="getURDinCC" 
+ 	parameterType="Integer"
+		resultType="com.wemccm.common.entity.URD">
+		
+		SELECT *
+		
+		
+		FROM urd
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+	
+		 <select id="deleteNegotiatedConnection" 
+ 	parameterType="Integer">
+		
+		DELETE FROM negotiatedconnection
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+			 <select id="deleteURD" 
+ 	parameterType="Integer">
+		
+		DELETE FROM urd
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+				 <select id="deleteAssetRelocation" 
+ 	parameterType="Integer">
+		
+		DELETE FROM assetrelocation
+		
+		WHERE projectId=#{projectId}
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	 <select id="findNCinCC" 

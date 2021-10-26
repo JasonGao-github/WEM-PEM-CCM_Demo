@@ -41,6 +41,19 @@ public class ContractScheduleService {
 		Dao.insertNegotiatedConnection(pojo);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public URDPojo findURD(Integer projectId) {
 		URDPojo l = Dao.findURDinCC(projectId);
@@ -55,6 +68,16 @@ public class ContractScheduleService {
 		Dao.insertURD(pojo);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public AssetRelocationPojo findAssetRelocation(Integer projectId) {
 		AssetRelocationPojo l = Dao.findARinCC(projectId);

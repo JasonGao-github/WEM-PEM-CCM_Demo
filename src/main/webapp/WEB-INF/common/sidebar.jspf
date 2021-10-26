@@ -5,21 +5,15 @@
     String userEmail = new String("");
     String firstName = new String("");
     String userId = new String("");
-    String userTypeId = new String("");
+    int userTypeId = -1;
 
     if ((String) session.getAttribute("email") != null) {
-        userTypeId = (String) session.getAttribute("userTypeId").toString();
+        userTypeId = Integer.valueOf((String) session.getAttribute("userTypeId").toString());
         userEmail = (String) session.getAttribute("email").toString();
         firstName = (String) session.getAttribute("firstName").toString();
-        userType = (String) session.getAttribute("userType").toString();
         userId = (String) session.getAttribute("userId").toString();
     }
-    /*
-    if((String) session.getAttribute("projectId").toString() != null){
-        String pjId = (String) session.getAttribute("projectId").toString();
-        System.out.println("pjId: " + pjId);
-    }
-    */
+    //System.out.println("userTypeId: " + userTypeId);
 %>
 
 
@@ -68,9 +62,9 @@
         </li>
 
 
-        <%--		<%--%>
-        <%--			if (userType.equals("1")) {--%>
-        <%--		%>--%>
+        <%
+        if (userTypeId == 1) {
+        %>
         <li><a href="addUser_page"> <i class="bx bx-folder"></i> <span
                 class="links_name">Manage Users</span>
         </a> <span class="subtitle">Manage Users</span></li>
@@ -111,14 +105,15 @@
             </div>
             <span class="subtitle">Add basic data</span>
         </li>
+        
+        <%
+       	}
+        %>
+        
 
         <li><a href="settings_page"> <i class="bx bx-folder"></i> <span
                 class="links_name">Settings</span>
         </a> <span class="subtitle">Settings</span></li>
-        <%--		<%--%>
-        <%--			}--%>
-        <%--		%>--%>
-
 
         <li class="profile">
             <div class="profile_details">
