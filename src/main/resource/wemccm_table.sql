@@ -298,8 +298,8 @@ CREATE TABLE `currentoccupy`  (
 CREATE TABLE `customercontribution`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectId` int(11) NULL DEFAULT NULL,
-  `jemenaWBS` varchar(32)  NULL DEFAULT NULL,
-  `inquiryNumber` int(11) NULL DEFAULT NULL,
+  `jemenaWBS` varchar(128)  NULL DEFAULT NULL,
+  `inquiryNumber` varchar(128) NULL DEFAULT NULL,
   `jemenaSapPmOrder` varchar(32)  NULL DEFAULT NULL,
   `zinfraWBS` varchar(32)  NULL DEFAULT NULL,
   `projectTitle` varchar(32)  NULL DEFAULT NULL,

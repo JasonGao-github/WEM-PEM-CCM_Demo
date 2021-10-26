@@ -24,14 +24,13 @@
 	</insert>
 
 	<update id="updateApprover"
-		parameterType="com.wemccm.common.entity.Approver">
+		parameterType="com.wemccm.common.pojo.UpdateApproverPojo">
 
 		UPDATE approver
 		SET approverUserId =#{approverUserId},
 		approverPost =#{approverPost},
 		approverName =#{approverName}
-		WHERE id =
-		#{id}
+		WHERE id =#{approverId}
 	</update>
 
 	<update id="updateStatus"

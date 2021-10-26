@@ -130,8 +130,14 @@ public class QuantityInputController {
 
 	@RequestMapping(value = "/findQuantityInputDetail", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<QuantityInputDetailPojo> findQuantityInputDetail(@RequestBody projectIdPojo requestPojo) {
+	public List<QuantityInputDetailPojo> findQuantityInputDetail() {
+		projectIdPojo requestPojo=new projectIdPojo();
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
 
+		int projectId=(int) session.getAttribute("projectId");
+		requestPojo.setProjectId(projectId);
 		List<QuantityInputDetailPojo> l = serivce.findQuantityInputDetail(requestPojo);
 		return l;
 	}
