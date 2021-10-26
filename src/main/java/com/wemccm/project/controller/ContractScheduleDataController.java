@@ -95,8 +95,8 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/saveAndUpdateURD", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateURD(@RequestBody URDData pojo) {
 
-//			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = getProjectIdInSession();
+//			int projectId = 1;
 			pojo.setProjectId(projectId);
 			
 			
