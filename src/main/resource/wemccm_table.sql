@@ -104,7 +104,7 @@ CREATE TABLE `urd`  (
   `networkExtensionorAugmentationifrequired` varchar(255) ,
   `premisesConnectionAssetsandPartiesResponsibleforInstallation` varchar(255) ,
   `costofNetworkExtensionofAugmentation` varchar(255) ,
-  `meterInformation` varchar(255) ,
+  `meterInformation` varchar(1500) ,
   `tenderFeeifapplicable` varchar(255) ,
   `applicableInterestRate` varchar(255) ,
   `developerResponsibleOfficer` varchar(255) ,

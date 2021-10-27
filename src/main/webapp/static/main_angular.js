@@ -1337,59 +1337,62 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             console.log(response)
             var response_payload = response['data']
-            $scope.urd_response_payload = response['data']
+            $scope.nc_response_payload = response['data']
+            $scope.nc_projectData = response_payload['projectData']
+            $scope.nc_projectStatus = response_payload['projectStatus']
+            $scope.nc_projectId = response_payload['projectId']
             console.log(response_payload)
 
             if (response_payload['projectStatus'].toString() === 'new') {
                 $scope.ncInquiryNumber = response_payload['projectData']['inquiryNumber']
-                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['supplyAddress']
-                $scope.ncMinContractDemandPrimary = response_payload['projectData']['subdivision']
-                $scope.ncncMinContractDemandReserve = "N/A"
-                $scope.ncScopeOfWorkCustomer = "3.5kVA"
-                $scope.ncScopeOfWorkJemena = ""
-                $scope.ncExclusions = ""
-                $scope.ncAssumptions = "Yes" //dropdown
+                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['maximumAllocatedCapacity']
+                $scope.ncMinContractDemandPrimary = response_payload['projectData']['minimumContractDemandPrimary']
+                $scope.ncncMinContractDemandReserve = response_payload['projectData']['minimumContractDemandReserveFeeder']
+                $scope.ncScopeOfWorkCustomer = response_payload['projectData']['scopeofWorksCustomerFunded']
+                $scope.ncScopeOfWorkJemena = response_payload['projectData']['scopeofWorksJemenaFunded']
+                $scope.ncExclusions = response_payload['projectData']['exclusions']
+                $scope.ncAssumptions = response_payload['projectData']['assumptions']
                 $scope.ncValidityPeriod = "60 Business Days from the date of this offer unless agreed in writing to extend."
                 $scope.ncPlannedConstructionPeriod = "12 weeks from date of acceptance (or the agreed site readiness date)."
                 $scope.ncNominalSupplyVoltage = "Please select from drop down list" // dropdown
-                $scope.ncSupplyAddress = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyJemena']
-                $scope.ncSupplyPhasing = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyDeveloper']
-                $scope.ncEmbeddedNetwork = "" // dropdown
+                $scope.ncSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.ncSupplyPhasing = response_payload['projectData']['supplyPhasing']
+                $scope.ncEmbeddedNetwork = response_payload['projectData']['embeddedNetwork'] // dropdown
                 $scope.ncInterestRate = "5% over the 90 day Commonwealth Bank Bill rate."
-                $scope.ncSecurity = "" // dropdown
-                $scope.ncConnectionAssetConnectionPointLocation = "As set out in the Connection Charge Details section below"
-                $scope.ncPremisesConnectionAssets = "· The customer must have appropriate metering installed. ·To do this, the customer is required to contact the a retailer to arrange for installation of an appropriate meter. " +
-                    "Note: Meter Service Charges are payable if the retailer requests Jemena to supply and install the meter.  The Meter Service Charges are additional fees which are not included in the Connection Charges).\n"
-                $scope.ncProjectReference = "N/A"
-                $scope.ncStatutoryOrOther = "5% over the 90 day Commonwealth Bank bill rate."
-                $scope.ncLeaseOrEasement = ""
-                $scope.ncCustomerResponsibleOfficer = ""
-                $scope.ncJemenaResponsibleOfficer = "N/A"
-                $scope.ncNetworkExtensionOrAugemntation = "N/A"
+                $scope.ncSecurity = "N/A" // dropdown
+                $scope.ncConnectionAssetConnectionPointLocation = "Please select from drop down list"
+                $scope.ncPremisesConnectionAssets = "Customer installed connection facility within the customer boundary"
+                $scope.ncProjectReference = response_payload['projectData']['projectReference']
+                $scope.ncStatutoryOrOther = "N/A"
+                $scope.ncLeaseOrEasement = "Please select from drop down list"
+                $scope.ncCustomerResponsibleOfficer = response_payload['projectData']['customerResponsibleOfficer']
+                $scope.ncJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.ncNetworkExtensionOrAugemntation = "Please select from drop down list"
             } else {
                 $scope.ncInquiryNumber = response_payload['projectData']['inquiryNumber']
-                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['supplyAddress']
-                $scope.ncMinContractDemandPrimary = response_payload['projectData']['subdivision']
-                $scope.ncncMinContractDemandReserve = response_payload['projectData']['inquiryNumber']
-                $scope.ncScopeOfWorkCustomer = response_payload['projectData']['inquiryNumber']
-                $scope.ncScopeOfWorkJemena = response_payload['projectData']['inquiryNumber']
-                $scope.ncExclusions = response_payload['projectData']['inquiryNumber']
-                $scope.ncAssumptions = response_payload['projectData']['inquiryNumber']
-                $scope.ncValidityPeriod = response_payload['projectData']['inquiryNumber']
-                $scope.ncPlannedConstructionPeriod = response_payload['projectData']['inquiryNumber']
-                $scope.ncNominalSupplyVoltage = response_payload['projectData']['inquiryNumber']
-                $scope.ncSupplyAddress = response_payload['projectData']['inquiryNumber']
-                $scope.ncSupplyPhasing = response_payload['projectData']['inquiryNumber']
-                $scope.ncInterestRate = response_payload['projectData']['inquiryNumber']
-                $scope.ncSecurity = response_payload['projectData']['inquiryNumber']
-                $scope.ncConnectionAssetConnectionPointLocation = response_payload['projectData']['inquiryNumber']
-                $scope.ncPremisesConnectionAssets = response_payload['projectData']['inquiryNumber']
-                $scope.ncProjectReference = response_payload['projectData']['inquiryNumber']
-                $scope.ncStatutoryOrOther = response_payload['projectData']['inquiryNumber']
-                $scope.ncLeaseOrEasement = response_payload['projectData']['inquiryNumber']
-                $scope.ncCustomerResponsibleOfficer = response_payload['projectData']['inquiryNumber']
-                $scope.ncJemenaResponsibleOfficer = response_payload['projectData']['inquiryNumber']
-                $scope.ncNetworkExtensionOrAugemntation = response_payload['projectData']['inquiryNumber']
+                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['maximumAllocatedCapacity']
+                $scope.ncMinContractDemandPrimary = response_payload['projectData']['minimumContractDemandPrimary']
+                $scope.ncncMinContractDemandReserve = response_payload['projectData']['minimumContractDemandReserveFeeder']
+                $scope.ncScopeOfWorkCustomer = response_payload['projectData']['scopeofWorksCustomerFunded']
+                $scope.ncScopeOfWorkJemena = response_payload['projectData']['scopeofWorksJemenaFunded']
+                $scope.ncExclusions = response_payload['projectData']['exclusions']
+                $scope.ncAssumptions = response_payload['projectData']['assumptions']
+                $scope.ncValidityPeriod = response_payload['projectData']['validityPeriod']
+                $scope.ncPlannedConstructionPeriod = response_payload['projectData']['plannedConstructionPeriod']
+                $scope.ncNominalSupplyVoltage = response_payload['projectData']['nominalSupplyVoltage']
+                $scope.ncSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.ncSupplyPhasing = response_payload['projectData']['supplyPhasing']
+                $scope.ncEmbeddedNetwork = response_payload['projectData']['embeddedNetwork'] // dropdown
+                $scope.ncInterestRate = response_payload['projectData']['interestrateforoverduepayment']
+                $scope.ncSecurity = response_payload['projectData']['security'] // dropdown
+                $scope.ncConnectionAssetConnectionPointLocation = response_payload['projectData']['connectionAssetandConnectionPointLocation']
+                $scope.ncPremisesConnectionAssets = response_payload['projectData']['premisesConnectionAssetsandPartiesResponsibleforInstallation']
+                $scope.ncProjectReference = response_payload['projectData']['projectReference']
+                $scope.ncStatutoryOrOther = response_payload['projectData']['statutoryorOtherApprovalstobeobtainedbyJemena']
+                $scope.ncLeaseOrEasement = response_payload['projectData']['leaseorEasementRequired']
+                $scope.ncCustomerResponsibleOfficer = response_payload['projectData']['customerResponsibleOfficer']
+                $scope.ncJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.ncNetworkExtensionOrAugemntation = response_payload['projectData']['networkExtensionorAugmentation']
             }
         })
     }
@@ -1417,6 +1420,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response)
             var response_payload = response['data']
             $scope.urd_response_payload = response['data']
+            $scope.urd_projectData = response_payload['projectData']
+            $scope.urd_projectStatus = response_payload['projectStatus']
             console.log(response_payload)
 
             if (response_payload['projectStatus'].toString() === 'new') {
@@ -1483,37 +1488,42 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     $scope.submitUrdData = function () {
         console.log("Inside submitUrdData")
-
+        $scope.urd_projectData['inquiryNumber'] = $scope.urdInquiryNumber
+        $scope.urd_projectData['applicableInterestRate'] = $scope.urdApplicableInterestRate
+        $scope.urd_projectData['companyTradingName'] = "test"
+        $scope.urd_projectData['connectionAssetsandConnectionPoint'] = $scope.urdAssetsAndConnectionPoint
+        $scope.urd_projectData['costofNetworkExtensionofAugmentation'] = $scope.urdCostOfNewtworkExtension
+        $scope.urd_projectData['date'] = '2021-10-13 07:59:38'
+        $scope.urd_projectData['descriptionofConnectionWorkstobeundertakenbyDeveloper'] = $scope.urdConnectionWorksDeveloper
+        $scope.urd_projectData['descriptionofConnectionWorkstobeundertakenbyJemena'] = $scope.urdConnectionWorksJemena
+        $scope.urd_projectData['developerResponsibleOfficer'] = $scope.urdDeveloperResponsibleOfficer
+        $scope.urd_projectData['id'] = $scope.urd_projectData['id']
+        $scope.urd_projectData['inquiryNumber'] = $scope.urdInquiryNumber
+        $scope.urd_projectData['jemenaResponsibleOfficer'] = $scope.urdJemenaResponsibleOfficer
+        $scope.urd_projectData['leaseorEasement'] = $scope.urdLeaseOrEasement
+        $scope.urd_projectData['lotnumbers'] = $scope.urdLotNumbers
+        $scope.urd_projectData['meterInformation'] = $scope.urdMeterInfo
+        $scope.urd_projectData['networkExtensionorAugmentationifrequired'] = $scope.urdNetworkExtension
+        $scope.urd_projectData['numberoflots'] = $scope.urdNumLots
+        $scope.urd_projectData['otherJobSpecificRequirements'] = $scope.urdOtherJobSpecific
+        $scope.urd_projectData['plannedConstructionPeriod'] = $scope.urdPlannedConstructionPeriod
+        $scope.urd_projectData['premisesConnectionAssetsandPartiesResponsibleforInstallation'] = $scope.urdPremisesConnectionAssets
+        $scope.urd_projectData['projectId'] = $scope.urd_response_payload['projectId']
+        $scope.urd_projectData['security'] = $scope.urdSecurity
+        $scope.urd_projectData['statutoryandOtherApprovals'] = $scope.urdStatOtherApprovals
+        $scope.urd_projectData['subdivision'] = $scope.urdSubdivision
+        $scope.urd_projectData['supplyAddress'] = $scope.urdSupplyAddress
+        $scope.urd_projectData['supplyCapacityperLot'] = $scope.urdSupplyCapacity
+        $scope.urd_projectData['tenderFeeifapplicable'] = $scope.urdTenderFee
+        $scope.urd_projectData['validityPeriod'] = $scope.urdValidityPeriod
         var obj = JSON.stringify({
-            abn: "exist",
-            applicableInterestRate: $scope.urdApplicableInterestRate,
-            companyTradingName: "",
-            connectionAssetsandConnectionPoint: $scope.urdAssetsAndConnectionPoint,
-            costofNetworkExtensionofAugmentation: $scope.urdCostOfNewtworkExtension,
-            date: "",
-            descriptionofConnectionWorkstobeundertakenbyDeveloper: $scope.urdConnectionWorksDeveloper,
-            descriptionofConnectionWorkstobeundertakenbyJemena: $scope.urdConnectionWorksJemena,
-            developerResponsibleOfficer: $scope.urdDeveloperResponsibleOfficer,
-            id: "",
-            inquiryNumber: $scope.urdInquiryNumber,
-            jemenaResponsibleOfficer: $scope.urdJemenaResponsibleOfficer,
-            leaseorEasement: $scope.urdLeaseOrEasement,
-            lotnumbers: $scope.urdLotNumbers,
-            meterInformation: $scope.urdMeterInfo,
-            networkExtensionorAugmentationifrequired: $scope.urdNetworkExtension,
-            numberoflots: $scope.urdNumLots,
-            otherJobSpecificRequirements: $scope.urdOtherJobSpecific,
-            plannedConstructionPeriod: $scope.urdPlannedConstructionPeriod,
-            premisesConnectionAssetsandPartiesResponsibleforInstallation: $scope.urdPremisesConnectionAssets,
-            projectId: $scope.urd_response_payload['projectId'],
-            security: $scope.urdSecurity,
-            statutoryandOtherApprovals: $scope.urdStatOtherApprovals,
-            subdivision: $scope.urdSubdivision,
-            supplyAddress: $scope.urdSupplyAddress,
-            supplyCapacityperLot: $scope.urdSupplyCapacity,
-            tenderFeeifapplicable: $scope.urdTenderFee,
-            validityPeriod: $scope.urdValidityPeriod,
+            "projectId": $scope.urd_response_payload['projectId'],
+            "projectStatus": '',
+            "result": "success",
+            "massage": "",
+            "projectData": $scope.urd_projectData,
         })
+        console.log(obj)
         $http({
             method: 'POST',
             url: url + '/ContractSchedule/saveAndUpdateURD',
@@ -1530,36 +1540,41 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     $scope.submitNcdData = function () {
         console.log("Inside submitNcdData")
-
+        $scope.nc_projectData['inquiryNumber'] = $scope.ncInquiryNumber
+        $scope.nc_projectData['maximumAllocatedCapacity'] = $scope.ncMaxAllocatedCapacity
+        $scope.nc_projectData['minimumContractDemandPrimary'] = $scope.ncMinContractDemandPrimary
+        $scope.nc_projectData['minimumContractDemandReserveFeeder'] = $scope.ncncMinContractDemandReserve
+        $scope.nc_projectData['scopeofWorksCustomerFunded'] = $scope.ncScopeOfWorkCustomer
+        $scope.nc_projectData['scopeofWorksJemenaFunded'] = $scope.ncScopeOfWorkJemena
+        $scope.nc_projectData['exclusions'] = $scope.ncExclusions
+        $scope.nc_projectData['assumptions'] = $scope.ncAssumptions
+        $scope.nc_projectData['validityPeriod'] = $scope.ncValidityPeriod
+        $scope.nc_projectData['plannedConstructionPeriod'] = $scope.ncPlannedConstructionPeriod
+        $scope.nc_projectData['nominalSupplyVoltage'] = $scope.ncNominalSupplyVoltage
+        $scope.nc_projectData['supplyAddress'] = $scope.ncSupplyAddress
+        $scope.nc_projectData['supplyPhasing'] = $scope.ncSupplyPhasing
+        $scope.nc_projectData['embeddedNetwork'] = $scope.ncEmbeddedNetwork
+        $scope.nc_projectData['interestrateforoverduepayment'] = $scope.ncInterestRate
+        $scope.nc_projectData['security'] = $scope.ncSecurity
+        $scope.nc_projectData['connectionAssetandConnectionPointLocation'] = $scope.ncConnectionAssetConnectionPointLocation
+        $scope.nc_projectData['premisesConnectionAssetsandPartiesResponsibleforInstallation'] = $scope.ncPremisesConnectionAssets
+        $scope.nc_projectData['projectReference'] = $scope.ncProjectReference
+        $scope.nc_projectData['statutoryorOtherApprovalstobeobtainedbyJemena'] = $scope.ncStatutoryOrOther
+        $scope.nc_projectData['leaseorEasementRequired'] = $scope.ncLeaseOrEasement
+        $scope.nc_projectData['customerResponsibleOfficer'] = $scope.ncCustomerResponsibleOfficer
+        $scope.nc_projectData['jemenaResponsibleOfficer'] = $scope.ncJemenaResponsibleOfficer
+        $scope.nc_projectData['networkExtensionorAugmentation'] = $scope.ncNetworkExtensionOrAugemntation
+        $scope.nc_projectData['abn'] = $scope.nc_projectData['abn']
+        $scope.nc_projectData['companyTradingName'] = $scope.nc_projectData['companyTradingName']
+        $scope.nc_projectData['date'] = '2021-10-13 07:59:38'
+        $scope.nc_projectData['id'] = $scope.nc_projectData['id']
+        $scope.nc_projectData['projectId'] = $scope.nc_projectId
         var obj = JSON.stringify({
-            abn: "exist",
-            applicableInterestRate: $scope.urdApplicableInterestRate,
-            companyTradingName: "",
-            connectionAssetsandConnectionPoint: $scope.urdAssetsAndConnectionPoint,
-            costofNetworkExtensionofAugmentation: $scope.urdCostOfNewtworkExtension,
-            date: "",
-            descriptionofConnectionWorkstobeundertakenbyDeveloper: $scope.urdConnectionWorksDeveloper,
-            descriptionofConnectionWorkstobeundertakenbyJemena: $scope.urdConnectionWorksJemena,
-            developerResponsibleOfficer: $scope.urdDeveloperResponsibleOfficer,
-            id: "",
-            inquiryNumber: $scope.urdInquiryNumber,
-            jemenaResponsibleOfficer: $scope.urdJemenaResponsibleOfficer,
-            leaseorEasement: $scope.urdLeaseOrEasement,
-            lotnumbers: $scope.urdLotNumbers,
-            meterInformation: $scope.urdMeterInfo,
-            networkExtensionorAugmentationifrequired: $scope.urdNetworkExtension,
-            numberoflots: $scope.urdNumLots,
-            otherJobSpecificRequirements: $scope.urdOtherJobSpecific,
-            plannedConstructionPeriod: $scope.urdPlannedConstructionPeriod,
-            premisesConnectionAssetsandPartiesResponsibleforInstallation: $scope.urdPremisesConnectionAssets,
-            projectId: $scope.urd_response_payload['projectId'],
-            security: $scope.urdSecurity,
-            statutoryandOtherApprovals: $scope.urdStatOtherApprovals,
-            subdivision: $scope.urdSubdivision,
-            supplyAddress: $scope.urdSupplyAddress,
-            supplyCapacityperLot: $scope.urdSupplyCapacity,
-            tenderFeeifapplicable: $scope.urdTenderFee,
-            validityPeriod: $scope.urdValidityPeriod,
+            "projectId": $scope.nc_projectId,
+            "projectStatus": '',
+            "result": "success",
+            "massage": "",
+            "projectData": $scope.nc_projectData,
         })
         $http({
             method: 'POST',

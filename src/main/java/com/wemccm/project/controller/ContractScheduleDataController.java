@@ -80,11 +80,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getURD", produces = "application/json;charset=UTF-8")
 		public URDData getURD() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "new";
+//			int projectId = 1;
+//			String projectStatus = "new";
 
 			URDData resultPojo = qiService.getURD(projectId, projectStatus);
 
@@ -101,6 +101,7 @@ import com.wemccm.project.service.FIMInputDataService;
 			
 			
 			URD urd=pojo.getProjectData();
+			System.out.println(urd);
 			System.out.println(urd.getInquiryNumber());
 			
 			qiService.saveAndUpdateURD(pojo);
