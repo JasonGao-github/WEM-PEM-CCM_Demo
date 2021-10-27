@@ -1727,7 +1727,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $scope.urd_projectData['companyTradingName'] = "test"
         $scope.urd_projectData['connectionAssetsandConnectionPoint'] = $scope.urdAssetsAndConnectionPoint
         $scope.urd_projectData['costofNetworkExtensionofAugmentation'] = $scope.urdCostOfNewtworkExtension
-        $scope.urd_projectData['date'] = '2021-10-13 07:59:38'
+        $scope.urd_projectData['date'] = null
         $scope.urd_projectData['descriptionofConnectionWorkstobeundertakenbyDeveloper'] = $scope.urdConnectionWorksDeveloper
         $scope.urd_projectData['descriptionofConnectionWorkstobeundertakenbyJemena'] = $scope.urdConnectionWorksJemena
         $scope.urd_projectData['developerResponsibleOfficer'] = $scope.urdDeveloperResponsibleOfficer
@@ -1800,7 +1800,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $scope.nc_projectData['networkExtensionorAugmentation'] = $scope.ncNetworkExtensionOrAugemntation
         $scope.nc_projectData['abn'] = $scope.nc_projectData['abn']
         $scope.nc_projectData['companyTradingName'] = $scope.nc_projectData['companyTradingName']
-        $scope.nc_projectData['date'] = '2021-10-13 07:59:38'
+        $scope.nc_projectData['date'] = null
         $scope.nc_projectData['id'] = $scope.nc_projectData['id']
         $scope.nc_projectData['projectId'] = $scope.nc_projectId
         var obj = JSON.stringify({
