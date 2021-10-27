@@ -12,22 +12,68 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <%@ include file="common/meta.jspf"%>
 <link rel="stylesheet" href="<%=path%>static/css/CCF.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+<script type="text/javascript"
+	src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 </head>
 
 
 
-<body ng-app="main_app" id="main" ng-controller="controller">
+<body ng-app="main_app" id="main" ng-controller="controller" ng-init="conn_handover_getData()">
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content" id="content">
+				<div class="row">
+					<div class="col-12">
+						<ul class="nav nav-pills"
+							style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
+							<li class="nav-item">
+								<a class="nav-link" href="project_page">Project Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="ccf_page">Customer Contribution</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="quantity_input_page">Quantity Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="ncc_page">Non-contestable Costs Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="fim_page">FIM Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="avoided_cost_page">Avoided Costs Input</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="financials_page">Financials</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="design_page">Design</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="conHandover_page">Connection Handover</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="contract_schedule_page">Contract Schedule</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Inputs | Projects</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Approvers</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
 				<h2>Connection Handover</h2>
 				<button onclick="javascript:demoFromHTML()">Print this page</button>
 
-				<form class="form container" name="newUser" action="" method="POST"
-					style="justify-content: center">
+				<div class="form container" name="newUser"
+					style="justify-content: center;min-width: 100%;">
 
 					<div class="basic">
 						<div class="row">
@@ -61,7 +107,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Customer / Business Name :</h3>
 							</div>
 							<div class="col-lg-7">
-								<input ng-model="coustomerBusinessName" type="text" id="coustomerBusinessName" />
+								<input ng-model="coustomerBusinessName" type="text"
+									id="coustomerBusinessName" />
 							</div>
 						</div>
 
@@ -82,19 +129,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Name :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="customerContactName" type="text" id="customerContactName" />
+								<input ng-model="customerContactName" type="text"
+									id="customerContactName" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Number :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="customerContactNumber" type="text" id="customerContactNumber" />
+								<input ng-model="customerContactNumber" type="text"
+									id="customerContactNumber" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Email :</h3>
 							</div>
 							<div class="col-lg-3">
-								<input ng-model="customerContactEmail" type="text" id="customerContactEmail" />
+								<input ng-model="customerContactEmail" type="text"
+									id="customerContactEmail" />
 							</div>
 						</div>
 
@@ -193,13 +243,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Name :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="projectManagerName" type="text" id="projectManagerName" />
+								<input ng-model="projectManagerName" type="text"
+									id="projectManagerName" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Phone :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="projectManagerPhone" type="text" id="projectManagerPhone" />
+								<input ng-model="projectManagerPhone" type="text"
+									id="projectManagerPhone" />
 							</div>
 						</div>
 
@@ -248,13 +300,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Supply Point Details</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="supplyPointDetails" type="text" id="supplyPointDetails" />
+								<input ng-model="supplyPointDetails" type="text"
+									id="supplyPointDetails" />
 							</div>
 							<div class="col-lg-1">
 								<h3>Comments</h3>
 							</div>
 							<div class="col-5">
-								<input ng-model="supplyPointComments" type="text" id="supplyPointComments" />
+								<input ng-model="supplyPointComments" type="text"
+									id="supplyPointComments" />
 							</div>
 						</div>
 
@@ -283,23 +337,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="c" ng-init="conn_handover_getAllAttachments()">
 								<h3>Attachements (Photos or Designs)</h3>
 							</div>
-							<input type="file" id="file-uploader" multiple>
-							<p id="feedback"></p>
+							<form method="post" action="/uplaodedFiles"
+								enctype="multipart/form-data" id="uploadForm">
+								<input type="file" name="file" multiple
+								onchange="angular.element(this).scope().add_attachment(window.event)">
+								<button type="button" class="btn btn-primary"
+						ng-click="conn_handover_submit_attachment()">Upload</button>
+							</form>
 						</div>
 						<div ng-repeat="attachment in conn_handover_attachment_list">
-							<a href="{{attachment.localURL}}" download>{{attachment.name}}</a>
+							<a href="{{attachment.s3URL}}" download>{{attachment.fileName}}</a>
 						</div>
 
 					</div>
 
-				</form>
-				<button type="button" class="btn btn-primary"
-					ng-click="conn_handover_submit()">submit</button>
 
-				<%
-					int curr_page = 8;
-				%>
-				<%@ include file="common/pagesBar.jspf"%>
+					<button type="button" class="btn btn-primary"
+						ng-click="conn_handover_submit()">submit</button>
+
+				</div>
 			</div>
 		</div>
 	</section>

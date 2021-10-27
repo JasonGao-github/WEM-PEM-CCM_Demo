@@ -14,7 +14,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link rel="stylesheet" href="<%=path%>static/css/CCF.css" />
 </head>
 
-<body ng-app="main_app" id="main" ng-controller="controller">
+<body ng-app="main_app" id="main" ng-controller="controller" ng-init="get_ac()">
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
@@ -24,7 +24,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<ul class="nav nav-pills"
 							style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
 							<li class="nav-item">
-								<a class="nav-link" href="project_page">Project Home</a>
+								<a class="nav-link" href="project_home_page">Project Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="ccf_page">Customer Contribution</a>
@@ -63,7 +63,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</div>
 				</div>
 				<h1 style="margin: 2vh;">Avoided Cost Page</h1>
-				<table class="table" ng-init="get_ac()">
+				<table class="table" ng-init="get_project_ac()">
 					<thead>
 						<tr>
 							<th scope="col" colspan="11">JEN Avoided Cost Model</th>
@@ -91,7 +91,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<tr>
 							<td>Margin for overheads (%)</td>
 							<td>Jemena</td>
-							<td><input type="number" ng-model="ac_overhead"
+							<td><input type="number" ng-model="overhead"
 								ng-change="ac_update_overhead()"></td>
 							<td colspan="7">Input is constrained up to 10% as per clause
 								2.3.2(a)</td>

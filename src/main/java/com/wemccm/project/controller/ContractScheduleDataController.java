@@ -104,6 +104,7 @@ import com.wemccm.project.service.FIMInputDataService;
 			pojo.setProjectStatus(projectStatus);
 			
 			URD urd=pojo.getProjectData();
+			System.out.println(urd);
 			System.out.println(urd.getInquiryNumber());
 			
 			qiService.saveAndUpdateURD(pojo);
