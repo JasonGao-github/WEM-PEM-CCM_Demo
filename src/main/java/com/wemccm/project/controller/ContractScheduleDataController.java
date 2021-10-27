@@ -51,7 +51,8 @@ import com.wemccm.project.service.FIMInputDataService;
 			int projectId = getProjectIdInSession();
 //			int projectId = 1;
 			pojo.setProjectId(projectId);
-
+			String projectStatus = getProjectStatusInSession();
+			pojo.setProjectStatus(projectStatus);
 			qiService.saveAndUpdateNegotiatedConnection(pojo);
 
 			updateSession(projectId);
@@ -80,11 +81,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getURD", produces = "application/json;charset=UTF-8")
 		public URDData getURD() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "new";
+//			int projectId = 1;
+//			String projectStatus = "new";
 
 			URDData resultPojo = qiService.getURD(projectId, projectStatus);
 
@@ -94,11 +95,13 @@ import com.wemccm.project.service.FIMInputDataService;
 
 		@RequestMapping(value = "/saveAndUpdateURD", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateURD(@RequestBody URDData pojo) {
-
-			int projectId = getProjectIdInSession();
 //			int projectId = 1;
+			
+			int projectId = getProjectIdInSession();
 			pojo.setProjectId(projectId);
 			
+			String projectStatus = getProjectStatusInSession();
+			pojo.setProjectStatus(projectStatus);
 			
 			URD urd=pojo.getProjectData();
 			System.out.println(urd.getInquiryNumber());
@@ -153,7 +156,8 @@ import com.wemccm.project.service.FIMInputDataService;
 			int projectId = getProjectIdInSession();
 //			int projectId = 1;
 			pojo.setProjectId(projectId);
-
+			String projectStatus = getProjectStatusInSession();
+			pojo.setProjectStatus(projectStatus);
 			qiService.saveAndUpdateAssetRelocation(pojo);
 
 			updateSession(projectId);
