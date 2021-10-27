@@ -206,7 +206,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.ncc_otherTypes = response.data;
             get_item();
 			
-			if(existing){
+			if(existing && pc_item.length > 0){
 				$scope.project_types.forEach(type =>{
 					//in order to prefill the select input
 					//choose the whole item instead of only the id
@@ -856,7 +856,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             data: overhead,
         }).then(function mySuccess(response) {
 			data = response.data
-			$scope.ac_overhead = parseFloat(data[data.length - 1].constant)
+			if(data.length > 0 && 'constant' in data[data.length -1]){
+				$scope.ac_overhead = parseFloat(data[data.length - 1].constant);		
+			}
         })
 	}
 	
@@ -1049,32 +1051,37 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.conn_handover_getData = function() {
 		$http.get('/ConnectionHandover/getData').then(function(response) {
 			console.log(response.data)
-			data = response.data.projectData[0]
-			$scope.complianceReviewedDesign = data.complianceReviewedDesign
-			$scope.coustomerBusinesName = data.coustomerBusinesName
-			$scope.customerContactEmail = data.customerContactEmail
-			$scope.customerContactName = data.customerContactName
-			$scope.customerContactNumber = data.customerContactNumber
-			$scope.date = data.date
-			$scope.embeddedNetwork = data.embeddedNetwork
-			$scope.existingConnection = data.existingConnection
-			$scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
-			$scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
-			$scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
-			$scope.networkOperatorRequired = data.networkOperatorRequired
-			$scope.portalNo = data.portalNo
-			$scope.projectAddress = data.projectAddress
-			$scope.projectId = data.projectId
-			$scope.projectManagerName = data.projectManagerName
-			$scope.projectManagerPhone = data.projectManagerPhone
-			$scope.projectRef = data.projectRef
-			$scope.propertyRequirement = data.propertyRequirement
-			$scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
-			$scope.silVonissue = data.silVonissue
-			$scope.silVonissueComments = data.silVonissueComments
-			$scope.supplyPointComments = data.supplyPointComments
-			$scope.supplyPointDetails = data.supplyPointDetails
-			$scope.ugCrewRequired = data.ugCrewRequired
+			if(response.data.projectData.length > 0){
+				data = response.data.projectData[0]
+				if(data != null){
+					$scope.complianceReviewedDesign = data.complianceReviewedDesign
+					$scope.coustomerBusinesName = data.coustomerBusinesName
+					$scope.customerContactEmail = data.customerContactEmail
+					$scope.customerContactName = data.customerContactName
+					$scope.customerContactNumber = data.customerContactNumber
+					$scope.date = data.date
+					$scope.embeddedNetwork = data.embeddedNetwork
+					$scope.existingConnection = data.existingConnection
+					$scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
+					$scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
+					$scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
+					$scope.networkOperatorRequired = data.networkOperatorRequired
+					$scope.portalNo = data.portalNo
+					$scope.projectAddress = data.projectAddress
+					$scope.projectId = data.projectId
+					$scope.projectManagerName = data.projectManagerName
+					$scope.projectManagerPhone = data.projectManagerPhone
+					$scope.projectRef = data.projectRef
+					$scope.propertyRequirement = data.propertyRequirement
+					$scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
+					$scope.silVonissue = data.silVonissue
+					$scope.silVonissueComments = data.silVonissueComments
+					$scope.supplyPointComments = data.supplyPointComments
+					$scope.supplyPointDetails = data.supplyPointDetails
+					$scope.ugCrewRequired = data.ugCrewRequired		
+				
+				}
+			}
 			
 		});
     	
