@@ -27,13 +27,14 @@ public class DesignController {
 	
 	@RequestMapping(value = "/findWBSElement", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Integer findWBSElement(@RequestBody projectIdPojo requestPojo) {
+	public Integer findWBSElement() {
 		// find by fIMinputTypeID
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
 
 		int projectId=(int) session.getAttribute("projectId");
+		projectIdPojo requestPojo=new projectIdPojo();
 		requestPojo.setProjectId(projectId);
 		Integer l = serivce.findWBSElement(requestPojo);
 		return l;

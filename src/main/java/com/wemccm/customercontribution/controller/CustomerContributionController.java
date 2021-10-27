@@ -46,8 +46,15 @@ public class CustomerContributionController {
 
 	@RequestMapping(value = "/CustomerContributionDetail", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public CustomerContributionDetailPojo CustomerContributionDetail(@RequestBody projectIdPojo requestPojo) {
+	public CustomerContributionDetailPojo CustomerContributionDetail() {
+		Integer projectId=123;
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
 
+		projectId=(int) session.getAttribute("projectId");
+		projectIdPojo requestPojo=new projectIdPojo();
+		requestPojo.setProjectId(projectId);
 		CustomerContributionDetailPojo result = serivce.CustomerContributionDetail(requestPojo);
 
 		return result;

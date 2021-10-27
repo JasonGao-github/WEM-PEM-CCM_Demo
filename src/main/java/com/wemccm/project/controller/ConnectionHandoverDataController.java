@@ -43,7 +43,8 @@ import com.wemccm.project.service.FIMInputDataService;
 
 			int projectId = getProjectIdInSession();
 //			int projectId = 2;
-			
+			String projectStatus = getProjectStatusInSession();
+			pojo.setProjectStatus(projectStatus);
 			pojo.setProjectId(projectId);
 
 			qiService.saveAndUpdate(pojo);

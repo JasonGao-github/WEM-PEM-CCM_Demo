@@ -57,12 +57,12 @@
                             <a class="nav-link" href="#">Inputs | Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Approvers</a>
+                            <a class="nav-link" href="approvals">Approvals</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <h2 style="margin: 2vh; text-align: center; font-weight: 600;">Financials Page</h2>
+            <h2 style="margin: 2vh; text-align: center; font-weight: 600;">Financials</h2>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="card shadow mt-5 mb-4">

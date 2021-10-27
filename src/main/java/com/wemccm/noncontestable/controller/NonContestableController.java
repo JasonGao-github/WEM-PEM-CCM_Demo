@@ -188,9 +188,9 @@ public class NonContestableController {
 
 	@RequestMapping(value = "/findMultiNonContestableProjectComponent", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent(
-			@RequestBody projectIdPojo requestPojo) {
+	public List<NccProjectComponentPojo> findMultiNonContestableProjectComponent() {
 		// find by projectTypeId
+		projectIdPojo requestPojo=new projectIdPojo();
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
