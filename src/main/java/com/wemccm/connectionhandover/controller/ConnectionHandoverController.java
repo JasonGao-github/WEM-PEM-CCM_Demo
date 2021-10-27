@@ -83,7 +83,7 @@ public class ConnectionHandoverController {
 		String date = df.format(new Date());
 		String fileName = file.getOriginalFilename()+date;
 		Pojo.setFileName(fileName);
-		String filePath ="C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
+		String filePath ="D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
 		Pojo.setLocalURL(filePath);
 		Pojo.setModule("ConnectionHandover");
 		File dest = new File(filePath);
