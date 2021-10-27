@@ -161,4 +161,10 @@ public class RoutingController {
 		return "customer_contribution_basic_data";
 	}
 
+	@RequestMapping(value = "/input_project_page")
+	public String inputProjectRouting() {
+
+		return "inputProject";
+	}
+
 }
