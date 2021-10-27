@@ -339,7 +339,7 @@ CREATE TABLE `customercontributionpricetype`  (
 CREATE TABLE `fiminputiterm`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fIMinputSubTypeID` int(11) NULL DEFAULT NULL,
-  `description` varchar(32)  NULL DEFAULT NULL,
+  `description` varchar(50)  NULL DEFAULT NULL,
   `currency` varchar(32)  NULL DEFAULT NULL,
   `unitCost` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
