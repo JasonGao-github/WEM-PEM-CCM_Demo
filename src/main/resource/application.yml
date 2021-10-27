@@ -6,12 +6,12 @@ spring:
     cache: false
     enabled: false
   datasource:
-#    url: jdbc:mysql://wemccm.cejs8lhu8vxt.us-east-2.rds.amazonaws.com:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-    url : jdbc:mysql://localhost:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-#    url: jdbc:mysql://127.0.0.1:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://wemccm.cejs8lhu8vxt.us-east-2.rds.amazonaws.com:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+#   url : jdbc:mysql://localhost:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+#   url: jdbc:mysql://127.0.0.1:3306/wemccm?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
     username : root
-    password : jasongx89O228
-#    password: root1234
+    password : root1234
+#   password : root1234
     driver-class-name: com.mysql.jdbc.Driver
     # driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
