@@ -39,7 +39,7 @@
 
 	<update id="updateCICprojectDetails"
 		parameterType="com.wemccm.common.entity.CICprojectDetails">
-		UPDATE cicprojectestimate
+		UPDATE cicprojectdetails
 		SET
 		wbsElements =#{wbsElements}
 		WHERE
