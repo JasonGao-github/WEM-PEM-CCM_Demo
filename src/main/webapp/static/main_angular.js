@@ -1051,7 +1051,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             console.log(response.data);
             
-            $window.location.href = 'contract_schedule_page';
+            $window.location.href = '/contract_schedule_page';
         })
         
 
