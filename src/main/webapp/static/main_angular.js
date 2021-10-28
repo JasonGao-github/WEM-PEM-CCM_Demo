@@ -1050,6 +1050,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             data: obj,
         }).then(function mySuccess(response) {
             console.log(response.data);
+            
+            $window.location.href = 'contract_schedule_page';
         })
         
 
@@ -1124,6 +1126,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             headers: {'Content-Type': undefined}
         }).then(function mySuccess(response) {
             console.log(response.data);
+            $('#uploadModal').modal('show');
         })
     }
 
