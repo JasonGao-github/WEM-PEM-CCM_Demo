@@ -1886,7 +1886,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
         $http({
             method: 'POST',
-            url: url + '/ContractSchedule/saveAndUpdateNegotiatedConnection',
+            url: url + '/ContractSchedule/saveAndUpdateAssetRelocation',
             data: obj
         }).then(function mySuccess(response) {
             console.log(response.data)
