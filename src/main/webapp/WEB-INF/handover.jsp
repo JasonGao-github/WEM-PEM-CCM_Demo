@@ -93,7 +93,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Date :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="data" type="date" id="portalNo" />
+								<input ng-model="date" type="date" id="date" />
 							</div>
 						</div>
 
@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Customer / Business Name :</h3>
 							</div>
 							<div class="col-lg-7">
-								<input ng-model="coustomerBusinessName" type="text"
+								<input ng-model="coustomerBusinesName" type="text"
 									id="coustomerBusinessName" />
 							</div>
 						</div>

@@ -1011,11 +1011,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //connection hand over
     $scope.conn_handover_submit = function () {
-        var obj = JSON.stringify({
+    	date = milliseconds = $scope.date.getTime(); 
+    	console.log(date)
+    	data = {
             projectId: '',
             projectRef: $scope.projectRef,
             portalNo: $scope.portalNo,
-            date: $scope.date,
+            'date': date,
             coustomerBusinesName: $scope.coustomerBusinesName,
             projectAddress: $scope.projectAddress,
             customerContactName: $scope.customerContactName,
@@ -1037,20 +1039,26 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             supplyPointComments: $scope.supplyPointComments,
             silVonissue: $scope.silVonissue,
             silVonissueComments: $scope.silVonissueComments
-        })
+        }
+        console.log(data)
+        payload_format.projectData = [data]
+        console.log(payload_format)
+        var obj = JSON.stringify(payload_format)
         $http({
             method: 'POST',
-            url: url + '/insertConnectionHandover',
+            url: url + '/ConnectionHandover/saveAndUpdate',
             data: obj,
         }).then(function mySuccess(response) {
             console.log(response.data);
         })
+        
 
     }
 
     //connection handover get data
     $scope.conn_handover_getData = function() {
 		$http.get('/ConnectionHandover/getData').then(function(response) {
+			payload_format = response.data
 			console.log(response.data)
 			if(response.data.projectData.length > 0){
 				data = response.data.projectData[0]
@@ -1080,14 +1088,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 					$scope.supplyPointComments = data.supplyPointComments
 					$scope.supplyPointDetails = data.supplyPointDetails
 					$scope.ugCrewRequired = data.ugCrewRequired		
-				
 				}
 			}
 			
 		});
     	
     }
-
 	//connection handover get attachment
 	$scope.conn_handover_getAllAttachments = function() {
 		$http.get('/downlaodedFiles').then(function(response) {
@@ -1106,6 +1112,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 		console.log(formData)
 		$scope.attachments = formData;
 		console.log($scope.attachments);
+		$scope.conn_handover_getAllAttachments()
 	}
 	
 	$scope.conn_handover_submit_attachment = function(){
