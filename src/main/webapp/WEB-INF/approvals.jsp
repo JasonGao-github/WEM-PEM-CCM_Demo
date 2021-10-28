@@ -94,6 +94,7 @@
                                                         <option value="" selected disabled hidden>Select
                                                             job role
                                                         </option>
+                                                        <option value="1">Super Administrator</option>
                                                         <option value="2">Financial Administrator</option>
                                                         <option value="3">Tariff Administrator</option>
                                                         <option value="4">Pricing Administrator</option>

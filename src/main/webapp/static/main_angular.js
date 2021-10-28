@@ -1941,7 +1941,40 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $scope.getApproversDetails()
     }
 
+    $('#approverOnePost').on('change', function () {
+        console.log("Inside approverOnePost selector ")
+        var val = $("#approverOnePost").val();
+        $scope.getApproverNames(val)
+    });
 
+    $('#approverTwoPost').on('change', function () {
+        console.log("Inside approverTwoPost selector ")
+        var val = $("#approverTwoPost").val();
+        $scope.getApproverNames(val)
+    });
+
+    $('#approverThreePost').on('change', function () {
+        console.log("Inside approverThreePost selector ")
+        var val = $("#approverThreePost").val();
+        $scope.getApproverNames(val)
+    });
+
+    $scope.getApproverNames = function (userTypeId) {
+        console.log("clicked getApproverNames function")
+
+        var obj = JSON.stringify({
+            "userTypeId": userTypeId,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/listUserByType',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
 }])
 
 
