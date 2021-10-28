@@ -1011,7 +1011,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //connection hand over
     $scope.conn_handover_submit = function () {
-    	date = milliseconds = $scope.date.getTime(); 
+    	date = parseInt($scope.date.getTime()); 
     	console.log(date)
     	data = {
             projectId: '',
@@ -1068,7 +1068,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 					$scope.customerContactEmail = data.customerContactEmail
 					$scope.customerContactName = data.customerContactName
 					$scope.customerContactNumber = data.customerContactNumber
-					$scope.date = data.date
+					$scope.date = new Date(data.date)
 					$scope.embeddedNetwork = data.embeddedNetwork
 					$scope.existingConnection = data.existingConnection
 					$scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
