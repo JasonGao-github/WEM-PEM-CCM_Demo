@@ -20,7 +20,7 @@
 		approverStatus,
 		approvalDate)
 		VALUES
-		(#{projectId},#{approverUserId},#{approverPost},#{approverStatus},#{approvalDate})
+		(#{projectId},#{approverUserId},#{approverPost},#{approverName},#{approverStatus},#{approvalDate})
 	</insert>
 
 	<update id="updateApprover"

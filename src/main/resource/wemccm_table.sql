@@ -539,6 +539,7 @@ CREATE TABLE `approver`  (
   `projectId` int(11) NULL DEFAULT NULL,
   `approverUserId` int(11) NULL DEFAULT NULL,
   `approverPost` varchar(32)  NULL DEFAULT NULL,
+  `approverStatus` varchar(32)  NULL DEFAULT NULL,
   `approverName` varchar(32)  NULL DEFAULT NULL,
   `approvalDate` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
