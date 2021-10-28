@@ -22,201 +22,152 @@ import com.wemccm.project.service.AvoidedCostDataService;
 import com.wemccm.project.service.ContractScheduleDataService;
 import com.wemccm.project.service.FIMInputDataService;
 
+@RestController
+@RequestMapping("/ContractSchedule")
+public class ContractScheduleDataController {
 
-	@RestController
-	@RequestMapping("/ContractSchedule")
-	public class ContractScheduleDataController {
+	@Autowired
+	private ContractScheduleDataService qiService;
 
-		@Autowired
-		private ContractScheduleDataService qiService;
+	@RequestMapping(value = "/getNegotiatedConnectionData", produces = "application/json;charset=UTF-8")
+	public NegotiatedConnectionData getNegotiatedConnectionData() {
 
-		@RequestMapping(value = "/getNegotiatedConnectionData", produces = "application/json;charset=UTF-8")
-		public NegotiatedConnectionData getNegotiatedConnectionData() {
-
-			int projectId = getProjectIdInSession();
-			String projectStatus = getProjectStatusInSession();
-
-//			int projectId = 1;
-//			String projectStatus = "new";
-
-			NegotiatedConnectionData resultPojo = qiService.getNegotiatedConnectionData(projectId, projectStatus);
-
-			return resultPojo;
-
-		}
-
-		@RequestMapping(value = "/saveAndUpdateNegotiatedConnection", produces = "application/json;charset=UTF-8")
-		public ProjectBasicPojo saveAndUpdateNegotiatedConnection(@RequestBody NegotiatedConnectionData pojo) {
-
-			int projectId = getProjectIdInSession();
-//			int projectId = 1;
-			pojo.setProjectId(projectId);
-			String projectStatus = getProjectStatusInSession();
-			pojo.setProjectStatus(projectStatus);
-			qiService.saveAndUpdateNegotiatedConnection(pojo);
-
-			updateSession(projectId);
-
-			ProjectBasicPojo result = new ProjectBasicPojo();
-			result.setResult("success");
-			return result;
-
-		}
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		@RequestMapping(value = "/getURD", produces = "application/json;charset=UTF-8")
-		public URDData getURD() {
-
-			int projectId = getProjectIdInSession();
-			String projectStatus = getProjectStatusInSession();
+		int projectId = getProjectIdInSession();
+		String projectStatus = getProjectStatusInSession();
 
 //			int projectId = 1;
 //			String projectStatus = "new";
 
-			URDData resultPojo = qiService.getURD(projectId, projectStatus);
+		NegotiatedConnectionData resultPojo = qiService.getNegotiatedConnectionData(projectId, projectStatus);
 
-			return resultPojo;
-
-		}
-
-		@RequestMapping(value = "/saveAndUpdateURD", produces = "application/json;charset=UTF-8")
-		public ProjectBasicPojo saveAndUpdateURD(@RequestBody URDData pojo) {
-//			int projectId = 1;
-			
-			int projectId = getProjectIdInSession();
-			pojo.setProjectId(projectId);
-			
-			String projectStatus = getProjectStatusInSession();
-			pojo.setProjectStatus(projectStatus);
-			
-			URD urd=pojo.getProjectData();
-			System.out.println(urd);
-			System.out.println(urd.getInquiryNumber());
-			
-			qiService.saveAndUpdateURD(pojo);
-
-			updateSession(projectId);
-
-			ProjectBasicPojo result = new ProjectBasicPojo();
-			result.setResult("success");
-			return result;
-
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		@RequestMapping(value = "/getAssetRelocation", produces = "application/json;charset=UTF-8")
-		public AssetRelocationData getAssetRelocation() {
-
-			int projectId = getProjectIdInSession();
-			String projectStatus = getProjectStatusInSession();
-
-//			int projectId = 1;
-//			String projectStatus = "new";
-
-			AssetRelocationData resultPojo = qiService.getAssetRelocation(projectId, projectStatus);
-
-			return resultPojo;
-
-		}
-
-		@RequestMapping(value = "/saveAndUpdateAssetRelocation", produces = "application/json;charset=UTF-8")
-		public ProjectBasicPojo saveAndUpdateAssetRelocation(@RequestBody AssetRelocationData pojo) {
-
-			int projectId = getProjectIdInSession();
-//			int projectId = 1;
-			pojo.setProjectId(projectId);
-			String projectStatus = getProjectStatusInSession();
-			pojo.setProjectStatus(projectStatus);
-			qiService.saveAndUpdateAssetRelocation(pojo);
-
-			updateSession(projectId);
-
-			ProjectBasicPojo result = new ProjectBasicPojo();
-			result.setResult("success");
-			return result;
-
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		private int getProjectIdInSession() {
-
-			HttpSession session = getSession();
-
-			int projectId = (int) session.getAttribute("projectId");
-
-			System.out.println("project..." + projectId);
-
-			return projectId;
-
-		}
-
-		private String getProjectStatusInSession() {
-
-			HttpSession session = getSession();
-
-			return (String) session.getAttribute("projectStatus");
-		}
-
-		private void updateSession(int projectId) {
-
-			HttpSession session = getSession();
-			session.setAttribute("projectId", projectId);
-			session.setAttribute("projectStatus", "exist");
-
-		}
-
-		private HttpSession getSession() {
-
-			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-					.getRequest();
-			HttpSession session = request.getSession();
-			return session;
-
-		}
+		return resultPojo;
 
 	}
+
+	@RequestMapping(value = "/saveAndUpdateNegotiatedConnection", produces = "application/json;charset=UTF-8")
+	public ProjectBasicPojo saveAndUpdateNegotiatedConnection(@RequestBody NegotiatedConnectionData pojo) {
+
+		int projectId = getProjectIdInSession();
+//			int projectId = 1;
+		pojo.setProjectId(projectId);
+		String projectStatus = getProjectStatusInSession();
+		pojo.setProjectStatus(projectStatus);
+		qiService.saveAndUpdateNegotiatedConnection(pojo);
+
+		updateSession(projectId);
+
+		ProjectBasicPojo result = new ProjectBasicPojo();
+		result.setResult("success");
+		return result;
+
+	}
+
+	@RequestMapping(value = "/getURD", produces = "application/json;charset=UTF-8")
+	public URDData getURD() {
+
+		int projectId = getProjectIdInSession();
+		String projectStatus = getProjectStatusInSession();
+
+//			int projectId = 1;
+//			String projectStatus = "new";
+
+		URDData resultPojo = qiService.getURD(projectId, projectStatus);
+
+		return resultPojo;
+
+	}
+
+	@RequestMapping(value = "/saveAndUpdateURD", produces = "application/json;charset=UTF-8")
+	public ProjectBasicPojo saveAndUpdateURD(@RequestBody URDData pojo) {
+//			int projectId = 1;
+
+		int projectId = getProjectIdInSession();
+		pojo.setProjectId(projectId);
+
+		String projectStatus = getProjectStatusInSession();
+		pojo.setProjectStatus(projectStatus);
+
+		URD urd = pojo.getProjectData();
+		System.out.println(urd);
+		System.out.println(urd.getInquiryNumber());
+
+		qiService.saveAndUpdateURD(pojo);
+
+		updateSession(projectId);
+
+		ProjectBasicPojo result = new ProjectBasicPojo();
+		result.setResult("success");
+		return result;
+
+	}
+
+	@RequestMapping(value = "/getAssetRelocation", produces = "application/json;charset=UTF-8")
+	public AssetRelocationData getAssetRelocation() {
+
+		int projectId = getProjectIdInSession();
+		String projectStatus = getProjectStatusInSession();
+
+//			int projectId = 1;
+//			String projectStatus = "new";
+
+		AssetRelocationData resultPojo = qiService.getAssetRelocation(projectId, projectStatus);
+
+		return resultPojo;
+
+	}
+
+	@RequestMapping(value = "/saveAndUpdateAssetRelocation", produces = "application/json;charset=UTF-8")
+	public ProjectBasicPojo saveAndUpdateAssetRelocation(@RequestBody AssetRelocationData pojo) {
+
+		int projectId = getProjectIdInSession();
+//			int projectId = 1;
+		pojo.setProjectId(projectId);
+		String projectStatus = getProjectStatusInSession();
+		pojo.setProjectStatus(projectStatus);
+		qiService.saveAndUpdateAssetRelocation(pojo);
+
+		updateSession(projectId);
+
+		ProjectBasicPojo result = new ProjectBasicPojo();
+		result.setResult("success");
+		return result;
+
+	}
+
+	private int getProjectIdInSession() {
+
+		HttpSession session = getSession();
+
+		int projectId = (int) session.getAttribute("projectId");
+
+		System.out.println("project..." + projectId);
+
+		return projectId;
+
+	}
+
+	private String getProjectStatusInSession() {
+
+		HttpSession session = getSession();
+
+		return (String) session.getAttribute("projectStatus");
+	}
+
+	private void updateSession(int projectId) {
+
+		HttpSession session = getSession();
+		session.setAttribute("projectId", projectId);
+		session.setAttribute("projectStatus", "exist");
+
+	}
+
+	private HttpSession getSession() {
+
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		return session;
+
+	}
+
+}
