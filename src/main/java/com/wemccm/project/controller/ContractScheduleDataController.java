@@ -86,7 +86,7 @@ import com.wemccm.project.service.FIMInputDataService;
 
 //			int projectId = 1;
 //			String projectStatus = "new";
-
+			System.out.println(projectStatus+"+++++++++++++++++++++++++"+projectId);
 			URDData resultPojo = qiService.getURD(projectId, projectStatus);
 
 			return resultPojo;
@@ -103,9 +103,9 @@ import com.wemccm.project.service.FIMInputDataService;
 			String projectStatus = getProjectStatusInSession();
 			pojo.setProjectStatus(projectStatus);
 			
-			URD urd=pojo.getProjectData();
-			System.out.println(urd);
-			System.out.println(urd.getInquiryNumber());
+//			URD urd=pojo.getProjectData();
+//			System.out.println(urd);
+//			System.out.println(urd.getInquiryNumber());
 			
 			qiService.saveAndUpdateURD(pojo);
 
