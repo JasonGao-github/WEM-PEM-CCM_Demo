@@ -16,7 +16,7 @@
 
 <body ng-app="main_app" id="main" ng-controller="controller">
 <%@ include file="common/sidebar.jspf" %>
-<section class="home_section">
+<section class="home_section" ng-init="getFinancialsData()">
     <div class="container-fluid contentWrapper">
         <div class="container content">
             <div class="row">

@@ -1898,6 +1898,50 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
+    $scope.getFinancialsData = function () {
+        console.log("clicked getFinancialsData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/Financial/getData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getApproverUserTypes = function () {
+        console.log("clicked getApproverUserTypes function")
+
+        $http({
+            method: 'GET',
+            url: url + '/listAllUserType',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+    $scope.getApproversDetails = function () {
+        console.log("clicked getApproversDetails function")
+
+        $http({
+            method: 'GET',
+            url: url + '/Approver/getData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getApproversData = function () {
+        $scope.getApproverUserTypes()
+        $scope.getApproversDetails()
+    }
+
+
 }])
 
 
