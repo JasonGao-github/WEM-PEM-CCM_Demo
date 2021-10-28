@@ -138,7 +138,7 @@ public class QuantityInputDataService {
 			}
 
 			// if its a new project , create new cic items .
-			initicalCIC(pojo.getProjectId());
+
 		}
 
 		if ("exist".equals(pojo.getProjectStatus())) {
@@ -162,6 +162,8 @@ public class QuantityInputDataService {
 
 		}
 
+		initicalCIC(pojo.getProjectId());
+
 		// update new cic information
 		finacialCaculation(pojo.getProjectId());
 
@@ -169,9 +171,17 @@ public class QuantityInputDataService {
 
 	private void initicalCIC(int projectId) {
 
+		CICprojectDetails cicDetaiol = cicDao.getcicDetailsByID(projectId);
+
+		// If it exist ,return;
+		if (null != cicDetaiol) {
+			return;
+		}
+
 		// initical details
 		CICprojectDetails detail = new CICprojectDetails();
 		detail.setProjectId(projectId);
+
 		cicDao.saveCICprojectDetails(detail);
 		int detailId = cicDao.getCICprojectDetailsNewestId();
 
@@ -199,6 +209,8 @@ public class QuantityInputDataService {
 	}
 
 	private void caculateProjectManagementDesign(int projectId) {
+
+		System.out.println(" &&& " + projectId);
 
 		// caculate
 		double labour = caculateProjectManagementDesignLabour(projectId);

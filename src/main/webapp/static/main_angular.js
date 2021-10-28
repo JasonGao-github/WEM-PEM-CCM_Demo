@@ -205,18 +205,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
             get_item();
-
-            if (existing) {
-                $scope.project_types.forEach(type => {
-                    //in order to prefill the select input
-                    //choose the whole item instead of only the id
-                    if (pc_item[0].projectTypeId == type.id)
-                        $scope.selected_type = type;
-                })
-                //$scope.selected_type.id = pc_item[0].projectTypeId
-                console.log($scope.selected_type)
-                $scope.ncc_typeChanged()
-            }
+			
+			if(existing && pc_item.length > 0){
+				$scope.project_types.forEach(type =>{
+					//in order to prefill the select input
+					//choose the whole item instead of only the id
+					if (pc_item[0].projectTypeId == type.id)
+					$scope.selected_type = type;
+				})
+				//$scope.selected_type.id = pc_item[0].projectTypeId
+				console.log($scope.selected_type)
+				$scope.ncc_typeChanged()
+			}
         });
 
         //get item of each type and concat to json
@@ -727,7 +727,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
                 $scope.ac_get_overhead()
                 console.log("overhead")
-                console.log($scope.ac_overhead)
+                console.log($scope.overhead)
             }
         );
 
@@ -856,8 +856,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             url: url + '/listAvoidedCostESCGuideline',
             data: overhead,
         }).then(function mySuccess(response) {
-            data = response.data
-            $scope.ac_overhead = parseFloat(data[data.length - 1].constant)
+			data = response.data
+			if(data.length > 0 && 'constant' in data[data.length -1]){
+				$scope.overhead = parseFloat(data[data.length - 1].constant);		
+			}
         })
     }
 
@@ -939,7 +941,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.ac_submit_input = function () {
         var overhead = JSON.stringify([{
             projectId: payload_format.projectId,
-            constant: $scope.ac_overhead
+            constant: $scope.overhead
         }]);
         console.log(overhead)
 
@@ -1047,63 +1049,68 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     //connection handover get data
-    $scope.conn_handover_getData = function () {
-        $http.get('/ConnectionHandover/getData').then(function (response) {
-            console.log(response.data)
-            data = response.data.projectData[0]
-            $scope.complianceReviewedDesign = data.complianceReviewedDesign
-            $scope.coustomerBusinesName = data.coustomerBusinesName
-            $scope.customerContactEmail = data.customerContactEmail
-            $scope.customerContactName = data.customerContactName
-            $scope.customerContactNumber = data.customerContactNumber
-            $scope.date = data.date
-            $scope.embeddedNetwork = data.embeddedNetwork
-            $scope.existingConnection = data.existingConnection
-            $scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
-            $scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
-            $scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
-            $scope.networkOperatorRequired = data.networkOperatorRequired
-            $scope.portalNo = data.portalNo
-            $scope.projectAddress = data.projectAddress
-            $scope.projectId = data.projectId
-            $scope.projectManagerName = data.projectManagerName
-            $scope.projectManagerPhone = data.projectManagerPhone
-            $scope.projectRef = data.projectRef
-            $scope.propertyRequirement = data.propertyRequirement
-            $scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
-            $scope.silVonissue = data.silVonissue
-            $scope.silVonissueComments = data.silVonissueComments
-            $scope.supplyPointComments = data.supplyPointComments
-            $scope.supplyPointDetails = data.supplyPointDetails
-            $scope.ugCrewRequired = data.ugCrewRequired
-
-        });
-
+    $scope.conn_handover_getData = function() {
+		$http.get('/ConnectionHandover/getData').then(function(response) {
+			console.log(response.data)
+			if(response.data.projectData.length > 0){
+				data = response.data.projectData[0]
+				if(data != null){
+					$scope.complianceReviewedDesign = data.complianceReviewedDesign
+					$scope.coustomerBusinesName = data.coustomerBusinesName
+					$scope.customerContactEmail = data.customerContactEmail
+					$scope.customerContactName = data.customerContactName
+					$scope.customerContactNumber = data.customerContactNumber
+					$scope.date = data.date
+					$scope.embeddedNetwork = data.embeddedNetwork
+					$scope.existingConnection = data.existingConnection
+					$scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
+					$scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
+					$scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
+					$scope.networkOperatorRequired = data.networkOperatorRequired
+					$scope.portalNo = data.portalNo
+					$scope.projectAddress = data.projectAddress
+					$scope.projectId = data.projectId
+					$scope.projectManagerName = data.projectManagerName
+					$scope.projectManagerPhone = data.projectManagerPhone
+					$scope.projectRef = data.projectRef
+					$scope.propertyRequirement = data.propertyRequirement
+					$scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
+					$scope.silVonissue = data.silVonissue
+					$scope.silVonissueComments = data.silVonissueComments
+					$scope.supplyPointComments = data.supplyPointComments
+					$scope.supplyPointDetails = data.supplyPointDetails
+					$scope.ugCrewRequired = data.ugCrewRequired		
+				
+				}
+			}
+			
+		});
+    	
     }
 
-    //connection handover get attachment
-    $scope.conn_handover_getAllAttachments = function () {
-        $http.get('/downlaodedFiles').then(function (response) {
-            console.log(response.data)
-            $scope.conn_handover_attachment_list = response.data;
-        });
-    }
-
-    //for adding attachment
-    $scope.add_attachment = function (evt) {
-        files = evt.target.files[0];
-        console.log(files)
-        var formData = new FormData();
-        console.log(formData)
-        formData.append('file', files);
-        console.log(formData)
-        $scope.attachments = formData;
-        console.log($scope.attachments);
-    }
-
-    $scope.conn_handover_submit_attachment = function () {
-        data = $scope.attachments;
-        $http({
+	//connection handover get attachment
+	$scope.conn_handover_getAllAttachments = function() {
+		$http.get('/downlaodedFiles').then(function(response) {
+			console.log(response.data)
+			$scope.conn_handover_attachment_list = response.data;
+		});
+	}
+	
+	//for adding attachment
+	$scope.add_attachment = function(evt){
+		files = evt.target.files[0];
+		console.log(files)
+		var formData = new FormData();
+		console.log(formData)
+		formData.append('file', files);
+		console.log(formData)
+		$scope.attachments = formData;
+		console.log($scope.attachments);
+	}
+	
+	$scope.conn_handover_submit_attachment = function(){
+		data = $scope.attachments;
+		$http({
             method: "POST",
             url: url + '/uplaodedFiles',
             data: data,
