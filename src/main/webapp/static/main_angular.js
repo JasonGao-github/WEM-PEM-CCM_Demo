@@ -1923,6 +1923,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response_payload)
         })
     }
+    
     $scope.getApproversDetails = function () {
         console.log("clicked getApproversDetails function")
 
@@ -1933,6 +1934,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response)
             var response_payload = response['data']
             console.log(response_payload)
+            
+            $scope.approver_project_data = response_payload['projectData']
+
         })
     }
 
