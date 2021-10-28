@@ -39,7 +39,7 @@
 
 	<update id="updateCICprojectDetails"
 		parameterType="com.wemccm.common.entity.CICprojectDetails">
-		UPDATE cicprojectestimate
+		UPDATE cicprojectdetails
 		SET
 		wbsElements =#{wbsElements}
 		WHERE
@@ -78,7 +78,7 @@
 	<select id="getEstimate"
 		resultType="com.wemccm.common.entity.CICprojectDetails">
 		SELECT * FROM cicprojectEstimate where cicProjectDetailsId
-		=#{1} and cicProjectTaskId =#{0}
+		=#{arg1} and cicProjectTaskId =#{arg0}
 	</select>
 
 	<select id="caculateProjectManagementDesignLabour1"

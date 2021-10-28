@@ -30,7 +30,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<ul class="nav nav-pills"
 							style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
 							<li class="nav-item">
-								<a class="nav-link" href="project_page">Project Home</a>
+								<a class="nav-link" href="project_home_page">Project Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="ccf_page">Customer Contribution</a>
@@ -63,12 +63,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<a class="nav-link" href="input_project_page">Inputs | Projects</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Approvers</a>
+								<a class="nav-link" href="approvals">Approvers</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-			
+
 				<h2>Connection Handover</h2>
 				<button onclick="javascript:demoFromHTML()">Print this page</button>
 
@@ -339,8 +339,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 							<form method="post" action="/uplaodedFiles"
 								enctype="multipart/form-data" id="uploadForm">
-								<input type="file" name="file" multiple 
-								onchange="angular.element(this).scope().add_attachment(window.event)"> 
+								<input type="file" name="file" multiple
+								onchange="angular.element(this).scope().add_attachment(window.event)">
 								<button type="button" class="btn btn-primary"
 						ng-click="conn_handover_submit_attachment()">Upload</button>
 							</form>

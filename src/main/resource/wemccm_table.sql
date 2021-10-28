@@ -104,7 +104,7 @@ CREATE TABLE `urd`  (
   `networkExtensionorAugmentationifrequired` varchar(255) ,
   `premisesConnectionAssetsandPartiesResponsibleforInstallation` varchar(255) ,
   `costofNetworkExtensionofAugmentation` varchar(255) ,
-  `meterInformation` varchar(255) ,
+  `meterInformation` varchar(1500) ,
   `tenderFeeifapplicable` varchar(255) ,
   `applicableInterestRate` varchar(255) ,
   `developerResponsibleOfficer` varchar(255) ,
@@ -539,6 +539,7 @@ CREATE TABLE `approver`  (
   `projectId` int(11) NULL DEFAULT NULL,
   `approverUserId` int(11) NULL DEFAULT NULL,
   `approverPost` varchar(32)  NULL DEFAULT NULL,
+  `approverStatus` varchar(32)  NULL DEFAULT NULL,
   `approverName` varchar(32)  NULL DEFAULT NULL,
   `approvalDate` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE

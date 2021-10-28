@@ -45,22 +45,27 @@ public class ContractScheduleDataService {
 		NegotiatedConnection nc = new NegotiatedConnection();
 		if ("exist".equals(projectStatus)) {
 			nc = dao.getNCinCC(projectId);
+			NegotiatedConnectionPojo l = dao.findNCinCC(projectId);
+			if (l != null) {
+				l.setJemenaResponsibleOfficer("?????????????");
+			}
+			if(nc==null) {
+				 nc = new NegotiatedConnection();
+					nc.setInquiryNumber(l.getInquiryNumber());
+					nc.setScopeofWorksCustomerFunded(l.getScopeofWorksCustomerFunded());
+					nc.setScopeofWorksJemenaFunded(l.getScopeofWorksJemenaFunded());
+					nc.setExclusions(l.getExclusions());
+					nc.setAssumptions(l.getAssumptions());
+					nc.setSupplyAddress(l.getSupplyAddress());
+					nc.setProjectReference(l.getProjectReference());
+			}
+
 
 		}
 
 		if ("new".equals(projectStatus)) {
 
-			NegotiatedConnectionPojo l = dao.findNCinCC(projectId);
-			if (l != null) {
-				l.setJemenaResponsibleOfficer("?????????????");
-			}
-			nc.setInquiryNumber(l.getInquiryNumber());
-			nc.setScopeofWorksCustomerFunded(l.getScopeofWorksCustomerFunded());
-			nc.setScopeofWorksJemenaFunded(l.getScopeofWorksJemenaFunded());
-			nc.setExclusions(l.getExclusions());
-			nc.setAssumptions(l.getAssumptions());
-			nc.setSupplyAddress(l.getSupplyAddress());
-			nc.setProjectReference(l.getProjectReference());
+
 
 		}
 		result.setProjectData(nc);
@@ -127,20 +132,26 @@ public class ContractScheduleDataService {
 		URD urd = new URD();
 		if ("exist".equals(projectStatus)) {
 			urd = dao.getURDinCC(projectId);
+			
+			URDPojo l = dao.findURDinCC(projectId);
+			if (l != null) {
+				l.setJemenaResponsibleOfficer("?????????????");
+			}
+			if(urd==null) {
+				urd = new URD();
+
+				urd.setSubdivision(l.getSubdivision());
+				urd.setInquiryNumber(l.getInquiryNumber());
+				urd.setSupplyAddress(l.getSupplyAddress());
+				urd.setDescriptionofConnectionWorkstobeundertakenbyJemena(l.getDescriptionofConnectionWorkstobeundertakenbyJemena());
+				urd.setDescriptionofConnectionWorkstobeundertakenbyDeveloper(l.getDescriptionofConnectionWorkstobeundertakenbyDeveloper());
+			}
 
 		}
 
 		if ("new".equals(projectStatus)) {
 
-			URDPojo l = dao.findURDinCC(projectId);
-			if (l != null) {
-				l.setJemenaResponsibleOfficer("?????????????");
-			}
-			urd.setSubdivision(l.getSubdivision());
-			urd.setInquiryNumber(l.getInquiryNumber());
-			urd.setSupplyAddress(l.getSupplyAddress());
-			urd.setDescriptionofConnectionWorkstobeundertakenbyJemena(l.getDescriptionofConnectionWorkstobeundertakenbyJemena());
-			urd.setDescriptionofConnectionWorkstobeundertakenbyDeveloper(l.getDescriptionofConnectionWorkstobeundertakenbyDeveloper());
+			
 
 			
 		}
@@ -199,11 +210,6 @@ public class ContractScheduleDataService {
 		AssetRelocation ar = new AssetRelocation();
 		if ("exist".equals(projectStatus)) {
 			ar = dao.getARinCC(projectId);
-
-		}
-
-		if ("new".equals(projectStatus)) {
-
 			AssetRelocationPojo l = dao.findARinCC(projectId);
 			if(l!=null) {
 //				//=Financials!E47
@@ -216,9 +222,19 @@ public class ContractScheduleDataService {
 				l.setNonContestableContributionChargesforWorksCompletedbyJemena("?????????????");
 				l.setJemenaResponsibleOfficer("?????????????");
 				}
-			ar.setInquiryNumber(l.getInquiryNumber());
-			ar.setWorksAddress(l.getWorksAddress());
-			ar.setScopeofWorks(l.getScopeofWorks());
+			if(ar==null) {
+				ar = new AssetRelocation();
+				ar.setInquiryNumber(l.getInquiryNumber());
+				ar.setWorksAddress(l.getWorksAddress());
+				ar.setScopeofWorks(l.getScopeofWorks());
+			}
+			
+		
+
+		}
+
+		if ("new".equals(projectStatus)) {
+
 
 
 			

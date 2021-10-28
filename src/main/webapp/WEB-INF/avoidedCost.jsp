@@ -24,7 +24,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<ul class="nav nav-pills"
 							style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
 							<li class="nav-item">
-								<a class="nav-link" href="project_page">Project Home</a>
+								<a class="nav-link" href="project_home_page">Project Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="ccf_page">Customer Contribution</a>
@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<a class="nav-link" href="input_project_page">Inputs | Projects</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Approvers</a>
+								<a class="nav-link" href="approvals">Approvers</a>
 							</li>
 						</ul>
 					</div>
@@ -91,7 +91,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<tr>
 							<td>Margin for overheads (%)</td>
 							<td>Jemena</td>
-							<td><input type="number" ng-model="ac_overhead"
+							<td><input type="number" ng-model="overhead"
 								ng-change="ac_update_overhead()"></td>
 							<td colspan="7">Input is constrained up to 10% as per clause
 								2.3.2(a)</td>

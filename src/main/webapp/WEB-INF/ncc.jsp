@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%
-	String path = request.getContextPath();
-String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-int projectId;
-if (session.getAttribute("projectId") != null) {
-	projectId = (int) session.getAttribute("projectId");
-} else {
-	projectId = -1;
-}
-System.out.println(projectId);
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    int projectId;
+    if (session.getAttribute("projectId") != null) {
+        projectId = (int) session.getAttribute("projectId");
+    } else {
+        projectId = -1;
+    }
+    System.out.println(projectId);
 %>
 
-<%@  include file="common/checkSessionExist.jspf"%>
+<%@  include file="common/checkSessionExist.jspf" %>
 
 <!DOCTYPE html>
 
 <head>
-<%@ include file="common/meta.jspf"%>
-<link rel="stylesheet" href="<%=path%>static/css/NCC.css" />
+    <%@ include file="common/meta.jspf" %>
+    <link rel="stylesheet" href="<%=path%>static/css/NCC.css"/>
 </head>
 
 <body ng-app="main_app" id="main" ng-controller="controller"
@@ -27,12 +27,12 @@ System.out.println(projectId);
 	<section class="home_section">
 		<div class="container-fluid contentWrapper">
 			<div class="container content">
-				<div class="row">
+				<div class="row" style="padding: 0.5rem !important">
 					<div class="col-12">
 						<ul class="nav nav-pills"
 							style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
 							<li class="nav-item">
-								<a class="nav-link" href="project_page">Project Home</a>
+								<a class="nav-link" href="project_home_page">Project Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="ccf_page">Customer Contribution</a>
@@ -65,7 +65,7 @@ System.out.println(projectId);
 								<a class="nav-link" href="input_project_page">Inputs | Projects</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Approvers</a>
+								<a class="nav-link" href="approvals">Approvals</a>
 							</li>
 						</ul>
 					</div>

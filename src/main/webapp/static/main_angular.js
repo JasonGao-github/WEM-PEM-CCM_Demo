@@ -92,7 +92,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     //for ncc page
     //get all basic items to show in the basic data page
     $scope.ncc_get_all_basic = function () {
-        
+
         $http.get('/selectAllProjectType').then(function (response) {
             $scope.project_types = response.data;
             get_pc_item();
@@ -101,8 +101,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
-            get_other_item();	
-            console.log($scope.ncc_otherTypes);		
+            get_other_item();
+            console.log($scope.ncc_otherTypes);
         });
 
         //get item of other = and concat to json
@@ -118,37 +118,37 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                     data: obj,
                 }).then(function mySuccess(response) {
                     $scope.ncc_otherTypes[i].items = response.data;
-					//console.log($scope.ncc_otherTypes)
+                    //console.log($scope.ncc_otherTypes)
                 })
             }
         }
-        
-		//get item of proj comp and concat to json
-        get_pc_item = function (){
-        	for (let i = 0; i < $scope.project_types.length; i++){
-        		projectTypeId = $scope.project_types[i].id
-	            var obj = JSON.stringify({
-			        "projectTypeId": projectTypeId
-			    });
-				
-			    $http({
-			        method: 'POST',
-			        url: url + '/findNonContestableProjectComponent',
-			        data: obj
-			    }).then(function mySuccess(response) {
-			    	//console.log(response.data);
-			        $scope.project_types[i].items = response.data;
-		        })
 
-		    }
-	    }
-		
+        //get item of proj comp and concat to json
+        get_pc_item = function () {
+            for (let i = 0; i < $scope.project_types.length; i++) {
+                projectTypeId = $scope.project_types[i].id
+                var obj = JSON.stringify({
+                    "projectTypeId": projectTypeId
+                });
+
+                $http({
+                    method: 'POST',
+                    url: url + '/findNonContestableProjectComponent',
+                    data: obj
+                }).then(function mySuccess(response) {
+                    //console.log(response.data);
+                    $scope.project_types[i].items = response.data;
+                })
+
+            }
+        }
+
     }
-    
-    $scope.ncc_remove_basic_other = function (id){
-    	var obj = JSON.stringify({
-    		'id': id
-		})
+
+    $scope.ncc_remove_basic_other = function (id) {
+        var obj = JSON.stringify({
+            'id': id
+        })
         $http({
             method: 'POST',
             url: url + '/deleteNonContestableOtherCostsIterm',
@@ -157,13 +157,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response.data);
             $scope.ncc_get_all_basic();
         })
-    	
+
     }
-    
-    $scope.ncc_remove_basic_pc = function (id){
-    	var obj = JSON.stringify({
-    		'id': id
-		})
+
+    $scope.ncc_remove_basic_pc = function (id) {
+        var obj = JSON.stringify({
+            'id': id
+        })
         $http({
             method: 'POST',
             url: url + '/deleteNonContestableProjectComponent',
@@ -172,33 +172,33 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response.data);
             $scope.ncc_get_all_basic();
         })
-    	
+
     }
-    
+
     $scope.ncc_data = {"proj_comp": [], "other": []}
     $scope.get_ncc = function () {
         $http.get('/selectAllProjectType').then(function (response) {
             $scope.project_types = response.data;
             $scope.selected_type = $scope.project_types[1].projectTypeId;
         });
-		existing = false
-		
-		//get the data, if exist then prefill the data
+        existing = false
+
+        //get the data, if exist then prefill the data
         $http.get('/NonContestable/getDataNonContestableProjectComponent').then(function (response) {
             console.log(response.data)
-            if(response.data.projectStatus == "exist"){
-				existing = true
-			}
-			payload_format = response.data;
-			pc_item = response.data.projectData;
+            if (response.data.projectStatus == "exist") {
+                existing = true
+            }
+            payload_format = response.data;
+            pc_item = response.data.projectData;
         });
 
-		$http.get('/NonContestable/getDataNonContestableOtherCostsIterm').then(function (response) {
+        $http.get('/NonContestable/getDataNonContestableOtherCostsIterm').then(function (response) {
             console.log(response.data)
-            if(response.data.projectStatus == "exist"){
-				existing = true
-			}
-			other_item = response.data.projectData;
+            if (response.data.projectStatus == "exist") {
+                existing = true
+            }
+            other_item = response.data.projectData;
         });
 
 
@@ -234,22 +234,22 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                     $scope.ncc_otherTypes[i].items = response.data;
                     for (let j = 0; j < $scope.ncc_otherTypes[i].items.length; j++) {
                         $scope.ncc_otherTypes[i].items[j].quantity = '';
-						if(existing){
-							other_item.forEach(item=>{
-								if($scope.ncc_otherTypes[i].items[j].id == item.nonContestableOtherCostsItemId){
-									$scope.ncc_otherTypes[i].items[j].quantity = item.quantity;
-								}
-							})
-						}
+                        if (existing) {
+                            other_item.forEach(item => {
+                                if ($scope.ncc_otherTypes[i].items[j].id == item.nonContestableOtherCostsItemId) {
+                                    $scope.ncc_otherTypes[i].items[j].quantity = item.quantity;
+                                }
+                            })
+                        }
                     }
-				//console.log($scope.ncc_otherTypes)
+                    //console.log($scope.ncc_otherTypes)
                 })
             }
         }
-		
+
     }
 
-    $scope.ncc_typeChanged = function () {		
+    $scope.ncc_typeChanged = function () {
         var obj = JSON.stringify({
             "projectTypeId": $scope.selected_type.id,
         });
@@ -261,18 +261,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             $scope.proj_comps = response.data;
             for (let j = 0; j < $scope.proj_comps.length; j++) {
-				//console.log("basic");
+                //console.log("basic");
                 $scope.proj_comps[j].quantity = '';
-				//console.log($scope.proj_comps[j])
-				if(existing){
-					//console.log("item")
-					pc_item.forEach(item=>{
-						//console.log(item)
-						if($scope.proj_comps[j].id == item.nonContestableProjectComponentId){
-							$scope.proj_comps[j].quantity = item.hours;
-						}
-					})
-				}
+                //console.log($scope.proj_comps[j])
+                if (existing) {
+                    //console.log("item")
+                    pc_item.forEach(item => {
+                        //console.log(item)
+                        if ($scope.proj_comps[j].id == item.nonContestableProjectComponentId) {
+                            $scope.proj_comps[j].quantity = item.hours;
+                        }
+                    })
+                }
             }
         })
 
@@ -282,45 +282,45 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ncc_projCompChanged = function (compId, quantity, total) {
-		//replace null or empty string with 0
-		if (!quantity){
-			quantity = 0
-		}
-		// check if the id already exist
+        //replace null or empty string with 0
+        if (!quantity) {
+            quantity = 0
+        }
+        // check if the id already exist
         for (let i = 0; i < $scope.ncc_data.proj_comp.length; i++) {
             if ($scope.ncc_data.proj_comp[i].nonContestableProjectComponentId == compId) {
-				$scope.ncc_data.proj_comp[i].quantity = quantity
-				$scope.ncc_data.proj_comp[i].total = total
-        		//console.log($scope.ncc_data)
-				return
+                $scope.ncc_data.proj_comp[i].quantity = quantity
+                $scope.ncc_data.proj_comp[i].total = total
+                //console.log($scope.ncc_data)
+                return
             }
         }
-		//if not exist
+        //if not exist
         $scope.ncc_data.proj_comp.push({
             "nonContestableProjectComponentId": compId,
             "hours": quantity,
             "total": total
         })
-    
+
         console.log($scope.ncc_data)
     }
 
     $scope.ncc_otherChanged = function (itemId, quantity, total) {
-		//replace null or empty string with 0
-		if (!quantity){
-			quantity = 0
-		}
-		// check if the id already exist
+        //replace null or empty string with 0
+        if (!quantity) {
+            quantity = 0
+        }
+        // check if the id already exist
         for (let i = 0; i < $scope.ncc_data.other.length; i++) {
             if ($scope.ncc_data.other[i].nonContestableOtherCostsItemId == itemId) {
-				$scope.ncc_data.other[i].quantity = quantity
-				$scope.ncc_data.other[i].total = total
-        		//console.log($scope.ncc_data)
-				return
+                $scope.ncc_data.other[i].quantity = quantity
+                $scope.ncc_data.other[i].total = total
+                //console.log($scope.ncc_data)
+                return
             }
         }
-		//if not exist
-		$scope.ncc_data.other.push({
+        //if not exist
+        $scope.ncc_data.other.push({
             "nonContestableOtherCostsItemId": itemId,
             "quantity": quantity,
             "total": total
@@ -329,10 +329,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ncc_submit_input = function () {
-		//change only the project data to the coming json and keep the format
+        //change only the project data to the coming json and keep the format
         payload_format.projectData = $scope.ncc_data.proj_comp
         var proj_comp = JSON.stringify(
-			payload_format
+            payload_format
         );
         console.log(proj_comp);
 
@@ -397,17 +397,17 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //for fim page
     $scope.get_fim = function () {
-		existing = false	
+        existing = false
         //get fim type first
         $http.get('/listAllFIMinputType').then(function (response) {
-			$http.get('/FIMInput/getData').then(function (response) {
-	            console.log(response.data);
-				if (response.data.projectStatus == "exist"){
-					existing = true;
-				}
-				fim_item = response.data.projectData;
-				payload_format = response.data;
-	        });
+            $http.get('/FIMInput/getData').then(function (response) {
+                console.log(response.data);
+                if (response.data.projectStatus == "exist") {
+                    existing = true;
+                }
+                fim_item = response.data.projectData;
+                payload_format = response.data;
+            });
             //console.log(response.data);
             $scope.fim_types = response.data;
             //console.log($scope.fim_types)
@@ -449,18 +449,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                                 $scope.fim_types[i].sub_types[j].items[k].actual = '';
                                 $scope.fim_types[i].sub_types[j].items[k].jen = '';
                                 $scope.fim_types[i].sub_types[j].items[k].lcta = '';
-								if(existing){
-									fim_item.forEach(item=>{
-										if ($scope.fim_types[i].sub_types[j].items[k].id == item.fIMinputItermId){
-			                                $scope.fim_types[i].sub_types[j].items[k].actual = item.acturalQuantity;
-			                                $scope.fim_types[i].sub_types[j].items[k].jen = item.jenFoundedQuantity;
-			                                $scope.fim_types[i].sub_types[j].items[k].lcta = item.lctaQuantity;
-        									update_fim_type_total()
-										}
-									})
-								}
+                                if (existing) {
+                                    fim_item.forEach(item => {
+                                        if ($scope.fim_types[i].sub_types[j].items[k].id == item.fIMinputItermId) {
+                                            $scope.fim_types[i].sub_types[j].items[k].actual = item.acturalQuantity;
+                                            $scope.fim_types[i].sub_types[j].items[k].jen = item.jenFoundedQuantity;
+                                            $scope.fim_types[i].sub_types[j].items[k].lcta = item.lctaQuantity;
+                                            update_fim_type_total()
+                                        }
+                                    })
+                                }
                             }
-							console.log($scope.fim_types)
+                            console.log($scope.fim_types)
                         })
                     }
                 })
@@ -473,37 +473,37 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.fim_data = []
     $scope.fim_type_total = {}
     $scope.fim_input_changed = function (itemId, actQ, jenQ, lctaQ, actTotal, jenTotal, lctaTotal, fimTypeId) {
-		//replace null values with 0
-		if(!actQ){
-			actQ = 0
-		}
-		if(!jenQ){
-			jenQ = 0
-		}
-		if(!lctaQ){
-			lctaQ = 0
-		}
-		if(!actTotal){
-			actTotal = 0
-		}
-		if(!jenTotal){
-			jenTotal = 0
-		}
-		if(!lctaTotal){
-			lctaTotal = 0
-		}
-		//check if existing        
-		for (let i = 0; i < $scope.fim_data.length; i++) {
+        //replace null values with 0
+        if (!actQ) {
+            actQ = 0
+        }
+        if (!jenQ) {
+            jenQ = 0
+        }
+        if (!lctaQ) {
+            lctaQ = 0
+        }
+        if (!actTotal) {
+            actTotal = 0
+        }
+        if (!jenTotal) {
+            jenTotal = 0
+        }
+        if (!lctaTotal) {
+            lctaTotal = 0
+        }
+        //check if existing
+        for (let i = 0; i < $scope.fim_data.length; i++) {
             if ($scope.fim_data[i].fIMinputItermId == itemId) {
                 $scope.fim_data[i].fIMinputItermId = itemId;
-				$scope.fim_data[i].acturalQuantity = actQ;
-				$scope.fim_data[i].jenFoundedQuantity = jenQ;
-				$scope.fim_data[i].lctaQuantity = lctaQ;
-				$scope.fim_data[i].acturalSubTotal = actTotal;
-				$scope.fim_data[i].jenFoundedTotal = jenTotal;
-				$scope.fim_data[i].lctaTotal = lctaTotal;
-				console.log($scope.fim_data);
-				return
+                $scope.fim_data[i].acturalQuantity = actQ;
+                $scope.fim_data[i].jenFoundedQuantity = jenQ;
+                $scope.fim_data[i].lctaQuantity = lctaQ;
+                $scope.fim_data[i].acturalSubTotal = actTotal;
+                $scope.fim_data[i].jenFoundedTotal = jenTotal;
+                $scope.fim_data[i].lctaTotal = lctaTotal;
+                console.log($scope.fim_data);
+                return
             }
         }
 
@@ -517,7 +517,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             lctaTotal: lctaTotal,
             fimTypeId: fimTypeId
         })
-		console.log($scope.fim_data);
+        console.log($scope.fim_data);
 
     }
 
@@ -538,11 +538,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.fim_submit_input = function () {
-		payload_format.projectData = $scope.fim_data;
+        payload_format.projectData = $scope.fim_data;
         var obj = JSON.stringify(
             payload_format
         )
-		console.log(obj)
+        console.log(obj)
         $http({
             method: 'POST',
             url: url + '/FIMInput/saveAndUpdate',
@@ -585,7 +585,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
 
     }
-    
+
     //get fim basic
     $scope.fim_get_basic = function () {
         //get fim type first
@@ -596,7 +596,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             //console.log($scope.fim_types)
             get_sub_type();
         });
-		
+
         //get sub_type of each fim type and add to the json
         get_sub_type = function () {
             for (let i = 0; i < $scope.fim_types.length; i++) {
@@ -628,21 +628,21 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
                         }).then(function mySuccess(response) {
                             var data = response.data;
                             $scope.fim_types[i].sub_types[j].items = data;
-							//console.log($scope.fim_types)
+                            //console.log($scope.fim_types)
                         })
                     }
                 })
             }
         }
-        
+
 
     }
-    
+
     //fim remove basic data
-    $scope.fim_remove_basic = function (id){
-    	var obj = JSON.stringify({
-    		'id': id
-		})
+    $scope.fim_remove_basic = function (id) {
+        var obj = JSON.stringify({
+            'id': id
+        })
         $http({
             method: 'POST',
             url: url + '/deleteFIMinputIterm',
@@ -651,6 +651,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response.data);
             $scope.fim_get_basic();
         })
+
     }
 
     //for avoided cost
@@ -658,10 +659,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http.get('/selectAllAvoidedCostassetReplacementIterm').then(function (response) {
             //console.log(response.data);
             $scope.ac_items = response.data;
-			//set avoidedCostassetReplacementItermId of each item to their id
-			for(let i = 0; i < $scope.ac_items.length; i++){
-				$scope.ac_items[i].avoidedCostassetReplacementItermId = $scope.ac_items[i].id
-			}
+            //set avoidedCostassetReplacementItermId of each item to their id
+            for (let i = 0; i < $scope.ac_items.length; i++) {
+                $scope.ac_items[i].avoidedCostassetReplacementItermId = $scope.ac_items[i].id
+            }
             console.log($scope.ac_items);
 
             $scope.wacc = 4.72
@@ -670,66 +671,66 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.add_ex_asset();
             $scope.add_repl_asset();
         });
-		
+
     }
-    
-    $scope.get_project_ac = function() {
-    	$http.get('/AvoidedCost/getData').then(function (response) {
-			console.log(response.data)
-			payload_format = response.data;
-			ac_saved_item = payload_format.projectData;
-			//console.log(payload_format.projectStatus)
-			if(payload_format.projectStatus == 'exist'){
-				//console.log("project exist")
-				$scope.exist_asset_data = []
-    			$scope.repl_asset_data = []
-				ac_saved_item.forEach(item =>{
-					//console.log("item")
-					//console.log(item)
-					if(item.type == 'exist'){
-						$scope.ac_items.forEach(basic_data=>{
-							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
-        						let new_data = Object.assign({}, basic_data);
-								new_data.quantity = item.quantity;
-								new_data.assetAge = item.assetAge;
-								new_data.type = 'exist'
-								$scope.exist_asset_data.push(new_data)
-								$scope.ac_update_exist_item($scope.exist_asset_data.indexOf(new_data))
-								console.log(new_data)
-							}
-						})
-					}
-					if(item.type == 'new'){
-						$scope.ac_items.forEach(basic_data=>{
-							if(basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId){
-								let new_data = Object.assign({}, basic_data);
-								new_data.quantity = item.quantity;
-								new_data.assetAge = item.assetAge;
-								basic_data.type = 'new'
-								$scope.repl_asset_data.push(new_data)
-								$scope.ac_update_repl_item($scope.repl_asset_data.indexOf(new_data))
-								console.log(new_data)
-							}
-						})
-					}
-				})
-			}
-			
-	        $scope.ac_update_total()
-	        $scope.ac_update_weigted_avg_age()
-			/*
-			console.log("exist assets")
-			console.log($scope.exist_asset_data)
-			console.log("new assets")
-			console.log($scope.repl_asset_data)
-			*/
-			
-			$scope.ac_get_overhead()
-			console.log("overhead")
-			console.log($scope.ac_overhead)
-		}
-		);
-    
+
+    $scope.get_project_ac = function () {
+        $http.get('/AvoidedCost/getData').then(function (response) {
+                console.log(response.data)
+                payload_format = response.data;
+                ac_saved_item = payload_format.projectData;
+                //console.log(payload_format.projectStatus)
+                if (payload_format.projectStatus == 'exist') {
+                    //console.log("project exist")
+                    $scope.exist_asset_data = []
+                    $scope.repl_asset_data = []
+                    ac_saved_item.forEach(item => {
+                        //console.log("item")
+                        //console.log(item)
+                        if (item.type == 'exist') {
+                            $scope.ac_items.forEach(basic_data => {
+                                if (basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId) {
+                                    let new_data = Object.assign({}, basic_data);
+                                    new_data.quantity = item.quantity;
+                                    new_data.assetAge = item.assetAge;
+                                    new_data.type = 'exist'
+                                    $scope.exist_asset_data.push(new_data)
+                                    $scope.ac_update_exist_item($scope.exist_asset_data.indexOf(new_data))
+                                    console.log(new_data)
+                                }
+                            })
+                        }
+                        if (item.type == 'new') {
+                            $scope.ac_items.forEach(basic_data => {
+                                if (basic_data.avoidedCostassetReplacementItermId == item.avoidedCostassetReplacementItermId) {
+                                    let new_data = Object.assign({}, basic_data);
+                                    new_data.quantity = item.quantity;
+                                    new_data.assetAge = item.assetAge;
+                                    basic_data.type = 'new'
+                                    $scope.repl_asset_data.push(new_data)
+                                    $scope.ac_update_repl_item($scope.repl_asset_data.indexOf(new_data))
+                                    console.log(new_data)
+                                }
+                            })
+                        }
+                    })
+                }
+
+                $scope.ac_update_total()
+                $scope.ac_update_weigted_avg_age()
+                /*
+                console.log("exist assets")
+                console.log($scope.exist_asset_data)
+                console.log("new assets")
+                console.log($scope.repl_asset_data)
+                */
+
+                $scope.ac_get_overhead()
+                console.log("overhead")
+                console.log($scope.ac_overhead)
+            }
+        );
+
     }
 
     data = {
@@ -747,26 +748,26 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         totalCost: '',
         presentValueRC: '',
         source: 'Jemena',
-		type: ''
+        type: ''
     };
     $scope.exist_asset_data = []
     $scope.repl_asset_data = []
-	
-	//add items
+
+    //add items
     $scope.add_ex_asset = function () {
         let new_data = Object.assign({}, data);
-		new_data.type = 'existing'
+        new_data.type = 'existing'
         $scope.exist_asset_data.push(new_data)
         console.log($scope.exist_asset_data)
     }
     $scope.add_repl_asset = function () {
         let new_data = Object.assign({}, data);
-		new_data.type = 'new'
+        new_data.type = 'new'
         $scope.repl_asset_data.push(new_data)
         console.log($scope.repl_asset_data)
     }
 
-	//remove items
+    //remove items
     $scope.rm_ex_asset = function () {
         $scope.exist_asset_data.pop()
         $scope.ac_update_total()
@@ -777,10 +778,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
 
     $scope.ac_exist_select_item = function (index) {
-		//the index of the ac_items and their ac item id offset by one
-		//check if the item with that index exist
+        //the index of the ac_items and their ac item id offset by one
+        //check if the item with that index exist
         if ($scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
-			//if exist set to this item
+            //if exist set to this item
             ac_item = $scope.ac_items[$scope.exist_asset_data[index].avoidedCostassetReplacementItermId - 1]
             $scope.exist_asset_data[index].stdLife = ac_item.stdLife
             $scope.exist_asset_data[index].unit = ac_item.unit
@@ -794,7 +795,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         }
         $scope.ac_update_exist_item(index)
-		console.log($scope.exist_asset_data)
+        console.log($scope.exist_asset_data)
     }
     $scope.ac_repl_select_item = function (index) {
         if ($scope.ac_items[$scope.repl_asset_data[index].avoidedCostassetReplacementItermId - 1]) {
@@ -809,7 +810,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.repl_asset_data[index].type = 'new'
         }
         $scope.ac_update_repl_item(index)
-		console.log($scope.repl_asset_data)
+        console.log($scope.repl_asset_data)
     }
 
     $scope.ac_update_exist_item = function (index) {
@@ -820,12 +821,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         value = $scope.exist_asset_data[index].totalCost / ((1 + $scope.wacc / 100) ** $scope.exist_asset_data[index].remLife)
         $scope.exist_asset_data[index].presentValueRC = value
         $scope.ac_update_total()
-		/*
-		console.log("exist assets")
-		console.log($scope.exist_asset_data)
-		console.log("new assets")
-		console.log($scope.repl_asset_data)
-		*/
+        /*
+        console.log("exist assets")
+        console.log($scope.exist_asset_data)
+        console.log("new assets")
+        console.log($scope.repl_asset_data)
+        */
     }
     $scope.ac_update_repl_item = function (index) {
         item = $scope.repl_asset_data[index]
@@ -837,18 +838,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         $scope.ac_update_total()
         $scope.ac_update_weigted_avg_age()
-		/*
-		console.log("exist assets")
-		console.log($scope.exist_asset_data)
-		console.log("new assets")
-		console.log($scope.repl_asset_data)
-		*/
+        /*
+        console.log("exist assets")
+        console.log($scope.exist_asset_data)
+        console.log("new assets")
+        console.log($scope.repl_asset_data)
+        */
     }
-	
-	$scope.ac_get_overhead = function() {
-		var overhead = JSON.stringify({
-            projectId : payload_format.projectId,
-		});
+
+    $scope.ac_get_overhead = function () {
+        var overhead = JSON.stringify({
+            projectId: payload_format.projectId,
+        });
 
         $http({
             method: 'POST',
@@ -860,8 +861,8 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 				$scope.ac_overhead = parseFloat(data[data.length - 1].constant);		
 			}
         })
-	}
-	
+    }
+
     $scope.ac_update_overhead = function () {
         if ($scope.exist_asset_data) {
             for (let i = 0; i < $scope.exist_asset_data.length; i++) {
@@ -939,9 +940,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     $scope.ac_submit_input = function () {
         var overhead = JSON.stringify([{
-            projectId : payload_format.projectId,
-			constant : $scope.ac_overhead
-		}]);
+            projectId: payload_format.projectId,
+            constant: $scope.ac_overhead
+        }]);
         console.log(overhead)
 
         $http({
@@ -952,9 +953,9 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
         })
 
-		
+
         data = $scope.exist_asset_data.concat($scope.repl_asset_data);
-		payload_format.projectData = data
+        payload_format.projectData = data
 
         var obj = JSON.stringify(
             payload_format
@@ -992,12 +993,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $scope.get_ac();
         })
     }
-    
+
     //ac remove basic data
     $scope.ac_remove_basic = function (id) {
-    	var obj = JSON.stringify({
-    		'id': id
-		})
+        var obj = JSON.stringify({
+            'id': id
+        })
         $http({
             method: 'POST',
             url: url + '/deleteAvoidedCostassetReplacementIterm',
@@ -1046,7 +1047,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
 
     }
-    
+
     //connection handover get data
     $scope.conn_handover_getData = function() {
 		$http.get('/ConnectionHandover/getData').then(function(response) {
@@ -1117,7 +1118,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
             console.log(response.data);
         })
-	}
+    }
 
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
@@ -1451,79 +1452,503 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         })
     }
 
-	
-	//project list
-	$scope.get_all_projects = function(){
-		
-		$http({
+    $scope.getCustomerContributionData = function () {
+        console.log("clicked getCustomerContributionData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/customer_contribution/getData',
+        }).then(function mySuccess(response) {
+            // console.log(response)
+            var response_payload = response['data']
+            // console.log(response_payload)
+            var projectStatus = response_payload['projectStatus']
+
+            if (projectStatus.toString() === "exist") {
+                $scope.cc_wbs = response_payload['projectData']['jemenaWBS']
+                $scope.cc_inquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.cc_SAPPM_order = response_payload['projectData']['jemenaSapPmOrder']
+                $scope.cc_zinfraWBS = response_payload['projectData']['zinfraWBS']
+                $scope.cc_project_title = response_payload['projectData']['projectTitle']
+                // $scope.cc_project_type = ''
+                $scope.cc_supply_address = response_payload['projectData']['supplyAddress']
+                $scope.cc_reason_of_work = response_payload['projectData']['customerReasonForWorks']
+                $scope.cc_customer_scope_of_work = response_payload['projectData']['customerScopeOfWork']
+                $scope.cc_jemena_scope_of_work = response_payload['projectData']['jemenaScopeOfWork']
+                $scope.cc_jemena_scope_of_exclusions = response_payload['projectData']['jemenaScopeExclusions']
+                $scope.cc_assumptions = response_payload['projectData']['assumption']
+            } else {
+                $scope.cc_wbs = ''
+                $scope.cc_inquiryNumber = ''
+                $scope.cc_SAPPM_order = ''
+                $scope.cc_zinfraWBS = ''
+                $scope.cc_project_title = ''
+                // $scope.cc_project_type = ''
+                $scope.cc_supply_address = ''
+                $scope.cc_reason_of_work = ''
+                $scope.cc_customer_scope_of_work = ''
+                $scope.cc_jemena_scope_of_work = ''
+                $scope.cc_jemena_scope_of_exclusions = ''
+                $scope.cc_assumptions = ''
+            }
+        })
+    }
+
+
+    //project list
+    $scope.get_all_projects = function () {
+
+        $http({
             method: 'POST',
             url: url + '/findPage',
             data: JSON.stringify({
-				pageNum : 1,
-				pageSize: 100
-			})
+                pageNum: 1,
+                pageSize: 100
+            })
         }).then(function mySuccess(response) {
-			$scope.project_list = response.data.content
-			change_projects_date_format();
-			console.log($scope.project_list)
+            $scope.project_list = response.data.content
+            change_projects_date_format();
+            console.log($scope.project_list)
         })
-		
-		 $http.get('/selectAllProjectType').then(function (response) {
+
+        $http.get('/selectAllProjectType').then(function (response) {
             $scope.project_types = response.data;
         });
-	}
-	
-	$scope.search_project = function(){
-		var obj = JSON.stringify({
-			projectTitle: $scope.projectTitle,
-			jemenaWBS: $scope.jemenaWBS,
-			inquiryNumber: $scope.inquiryNumber,
-			jemenaSapPmOrder: $scope.jemenaSapPmOrder,
-			zinfraWBS: $scope.zinfraWBS,
-			projectType: $scope.projectType,
-			supplyAddress: $scope.supplyAddress
-		})
-		$http({
+    }
+
+    $scope.search_project = function () {
+        var obj = JSON.stringify({
+            projectTitle: $scope.projectTitle,
+            jemenaWBS: $scope.jemenaWBS,
+            inquiryNumber: $scope.inquiryNumber,
+            jemenaSapPmOrder: $scope.jemenaSapPmOrder,
+            zinfraWBS: $scope.zinfraWBS,
+            projectType: $scope.projectType,
+            supplyAddress: $scope.supplyAddress
+        })
+        $http({
             method: 'POST',
             url: url + '/findPage',
             data: obj
         }).then(function mySuccess(response) {
-			$scope.project_list = response.data.content
-			change_projects_date_format();
+            $scope.project_list = response.data.content
+            change_projects_date_format();
         })
-	}
-	
-	function change_projects_date_format(){
-		for(let i = 0; i < $scope.project_list.length; i++){
-			$scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
-		}
-	}
-	
-	function timeConverter(UNIX_timestamp){
-	  var a = new Date(UNIX_timestamp);
-	  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-	  var year = a.getFullYear();
-	  var month = months[a.getMonth()];
-	  var date = a.getDate();
-	  var time = date + ' ' + month + ' ' + year;
-	  return time;
-	}
-	
-	$scope.view_project = function(id){
-		//console.log(parseInt(id))
-		var obj = JSON.stringify({
-			projectStatus: "exist",
-			projectId: id
-		})
-		$http({
+    }
+
+    function change_projects_date_format() {
+        for (let i = 0; i < $scope.project_list.length; i++) {
+            $scope.project_list[i].createDate = timeConverter($scope.project_list[i].createDate)
+        }
+    }
+
+    function timeConverter(UNIX_timestamp) {
+        var a = new Date(UNIX_timestamp);
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var time = date + ' ' + month + ' ' + year;
+        return time;
+    }
+
+    $scope.view_project = function (id) {
+        //console.log(parseInt(id))
+        var obj = JSON.stringify({
+            projectStatus: "exist",
+            projectId: id
+        })
+        $http({
             method: 'POST',
             url: url + '/updateSession',
             data: obj
         }).then(function mySuccess(response) {
             $window.location.href = '/view_project_page';
-			console.log(response.data)
+            console.log(response.data)
         })
-	}
+
+    }
+
+    $scope.getNegotiatedConnectionData = function () {
+        console.log("clicked getNegotiatedConnectionData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/ContractSchedule/getNegotiatedConnectionData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            // var response_payload = JSON.parse(response.data);
+            // console.log(response_payload)
+            var response_payload = response['data']
+            $scope.nc_response_payload = response['data']
+            $scope.nc_projectData = response_payload['projectData']
+            $scope.nc_projectStatus = response_payload['projectStatus']
+            $scope.nc_projectId = response_payload['projectId']
+            console.log(response_payload)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                $scope.ncInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['maximumAllocatedCapacity']
+                $scope.ncMinContractDemandPrimary = response_payload['projectData']['minimumContractDemandPrimary']
+                $scope.ncncMinContractDemandReserve = response_payload['projectData']['minimumContractDemandReserveFeeder']
+                $scope.ncScopeOfWorkCustomer = response_payload['projectData']['scopeofWorksCustomerFunded']
+                $scope.ncScopeOfWorkJemena = response_payload['projectData']['scopeofWorksJemenaFunded']
+                $scope.ncExclusions = response_payload['projectData']['exclusions']
+                $scope.ncAssumptions = response_payload['projectData']['assumptions']
+                $scope.ncValidityPeriod = "60 Business Days from the date of this offer unless agreed in writing to extend."
+                $scope.ncPlannedConstructionPeriod = "12 weeks from date of acceptance (or the agreed site readiness date)."
+                $scope.ncNominalSupplyVoltage = "Please select from drop down list" // dropdown
+                $scope.ncSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.ncSupplyPhasing = response_payload['projectData']['supplyPhasing']
+                $scope.ncEmbeddedNetwork = response_payload['projectData']['embeddedNetwork'] // dropdown
+                $scope.ncInterestRate = "5% over the 90 day Commonwealth Bank Bill rate."
+                $scope.ncSecurity = "N/A" // dropdown
+                $scope.ncConnectionAssetConnectionPointLocation = "Please select from drop down list"
+                $scope.ncPremisesConnectionAssets = "Customer installed connection facility within the customer boundary"
+                $scope.ncProjectReference = response_payload['projectData']['projectReference']
+                $scope.ncStatutoryOrOther = "N/A"
+                $scope.ncLeaseOrEasement = "Please select from drop down list"
+                $scope.ncCustomerResponsibleOfficer = response_payload['projectData']['customerResponsibleOfficer']
+                $scope.ncJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.ncNetworkExtensionOrAugemntation = "Please select from drop down list"
+            } else {
+                $scope.ncInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.ncMaxAllocatedCapacity = response_payload['projectData']['maximumAllocatedCapacity']
+                $scope.ncMinContractDemandPrimary = response_payload['projectData']['minimumContractDemandPrimary']
+                $scope.ncncMinContractDemandReserve = response_payload['projectData']['minimumContractDemandReserveFeeder']
+                $scope.ncScopeOfWorkCustomer = response_payload['projectData']['scopeofWorksCustomerFunded']
+                $scope.ncScopeOfWorkJemena = response_payload['projectData']['scopeofWorksJemenaFunded']
+                $scope.ncExclusions = response_payload['projectData']['exclusions']
+                $scope.ncAssumptions = response_payload['projectData']['assumptions']
+                $scope.ncValidityPeriod = response_payload['projectData']['validityPeriod']
+                $scope.ncPlannedConstructionPeriod = response_payload['projectData']['plannedConstructionPeriod']
+                $scope.ncNominalSupplyVoltage = response_payload['projectData']['nominalSupplyVoltage']
+                $scope.ncSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.ncSupplyPhasing = response_payload['projectData']['supplyPhasing']
+                $scope.ncEmbeddedNetwork = response_payload['projectData']['embeddedNetwork'] // dropdown
+                $scope.ncInterestRate = response_payload['projectData']['interestrateforoverduepayment']
+                $scope.ncSecurity = response_payload['projectData']['security'] // dropdown
+                $scope.ncConnectionAssetConnectionPointLocation = response_payload['projectData']['connectionAssetandConnectionPointLocation']
+                $scope.ncPremisesConnectionAssets = response_payload['projectData']['premisesConnectionAssetsandPartiesResponsibleforInstallation']
+                $scope.ncProjectReference = response_payload['projectData']['projectReference']
+                $scope.ncStatutoryOrOther = response_payload['projectData']['statutoryorOtherApprovalstobeobtainedbyJemena']
+                $scope.ncLeaseOrEasement = response_payload['projectData']['leaseorEasementRequired']
+                $scope.ncCustomerResponsibleOfficer = response_payload['projectData']['customerResponsibleOfficer']
+                $scope.ncJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.ncNetworkExtensionOrAugemntation = response_payload['projectData']['networkExtensionorAugmentation']
+            }
+        })
+    }
+
+    $scope.getAssetRelocationData = function () {
+        console.log("clicked getAssetRelocationData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/ContractSchedule/getAssetRelocation',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            $scope.ar_response_payload = response['data']
+            $scope.ar_projectData = response_payload['projectData']
+            $scope.ar_projectStatus = response_payload['projectStatus']
+            $scope.ar_projectId = response_payload['projectId']
+            console.log(response_payload)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                $scope.arInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.arWorkAddress = response_payload['projectData']['worksAddress']
+                $scope.arTypeOfDistributionWork = "Please select from drop down list"
+                $scope.arScopeOfWork = response_payload['projectData']['scopeofWorks']
+                $scope.arOfferValidityPeriod = "The validity period is 60 business days from the date of this offer unless otherwise agreed in writing."
+                $scope.arContestableContribution = ""
+                $scope.arNonContestableContribution = "N/A"
+                $scope.arPlannedConstructionPeriod = "Please select from drop down list"
+                $scope.arCommencementofWorksObligations = "Note: If the customer has not given Jemena it’s required 20 business days’ notice and is not ready by the Planned Construction Period, the customer must pay to Jemena extra costs necessarily incurred by Jemena as a result of the delay"
+                $scope.arInterestRateforOverduePayment = "5% over the 90 day Commonwealth Bank Bill rate"
+                $scope.arCustomerResponsibleOfficer = ""
+                $scope.arJemenaResponsibleOfficer = ""
+                $scope.arLeaseOrEasement = "Please select from drop down list"
+            } else {
+                $scope.arInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.arWorkAddress = response_payload['projectData']['worksAddress']
+                $scope.arTypeOfDistributionWork = response_payload['projectData']['typeofDistributionWork']
+                $scope.arScopeOfWork = response_payload['projectData']['scopeofWorks']
+                $scope.arOfferValidityPeriod = response_payload['projectData']['offerValidityPeriod']
+                $scope.arContestableContribution = response_payload['projectData']['contestableContributionChargesforWorksCompletedbyJemena']
+                $scope.arNonContestableContribution = response_payload['projectData']['nonContestableContributionChargesforWorksCompletedbyJemena']
+                $scope.arPlannedConstructionPeriod = response_payload['projectData']['plannedConstructionPeriod']
+                $scope.arCommencementofWorksObligations = response_payload['projectData']['commencementofWorksObligations']
+                $scope.arInterestRateforOverduePayment = response_payload['projectData']['interestRateforOverduePayment']
+                $scope.arCustomerResponsibleOfficer = response_payload['projectData']['customerResponsibleOfficer']
+                $scope.arJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.arLeaseOrEasement = response_payload['projectData']['leaseorEasementifrequired']
+            }
+        })
+    }
+
+    $scope.getUrdData = function () {
+        console.log("clicked getUrdData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/ContractSchedule/getURD',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            $scope.urd_response_payload = response['data']
+            $scope.urd_projectData = response_payload['projectData']
+            $scope.urd_projectStatus = response_payload['projectStatus']
+            console.log(response_payload)
+
+            if (response_payload['projectStatus'].toString() === 'new') {
+                $scope.urdInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.urdSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.urdSubdivision = response_payload['projectData']['subdivision']
+                $scope.urdStatOtherApprovals = "N/A"
+                $scope.urdSupplyCapacity = "3.5kVA"
+                $scope.urdNumLots = ""
+                $scope.urdLotNumbers = ""
+                $scope.urdLeaseOrEasement = "Yes" //dropdown
+                $scope.urdValidityPeriod = "The validity period is 60 Business Days from the date of this offer unless agreed in writing to extend."
+                $scope.urdSecurity = "N/A"
+                $scope.urdPlannedConstructionPeriod = "To be determined by customer." // dropdown
+                $scope.urdConnectionWorksJemena = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyJemena']
+                $scope.urdConnectionWorksDeveloper = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyDeveloper']
+                $scope.urdAssetsAndConnectionPoint = "" // dropdown
+                $scope.urdPremisesConnectionAssets = "Customer installed connection facility within the customer boundary."
+                $scope.urdNetworkExtension = "" // dropdown
+                $scope.urdCostOfNewtworkExtension = "As set out in the Connection Charge Details section below"
+                $scope.urdMeterInfo = "· The customer must have appropriate metering installed. ·To do this, the customer is required to contact the a retailer to arrange for installation of an appropriate meter. " +
+                    "Note: Meter Service Charges are payable if the retailer requests Jemena to supply and install the meter.  The Meter Service Charges are additional fees which are not included in the Connection Charges).\n"
+                $scope.urdTenderFee = "N/A"
+                $scope.urdApplicableInterestRate = "5% over the 90 day Commonwealth Bank bill rate."
+                $scope.urdDeveloperResponsibleOfficer = ""
+                $scope.urdJemenaResponsibleOfficer = ""
+                $scope.urdOtherJobSpecific = "N/A"
+            } else {
+                $scope.urdInquiryNumber = response_payload['projectData']['inquiryNumber']
+                $scope.urdSupplyAddress = response_payload['projectData']['supplyAddress']
+                $scope.urdSubdivision = response_payload['projectData']['subdivision']
+                $scope.urdStatOtherApprovals = response_payload['projectData']['statutoryandOtherApprovals']
+                $scope.urdSupplyCapacity = response_payload['projectData']['supplyCapacityperLot']
+                $scope.urdNumLots = response_payload['projectData']['numberoflots']
+                $scope.urdLotNumbers = response_payload['projectData']['lotnumbers']
+                $scope.urdLeaseOrEasement = response_payload['projectData']['leaseorEasement']
+                $scope.urdValidityPeriod = response_payload['projectData']['validityPeriod']
+                $scope.urdSecurity = response_payload['projectData']['security']
+                $scope.urdPlannedConstructionPeriod = response_payload['projectData']['plannedConstructionPeriod']
+                $scope.urdConnectionWorksJemena = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyJemena']
+                $scope.urdConnectionWorksDeveloper = response_payload['projectData']['descriptionofConnectionWorkstobeundertakenbyDeveloper']
+                $scope.urdAssetsAndConnectionPoint = response_payload['projectData']['connectionAssetsandConnectionPoint']
+                $scope.urdPremisesConnectionAssets = response_payload['projectData']['premisesConnectionAssetsandPartiesResponsibleforInstallation']
+                $scope.urdNetworkExtension = response_payload['projectData']['networkExtensionorAugmentationifrequired']
+                $scope.urdCostOfNewtworkExtension = response_payload['projectData']['costofNetworkExtensionofAugmentation']
+                $scope.urdTenderFee = response_payload['projectData']['tenderFeeifapplicable']
+                $scope.urdApplicableInterestRate = response_payload['projectData']['applicableInterestRate']
+                $scope.urdDeveloperResponsibleOfficer = response_payload['projectData']['developerResponsibleOfficer']
+                $scope.urdJemenaResponsibleOfficer = response_payload['projectData']['jemenaResponsibleOfficer']
+                $scope.urdOtherJobSpecific = response_payload['projectData']['otherJobSpecificRequirements']
+            }
+        })
+    }
+
+    $scope.getContractScheduleData = function () {
+        $scope.getUrdData()
+        $scope.getNegotiatedConnectionData()
+        $scope.getAssetRelocationData()
+    }
+
+    $scope.contractSchedule_update_row = function (value, name) {
+        $scope[name] = value
+    }
+
+    $scope.submitUrdData = function () {
+        console.log("Inside submitUrdData")
+        $scope.urd_projectData['inquiryNumber'] = $scope.urdInquiryNumber
+        $scope.urd_projectData['applicableInterestRate'] = $scope.urdApplicableInterestRate
+        $scope.urd_projectData['companyTradingName'] = "test"
+        $scope.urd_projectData['connectionAssetsandConnectionPoint'] = $scope.urdAssetsAndConnectionPoint
+        $scope.urd_projectData['costofNetworkExtensionofAugmentation'] = $scope.urdCostOfNewtworkExtension
+        $scope.urd_projectData['date'] = null
+        $scope.urd_projectData['descriptionofConnectionWorkstobeundertakenbyDeveloper'] = $scope.urdConnectionWorksDeveloper
+        $scope.urd_projectData['descriptionofConnectionWorkstobeundertakenbyJemena'] = $scope.urdConnectionWorksJemena
+        $scope.urd_projectData['developerResponsibleOfficer'] = $scope.urdDeveloperResponsibleOfficer
+        $scope.urd_projectData['id'] = $scope.urd_projectData['id']
+        $scope.urd_projectData['inquiryNumber'] = $scope.urdInquiryNumber
+        $scope.urd_projectData['jemenaResponsibleOfficer'] = $scope.urdJemenaResponsibleOfficer
+        $scope.urd_projectData['leaseorEasement'] = $scope.urdLeaseOrEasement
+        $scope.urd_projectData['lotnumbers'] = $scope.urdLotNumbers
+        $scope.urd_projectData['meterInformation'] = $scope.urdMeterInfo
+        $scope.urd_projectData['networkExtensionorAugmentationifrequired'] = $scope.urdNetworkExtension
+        $scope.urd_projectData['numberoflots'] = $scope.urdNumLots
+        $scope.urd_projectData['otherJobSpecificRequirements'] = $scope.urdOtherJobSpecific
+        $scope.urd_projectData['plannedConstructionPeriod'] = $scope.urdPlannedConstructionPeriod
+        $scope.urd_projectData['premisesConnectionAssetsandPartiesResponsibleforInstallation'] = $scope.urdPremisesConnectionAssets
+        $scope.urd_projectData['projectId'] = $scope.urd_response_payload['projectId']
+        $scope.urd_projectData['security'] = $scope.urdSecurity
+        $scope.urd_projectData['statutoryandOtherApprovals'] = $scope.urdStatOtherApprovals
+        $scope.urd_projectData['subdivision'] = $scope.urdSubdivision
+        $scope.urd_projectData['supplyAddress'] = $scope.urdSupplyAddress
+        $scope.urd_projectData['supplyCapacityperLot'] = $scope.urdSupplyCapacity
+        $scope.urd_projectData['tenderFeeifapplicable'] = $scope.urdTenderFee
+        $scope.urd_projectData['validityPeriod'] = $scope.urdValidityPeriod
+        var obj = JSON.stringify({
+            "projectId": $scope.urd_response_payload['projectId'],
+            "projectStatus": '',
+            "result": "success",
+            "massage": "",
+            "projectData": $scope.urd_projectData,
+        })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/ContractSchedule/saveAndUpdateURD',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#contractScheduleDataModal').modal('show');
+            }
+        })
+    }
+
+    $scope.submitNcdData = function () {
+        console.log("Inside submitNcdData")
+        $scope.nc_projectData['inquiryNumber'] = $scope.ncInquiryNumber
+        $scope.nc_projectData['maximumAllocatedCapacity'] = $scope.ncMaxAllocatedCapacity
+        $scope.nc_projectData['minimumContractDemandPrimary'] = $scope.ncMinContractDemandPrimary
+        $scope.nc_projectData['minimumContractDemandReserveFeeder'] = $scope.ncncMinContractDemandReserve
+        $scope.nc_projectData['scopeofWorksCustomerFunded'] = $scope.ncScopeOfWorkCustomer
+        $scope.nc_projectData['scopeofWorksJemenaFunded'] = $scope.ncScopeOfWorkJemena
+        $scope.nc_projectData['exclusions'] = $scope.ncExclusions
+        $scope.nc_projectData['assumptions'] = $scope.ncAssumptions
+        $scope.nc_projectData['validityPeriod'] = $scope.ncValidityPeriod
+        $scope.nc_projectData['plannedConstructionPeriod'] = $scope.ncPlannedConstructionPeriod
+        $scope.nc_projectData['nominalSupplyVoltage'] = $scope.ncNominalSupplyVoltage
+        $scope.nc_projectData['supplyAddress'] = $scope.ncSupplyAddress
+        $scope.nc_projectData['supplyPhasing'] = $scope.ncSupplyPhasing
+        $scope.nc_projectData['embeddedNetwork'] = $scope.ncEmbeddedNetwork
+        $scope.nc_projectData['interestrateforoverduepayment'] = $scope.ncInterestRate
+        $scope.nc_projectData['security'] = $scope.ncSecurity
+        $scope.nc_projectData['connectionAssetandConnectionPointLocation'] = $scope.ncConnectionAssetConnectionPointLocation
+        $scope.nc_projectData['premisesConnectionAssetsandPartiesResponsibleforInstallation'] = $scope.ncPremisesConnectionAssets
+        $scope.nc_projectData['projectReference'] = $scope.ncProjectReference
+        $scope.nc_projectData['statutoryorOtherApprovalstobeobtainedbyJemena'] = $scope.ncStatutoryOrOther
+        $scope.nc_projectData['leaseorEasementRequired'] = $scope.ncLeaseOrEasement
+        $scope.nc_projectData['customerResponsibleOfficer'] = $scope.ncCustomerResponsibleOfficer
+        $scope.nc_projectData['jemenaResponsibleOfficer'] = $scope.ncJemenaResponsibleOfficer
+        $scope.nc_projectData['networkExtensionorAugmentation'] = $scope.ncNetworkExtensionOrAugemntation
+        $scope.nc_projectData['abn'] = $scope.nc_projectData['abn']
+        $scope.nc_projectData['companyTradingName'] = $scope.nc_projectData['companyTradingName']
+        $scope.nc_projectData['date'] = null
+        $scope.nc_projectData['id'] = $scope.nc_projectData['id']
+        $scope.nc_projectData['projectId'] = $scope.nc_projectId
+        var obj = JSON.stringify({
+            "projectId": $scope.nc_projectId,
+            "projectStatus": '',
+            "result": "success",
+            "massage": "",
+            "projectData": $scope.nc_projectData,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/ContractSchedule/saveAndUpdateNegotiatedConnection',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#contractScheduleDataModal').modal('show');
+            }
+        })
+    }
+
+    $scope.submitArdData = function () {
+        console.log("Inside submitArdData")
+        $scope.ar_projectData['inquiryNumber'] = $scope.arInquiryNumber
+        $scope.ar_projectData['worksAddress'] = $scope.arWorkAddress
+        $scope.ar_projectData['typeofDistributionWork'] = $scope.arTypeOfDistributionWork
+        $scope.ar_projectData['scopeofWorks'] = $scope.arScopeOfWork
+        $scope.ar_projectData['offerValidityPeriod'] = $scope.arOfferValidityPeriod
+        $scope.ar_projectData['contestableContributionChargesforWorksCompletedbyJemena'] = $scope.arContestableContribution
+        $scope.ar_projectData['nonContestableContributionChargesforWorksCompletedbyJemena'] = $scope.arNonContestableContribution
+        $scope.ar_projectData['plannedConstructionPeriod'] = $scope.arPlannedConstructionPeriod
+        $scope.ar_projectData['commencementofWorksObligations'] = $scope.arCommencementofWorksObligations
+        $scope.ar_projectData['interestRateforOverduePayment'] = $scope.arInterestRateforOverduePayment
+        $scope.ar_projectData['customerResponsibleOfficer'] = $scope.arCustomerResponsibleOfficer
+        $scope.ar_projectData['jemenaResponsibleOfficer'] = $scope.arJemenaResponsibleOfficer
+        $scope.ar_projectData['leaseorEasementifrequired'] = $scope.arLeaseOrEasement
+        $scope.ar_projectData['id'] = $scope.ar_projectData['id']
+        $scope.ar_projectData['projectId'] = $scope.ar_projectId
+        var obj = JSON.stringify({
+            "projectId": $scope.ar_projectId,
+            "projectStatus": '',
+            "result": "success",
+            "massage": "",
+            "projectData": $scope.ar_projectData,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/ContractSchedule/saveAndUpdateNegotiatedConnection',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response.data)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#contractScheduleDataModal').modal('show');
+            }
+        })
+    }
+
+    $scope.getFinancialsData = function () {
+        console.log("clicked getFinancialsData function")
+
+        $http({
+            method: 'GET',
+            url: url + '/Financial/getData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getApproverUserTypes = function () {
+        console.log("clicked getApproverUserTypes function")
+
+        $http({
+            method: 'GET',
+            url: url + '/listAllUserType',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+    $scope.getApproversDetails = function () {
+        console.log("clicked getApproversDetails function")
+
+        $http({
+            method: 'GET',
+            url: url + '/Approver/getData',
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+    $scope.getApproversData = function () {
+        $scope.getApproverUserTypes()
+        $scope.getApproversDetails()
+    }
+
+
 }])
 
 

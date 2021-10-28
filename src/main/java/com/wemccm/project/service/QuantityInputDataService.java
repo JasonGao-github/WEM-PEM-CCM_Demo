@@ -42,11 +42,15 @@ public class QuantityInputDataService {
 			result.setProjectId(projectId);
 			for (QuantityInputItermGroup group : allGroups) {
 				QuantityInputDetailsPojo detailpojo = new QuantityInputDetailsPojo();
-				// 如果project已经存在，则查出已经有的数据。
 				List<QuantityInputGroupDataPojo> pojoList = qtdao.listQuantityInputGroupDataPojo(projectId,
 						group.getId());
+				// if there is no data of this project , select all basic data
+				if (null == pojoList || 0 == pojoList.size()) {
+					pojoList = qtdao.listBasicDatabyGroup(group.getId());
+				}
+
 				detailpojo.setQuantityInputItermGroupId(group.getId());
-				detailpojo.setGroupData(pojoList);
+				detailpojo.setGroupData(fileNull(pojoList));
 				projectDataList.add(detailpojo);
 			}
 
@@ -56,55 +60,9 @@ public class QuantityInputDataService {
 
 			for (QuantityInputItermGroup group : allGroups) {
 				QuantityInputDetailsPojo detailpojo = new QuantityInputDetailsPojo();
-				// 如果project不存在，则查出所有的basicdata。
 				List<QuantityInputGroupDataPojo> pojoList = qtdao.listBasicDatabyGroup(group.getId());
-				for (QuantityInputGroupDataPojo pojo : pojoList) {
-					if (null == pojo.getActualsQty()) {
-						pojo.setActualsQty(0);
-					}
-					if (null == pojo.getActualsSubTotal()) {
-						pojo.setActualsSubTotal(0d);
-					}
-					if (null == pojo.getJemenaQty()) {
-						pojo.setJemenaQty(0);
-					}
-					if (null == pojo.getJemenaSubTotal()) {
-						pojo.setJemenaSubTotal(0d);
-					}
-					if (null == pojo.getLabour()) {
-						pojo.setLabour(0d);
-					}
-					if (null == pojo.getLcatQty()) {
-						pojo.setLcatQty(0);
-					}
-					if (null == pojo.getLcatSubTotal()) {
-						pojo.setLcatSubTotal(0d);
-					}
-					if (null == pojo.getManhours()) {
-						pojo.setManhours(0d);
-					}
-					if (null == pojo.getMaterial()) {
-						pojo.setMaterial(0d);
-					}
-					if (null == pojo.getPlant()) {
-						pojo.setPlant(0d);
-					}
-					if (null == pojo.getRecouverableQty()) {
-						pojo.setRecouverableQty(0);
-					}
-					if (null == pojo.getRecouverableSubTotal()) {
-						pojo.setRecouverableSubTotal(0d);
-					}
-					if (null == pojo.getSubcontract()) {
-						pojo.setSubcontract(0d);
-					}
-					if (null == pojo.getUnitRate()) {
-						pojo.setUnitRate(0d);
-					}
-				}
-
 				detailpojo.setQuantityInputItermGroupId(group.getId());
-				detailpojo.setGroupData(pojoList);
+				detailpojo.setGroupData(fileNull(pojoList));
 				projectDataList.add(detailpojo);
 			}
 
@@ -112,6 +70,57 @@ public class QuantityInputDataService {
 		result.setProjectData(projectDataList);
 
 		return result;
+
+	}
+
+	private List<QuantityInputGroupDataPojo> fileNull(List<QuantityInputGroupDataPojo> pojoList) {
+
+		for (QuantityInputGroupDataPojo pojo : pojoList) {
+			if (null == pojo.getActualsQty()) {
+				pojo.setActualsQty(0);
+			}
+			if (null == pojo.getActualsSubTotal()) {
+				pojo.setActualsSubTotal(0d);
+			}
+			if (null == pojo.getJemenaQty()) {
+				pojo.setJemenaQty(0);
+			}
+			if (null == pojo.getJemenaSubTotal()) {
+				pojo.setJemenaSubTotal(0d);
+			}
+			if (null == pojo.getLabour()) {
+				pojo.setLabour(0d);
+			}
+			if (null == pojo.getLcatQty()) {
+				pojo.setLcatQty(0);
+			}
+			if (null == pojo.getLcatSubTotal()) {
+				pojo.setLcatSubTotal(0d);
+			}
+			if (null == pojo.getManhours()) {
+				pojo.setManhours(0d);
+			}
+			if (null == pojo.getMaterial()) {
+				pojo.setMaterial(0d);
+			}
+			if (null == pojo.getPlant()) {
+				pojo.setPlant(0d);
+			}
+			if (null == pojo.getRecouverableQty()) {
+				pojo.setRecouverableQty(0);
+			}
+			if (null == pojo.getRecouverableSubTotal()) {
+				pojo.setRecouverableSubTotal(0d);
+			}
+			if (null == pojo.getSubcontract()) {
+				pojo.setSubcontract(0d);
+			}
+			if (null == pojo.getUnitRate()) {
+				pojo.setUnitRate(0d);
+			}
+		}
+
+		return pojoList;
 
 	}
 

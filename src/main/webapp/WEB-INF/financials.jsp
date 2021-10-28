@@ -16,7 +16,7 @@
 
 <body ng-app="main_app" id="main" ng-controller="controller">
 <%@ include file="common/sidebar.jspf" %>
-<section class="home_section">
+<section class="home_section" ng-init="getFinancialsData()">
     <div class="container-fluid contentWrapper">
         <div class="container content">
             <div class="row">
@@ -24,7 +24,7 @@
                     <ul class="nav nav-pills"
                         style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
                         <li class="nav-item">
-                            <a class="nav-link" href="project_page">Project Home</a>
+                            <a class="nav-link" href="project_home_page">Project Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="ccf_page">Customer Contribution</a>
@@ -57,12 +57,12 @@
                             <a class="nav-link" href="input_project_page">Inputs | Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Approvers</a>
+                            <a class="nav-link" href="approvals">Approvals</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <h2 style="margin: 2vh; text-align: center; font-weight: 600;">Financials Page</h2>
+            <h2 style="margin: 2vh; text-align: center; font-weight: 600;">Financials</h2>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="card shadow mt-5 mb-4">
