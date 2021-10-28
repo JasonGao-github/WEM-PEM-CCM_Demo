@@ -173,18 +173,39 @@
 	</select>
 
 	<select id="listByApprover" parameterType="int"
-		resultType="com.wemccm.common.pojo.ProjectListPojo">
-		
-	SELECT 
-	    p.id AS projectId, cc.*
-	FROM
-	    project p
-	        LEFT JOIN
-	    approver a ON p.id = a.projectId
-	        LEFT JOIN
-	    customercontribution cc ON cc.projectId = p.id
-	WHERE
-	    a.approverUserId = #{userId}
+		resultType="com.wemccm.common.pojo.ListProjectsByApproverPojo">
+
+		SELECT
+		p.id AS projectId, cc.*
+		FROM
+		project p
+		LEFT JOIN
+		approver a ON p.id
+		= a.projectId
+		LEFT JOIN
+		customercontribution cc ON cc.projectId = p.id
+		WHERE
+		a.approverUserId = #{userId}
+		<if test="projectTitle!=null and projectTitle!=''">
+			and projectTitle = #{projectTitle}
+		</if>
+		<if test="jemenaWBS!=null and jemenaWBS!=''">
+			and jemenaWBS = #{jemenaWBS}
+		</if>
+		<if test="inquiryNumber!=null and inquiryNumber!=''">
+			and inquiryNumber = #{inquiryNumber}
+		</if>
+
+
+		<if test="jemenaSapPmOrder!=null and jemenaSapPmOrder!=''">
+			and jemenaSapPmOrder = #{jemenaSapPmOrder}
+		</if>
+		<if test="zinfraWBS!=null and zinfraWBS!=''">
+			and zinfraWBS = #{zinfraWBS}
+		</if>
+		<if test="projectType!=null and projectType!=''">
+			and projectType = #{projectType}
+		</if>
 
 	</select>
 

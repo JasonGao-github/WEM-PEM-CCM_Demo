@@ -16,9 +16,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.pojo.AddCurrentoccupyPojo;
+import com.wemccm.common.pojo.ListProjectsByApproverPojo;
 import com.wemccm.common.pojo.ProjectListPojo;
 import com.wemccm.common.pojo.ResponseResult;
-import com.wemccm.common.pojo.UserListPojo;
 import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.project.service.ProjectService;
 
@@ -63,10 +63,11 @@ public class ProjectController {
 	// listByApprover
 	@RequestMapping(value = "/listProjectsByApprover", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseResult listByApprover() {
+	public ResponseResult listByApprover(@RequestBody ListProjectsByApproverPojo pojo) {
 
 		int userId = getUserIdInSession();
-		List<ProjectListPojo> list = service.listByApprover(userId);
+		pojo.setUserId(userId);
+		List<ProjectListPojo> list = service.listByApprover(pojo);
 		ResponseResult rr = new ResponseResult();
 		rr.setData(list);
 
