@@ -36,7 +36,6 @@ public class ProjectController {
 		return service.findPage(dto);
 	}
 
-	
 	@RequestMapping(value = "/addProject", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseResult addProject(@RequestBody projectPojo pojo) {
@@ -47,7 +46,7 @@ public class ProjectController {
 				.getRequest();
 		HttpSession session = request.getSession();
 		session.setAttribute("projectId", projectId);
-		session.setAttribute("projectStatus", "new");
+		session.setAttribute("projectStatus", "exist");
 
 		Integer userId = Integer.valueOf((String) session.getAttribute("userId"));
 

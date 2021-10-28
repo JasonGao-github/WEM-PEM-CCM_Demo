@@ -246,10 +246,12 @@ public class ContractScheduleDataService {
 	}
 
 	public void saveAndUpdateAssetRelocation(AssetRelocationData pojo) {
-
+		System.out.println(pojo.getProjectData().getInquiryNumber());
+System.out.println(pojo.getProjectData().getWorksAddress());
 		if ("new".equals(pojo.getProjectStatus())) {
 			AssetRelocation ar = new AssetRelocation();
 			ar = pojo.getProjectData();
+			ar.setProjectId(pojo.getProjectId());
 			dao.insertAssetRelocation(ar);
 
 		}
@@ -258,7 +260,7 @@ public class ContractScheduleDataService {
 
 			AssetRelocation ar = new AssetRelocation();
 			ar = pojo.getProjectData();
-
+			ar.setProjectId(pojo.getProjectId());
 			dao.deleteAssetRelocation(ar.getProjectId());
 
 			dao.insertAssetRelocation(ar);

@@ -63,7 +63,7 @@ CREATE TABLE `uplaodedfiles`  (
 ) ;
 CREATE TABLE `assetrelocation`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `inquiryNumber` int(11) NULL DEFAULT NULL,
+  `inquiryNumber` varchar(255),
   `worksAddress` varchar(255) ,
   `scopeofWorks` varchar(255) ,
   `contestableContributionChargesforWorksCompletedbyJemena` varchar(255) ,
@@ -117,7 +117,7 @@ CREATE TABLE `urd`  (
 
 CREATE TABLE `negotiatedconnection`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `inquiryNumber` int(11) NULL DEFAULT NULL,
+  `inquiryNumber` varchar(255) ,
   `maximumAllocatedCapacity` varchar(255) ,
   `minimumContractDemandPrimary` varchar(255) ,
   `scopeofWorksCustomerFunded` varchar(255) ,

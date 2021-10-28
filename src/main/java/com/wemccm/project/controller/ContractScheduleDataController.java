@@ -39,6 +39,7 @@ import com.wemccm.project.service.FIMInputDataService;
 //			int projectId = 1;
 //			String projectStatus = "exist";
 
+			System.out.println("projectStatus"+projectStatus);
 			NegotiatedConnectionData resultPojo = qiService.getNegotiatedConnectionData(projectId, projectStatus);
 
 			return resultPojo;
@@ -53,6 +54,11 @@ import com.wemccm.project.service.FIMInputDataService;
 			pojo.setProjectId(projectId);
 			String projectStatus = getProjectStatusInSession();
 			pojo.setProjectStatus(projectStatus);
+			
+			System.out.println("projectStatus"+projectStatus);
+			
+			
+			
 			qiService.saveAndUpdateNegotiatedConnection(pojo);
 
 			updateSession(projectId);
@@ -86,7 +92,7 @@ import com.wemccm.project.service.FIMInputDataService;
 
 //			int projectId = 1;
 //			String projectStatus = "exist";
-			System.out.println(projectStatus+"+++++++++++++++++++++++++"+projectId);
+			System.out.println("projectStatus"+projectStatus);
 			URDData resultPojo = qiService.getURD(projectId, projectStatus);
 
 			return resultPojo;
@@ -106,7 +112,8 @@ import com.wemccm.project.service.FIMInputDataService;
 //			URD urd=pojo.getProjectData();
 //			System.out.println(urd);
 //			System.out.println(urd.getInquiryNumber());
-			
+
+			System.out.println("projectStatus"+projectStatus);
 			qiService.saveAndUpdateURD(pojo);
 
 			updateSession(projectId);
@@ -145,6 +152,7 @@ import com.wemccm.project.service.FIMInputDataService;
 //			int projectId = 1;
 //			String projectStatus = "exist";
 
+			System.out.println("projectStatus"+projectStatus);
 			AssetRelocationData resultPojo = qiService.getAssetRelocation(projectId, projectStatus);
 
 			return resultPojo;
@@ -153,12 +161,16 @@ import com.wemccm.project.service.FIMInputDataService;
 
 		@RequestMapping(value = "/saveAndUpdateAssetRelocation", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateAssetRelocation(@RequestBody AssetRelocationData pojo) {
+			System.out.println("saveAndUpdateAssetRelocation"+pojo.getProjectData().getInquiryNumber());
+			System.out.println("saveAndUpdateAssetRelocation"+pojo.getProjectData().getWorksAddress());
 
 			int projectId = getProjectIdInSession();
 //			int projectId = 1;
 			pojo.setProjectId(projectId);
 			String projectStatus = getProjectStatusInSession();
 			pojo.setProjectStatus(projectStatus);
+
+			System.out.println("saveAndUpdateAssetRelocation"+"projectStatus"+projectStatus);
 			qiService.saveAndUpdateAssetRelocation(pojo);
 
 			updateSession(projectId);
