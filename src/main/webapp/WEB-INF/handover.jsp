@@ -339,7 +339,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 							<form method="post" action="/uplaodedFiles"
 								enctype="multipart/form-data" id="uploadForm">
-								<input type="file" name="file" multiple
+								<input type="file" name="file"
 								onchange="angular.element(this).scope().add_attachment(window.event)">
 								<button type="button" class="btn btn-primary"
 						ng-click="conn_handover_submit_attachment()">Upload</button>

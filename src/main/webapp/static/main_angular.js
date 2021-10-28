@@ -727,7 +727,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
                 $scope.ac_get_overhead()
                 console.log("overhead")
-                console.log($scope.ac_overhead)
+                console.log($scope.overhead)
             }
         );
 
@@ -858,7 +858,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         }).then(function mySuccess(response) {
 			data = response.data
 			if(data.length > 0 && 'constant' in data[data.length -1]){
-				$scope.ac_overhead = parseFloat(data[data.length - 1].constant);		
+				$scope.overhead = parseFloat(data[data.length - 1].constant);		
 			}
         })
     }
@@ -941,7 +941,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $scope.ac_submit_input = function () {
         var overhead = JSON.stringify([{
             projectId: payload_format.projectId,
-            constant: $scope.ac_overhead
+            constant: $scope.overhead
         }]);
         console.log(overhead)
 
