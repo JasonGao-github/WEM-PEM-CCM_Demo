@@ -33,11 +33,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getNegotiatedConnectionData", produces = "application/json;charset=UTF-8")
 		public NegotiatedConnectionData getNegotiatedConnectionData() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 
 			NegotiatedConnectionData resultPojo = qiService.getNegotiatedConnectionData(projectId, projectStatus);
 
@@ -81,11 +81,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getURD", produces = "application/json;charset=UTF-8")
 		public URDData getURD() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 			System.out.println(projectStatus+"+++++++++++++++++++++++++"+projectId);
 			URDData resultPojo = qiService.getURD(projectId, projectStatus);
 
@@ -139,11 +139,11 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/getAssetRelocation", produces = "application/json;charset=UTF-8")
 		public AssetRelocationData getAssetRelocation() {
 
-//			int projectId = getProjectIdInSession();
-//			String projectStatus = getProjectStatusInSession();
+			int projectId = getProjectIdInSession();
+			String projectStatus = getProjectStatusInSession();
 
-			int projectId = 1;
-			String projectStatus = "exist";
+//			int projectId = 1;
+//			String projectStatus = "exist";
 
 			AssetRelocationData resultPojo = qiService.getAssetRelocation(projectId, projectStatus);
 
