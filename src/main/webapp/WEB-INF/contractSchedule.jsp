@@ -24,7 +24,7 @@
                     <ul class="nav nav-pills"
                         style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
                         <li class="nav-item">
-                            <a class="nav-link" href="project_page">Project Home</a>
+                            <a class="nav-link" href="project_home_page">Project Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="ccf_page">Customer Contribution</a>
@@ -1033,37 +1033,260 @@
                                                 <div class="card-body">
                                                     <form>
                                                         <div class="row">
-                                                            <div class="col-4">
-                                                                <div class="form-group">
-                                                                    <label for="scopeAssumptionItemDescription">Assumption
-                                                                        item
-                                                                        description</label>
-                                                                    <input id="scopeAssumptionItemDescription"
-                                                                           ng-model="scopeAssumptionItemDescription"
-                                                                           type="text"
-                                                                           class="form-control"
-                                                                           placeholder="Enter assumption item description"/>
-                                                                </div>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
+                                                                       style="text-align: center; margin: 0">
+                                                                    <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th>Item #</th>
+                                                                        <th>Title</th>
+                                                                        <th>Terms of Offer</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            1
+                                                                        </td>
+                                                                        <td>
+                                                                            Inquiry Number
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arInquiryNumber"
+                                                                                   ng-change="contractSchedule_update_row(arInquiryNumber, 'arInquiryNumber')"
+                                                                                   class="form-control"
+                                                                                   value="{{arInquiryNumber}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            2
+                                                                        </td>
+                                                                        <td>
+                                                                            Works Address:
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arWorkAddress"
+                                                                                   ng-change="contractSchedule_update_row(arWorkAddress, 'arWorkAddress')"
+                                                                                   class="form-control"
+                                                                                   value="{{arWorkAddress}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            3
+                                                                        </td>
+                                                                        <td>
+                                                                            Type of Distribution Work
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="arTypeOfDistributionWork"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="arTypeOfDistributionWork">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="Underground of existing assets">
+                                                                                    Underground of existing assets
+                                                                                </option>
+                                                                                <option value="Relocation of existing assets">
+                                                                                    Relocation of existing assets
+                                                                                </option>
+                                                                                <option value="Removal of existing assets">
+                                                                                    Removal of existing assets
+                                                                                </option>
+                                                                                <option value="Public Lighting">
+                                                                                    Public Lighting
+                                                                                </option>
+                                                                                <option value="Zinfra work crew">
+                                                                                    Zinfra work crew
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            4
+                                                                        </td>
+                                                                        <td>
+                                                                            Scope of Works
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arScopeOfWork"
+                                                                                   ng-change="contractSchedule_update_row(arScopeOfWork, 'arScopeOfWork')"
+                                                                                   class="form-control"
+                                                                                   value="{{arScopeOfWork}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            5
+                                                                        </td>
+                                                                        <td>
+                                                                            Offer Validity Period
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arOfferValidityPeriod"
+                                                                                   ng-change="contractSchedule_update_row(arOfferValidityPeriod, 'arOfferValidityPeriod')"
+                                                                                   class="form-control"
+                                                                                   value="{{arOfferValidityPeriod}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            6
+                                                                        </td>
+                                                                        <td>
+                                                                            Contestable Contribution Charges for Works
+                                                                            Completed by Jemena (if Jemena to construct)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arContestableContribution"
+                                                                                   ng-change="contractSchedule_update_row(arContestableContribution, 'arContestableContribution')"
+                                                                                   class="form-control"
+                                                                                   value="{{arContestableContribution}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            7
+                                                                        </td>
+                                                                        <td>
+                                                                            Non Contestable Contribution Charges for
+                                                                            Works Completed by Jemena (if Jemena
+                                                                            accredited contractor to construct)
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arNonContestableContribution"
+                                                                                   ng-change="contractSchedule_update_row(arNonContestableContribution, 'arNonContestableContribution')"
+                                                                                   class="form-control"
+                                                                                   value="{{arNonContestableContribution}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            8
+                                                                        </td>
+                                                                        <td>
+                                                                            Planned Construction Period
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="arPlannedConstructionPeriod"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="arPlannedConstructionPeriod">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="To be determined by customer">
+                                                                                    To be determined by customer
+                                                                                </option>
+                                                                                <option value="12 weeks from date of acceptance (or the agreed site readiness date)">
+                                                                                    12 weeks from date of acceptance (or
+                                                                                    the agreed site readiness date)
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            9
+                                                                        </td>
+                                                                        <td>
+                                                                            Commencement of Works Obligations
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arCommencementofWorksObligations"
+                                                                                   ng-change="contractSchedule_update_row(arCommencementofWorksObligations, 'arCommencementofWorksObligations')"
+                                                                                   class="form-control"
+                                                                                   value="{{arCommencementofWorksObligations}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            10
+                                                                        </td>
+                                                                        <td>
+                                                                            Interest Rate for Overdue Payment
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arInterestRateforOverduePayment"
+                                                                                   ng-change="contractSchedule_update_row(arInterestRateforOverduePayment, 'arInterestRateforOverduePayment')"
+                                                                                   class="form-control"
+                                                                                   value="{{arInterestRateforOverduePayment}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            11
+                                                                        </td>
+                                                                        <td>
+                                                                            Customer Responsible Officer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arCustomerResponsibleOfficer"
+                                                                                   ng-change="contractSchedule_update_row(arCustomerResponsibleOfficer, 'arCustomerResponsibleOfficer')"
+                                                                                   class="form-control"
+                                                                                   value="{{arCustomerResponsibleOfficer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            12
+                                                                        </td>
+                                                                        <td>
+                                                                            Jemena Responsible Officer
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   ng-model="arJemenaResponsibleOfficer"
+                                                                                   ng-change="contractSchedule_update_row(arJemenaResponsibleOfficer, 'arJemenaResponsibleOfficer')"
+                                                                                   class="form-control"
+                                                                                   value="{{arJemenaResponsibleOfficer}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            13
+                                                                        </td>
+                                                                        <td>
+                                                                            Lease or Easement (if required)
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="arLeaseOrEasement"
+                                                                                    placeholder="Select position"
+                                                                                    class="form-control"
+                                                                                    ng-model="arLeaseOrEasement">
+                                                                                <option value="" selected disabled>
+                                                                                    Please select from drop down list
+                                                                                </option>
+                                                                                <option value="Yes">
+                                                                                    Yes
+                                                                                </option>
+                                                                                <option value="No">
+                                                                                    No
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
-
-                                                        <div class="row"
-                                                             ng-show="scopeAssumptionItemDescriptionDataError">
-                                                            <div class="col">
-                                                                <h6 style="color: red">Error in data!</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row"
-                                                             ng-show="scopeAssumptionItemDescriptionDataSuccess">
-                                                            <div class="col">
-                                                                <h6 style="color: green">Item added successfully!</h6>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="row mt-3">
-                                                            <div class="col">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        ng-click="add_assumption_item()">Submit
+                                                            <div class="col d-flex justify-content-end">
+                                                                <button type="button" class="btn btn-success"
+                                                                        ng-click="submitArdData()">Submit
                                                                     Data
                                                                 </button>
                                                             </div>

@@ -15,7 +15,7 @@
 
 <body ng-app="main_app" id="main" ng-controller="controller">
 <%@ include file="common/sidebar.jspf" %>
-<section class="home_section" ng-init="get_all_users()">
+<section class="home_section" ng-init="getApproversData()">
     <div class="container-fluid contentWrapper">
         <div class="container content">
             <div class="row">

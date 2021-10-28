@@ -18,6 +18,7 @@ import com.wemccm.common.page.FindPageRequestDtoPojo;
 import com.wemccm.common.page.PageResult;
 import com.wemccm.common.page.PageUtils;
 import com.wemccm.common.pojo.AddCurrentoccupyPojo;
+import com.wemccm.common.pojo.ListProjectsByApproverPojo;
 import com.wemccm.common.pojo.ProjectListPojo;
 import com.wemccm.common.pojo.projectPojo;
 import com.wemccm.common.util.SR;
@@ -110,9 +111,9 @@ public class ProjectService {
 		projectDao.addCurrentoccupy(addCurrentoccupyPojo);
 	}
 
-	public List<ProjectListPojo> listByApprover(int userId) {
+	public List<ProjectListPojo> listByApprover(ListProjectsByApproverPojo pojo) {
 
-		return projectDao.listByApprover(userId);
+		return projectDao.listByApprover(pojo);
 
 	}
 

@@ -32,7 +32,7 @@
                     <ul class="nav nav-pills"
                         style="padding: 10px; border: 1px solid rgba(0,0,0,.125);border-radius: 15px;">
                         <li class="nav-item">
-                            <a class="nav-link" href="project_page">Project Home</a>
+                            <a class="nav-link" href="project_home_page">Project Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="ccf_page">Customer Contribution</a>
