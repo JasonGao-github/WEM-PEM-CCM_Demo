@@ -60,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<a class="nav-link" href="contract_schedule_page">Contract Schedule</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Inputs | Projects</a>
+								<a class="nav-link" href="input_project_page">Inputs | Projects</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="approvals">Approvers</a>
@@ -339,7 +339,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 							<form method="post" action="/uplaodedFiles"
 								enctype="multipart/form-data" id="uploadForm">
-								<input type="file" name="file" multiple
+								<input type="file" name="file"
 								onchange="angular.element(this).scope().add_attachment(window.event)">
 								<button type="button" class="btn btn-primary"
 						ng-click="conn_handover_submit_attachment()">Upload</button>
