@@ -11,7 +11,7 @@ public interface DesignDao {
 
 
 
-	public Integer findWBSElement(projectIdPojo requestPojo);
+	public String findWBSElement(projectIdPojo requestPojo);
 
 	public void insertDesign(Design pojo);
 

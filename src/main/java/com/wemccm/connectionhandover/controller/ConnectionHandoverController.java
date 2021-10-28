@@ -76,7 +76,7 @@ public class ConnectionHandoverController {
 
 //		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		String date = df.format(new Date());
-		String fileName = file.getOriginalFilename() + System.currentTimeMillis();
+		String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename() ;
 		Pojo.setFileName(fileName);
 		String filePath = "D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
 		Pojo.setLocalURL(filePath);
