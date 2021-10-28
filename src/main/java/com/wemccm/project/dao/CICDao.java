@@ -26,6 +26,8 @@ public interface CICDao {
 
 	public int getCICProjectDetailsId(int projectId);
 
+	public CICprojectDetails getcicDetailsByID(int projectId);
+
 	public List<CICprojectTask> listAllTask();
 
 	public CICprojectDetails getDetailByProjectId(int projectId);// TODO

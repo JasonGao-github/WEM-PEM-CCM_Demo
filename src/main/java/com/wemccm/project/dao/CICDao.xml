@@ -37,6 +37,13 @@
 
 	</select>
 
+	<select id="getcicDetailsByID" parameterType="int"
+		resultType="com.wemccm.common.entity.CICprojectDetails">
+		
+		SELECT * FROM cicprojectdetails WHERE projectId = #{projectId}
+
+	</select>
+
 	<update id="updateCICprojectDetails"
 		parameterType="com.wemccm.common.entity.CICprojectDetails">
 		UPDATE cicprojectdetails
