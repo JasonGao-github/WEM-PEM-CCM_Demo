@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wemccm.common.entity.CICprojectDetails;
 import com.wemccm.common.entity.CICprojectEstimate;
 import com.wemccm.common.entity.CICprojectTask;
 import com.wemccm.common.pojo.CICProjectEstimateDataPojo;
@@ -29,7 +30,16 @@ public class CICService {
 
 		CICProjectEstimatePojo projectData = new CICProjectEstimatePojo();
 
-		String webElement = cicDao.getDetailByProjectId(projectId).getWbsElements();
+//		System.out.println("projectId >>>>>>> " + projectId);
+
+		CICprojectDetails details = cicDao.getDetailByProjectId(projectId);
+
+		if (null == details) {
+			return result;
+		}
+
+		String webElement = details.getWbsElements();
+
 		projectData.setWbsElement(webElement);
 
 		List<CICProjectEstimateDataPojo> pojoList = new ArrayList<CICProjectEstimateDataPojo>();
