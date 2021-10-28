@@ -24,8 +24,8 @@ public class DesignService {
 //	}
 
 
-	public Integer findWBSElement(projectIdPojo requestPojo) {
-		Integer l = Dao.findWBSElement(requestPojo);
+	public String findWBSElement(projectIdPojo requestPojo) {
+		String l = Dao.findWBSElement(requestPojo);
 
 		return l;
 	}

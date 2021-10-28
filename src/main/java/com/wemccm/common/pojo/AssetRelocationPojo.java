@@ -4,7 +4,7 @@ public class AssetRelocationPojo {
 //	6/13
 	
 	//='Customer Contribution' inquiryNumber
-	private Integer inquiryNumber;
+	private String inquiryNumber;
 	//='Customer Contribution'		supplyAddress
 	private String worksAddress;
 	//='Customer Contribution'		customerScopeOfWork
@@ -19,10 +19,10 @@ public class AssetRelocationPojo {
 	
 	
 	
-	public Integer getInquiryNumber() {
+	public String getInquiryNumber() {
 		return inquiryNumber;
 	}
-	public void setInquiryNumber(Integer inquiryNumber) {
+	public void setInquiryNumber(String inquiryNumber) {
 		this.inquiryNumber = inquiryNumber;
 	}
 	public String getWorksAddress() {

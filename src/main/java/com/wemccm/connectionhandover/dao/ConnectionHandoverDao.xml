@@ -67,7 +67,7 @@ where nc.projectId=#{projectId}
 		<if test="portalNo!=null and portalNo!=''">
 			,portalNo=#{portalNo}
 		</if>
-		<if test="date!=null and date!=''">
+		<if test="date!=null">
 			,date=#{date}
 		</if>
 		
