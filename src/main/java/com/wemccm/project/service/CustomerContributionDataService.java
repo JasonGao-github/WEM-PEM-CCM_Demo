@@ -59,15 +59,19 @@ public class CustomerContributionDataService {
 			int newProjectId = pDao.getNewestId();
 			pojo.getProjectData().setProjectId(newProjectId);
 			ccDao.saveCustomerContribution(pojo.getProjectData());
+
+			System.out.println("******");
+			createApprovers(projectId);
 			return newProjectId;
 		}
 		if ("exist".equals(projectStatus)) {
 			pojo.setProjectId(projectId);
 			ccDao.updateCustomerContribution(pojo.getProjectData());
+			
+			System.out.println("******!!!");
 			return projectId;
 		}
 
-		createApprovers(projectId);
 		return 0;
 
 	}

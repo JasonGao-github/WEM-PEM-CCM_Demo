@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wemccm.common.entity.Approver;
 import com.wemccm.common.entity.CustomerContributionPrice;
 import com.wemccm.common.entity.CustomerContributionPriceType;
 import com.wemccm.common.entity.Project;
@@ -25,6 +26,7 @@ import com.wemccm.common.util.SR;
 import com.wemccm.customercontribution.dao.CustomerContributionDao;
 import com.wemccm.customercontribution.dao.CustomerContributionPriceDao;
 import com.wemccm.customercontribution.dao.CustomerContributionPriceTypeDao;
+import com.wemccm.project.dao.ApproverDao;
 import com.wemccm.project.dao.ProjectDao;
 
 @Service
@@ -38,6 +40,8 @@ public class ProjectService {
 	private CustomerContributionPriceTypeDao ccPriceTypeDao;
 	@Autowired
 	private CustomerContributionPriceDao ccPriceDao;
+	@Autowired
+	private ApproverDao approverdao;
 
 	// 封装分页查询结果返回对象，在分页查询中，前端需要知道当前分页的页码及其他参数以便计算下一页的参数。
 	public PageResult findPage(FindPageRequestDtoPojo dto) {
@@ -101,8 +105,21 @@ public class ProjectService {
 			ccPriceDao.save(ccPrice);
 
 		}
-
+		createApprovers(projectId);
 		return projectId;
+
+	}
+
+	private void createApprovers(Integer projectId) {
+
+		for (int i = 1; i <= 3; i++) {
+
+			Approver approver = new Approver();
+			approver.setProjectId(projectId);
+			approver.setApproverStatus("Not_Approved");
+			approverdao.insertApprover(approver);
+
+		}
 
 	}
 
