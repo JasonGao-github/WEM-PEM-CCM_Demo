@@ -63,7 +63,8 @@ public class ProjectController {
 	@ResponseBody
 	public ResponseResult listByApprover(@RequestBody ListProjectsByApproverPojo pojo) {
 
-		int userId = getUserIdInSession();
+//		int userId = getUserIdInSession();
+		int userId = 1;
 		pojo.setUserId(userId);
 		List<ProjectListPojo> list = service.listByApprover(pojo);
 		ResponseResult rr = new ResponseResult();

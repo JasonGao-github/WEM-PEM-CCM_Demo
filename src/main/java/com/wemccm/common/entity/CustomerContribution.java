@@ -8,7 +8,6 @@ public class CustomerContribution extends BaseEntity {
 	private String jemenaSapPmOrder;
 	private String zinfraWBS;
 	private String projectTitle;
-//	private Integer projectTypeId;
 	private String projectType;
 	private String supplyAddress;
 	private String customerReasonForWorks;
