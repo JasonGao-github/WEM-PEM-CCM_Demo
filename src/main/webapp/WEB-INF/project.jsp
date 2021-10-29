@@ -29,11 +29,11 @@
                 String[] pages = new String[]{"create_project_page", " ccf_page",
                         "quantity_input_page", "ncc_page", "fim_page",
                         "avoided_cost_page", "financials_page",
-                        "design_page", "conHandover_page", "contract_schedule_page"};
+                        "design_page", "conHandover_page", "contract_schedule_page", "approvals"};
                 String[] titles = new String[]{"", "Customer Contribution",
                         "Quantity Input", "Non-contestable Cost Input", "FIM Input",
                         "Avoided Cost Input", "Financials",
-                        "Design", "Connection Handover", "Contract Schedule"};
+                        "Design", "Connection Handover", "Contract Schedule", "Approvals"};
                 for (int i = 1; i < pages.length; i++) {
             %>
             <h3><a href="<%= pages[i] %>"><%= titles[i] %>
