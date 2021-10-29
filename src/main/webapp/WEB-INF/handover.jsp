@@ -70,7 +70,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				</div>
 
 				<h2>Connection Handover</h2>
-				<button onclick="javascript:demoFromHTML()">Print this page</button>
+				<button onclick="">Print this page</button>
 
 				<div class="form container" name="newUser"
 					style="justify-content: center;min-width: 100%;">
@@ -87,7 +87,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Portal No :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="portalNo" type="text" id="portalNo" />
+								<input ng-model="portalNo" type="number" id="portalNo" />
 							</div>
 							<div class="col-1">
 								<h3>Date :</h3>
