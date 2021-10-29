@@ -3,7 +3,6 @@ package com.wemccm.common.entity;
 import java.util.Date;
 
 public class Project extends BaseEntity {
-//	private Integer owner;
 	private String statues;
 	private Date createDate;
 	private String version;
