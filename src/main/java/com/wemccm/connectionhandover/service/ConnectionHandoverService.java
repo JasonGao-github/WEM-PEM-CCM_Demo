@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.wemccm.common.entity.ConnectionHandover;
 import com.wemccm.common.entity.UplaodedFiles;
 import com.wemccm.common.pojo.ConnectionHandoverPojo;
+import com.wemccm.common.pojo.DownlaodedFilesPojo;
 import com.wemccm.connectionhandover.dao.ConnectionHandoverDao;
 
 @Service
@@ -39,8 +40,8 @@ public class ConnectionHandoverService {
 
 
 
-	public List<UplaodedFiles> downlaodedFiles(Integer projectId) {
-		List<UplaodedFiles> p=Dao.downlaodedFiles(projectId);
+	public List<UplaodedFiles> downlaodedFiles(DownlaodedFilesPojo pojo) {
+		List<UplaodedFiles> p=Dao.downlaodedFiles(pojo);
 		
 		return p;
 	}
