@@ -89,10 +89,10 @@ public class ContractScheduleController {
 	@ResponseBody
 	public URDPojo findURD() {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		
 		URDPojo p = serivce.findURD(projectId);
 		return p;
@@ -104,10 +104,10 @@ public class ContractScheduleController {
 	@ResponseBody
 	public ResponseResult insertURD(@RequestBody URD pojo) {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		pojo.setProjectId(projectId);
 		serivce.insertURD(pojo);
 		return new ResponseResult();
@@ -128,10 +128,10 @@ public class ContractScheduleController {
 	@ResponseBody
 	public AssetRelocationPojo findAssetRelocation() {
 		Integer projectId=999;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		
 		AssetRelocationPojo p = serivce.findAssetRelocation(projectId);
 		return p;
@@ -143,10 +143,10 @@ public class ContractScheduleController {
 	@ResponseBody
 	public ResponseResult insertAssetRelocation(@RequestBody AssetRelocation pojo) {
 		Integer projectId=123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId=(int) session.getAttribute("projectId");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId=(int) session.getAttribute("projectId");
 		pojo.setProjectId(projectId);
 		serivce.insertAssetRelocation(pojo);
 		return new ResponseResult();

@@ -41,8 +41,8 @@ import com.wemccm.project.service.FIMInputDataService;
 		@RequestMapping(value = "/saveAndUpdate", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdate(@RequestBody ConnectionHandoverDataPojo pojo) {
 
-//			int projectId = getProjectIdInSession();
-			int projectId = 1;
+			int projectId = getProjectIdInSession();
+//			int projectId = 1;
 			
 			
 			String projectStatus = getProjectStatusInSession();
