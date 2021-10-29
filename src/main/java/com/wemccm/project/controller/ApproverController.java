@@ -13,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.wemccm.common.pojo.ApproverDataPojo;
 import com.wemccm.common.pojo.ProjectBasicPojo;
 import com.wemccm.common.pojo.UpdateApproverPojo;
+import com.wemccm.common.pojo.UpdateApproverStatusPojo;
 import com.wemccm.project.service.ApproverService;
 
 @RestController
@@ -57,14 +58,14 @@ public class ApproverController {
 	}
 
 	@RequestMapping(value = "/updateStatus", produces = "application/json;charset=UTF-8")
-	public ProjectBasicPojo updateStatus(@RequestBody int approverId) {
+	public ProjectBasicPojo updateStatus(@RequestBody UpdateApproverStatusPojo pojo) {
 
-		int projectId = getProjectIdInSession();
+//		int projectId = getProjectIdInSession();
 
-		approverService.updateStatus(approverId);
+		approverService.updateStatus(pojo.getApproverId());
 
 		ProjectBasicPojo result = new ProjectBasicPojo();
-		result.setProjectId(projectId);
+//		result.setProjectId(projectId);
 		result.setResult("success");
 
 		return result;

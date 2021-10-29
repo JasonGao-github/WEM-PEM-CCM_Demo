@@ -1011,8 +1011,11 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //connection hand over
     $scope.conn_handover_submit = function () {
-    	date = parseInt($scope.date.getTime()); 
-    	console.log(date)
+    	date = null
+    	if($scope.date != null){
+    		date = parseInt($scope.date.getTime()); 
+    		//console.log(date)
+    	}
     	data = {
             projectId: '',
             projectRef: $scope.projectRef,
@@ -1129,6 +1132,41 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $('#uploadModal').modal('show');
         })
     }
+    
+	//design get attachment
+	$scope.design_getAllAttachments = function() {
+		$http.get('/downlaodedFilesDesign').then(function(response) {
+			console.log(response.data)
+			$scope.design_attachment_list = response.data;
+		});
+	}
+	
+	//for adding attachment
+	$scope.design_add_attachment = function(evt){
+		files = evt.target.files[0];
+		console.log(files)
+		var formData = new FormData();
+		console.log(formData)
+		formData.append('file', files);
+		console.log(formData)
+		$scope.attachments = formData;
+		console.log($scope.attachments);
+		$scope.conn_handover_getAllAttachments()
+	}
+	
+	$scope.design_submit_attachment = function(){
+		data = $scope.attachments;
+		$http({
+            method: "POST",
+            url: url + '/uplaodedFilesDesign',
+            data: data,
+            headers: {'Content-Type': undefined}
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+            $('#uploadModal').modal('show');
+        })
+    }
+    
 
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
