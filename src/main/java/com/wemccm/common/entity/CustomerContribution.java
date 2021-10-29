@@ -16,7 +16,6 @@ public class CustomerContribution extends BaseEntity {
 	private String jemenaScopeExclusions;
 	private String assumption;
 
-	
 	private String isLCTA;
 	private String isNonConstestable;
 	private String isAvoidCosts;
