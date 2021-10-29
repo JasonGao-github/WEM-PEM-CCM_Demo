@@ -1124,7 +1124,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         data = $scope.attachments;
         $http({
             method: "POST",
-            url: url + '/uplaodedFiles',
+            url: url + '/ConnectionHandoverUplaodedFiles',
             data: data,
             headers: {'Content-Type': undefined}
         }).then(function mySuccess(response) {
