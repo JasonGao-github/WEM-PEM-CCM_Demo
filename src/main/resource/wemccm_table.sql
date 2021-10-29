@@ -339,7 +339,7 @@ CREATE TABLE `customercontributionpricetype`  (
 CREATE TABLE `fiminputiterm`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fIMinputSubTypeID` int(11) NULL DEFAULT NULL,
-  `description` varchar(32)  NULL DEFAULT NULL,
+  `description` varchar(50)  NULL DEFAULT NULL,
   `currency` varchar(32)  NULL DEFAULT NULL,
   `unitCost` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -389,7 +389,7 @@ CREATE TABLE `noncontestableothercostsiterm`  (
   `nonContestableTypeId` int(11) NULL DEFAULT NULL,
   `unit` varchar(32)  NULL DEFAULT NULL,
   `rate` double(10, 2) NULL DEFAULT NULL,
-  `description` varchar(32)  NULL DEFAULT NULL,
+  `description` varchar(80)  NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
 CREATE TABLE `noncontestableprojectcomponent`  (
@@ -471,7 +471,7 @@ CREATE TABLE `quantityinputbasicdata`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantityinputitermgroupId` int(11) ,
   `code` varchar(32) ,
-  `description` varchar(32) ,
+  `description` varchar(300) ,
   `unit` varchar(32) ,
   `labour` double(10, 2) NULL DEFAULT 0,
   `material` double(10, 2) NULL DEFAULT 0,

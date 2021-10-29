@@ -60,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<a class="nav-link" href="contract_schedule_page">Contract Schedule</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Inputs | Projects</a>
+								<a class="nav-link" href="input_project_page">Inputs | Projects</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="approvals">Approvers</a>
@@ -93,7 +93,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Date :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="data" type="date" id="portalNo" />
+								<input ng-model="date" type="date" id="date" />
 							</div>
 						</div>
 
@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Customer / Business Name :</h3>
 							</div>
 							<div class="col-lg-7">
-								<input ng-model="coustomerBusinessName" type="text"
+								<input ng-model="coustomerBusinesName" type="text"
 									id="coustomerBusinessName" />
 							</div>
 						</div>
@@ -339,7 +339,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 							<form method="post" action="/uplaodedFiles"
 								enctype="multipart/form-data" id="uploadForm">
-								<input type="file" name="file" multiple
+								<input type="file" name="file"
 								onchange="angular.element(this).scope().add_attachment(window.event)">
 								<button type="button" class="btn btn-primary"
 						ng-click="conn_handover_submit_attachment()">Upload</button>
@@ -359,5 +359,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 		</div>
 	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="uploadModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">FIM Basic
+						Data</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Upload successful! Refresh page to see the uploaded file.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

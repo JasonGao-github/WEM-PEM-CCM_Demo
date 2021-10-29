@@ -48,7 +48,19 @@ import com.wemccm.fiminput.dao.FIMInputDao;
 		}
 
 		public void saveAndUpdate(ConnectionHandoverDataPojo pojo) {
-
+			String Datetime=pojo.getProjectData().get(0).getDatetime();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			if ("new".equals(pojo.getProjectStatus())) {
 
 				List<ConnectionHandover> projectDataList = pojo.getProjectData();

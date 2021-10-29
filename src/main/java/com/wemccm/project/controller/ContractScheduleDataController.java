@@ -161,6 +161,7 @@ import com.wemccm.project.service.FIMInputDataService;
 
 		@RequestMapping(value = "/saveAndUpdateAssetRelocation", produces = "application/json;charset=UTF-8")
 		public ProjectBasicPojo saveAndUpdateAssetRelocation(@RequestBody AssetRelocationData pojo) {
+			System.out.println("saveAndUpdateAssetRelocation");
 			System.out.println("saveAndUpdateAssetRelocation"+pojo.getProjectData().getInquiryNumber());
 			System.out.println("saveAndUpdateAssetRelocation"+pojo.getProjectData().getWorksAddress());
 

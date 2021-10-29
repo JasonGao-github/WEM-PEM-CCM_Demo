@@ -1,12 +1,13 @@
 package com.wemccm.common.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class ConnectionHandover extends BaseEntity {
 	private Integer projectId;
 	private String projectRef;
 	private Integer portalNo;
-	private Date date;
+	private Timestamp date;
+	private String datetime;
 
 	private String coustomerBusinesName;
 	private String projectAddress;
@@ -36,6 +37,14 @@ public class ConnectionHandover extends BaseEntity {
 	private String silVonissue;
 	private String silVonissueComments;
 
+	public String getDatetime() {
+		return datetime;
+	}
+
+	public void setDatetime(String datetime) {
+		this.datetime = datetime;
+	}
+
 	public String getProjectRef() {
 		return projectRef;
 	}
@@ -52,11 +61,13 @@ public class ConnectionHandover extends BaseEntity {
 		this.portalNo = portalNo;
 	}
 
-	public Date getDate() {
+
+
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

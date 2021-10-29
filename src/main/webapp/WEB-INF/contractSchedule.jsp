@@ -54,7 +54,7 @@
                             <a class="nav-link active" href="contract_schedule_page">Contract Schedule</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inputs | Projects</a>
+                            <a class="nav-link" href="input_project_page">Inputs | Projects</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="approvals">Approvals</a>
