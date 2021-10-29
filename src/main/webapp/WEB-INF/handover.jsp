@@ -70,7 +70,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				</div>
 
 				<h2>Connection Handover</h2>
-				<button onclick="javascript:demoFromHTML()">Print this page</button>
+				<button onclick="">Print this page</button>
 
 				<div class="form container" name="newUser"
 					style="justify-content: center;min-width: 100%;">
@@ -87,13 +87,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Portal No :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="portalNo" type="text" id="portalNo" />
+								<input ng-model="portalNo" type="number" id="portalNo" />
 							</div>
 							<div class="col-1">
 								<h3>Date :</h3>
 							</div>
 							<div class="col-2">
-								<input ng-model="data" type="date" id="portalNo" />
+								<input ng-model="date" type="date" id="date" />
 							</div>
 						</div>
 
@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<h3>Customer / Business Name :</h3>
 							</div>
 							<div class="col-lg-7">
-								<input ng-model="coustomerBusinessName" type="text"
+								<input ng-model="coustomerBusinesName" type="text"
 									id="coustomerBusinessName" />
 							</div>
 						</div>
@@ -359,5 +359,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 		</div>
 	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="uploadModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">FIM Basic
+						Data</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Upload successful! Refresh page to see the uploaded file.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

@@ -37,7 +37,7 @@ public class AvoidedCostController {
 				.getRequest();
 		HttpSession session = request.getSession();
 
-		projectId=(int) session.getAttribute("projectId");
+		//projectId=(int) session.getAttribute("projectId");
 		List<AvoidedCostassetReplacementIterm> l = serivce.selectAllAvoidedCostassetReplacementIterm(projectId);
 		return l;
 	}
