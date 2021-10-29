@@ -16,7 +16,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body ng-app="main_app" id="main" ng-controller="controller">
 	<%@ include file="common/sidebar.jspf"%>
 	<section class="home_section">
-		<div class="container-fluid contentWrapper" ng-init="get_all_projects()">
+		<div class="container-fluid contentWrapper" ng-init="view_user_assigned_approve_projects()">
 			<div class="container content">
 	           <h3 style="margin: 1vh;">Approve Projects</h3>
 		        <nav>
@@ -72,7 +72,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		              </tr>
 		            </thead>
 		            <tbody>
-		              <tr ng-repeat="project in project_list">
+		              <tr ng-repeat="project in approve_project_list">
 		                <th scope="row">{{project.inquiryNumber}}</th>
 		                <td>{{project.projectTitle}}</td>
 		                <td>{{project.projectTypeId}}</td>

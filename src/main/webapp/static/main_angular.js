@@ -1923,7 +1923,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response_payload)
         })
     }
-    
+
+    $scope.approverOneNameSelector = true
+    $scope.approverOneNameText = false
+    $scope.approverTwoNameSelector = true
+    $scope.approverTwoNameText = false
+    $scope.approverThreeNameSelector = true
+    $scope.approverThreeNameText = false
+
     $scope.getApproversDetails = function () {
         console.log("clicked getApproversDetails function")
 
@@ -1934,8 +1941,82 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response)
             var response_payload = response['data']
             console.log(response_payload)
-            
+
             $scope.approver_project_data = response_payload['projectData']
+            console.log($scope.approver_project_data)
+
+            if ($scope.approver_project_data[0]['approverPost'] == null) {
+                console.log('data null approver')
+                $scope.approverOneStatus = "Not approved"
+                $scope.approverOneDate = "None"
+                $scope.approver_one_post = "0"
+                $scope.approver_one_name = ""
+
+            } else {
+                $scope.approverOneStatus = $scope.approver_project_data[0]['approverStatus']
+                $scope.approverOneDate = $scope.approver_project_data[0]['approvalDate']
+                $scope.approver_one_post = $scope.approver_project_data[0]['approverPost']
+                $scope.approver_one_name = $scope.approver_project_data[0]['approverName']
+
+                $scope.approverOneNameSelector = false
+                $scope.approverOneNameText = true
+                $("#setApprovalBtn1").prop("disabled", true);
+                // var name_list = []
+                // var item = {id: 1, name: $scope.approver_project_data[0]['approverName'], selected: true}
+                // name_list.push(item)
+                // $scope.approver_one_name_list = name_list
+
+
+                // var name_list = []
+                // for (var i = 0; i < $scope.approver_project_data.length; i++) {
+                //     name_list.push($scope.approver_project_data[i]['approverName'])
+                // }
+                // $scope.approver_one_name_list = name_list
+                // $scope.approver_two_name_list = name_list
+                // $scope.approver_three_name_list = name_list
+            }
+
+            if ($scope.approver_project_data[1]['approverPost'] == null) {
+                console.log('data null approver')
+
+                $scope.approverTwoStatus = "Not approved"
+                $scope.approverTwoDate = "None"
+                $scope.approver_two_post = "0"
+                $scope.approver_two_name = ""
+            } else {
+                $scope.approverTwoStatus = $scope.approver_project_data[1]['approverStatus']
+                $scope.approverTwoDate = $scope.approver_project_data[1]['approvalDate']
+                $scope.approver_two_post = $scope.approver_project_data[1]['approverPost']
+                $scope.approver_two_name = $scope.approver_project_data[1]['approverName']
+                // var name_list = []
+                // var item = {id: 0, name: $scope.approver_project_data[1]['approverName']}
+                // name_list.push(item)
+                // $scope.approver_two_name_list = name_list
+                $scope.approverTwoNameSelector = false
+                $scope.approverTwoNameText = true
+                $("#setApprovalBtn2").prop("disabled", true);
+            }
+
+            if ($scope.approver_project_data[2]['approverPost'] == null) {
+                console.log('data null approver')
+
+                $scope.approverThreeStatus = "Not approved"
+                $scope.approverThreeDate = "None"
+                $scope.approver_three_post = "0"
+                $scope.approver_three_name = ""
+            } else {
+                $scope.approverThreeStatus = $scope.approver_project_data[2]['approverStatus']
+                $scope.approverThreeDate = $scope.approver_project_data[2]['approvalDate']
+                $scope.approver_three_post = $scope.approver_project_data[2]['approverPost']
+                $scope.approver_three_name = $scope.approver_project_data[2]['approverName']
+                // var name_list = []
+                // var item = {id: 0, name: $scope.approver_project_data[2]['approverName']}
+                // name_list.push(item)
+                // $scope.approver_three_name_list = name_list
+                $scope.approverThreeNameSelector = false
+                $scope.approverThreeNameText = true
+                $("#setApprovalBtn3").prop("disabled", true);
+            }
 
         })
     }
@@ -1948,22 +2029,22 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $('#approverOnePost').on('change', function () {
         console.log("Inside approverOnePost selector ")
         var val = $("#approverOnePost").val();
-        $scope.getApproverNames(val)
+        $scope.getApproverNames(val, 'approver_one_name_list')
     });
 
     $('#approverTwoPost').on('change', function () {
         console.log("Inside approverTwoPost selector ")
         var val = $("#approverTwoPost").val();
-        $scope.getApproverNames(val)
+        $scope.getApproverNames(val, 'approver_two_name_list')
     });
 
     $('#approverThreePost').on('change', function () {
         console.log("Inside approverThreePost selector ")
         var val = $("#approverThreePost").val();
-        $scope.getApproverNames(val)
+        $scope.getApproverNames(val, 'approver_three_name_list')
     });
 
-    $scope.getApproverNames = function (userTypeId) {
+    $scope.getApproverNames = function (userTypeId, approver_order) {
         console.log("clicked getApproverNames function")
 
         var obj = JSON.stringify({
@@ -1977,8 +2058,108 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response)
             var response_payload = response['data']
             console.log(response_payload)
+            $scope.name_list = response_payload['data']
+            console.log($scope.name_list)
+            var name_list = []
+            for (var i = 0; i < $scope.name_list.length; i++) {
+                var name = $scope.name_list[i]['firstName'] + ' ' + $scope.name_list[i]['lastName']
+                console.log(name)
+                var item = {id: i, name: name}
+                name_list.push(item)
+                console.log(name_list)
+            }
+            $scope[approver_order] = name_list
         })
     }
+
+
+    $scope.setApprover = function (id) {
+        console.log("clicked setApprover function")
+
+        if (id.toString() === '0') {
+            var postId = $("#approverOnePost").val();
+            console.log(postId)
+            var name = $("#approverOneName").val();
+            console.log(name)
+            var app_name = $scope.approver_one_name_list[name]['name']
+        } else if (id.toString() === '1') {
+            var postId = $("#approverTwoPost").val();
+            console.log(postId)
+            var name = $("#approverTwoName").val();
+            console.log(name)
+            var app_name = $scope.approver_two_name_list[name]['name']
+        } else if (id.toString() === '2') {
+            var postId = $("#approverThreeName").val();
+            console.log(postId)
+            var name = $("#approverThreeName").val();
+            console.log(name)
+            var app_name = $scope.approver_three_name_list[name]['name']
+        }
+
+        var obj = JSON.stringify({
+            "approverUserId": $scope.name_list[name]['id'],
+            "approverPost": $scope.name_list[name]['userTypeId'],
+            "approverName": app_name,
+            "approverId": $scope.approver_project_data[id]['id'],
+        })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/Approver/updateApprover',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#approvalDataModal').modal('show');
+            }
+        })
+    }
+
+    $scope.approveProject = function (id) {
+        console.log("clicked approveProject function")
+        var approverId = $scope.approver_project_data[id]['id']
+        console.log(approverId)
+        var obj = JSON.stringify({
+            "approverId": approverId,
+        })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/Approver/updateStatus',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+
+    //List all assigned projects to approve to a user
+    $scope.view_user_assigned_approve_projects = function () {
+
+        $http({
+            method: 'GET',
+            url: url + '/listProjectsByApprover',
+            // data: JSON.stringify({
+            //     pageNum: 1,
+            //     pageSize: 100
+            // })
+        }).then(function mySuccess(response) {
+            $scope.approve_project_list = response.data.content
+            change_projects_date_format();
+            console.log($scope.approve_project_list)
+        })
+
+        $http.get('/selectAllProjectType').then(function (response) {
+            $scope.project_types = response.data;
+        });
+    }
+
 }])
 
 
