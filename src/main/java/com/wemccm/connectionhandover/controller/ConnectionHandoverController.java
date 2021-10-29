@@ -76,10 +76,10 @@ public class ConnectionHandoverController {
 
 		String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename() ;
 		Pojo.setFileName(fileName);
-//		String filePath = "D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
+		String filePath = "D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
 //		String filePath = "C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
 
-		String filePath = "C:\\uploadfile\\" + fileName;
+//		String filePath = "C:\\uploadfile\\" + fileName;
 		
 		File filess=new File("C:\\uploadfile\\");
 		if(!filess.exists()){

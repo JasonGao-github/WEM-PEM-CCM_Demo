@@ -78,36 +78,34 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
+                        
+							<div class="row">
+								<div class="c" ng-init="design_getAllAttachments()">
+									<h3>Attachements (Photos or Designs)</h3>
+								</div>
+								<form enctype="multipart/form-data" id="uploadForm">
+									<input type="file" name="file"
+									onchange="angular.element(this).scope().design_add_attachment(window.event)">
+									<button type="button" class="btn btn-primary"
+							ng-click="design_submit_attachment()">Upload</button>
+								</form>
+							</div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-light table-bordered table-hover dom-jQuery-events"
                                        style="text-align: center; margin: 0">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Action</th>
+                                        <th>Attachment Name</th>
+                                        <th>Attachment Link</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="data in all_user_data track by $index">
+                                    <tr ng-repeat="attachment in design_attachment_list">
                                         <td>
-                                            {{data['firstName']}}
+                                            {{attachment.fileName}}
                                         </td>
                                         <td>
-                                            {{data['lastName']}}
-                                        </td>
-                                        <td>
-                                            {{data['email']}}
-                                        </td>
-                                        <td>
-                                            {{data['userType']}}
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger" ng-click="delete_user($index)">
-                                                Delete User
-                                            </button>
+                                            <a href="{{attachment.s3URL}}" download>Download</a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -122,5 +120,24 @@
         </div>
     </div>
 </section>
+	<!-- Modal -->
+	<div class="modal fade" id="uploadModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Design Attachment</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Upload successful! Refresh page to see the uploaded file.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
