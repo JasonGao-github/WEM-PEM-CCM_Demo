@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.wemccm.common.entity.ConnectionHandover;
 import com.wemccm.common.entity.UplaodedFiles;
 import com.wemccm.common.pojo.ConnectionHandoverPojo;
+import com.wemccm.common.pojo.DownlaodedFilesPojo;
 import com.wemccm.common.pojo.NegotiatedConnectionPojo;
 import com.wemccm.common.pojo.ResponseResult;
 import com.wemccm.common.util.S3Utils;
@@ -63,9 +64,9 @@ public class ConnectionHandoverController {
 		return p;
 	}
 
-	@RequestMapping(value = "/uplaodedFiles", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/ConnectionHandoverUplaodedFiles", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseResult uplaodedFiles(@RequestPart MultipartFile file) throws IOException {
+	public ResponseResult ConnectionHandoverUplaodedFiles(@RequestPart MultipartFile file) throws IOException {
 		UplaodedFiles Pojo = new UplaodedFiles();
 		Integer projectId = 123;
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
@@ -97,15 +98,22 @@ public class ConnectionHandoverController {
 		return new ResponseResult();
 	}
 
-	@RequestMapping(value = "/downlaodedFiles", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/ConnectionHandoverDownlaodedFiles", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public List<UplaodedFiles> downlaodedFiles() {
+	public List<UplaodedFiles> ConnectionHandoverDownlaodedFiles() {
 		Integer projectId = 123;
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		HttpSession session = request.getSession();
 		projectId = (int) session.getAttribute("projectId");
-		List<UplaodedFiles> uf = serivce.downlaodedFiles(projectId);
+		
+		DownlaodedFilesPojo pojo=new DownlaodedFilesPojo();
+		pojo.setProjectId(projectId);
+		pojo.setModule("ConnectionHandover");
+		
+		
+		
+		List<UplaodedFiles> uf = serivce.downlaodedFiles(pojo);
 		return uf;
 	}
 
@@ -123,8 +131,6 @@ public class ConnectionHandoverController {
 
 		String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename() ;
 		Pojo.setFileName(fileName);
-//		String filePath = "D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
-//		String filePath = "C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
 
 		String filePath = "C:\\uploadfile\\" + fileName;
 		
@@ -145,7 +151,24 @@ public class ConnectionHandoverController {
 	}
 	
 	
-	
+	@RequestMapping(value = "/DesignDownlaodedFiles", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public List<UplaodedFiles> DesignDownlaodedFiles() {
+		Integer projectId = 123;
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
+		projectId = (int) session.getAttribute("projectId");
+		
+		DownlaodedFilesPojo pojo=new DownlaodedFilesPojo();
+		pojo.setProjectId(projectId);
+		pojo.setModule("Design");
+		
+		
+		
+		List<UplaodedFiles> uf = serivce.downlaodedFiles(pojo);
+		return uf;
+	}
 	
 	
 	
