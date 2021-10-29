@@ -4,6 +4,7 @@ public class UpdateApproverStatusPojo {
 
 	private int approverId;
 
+	
 	public int getApproverId() {
 		return approverId;
 	}

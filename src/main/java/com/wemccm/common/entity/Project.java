@@ -7,6 +7,7 @@ public class Project extends BaseEntity {
 	private Date createDate;
 	private String version;
 
+	
 	public String getVersion() {
 		return version;
 	}
