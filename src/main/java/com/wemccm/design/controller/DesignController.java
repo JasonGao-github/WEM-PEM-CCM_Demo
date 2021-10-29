@@ -60,27 +60,36 @@ public class DesignController {
 //	public ResponseResult uplaodedFiles(@RequestPart MultipartFile file) throws IOException {
 //		UplaodedFiles Pojo = new UplaodedFiles();
 //		Integer projectId = 123;
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-//				.getRequest();
-//		HttpSession session = request.getSession();
-//		projectId = (int) session.getAttribute("projectId");
+////		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+////				.getRequest();
+////		HttpSession session = request.getSession();
+////		projectId = (int) session.getAttribute("projectId");
 //		Pojo.setProjectId(projectId);
 //
-////		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-////		String date = df.format(new Date());
 //		String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename() ;
 //		Pojo.setFileName(fileName);
-//		String filePath = "D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
+////		String filePath = "D:\\RMIT\\y2s2\\Jemena Project\\project\\jemena-WEM-PEM-CCM\\" + fileName;
+////		String filePath = "C:\\git_workplace\\jemena-WEM-PEM-CCM\\jemena-WEM-PEM-CCM\\src\\main\\resource\\uploadfile\\" + fileName;
+//
+//		String filePath = "C:\\uploadfile\\" + fileName;
+//		
+//		File filess=new File("C:\\uploadfile\\");
+//		if(!filess.exists()){
+//			filess.mkdir();
+//		}
+//		
 //		Pojo.setLocalURL(filePath);
 //		Pojo.setModule("Design");
 //		File dest = new File(filePath);
 //		Files.copy(file.getInputStream(), dest.toPath());
 //		String url = S3Utils.uploadToS3(dest, fileName);
-////	    System.out.println(Pojo.getLocalURL()+Pojo.getFileName()+Pojo.getModule());
+//	    System.out.println(Pojo.getLocalURL()+Pojo.getFileName()+Pojo.getModule());
 //		Pojo.setS3URL(url);
 //		CHserivce.uplaodedFiles(Pojo);
 //		return new ResponseResult();
 //	}
+//	
+//	
 //	@RequestMapping(value = "/DesignDownlaodedFiles", produces = "application/json;charset=UTF-8")
 //	@ResponseBody
 //	public List<UplaodedFiles> downlaodedFiles() {
