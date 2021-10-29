@@ -205,18 +205,18 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         $http.get('/selectAllNonContestableType').then(function (response) {
             $scope.ncc_otherTypes = response.data;
             get_item();
-			
-			if(existing && pc_item.length > 0){
-				$scope.project_types.forEach(type =>{
-					//in order to prefill the select input
-					//choose the whole item instead of only the id
-					if (pc_item[0].projectTypeId == type.id)
-					$scope.selected_type = type;
-				})
-				//$scope.selected_type.id = pc_item[0].projectTypeId
-				console.log($scope.selected_type)
-				$scope.ncc_typeChanged()
-			}
+
+            if (existing && pc_item.length > 0) {
+                $scope.project_types.forEach(type => {
+                    //in order to prefill the select input
+                    //choose the whole item instead of only the id
+                    if (pc_item[0].projectTypeId == type.id)
+                        $scope.selected_type = type;
+                })
+                //$scope.selected_type.id = pc_item[0].projectTypeId
+                console.log($scope.selected_type)
+                $scope.ncc_typeChanged()
+            }
         });
 
         //get item of each type and concat to json
@@ -856,10 +856,10 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             url: url + '/listAvoidedCostESCGuideline',
             data: overhead,
         }).then(function mySuccess(response) {
-			data = response.data
-			if(data.length > 0 && 'constant' in data[data.length -1]){
-				$scope.overhead = parseFloat(data[data.length - 1].constant);		
-			}
+            data = response.data
+            if (data.length > 0 && 'constant' in data[data.length - 1]) {
+                $scope.overhead = parseFloat(data[data.length - 1].constant);
+            }
         })
     }
 
@@ -1011,12 +1011,12 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //connection hand over
     $scope.conn_handover_submit = function () {
-    	date = null
-    	if($scope.date != null){
-    		date = parseInt($scope.date.getTime()); 
-    		//console.log(date)
-    	}
-    	data = {
+        date = null
+        if ($scope.date != null) {
+            date = parseInt($scope.date.getTime());
+            //console.log(date)
+        }
+        data = {
             projectId: '',
             projectRef: $scope.projectRef,
             portalNo: $scope.portalNo,
@@ -1053,76 +1053,76 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             data: obj,
         }).then(function mySuccess(response) {
             console.log(response.data);
-            
+
             $window.location.href = '/contract_schedule_page';
         })
-        
+
 
     }
 
     //connection handover get data
-    $scope.conn_handover_getData = function() {
-		$http.get('/ConnectionHandover/getData').then(function(response) {
-			payload_format = response.data
-			console.log(response.data)
-			if(response.data.projectData.length > 0){
-				data = response.data.projectData[0]
-				if(data != null){
-					$scope.complianceReviewedDesign = data.complianceReviewedDesign
-					$scope.coustomerBusinesName = data.coustomerBusinesName
-					$scope.customerContactEmail = data.customerContactEmail
-					$scope.customerContactName = data.customerContactName
-					$scope.customerContactNumber = data.customerContactNumber
-					$scope.date = new Date(data.date)
-					$scope.embeddedNetwork = data.embeddedNetwork
-					$scope.existingConnection = data.existingConnection
-					$scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
-					$scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
-					$scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
-					$scope.networkOperatorRequired = data.networkOperatorRequired
-					$scope.portalNo = data.portalNo
-					$scope.projectAddress = data.projectAddress
-					$scope.projectId = data.projectId
-					$scope.projectManagerName = data.projectManagerName
-					$scope.projectManagerPhone = data.projectManagerPhone
-					$scope.projectRef = data.projectRef
-					$scope.propertyRequirement = data.propertyRequirement
-					$scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
-					$scope.silVonissue = data.silVonissue
-					$scope.silVonissueComments = data.silVonissueComments
-					$scope.supplyPointComments = data.supplyPointComments
-					$scope.supplyPointDetails = data.supplyPointDetails
-					$scope.ugCrewRequired = data.ugCrewRequired		
-				}
-			}
-			
-		});
-    	
+    $scope.conn_handover_getData = function () {
+        $http.get('/ConnectionHandover/getData').then(function (response) {
+            payload_format = response.data
+            console.log(response.data)
+            if (response.data.projectData.length > 0) {
+                data = response.data.projectData[0]
+                if (data != null) {
+                    $scope.complianceReviewedDesign = data.complianceReviewedDesign
+                    $scope.coustomerBusinesName = data.coustomerBusinesName
+                    $scope.customerContactEmail = data.customerContactEmail
+                    $scope.customerContactName = data.customerContactName
+                    $scope.customerContactNumber = data.customerContactNumber
+                    $scope.date = new Date(data.date)
+                    $scope.embeddedNetwork = data.embeddedNetwork
+                    $scope.existingConnection = data.existingConnection
+                    $scope.maximumAllocatedCapacityAmps = data.maximumAllocatedCapacityAmps
+                    $scope.maximumAllocatedCapacityPhases = data.maximumAllocatedCapacityPhases
+                    $scope.maximumAllocatedCapacitykVA = data.maximumAllocatedCapacitykVA
+                    $scope.networkOperatorRequired = data.networkOperatorRequired
+                    $scope.portalNo = data.portalNo
+                    $scope.projectAddress = data.projectAddress
+                    $scope.projectId = data.projectId
+                    $scope.projectManagerName = data.projectManagerName
+                    $scope.projectManagerPhone = data.projectManagerPhone
+                    $scope.projectRef = data.projectRef
+                    $scope.propertyRequirement = data.propertyRequirement
+                    $scope.reCadvisedofCTarrangement = data.reCadvisedofCTarrangement
+                    $scope.silVonissue = data.silVonissue
+                    $scope.silVonissueComments = data.silVonissueComments
+                    $scope.supplyPointComments = data.supplyPointComments
+                    $scope.supplyPointDetails = data.supplyPointDetails
+                    $scope.ugCrewRequired = data.ugCrewRequired
+                }
+            }
+
+        });
+
     }
-	//connection handover get attachment
-	$scope.conn_handover_getAllAttachments = function() {
-		$http.get('/downlaodedFiles').then(function(response) {
-			console.log(response.data)
-			$scope.conn_handover_attachment_list = response.data;
-		});
-	}
-	
-	//for adding attachment
-	$scope.add_attachment = function(evt){
-		files = evt.target.files[0];
-		console.log(files)
-		var formData = new FormData();
-		console.log(formData)
-		formData.append('file', files);
-		console.log(formData)
-		$scope.attachments = formData;
-		console.log($scope.attachments);
-		$scope.conn_handover_getAllAttachments()
-	}
-	
-	$scope.conn_handover_submit_attachment = function(){
-		data = $scope.attachments;
-		$http({
+    //connection handover get attachment
+    $scope.conn_handover_getAllAttachments = function () {
+        $http.get('/downlaodedFiles').then(function (response) {
+            console.log(response.data)
+            $scope.conn_handover_attachment_list = response.data;
+        });
+    }
+
+    //for adding attachment
+    $scope.add_attachment = function (evt) {
+        files = evt.target.files[0];
+        console.log(files)
+        var formData = new FormData();
+        console.log(formData)
+        formData.append('file', files);
+        console.log(formData)
+        $scope.attachments = formData;
+        console.log($scope.attachments);
+        $scope.conn_handover_getAllAttachments()
+    }
+
+    $scope.conn_handover_submit_attachment = function () {
+        data = $scope.attachments;
+        $http({
             method: "POST",
             url: url + '/uplaodedFiles',
             data: data,
@@ -1132,31 +1132,31 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $('#uploadModal').modal('show');
         })
     }
-    
-	//design get attachment
-	$scope.design_getAllAttachments = function() {
-		$http.get('/downlaodedFilesDesign').then(function(response) {
-			console.log(response.data)
-			$scope.design_attachment_list = response.data;
-		});
-	}
-	
-	//for adding attachment
-	$scope.design_add_attachment = function(evt){
-		files = evt.target.files[0];
-		console.log(files)
-		var formData = new FormData();
-		console.log(formData)
-		formData.append('file', files);
-		console.log(formData)
-		$scope.attachments = formData;
-		console.log($scope.attachments);
-		$scope.conn_handover_getAllAttachments()
-	}
-	
-	$scope.design_submit_attachment = function(){
-		data = $scope.attachments;
-		$http({
+
+    //design get attachment
+    $scope.design_getAllAttachments = function () {
+        $http.get('/downlaodedFilesDesign').then(function (response) {
+            console.log(response.data)
+            $scope.design_attachment_list = response.data;
+        });
+    }
+
+    //for adding attachment
+    $scope.design_add_attachment = function (evt) {
+        files = evt.target.files[0];
+        console.log(files)
+        var formData = new FormData();
+        console.log(formData)
+        formData.append('file', files);
+        console.log(formData)
+        $scope.attachments = formData;
+        console.log($scope.attachments);
+        $scope.conn_handover_getAllAttachments()
+    }
+
+    $scope.design_submit_attachment = function () {
+        data = $scope.attachments;
+        $http({
             method: "POST",
             url: url + '/uplaodedFilesDesign',
             data: data,
@@ -1166,7 +1166,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             $('#uploadModal').modal('show');
         })
     }
-    
+
 
     // $('#add_new_user_btn').click(function (e) {
     //     e.preventDefault();
@@ -1978,7 +1978,14 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response_payload)
         })
     }
-    
+
+    $scope.approverOneNameSelector = true
+    $scope.approverOneNameText = false
+    $scope.approverTwoNameSelector = true
+    $scope.approverTwoNameText = false
+    $scope.approverThreeNameSelector = true
+    $scope.approverThreeNameText = false
+
     $scope.getApproversDetails = function () {
         console.log("clicked getApproversDetails function")
 
@@ -1989,8 +1996,82 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response)
             var response_payload = response['data']
             console.log(response_payload)
-            
+
             $scope.approver_project_data = response_payload['projectData']
+            console.log($scope.approver_project_data)
+
+            if ($scope.approver_project_data[0]['approverPost'] == null) {
+                console.log('data null approver')
+                $scope.approverOneStatus = "Not approved"
+                $scope.approverOneDate = "None"
+                $scope.approver_one_post = "0"
+                $scope.approver_one_name = ""
+
+            } else {
+                $scope.approverOneStatus = $scope.approver_project_data[0]['approverStatus']
+                $scope.approverOneDate = $scope.approver_project_data[0]['approvalDate']
+                $scope.approver_one_post = $scope.approver_project_data[0]['approverPost']
+                $scope.approver_one_name = $scope.approver_project_data[0]['approverName']
+
+                $scope.approverOneNameSelector = false
+                $scope.approverOneNameText = true
+                $("#setApprovalBtn1").prop("disabled", true);
+                // var name_list = []
+                // var item = {id: 1, name: $scope.approver_project_data[0]['approverName'], selected: true}
+                // name_list.push(item)
+                // $scope.approver_one_name_list = name_list
+
+
+                // var name_list = []
+                // for (var i = 0; i < $scope.approver_project_data.length; i++) {
+                //     name_list.push($scope.approver_project_data[i]['approverName'])
+                // }
+                // $scope.approver_one_name_list = name_list
+                // $scope.approver_two_name_list = name_list
+                // $scope.approver_three_name_list = name_list
+            }
+
+            if ($scope.approver_project_data[1]['approverPost'] == null) {
+                console.log('data null approver')
+
+                $scope.approverTwoStatus = "Not approved"
+                $scope.approverTwoDate = "None"
+                $scope.approver_two_post = "0"
+                $scope.approver_two_name = ""
+            } else {
+                $scope.approverTwoStatus = $scope.approver_project_data[1]['approverStatus']
+                $scope.approverTwoDate = $scope.approver_project_data[1]['approvalDate']
+                $scope.approver_two_post = $scope.approver_project_data[1]['approverPost']
+                $scope.approver_two_name = $scope.approver_project_data[1]['approverName']
+                // var name_list = []
+                // var item = {id: 0, name: $scope.approver_project_data[1]['approverName']}
+                // name_list.push(item)
+                // $scope.approver_two_name_list = name_list
+                $scope.approverTwoNameSelector = false
+                $scope.approverTwoNameText = true
+                $("#setApprovalBtn2").prop("disabled", true);
+            }
+
+            if ($scope.approver_project_data[2]['approverPost'] == null) {
+                console.log('data null approver')
+
+                $scope.approverThreeStatus = "Not approved"
+                $scope.approverThreeDate = "None"
+                $scope.approver_three_post = "0"
+                $scope.approver_three_name = ""
+            } else {
+                $scope.approverThreeStatus = $scope.approver_project_data[2]['approverStatus']
+                $scope.approverThreeDate = $scope.approver_project_data[2]['approvalDate']
+                $scope.approver_three_post = $scope.approver_project_data[2]['approverPost']
+                $scope.approver_three_name = $scope.approver_project_data[2]['approverName']
+                // var name_list = []
+                // var item = {id: 0, name: $scope.approver_project_data[2]['approverName']}
+                // name_list.push(item)
+                // $scope.approver_three_name_list = name_list
+                $scope.approverThreeNameSelector = false
+                $scope.approverThreeNameText = true
+                $("#setApprovalBtn3").prop("disabled", true);
+            }
 
         })
     }
@@ -2003,22 +2084,22 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     $('#approverOnePost').on('change', function () {
         console.log("Inside approverOnePost selector ")
         var val = $("#approverOnePost").val();
-        $scope.getApproverNames(val)
+        $scope.getApproverNames(val, 'approver_one_name_list')
     });
 
     $('#approverTwoPost').on('change', function () {
         console.log("Inside approverTwoPost selector ")
         var val = $("#approverTwoPost").val();
-        $scope.getApproverNames(val)
+        $scope.getApproverNames(val, 'approver_two_name_list')
     });
 
     $('#approverThreePost').on('change', function () {
         console.log("Inside approverThreePost selector ")
         var val = $("#approverThreePost").val();
-        $scope.getApproverNames(val)
+        $scope.getApproverNames(val, 'approver_three_name_list')
     });
 
-    $scope.getApproverNames = function (userTypeId) {
+    $scope.getApproverNames = function (userTypeId, approver_order) {
         console.log("clicked getApproverNames function")
 
         var obj = JSON.stringify({
@@ -2032,8 +2113,112 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
             console.log(response)
             var response_payload = response['data']
             console.log(response_payload)
+            $scope.name_list = response_payload['data']
+            console.log($scope.name_list)
+            var name_list = []
+            for (var i = 0; i < $scope.name_list.length; i++) {
+                var name = $scope.name_list[i]['firstName'] + ' ' + $scope.name_list[i]['lastName']
+                console.log(name)
+                var item = {id: i, name: name}
+                name_list.push(item)
+                console.log(name_list)
+            }
+            $scope[approver_order] = name_list
         })
     }
+
+
+    $scope.setApprover = function (id) {
+        console.log("clicked setApprover function")
+
+        if (id.toString() === '0') {
+            var postId = $("#approverOnePost").val();
+            console.log(postId)
+            var name = $("#approverOneName").val();
+            console.log(name)
+            var app_name = $scope.approver_one_name_list[name]['name']
+        } else if (id.toString() === '1') {
+            var postId = $("#approverTwoPost").val();
+            console.log(postId)
+            var name = $("#approverTwoName").val();
+            console.log(name)
+            var app_name = $scope.approver_two_name_list[name]['name']
+        } else if (id.toString() === '2') {
+            var postId = $("#approverThreeName").val();
+            console.log(postId)
+            var name = $("#approverThreeName").val();
+            console.log(name)
+            var app_name = $scope.approver_three_name_list[name]['name']
+        }
+
+        var obj = JSON.stringify({
+            "approverUserId": $scope.name_list[name]['id'],
+            "approverPost": $scope.name_list[name]['userTypeId'],
+            "approverName": app_name,
+            "approverId": $scope.approver_project_data[id]['id'],
+        })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/Approver/updateApprover',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+            var status = response.data['result']
+            console.log(status)
+            if (status.toString() === 'success') {
+                $('#approvalDataModal').modal('show');
+            }
+        })
+    }
+
+    $scope.approveProject = function (id) {
+        console.log("clicked approveProject function")
+        var approverId = $scope.approver_project_data[id]['id']
+        console.log(approverId)
+        var obj = JSON.stringify({
+            "approverId": approverId,
+        })
+        console.log(obj)
+        $http({
+            method: 'POST',
+            url: url + '/Approver/updateStatus',
+            data: obj
+        }).then(function mySuccess(response) {
+            console.log(response)
+            var response_payload = response['data']
+            console.log(response_payload)
+        })
+    }
+
+
+    //List all assigned projects to approve to a user
+    $scope.view_user_assigned_approve_projects = function () {
+        var obj = JSON.stringify({
+            "approverId": 1,
+        })
+        $http({
+            method: 'POST',
+            url: url + '/listProjectsByApprover',
+            data: obj
+            // data: JSON.stringify({
+            //     pageNum: 1,
+            //     pageSize: 100
+            // })
+        }).then(function mySuccess(response) {
+            console.log(response)
+            $scope.approve_project_list = response.data.content
+            change_projects_date_format();
+            console.log($scope.approve_project_list)
+        })
+
+        $http.get('/selectAllProjectType').then(function (response) {
+            $scope.project_types = response.data;
+        });
+    }
+
 }])
 
 

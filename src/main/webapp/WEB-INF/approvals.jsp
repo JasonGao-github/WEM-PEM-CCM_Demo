@@ -91,7 +91,7 @@
                                                     <label for="approverOnePost">Approver Post</label>
                                                     <select class="form-control" id="approverOnePost"
                                                             ng-model="approver_one_post">
-                                                        <option value="" selected disabled hidden>Select
+                                                        <option value=0" selected disabled hidden>Select
                                                             job role
                                                         </option>
                                                         <option value="1">Super Administrator</option>
@@ -111,16 +111,20 @@
                                                 <div class="form-group">
                                                     <label for="approverOneName">Approver Name</label>
                                                     <select class="form-control" id="approverOneName"
+                                                            ng-show="approverOneNameSelector"
                                                             ng-model="approver_one_name">
-                                                        <option value="" selected disabled hidden>Select
-                                                            job role
+                                                        <option ng-repeat="name in approver_one_name_list"
+                                                                value="{{name.id}}"
+                                                                ng-selected="name.selected == true">{{name.name}}
                                                         </option>
-                                                        <option value="2">Financial Administrator</option>
                                                     </select>
+                                                    <h4 ng-show="approverOneNameText">{{approver_one_name}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <button type="button" class="btn btn-primary" ng-click="">Set Approval
+                                                <button type="button" class="btn btn-primary" ng-click="setApprover(0)"
+                                                        id="setApprovalBtn1">
+                                                    Set Approval
                                                 </button>
                                             </div>
                                         </div>
@@ -128,19 +132,20 @@
                                             <label for="approverOnePost"
                                                    class="col-sm-2 col-form-label">Approver: </label>
                                             <div class="col">
-                                                <button type="button" class="btn btn-success" ng-click="">Approve
+                                                <button type="button" class="btn btn-success"
+                                                        ng-click="approveProject(0)">Approve
                                                 </button>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="approverOneStatus">Approval Status</label>
-                                                    <h4 ng-model="approverOneStatus"></h4>
+                                                    <h4 ng-model="approverOneStatus">{{approverOneStatus}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="approverOneDate">Approval Date</label>
-                                                    <h4 ng-model="approverOneDate">Approval Date</h4>
+                                                    <h4 ng-model="approverOneDate">{{approverOneDate}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -162,9 +167,10 @@
                                                     <label for="approverTwoPost">Approver Post</label>
                                                     <select class="form-control" id="approverTwoPost"
                                                             ng-model="approver_two_post">
-                                                        <option value="" selected disabled hidden>Select
+                                                        <option value="0" selected disabled hidden>Select
                                                             job role
                                                         </option>
+                                                        <option value="1">Super Administrator</option>
                                                         <option value="2">Financial Administrator</option>
                                                         <option value="3">Tariff Administrator</option>
                                                         <option value="4">Pricing Administrator</option>
@@ -181,16 +187,20 @@
                                                 <div class="form-group">
                                                     <label for="approverTwoName">Approver Name</label>
                                                     <select class="form-control" id="approverTwoName"
+                                                            ng-show="approverTwoNameSelector"
                                                             ng-model="approver_two_name">
-                                                        <option value="" selected disabled hidden>Select
-                                                            job role
+                                                        <option ng-repeat="name in approver_two_name_list"
+                                                                value="{{name.id}}"
+                                                                ng-selected="name.selected == true">{{name.name}}
                                                         </option>
-                                                        <option value="2">Financial Administrator</option>
                                                     </select>
+                                                    <h4 ng-show="approverTwoNameText">{{approver_two_name}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <button type="button" class="btn btn-primary" ng-click="">Set Approval
+                                                <button type="button" class="btn btn-primary" ng-click="setApprover(1)"
+                                                        id="setApprovalBtn2">
+                                                    Set Approval
                                                 </button>
                                             </div>
                                         </div>
@@ -198,19 +208,20 @@
                                             <label for="approverOnePost"
                                                    class="col-sm-2 col-form-label">Approver: </label>
                                             <div class="col">
-                                                <button type="button" class="btn btn-success" ng-click="">Approve
+                                                <button type="button" class="btn btn-success"
+                                                        ng-click="approveProject(1)">Approve
                                                 </button>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="approverTwoStatus">Approval Status</label>
-                                                    <h4 ng-model="approverTwoStatus"></h4>
+                                                    <h4 ng-model="approverTwoStatus">{{approverTwoStatus}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="approverTwoDate">Approval Date</label>
-                                                    <h4 ng-model="approverTwoDate">Approval Date</h4>
+                                                    <h4 ng-model="approverTwoDate">{{approverTwoDate}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -232,9 +243,10 @@
                                                     <label for="approverThreePost">Approver Post</label>
                                                     <select class="form-control" id="approverThreePost"
                                                             ng-model="approver_three_post">
-                                                        <option value="" selected disabled hidden>Select
+                                                        <option value="0" selected disabled hidden>Select
                                                             job role
                                                         </option>
+                                                        <option value="1">Super Administrator</option>
                                                         <option value="2">Financial Administrator</option>
                                                         <option value="3">Tariff Administrator</option>
                                                         <option value="4">Pricing Administrator</option>
@@ -251,36 +263,42 @@
                                                 <div class="form-group">
                                                     <label for="approverThreeName">Approver Name</label>
                                                     <select class="form-control" id="approverThreeName"
+                                                            ng-show="approverThreeNameSelector"
                                                             ng-model="approver_three_name">
-                                                        <option value="" selected disabled hidden>Select
-                                                            job role
+                                                        <option ng-repeat="name in approver_three_name_list"
+                                                                value="{{name.id}}"
+                                                                ng-selected="name.selected == true">{{name.name}}
                                                         </option>
-                                                        <option value="2">Financial Administrator</option>
                                                     </select>
+                                                    <h4 ng-show="approverThreeNameText">{{approver_three_name}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <button type="button" class="btn btn-primary" ng-click="">Set Approval
+                                                <button type="button" class="btn btn-primary" ng-click="setApprover(2)"
+                                                        id="setApprovalBtn3">
+                                                    Set Approval
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="row d-flex align-items-center">
+                                        <div class=" row d-flex align-items-center
+                                                ">
                                             <label for="approverThreePost"
                                                    class="col-sm-2 col-form-label">Approver: </label>
                                             <div class="col">
-                                                <button type="button" class="btn btn-success" ng-click="">Approve
+                                                <button type="button" class="btn btn-success"
+                                                        ng-click="approveProject(2)">Approve
                                                 </button>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="approverThreeStatus">Approval Status</label>
-                                                    <h4 ng-model="approverThreeStatus"></h4>
+                                                    <h4 ng-model="approverThreeStatus">{{approverThreeStatus}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="approverThreeDate">Approval Date</label>
-                                                    <h4 ng-model="approverThreeDate">Approval Date</h4>
+                                                    <h4 ng-model="approverThreeDate">{{approverThreeDate}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -294,5 +312,27 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="approvalDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Approvals - Status</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Operation successful!</h5>
+            </div>
+            <div class="modal-footer">
+                <%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
