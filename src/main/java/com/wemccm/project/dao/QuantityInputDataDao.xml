@@ -95,7 +95,7 @@
 		actualsSubTotal=#{actualsSubTotal},
 		recouverableSubTotal=#{recouverableSubTotal},
 		jemenaSubTotal=#{jemenaSubTotal},
-		lcatSubTotal=#{lcatSubTotal},
+		lcatSubTotal=#{lcatSubTotal}
 		WHERE id =#{quantityInputId}
 	</update>
 
