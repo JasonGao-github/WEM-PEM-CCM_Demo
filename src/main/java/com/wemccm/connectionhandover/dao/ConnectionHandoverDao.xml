@@ -174,12 +174,13 @@ where nc.projectId=#{projectId}
 	
 	
 <select id="downlaodedFiles" 
-	parameterType="Integer"
+	parameterType="com.wemccm.common.pojo.DownlaodedFilesPojo"
 		resultType="com.wemccm.common.entity.UplaodedFiles">
 
 select *
 from uplaodedfiles
 where projectId=#{projectId}
+and module=#{module}
 
 
 	</select> 

@@ -366,8 +366,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">FIM Basic
-						Data</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Connection Handover Attachment</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>

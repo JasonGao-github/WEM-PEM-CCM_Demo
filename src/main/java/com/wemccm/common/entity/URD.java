@@ -3,12 +3,12 @@ package com.wemccm.common.entity;
 public class URD  extends BaseEntity {
 	private Integer projectId;
 	
-	private String subdivision; //
-	private String inquiryNumber; //
-	private String supplyAddress; //
-	private String jemenaResponsibleOfficer; //
-	private String descriptionofConnectionWorkstobeundertakenbyJemena; //
-	private String descriptionofConnectionWorkstobeundertakenbyDeveloper; //
+	private String subdivision; 
+	private String inquiryNumber; 
+	private String supplyAddress; 
+	private String jemenaResponsibleOfficer; 
+	private String descriptionofConnectionWorkstobeundertakenbyJemena; 
+	private String descriptionofConnectionWorkstobeundertakenbyDeveloper; 
 	
 	
 	private String statutoryandOtherApprovals; 

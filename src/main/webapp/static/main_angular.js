@@ -1101,7 +1101,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
     }
     //connection handover get attachment
     $scope.conn_handover_getAllAttachments = function () {
-        $http.get('/downlaodedFiles').then(function (response) {
+        $http.get('/ConnectionHandoverDownlaodedFiles').then(function (response) {
             console.log(response.data)
             $scope.conn_handover_attachment_list = response.data;
         });
@@ -1124,7 +1124,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         data = $scope.attachments;
         $http({
             method: "POST",
-            url: url + '/uplaodedFiles',
+            url: url + '/ConnectionHandoverUplaodedFiles',
             data: data,
             headers: {'Content-Type': undefined}
         }).then(function mySuccess(response) {
@@ -1135,7 +1135,7 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
 
     //design get attachment
     $scope.design_getAllAttachments = function () {
-        $http.get('/downlaodedFilesDesign').then(function (response) {
+        $http.get('/DesignDownlaodedFiles').then(function (response) {
             console.log(response.data)
             $scope.design_attachment_list = response.data;
         });
@@ -1151,14 +1151,13 @@ workbench.controller('controller', ['$scope', '$http', '$interval', '$route', '$
         console.log(formData)
         $scope.attachments = formData;
         console.log($scope.attachments);
-        $scope.conn_handover_getAllAttachments()
     }
 
     $scope.design_submit_attachment = function () {
         data = $scope.attachments;
         $http({
             method: "POST",
-            url: url + '/uplaodedFilesDesign',
+            url: url + '/DesignUplaodedFiles',
             data: data,
             headers: {'Content-Type': undefined}
         }).then(function mySuccess(response) {
