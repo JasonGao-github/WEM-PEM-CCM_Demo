@@ -1,0 +1,14 @@
+Sprint 0 – Development preparation 
+
+Sprint 1 – Build the basic framework and design the basic structure of the database.
+
+Sprint 2 – Login and add user function development. 
+
+Sprint 3 – Part of the basic data module development and code reconstruction, part of the database redesign. 
+
+Sprint 4 – Partially created project module development and code reconstruction, and the corresponding database was redesigned.
+
+Note: Some functions of the financial page have not been completed, and the "financial development guide" has been written with the customer's consent to facilitate subsequent development.
+
+Sprint 5 – Write various documents 
+

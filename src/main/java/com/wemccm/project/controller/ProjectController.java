@@ -61,11 +61,14 @@ public class ProjectController {
 	// listByApprover
 	@RequestMapping(value = "/listProjectsByApprover", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseResult listByApprover(@RequestBody ListProjectsByApproverPojo pojo) {
+	public ResponseResult listByApprover() {
 
-		int userId = getUserIdInSession();
+//		@RequestBody ListProjectsByApproverPojo pojo
+
+		ListProjectsByApproverPojo pojo = new ListProjectsByApproverPojo();
+		String userId = getUserIdInSession();
 //		int userId = 1;
-		pojo.setUserId(userId);
+		pojo.setUserId(Integer.valueOf(userId));
 		List<ProjectListPojo> list = service.listByApprover(pojo);
 		ResponseResult rr = new ResponseResult();
 		rr.setData(list);
@@ -74,11 +77,11 @@ public class ProjectController {
 
 	}
 
-	private int getUserIdInSession() {
+	private String getUserIdInSession() {
 
 		HttpSession session = getSession();
 
-		return (int) session.getAttribute("userId");
+		return (String) session.getAttribute("userId");
 
 	}//
 
